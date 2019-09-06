@@ -14,7 +14,7 @@ version=${1}
 FBSC=~/toolchain/flatbuffers/flatbuffers/build/flatc
 
 schema_path="3rdparty/tflite_schema/schema.fbs"
-output_path="python/tflite-parser"
+output_path="python/tflite_parser"
 
 # download schema.fbs
 repo_tree='https://raw.githubusercontent.com/tensorflow/tensorflow'
