@@ -13,8 +13,10 @@ version=${1}
 # https://google.github.io/flatbuffers/flatbuffers_guide_building.html
 FBSC=~/toolchain/flatbuffers/flatbuffers/build/flatc
 
-schema_path="3rdparty/tflite_schema/schema.fbs"
-output_path="python/tflite_parser"
+root_dir=$(dirname $(dirname $(readlink -f $0})))
+
+schema_path="${root_dir}/3rdparty/tflite_schema/schema.fbs"
+output_path="${root_dir}/python/tflite_parser"
 
 # download schema.fbs
 repo_tree='https://raw.githubusercontent.com/tensorflow/tensorflow'
