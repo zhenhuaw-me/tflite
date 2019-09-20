@@ -13,6 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://jackwish.net/tflite",
     packages=setuptools.find_packages(),
+    install_requires=[ 'flatbuffers',],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Programming Language :: Python :: 3",
