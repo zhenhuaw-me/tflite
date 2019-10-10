@@ -16,7 +16,7 @@ FBSC=~/toolchain/flatbuffers/flatbuffers/build/flatc
 root_dir=$(dirname $(dirname $(readlink -f $0})))
 
 schema_path="${root_dir}/3rdparty/tflite_schema/schema.fbs"
-output_path="${root_dir}/python/tflite"
+output_path="${root_dir}/tflite"
 
 # download schema.fbs
 repo_tree='https://raw.githubusercontent.com/tensorflow/tensorflow'
