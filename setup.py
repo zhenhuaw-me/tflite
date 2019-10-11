@@ -7,7 +7,7 @@ with open(os.path.join(here, 'README.md'), 'r') as fh:
 
 setuptools.setup(
     name='tflite',
-    version='0.0.1-alpha-0',
+    version='0.0.2-r0',
     description="A package to parse TFLite models (*.tflite)",
     packages=setuptools.find_packages(),
     classifiers=[
