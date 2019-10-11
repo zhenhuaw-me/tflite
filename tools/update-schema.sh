@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # which version?
 read -p "Which version of TensorFlow would you like to obtain the schema (\"v1.14.0\" for example): " version

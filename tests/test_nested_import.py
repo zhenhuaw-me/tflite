@@ -8,4 +8,3 @@ def read_model(key: str):
     return model
 
 assert(read_model('mobilenet').Version() == 3)
-assert(read_model('mobilenet_quant').Version() == 3)
