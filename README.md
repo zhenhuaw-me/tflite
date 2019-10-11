@@ -10,8 +10,9 @@ Using this package, you can parse the TFLite models (`*tflite`) in Python. One t
 This package has been published on [pypi.org](https://pypi.org/), `pip install tflite` will install it. Basically, the usage styles include:
 
 * Easy import which avoids too many imports per submodules ([example](tests/test_easy_import.py)): `import tflite`. This is also the recommanded way to use this package.
-* Import modules like the originally built package ([example](tests/test_original_import.py)): `from tflite.Model import Model`. This is for compatibility with your code if it depends on the original package.
-* Nested tflite modules `tflite.tflite` as it is the originally built one ([example](tests/test_nested_import.py)): `from tflite.tflite.Model import Model`. This is to avoid bug in importing policy of above two as `tflite.tflite` is the very originally built module.
+* Nested tflite modules `tflite.tflite` as it is the originally built one ([example](tests/test_nested_import.py)): `from tflite.tflite.Model import Model`. This is as a workaround when encountering bug in easy import.
+
+The *easy import* imports the classes and functions of one submodules into top module directly, e.g. translating the `{package}.{submodules}.{class or function}` to `{package}.{class or function}`. For example, when building the `Model` object, `tflite.Model.GetRootAsModel(buf, 0)` should be used rather than `tflite.Model.Model.GetRootAsModel(buf, 0)`. This should be much easy to use. Look into the [tests](tests) for more examples.
 
 
 ## Development
