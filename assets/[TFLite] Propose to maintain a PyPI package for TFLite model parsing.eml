@@ -1,0 +1,110 @@
+MIME-Version: 1.0
+Date: Mon, 2 Sep 2019 15:14:53 +0800
+Message-ID: <CAM18=gT62SGJaCfS1Aw1gZy_TWJp-Hn0Z4SAcQJD6xZF9DNBfQ@mail.gmail.com>
+Subject: [TFLite] Propose to maintain a PyPI package for TFLite model parsing
+From: =?UTF-8?B?546L5oyv5Y2O?= <i@jackwish.net>
+To: aselle@google.com
+Content-Type: multipart/alternative; boundary="0000000000008110f205918cba3f"
+
+--0000000000008110f205918cba3f
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Andrew,
+
+I am writing here to propose a pip package which focuses on parsing TFLite
+models. The thing that blocks me from building/releasing directly is the
+license issue. I am not sure if it ok to let the community build this or
+does it need to be under the control of Google.
+
+Looking forward to hearing your thoughts :)
+
+Best regards
+Zhenhua
+
+
+*TL;DR*
+
+I have been using a self-built python package to parse TFLite models, and
+integrate the package into our CI infrastructure. Meanwhile, there are many
+people who have similar requirements to parse TFLite, for example some
+*inference
+engine* reads a TFLite model in its frontend module. The community
+introduces built C++ parser
+<https://github.com/tutorials-with-ci/tflite-model-parse>, or discussing
+about python parser
+<https://stackoverflow.com/questions/48485357/how-to-parse-toco-generated-file-tflite-in-python?rq=1>.
+As TensorFlow/TFLite somehow becomes a *standard by fact*, it appears to me
+that we can build and release pip package from the main TF repository to
+empower the community to use them directly rather than searching around and
+use flatbuffers stack.
+
+*The proposal includes:*
+1. build and open source parser (directly) from schema.
+2. build the pip package and release it.
+3. modify the package to let it more easy to use, (or even build it into
+something like ONNX).
+
+*The discussions (ONLY if the community is going to build such package):*
+1. where to release the package, github.com/tensorflowtflite-parser or some
+other place such as github.com/jackwish/tflite-parser.
+2. naming things...
+3. how to maintain it, the release policy.
+4. ... some other things...
+
+--0000000000008110f205918cba3f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:times ne=
+w roman,serif">Hi=C2=A0Andrew,</div><div class=3D"gmail_default" style=3D"f=
+ont-family:times new roman,serif"><br></div><div class=3D"gmail_default" st=
+yle=3D"font-family:times new roman,serif">I am writing here to propose a pi=
+p package which focuses on parsing TFLite models. The thing that blocks me =
+from building/releasing directly is the license issue. I am not sure if it =
+ok to let the community build this or does it need to be under the control =
+of Google.</div><div class=3D"gmail_default" style=3D"font-family:times new=
+ roman,serif"><br></div><div class=3D"gmail_default" style=3D"font-family:t=
+imes new roman,serif">Looking forward to hearing your thoughts :)</div><div=
+ class=3D"gmail_default" style=3D"font-family:times new roman,serif"><br></=
+div><div class=3D"gmail_default" style=3D"font-family:times new roman,serif=
+">Best regards</div><div class=3D"gmail_default" style=3D"font-family:times=
+ new roman,serif">Zhenhua</div><div class=3D"gmail_default" style=3D"font-f=
+amily:times new roman,serif"><br></div><div class=3D"gmail_default" style=
+=3D"font-family:times new roman,serif"><br></div><div class=3D"gmail_defaul=
+t" style=3D"font-family:times new roman,serif"><b>TL;DR</b></div><div class=
+=3D"gmail_default" style=3D"font-family:times new roman,serif"><b><br></b><=
+/div><div class=3D"gmail_default" style=3D"font-family:times new roman,seri=
+f">I have been using a self-built python package to parse TFLite models, an=
+d integrate the package into our CI infrastructure. Meanwhile, there are ma=
+ny people who have similar requirements to parse TFLite, for example some <=
+i>inference engine</i>=C2=A0reads a TFLite model in its frontend module. Th=
+e community introduces built <a href=3D"https://github.com/tutorials-with-c=
+i/tflite-model-parse">C++ parser</a>, or discussing about <a href=3D"https:=
+//stackoverflow.com/questions/48485357/how-to-parse-toco-generated-file-tfl=
+ite-in-python?rq=3D1">python parser</a>. As TensorFlow/TFLite somehow becom=
+es a=C2=A0<i>standard by fact</i>, it appears to me that we can build and r=
+elease pip package from the main TF repository to empower the community to =
+use them directly rather than searching around and use flatbuffers stack.</=
+div><div class=3D"gmail_default" style=3D"font-family:times new roman,serif=
+"><br></div><div class=3D"gmail_default" style=3D"font-family:times new rom=
+an,serif"><b>The proposal includes:</b></div><div class=3D"gmail_default" s=
+tyle=3D"font-family:times new roman,serif">1. build and open source parser =
+(directly) from schema.</div><div class=3D"gmail_default" style=3D"font-fam=
+ily:times new roman,serif">2. build the pip package and release it.</div><d=
+iv class=3D"gmail_default" style=3D"font-family:times new roman,serif">3. m=
+odify the package to let it more easy to use, (or even build it into someth=
+ing like ONNX).</div><div class=3D"gmail_default" style=3D"font-family:time=
+s new roman,serif"><br></div><div class=3D"gmail_default" style=3D"font-fam=
+ily:times new roman,serif"><b>The discussions (ONLY if the community is goi=
+ng to build such package):</b></div><div class=3D"gmail_default" style=3D"f=
+ont-family:times new roman,serif">1. where to release the package, <a href=
+=3D"http://github.com/tensorflowtflite-parser">github.com/tensorflowtflite-=
+parser</a> or some other place such as <a href=3D"http://github.com/jackwis=
+h/tflite-parser">github.com/jackwish/tflite-parser</a>.</div><div class=3D"=
+gmail_default" style=3D"font-family:times new roman,serif">2. naming things=
+...</div><div class=3D"gmail_default" style=3D"font-family:times new roman,=
+serif">3. how to maintain it, the release policy.</div><div class=3D"gmail_=
+default" style=3D"font-family:times new roman,serif">4. ... some other thin=
+gs...</div></div>
+
+--0000000000008110f205918cba3f--
