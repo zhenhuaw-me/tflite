@@ -1,7 +1,7 @@
 The python package to parse TFLite models
 =========================================
 
-This `tflite` pip package is built from the `schema.fbs` of [TensorFlow](https://github.com/tensorflow/tensorflow) with [FlatBuffers](https://google.github.io/flatbuffers/).
+TFLite models (`*.tflite`) are in [FlatBuffers](https://google.github.io/flatbuffers/) format. This `tflite` package is built to parse the TFLite models from the `schema.fbs` of [TensorFlow](https://github.com/tensorflow/tensorflow).
 
 ## Usage
 
@@ -22,6 +22,12 @@ To develop this package, additional depdendency can be installed via `pip instal
 The [`tools`](tools) directory holds some scripts to update the package to corresponding TensorFlow version. Features could be added to make the parsing easy in the future.
 
 Don't forget to re-install the newly built `tflite` package before testing it. You may also try `source tools/source-me.sh` rather than the annoying build and install process in development.
+
+
+## Resources
+
+* [GitHub](https://github.com/jackwish/tflite) of this package.
+* [Converting TensorFlow model to TFLite model](https://www.tensorflow.org/lite/convert).
 
 
 ## License
