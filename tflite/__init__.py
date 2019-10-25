@@ -31,6 +31,7 @@ from .tflite.SpaceToDepthOptions import *
 from .tflite.ReverseV2Options import *
 from .tflite.MatrixDiagOptions import *
 from .tflite.GreaterOptions import *
+from .tflite.IfOptions import *
 from .tflite.BuiltinOptions import *
 from .tflite.SkipGramOptions import *
 from .tflite.MirrorPadOptions import *
@@ -42,8 +43,10 @@ from .tflite.RangeOptions import *
 from .tflite.CustomOptionsFormat import *
 from .tflite.TransposeOptions import *
 from .tflite.MirrorPadMode import *
+from .tflite.WhileOptions import *
 from .tflite.ReverseSequenceOptions import *
 from .tflite.UniqueOptions import *
+from .tflite.DepthToSpaceOptions import *
 from .tflite.ReducerOptions import *
 from .tflite.LogicalAndOptions import *
 from .tflite.OperatorCode import *
@@ -62,6 +65,7 @@ from .tflite.GreaterEqualOptions import *
 from .tflite.FakeQuantOptions import *
 from .tflite.BidirectionalSequenceRNNOptions import *
 from .tflite.Pool2DOptions import *
+from .tflite.Metadata import *
 from .tflite.LSHProjectionOptions import *
 from .tflite.FillOptions import *
 from .tflite.WhereOptions import *
@@ -72,6 +76,7 @@ from .tflite.SplitVOptions import *
 from .tflite.QuantizationParameters import *
 from .tflite.MaximumMinimumOptions import *
 from .tflite.TransposeConvOptions import *
+from .tflite.HardSwishOptions import *
 from .tflite.ArgMinOptions import *
 from .tflite.LogicalNotOptions import *
 from .tflite.DequantizeOptions import *
