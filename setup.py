@@ -7,11 +7,11 @@ with open(os.path.join(here, 'README.md'), 'r') as fh:
 
 setuptools.setup(
     name='tflite',
-    version='0.0.2-r0',
+    version='1.14.0',
     description="A package to parse TFLite models (*.tflite)",
     packages=setuptools.find_packages(),
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 4 - Beta',
 
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
@@ -30,14 +30,14 @@ setuptools.setup(
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
     install_requires=[ 'flatbuffers',],
 
-    # author='王振华（Zhenhua WANG）',
-    # author_email='i@jackwish.net',
+    author='王振华（Zhenhua WANG）',
+    author_email='i@jackwish.net',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    # url="https://jackwish.net/tflite",
+    url="https://jackwish.net/tflite",
 
-    # project_urls={
-    #     'Bug Reports': 'https://github.com/jackwish/tflite/issues',
-    #     'Source': 'https://github.com/jackwish/tflite',
-    # },
+    project_urls={
+        'Bug Reports': 'https://github.com/jackwish/tflite/issues',
+        'Source': 'https://github.com/jackwish/tflite',
+    },
 )

@@ -5,7 +5,6 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 def getPath(key: str):
   root_dir = os.path.abspath(os.path.join(HERE, '..'))
   if key == 'root': return root_dir
-  elif key == 'mobilenet': return os.path.join(root_dir, '3rdparty/mobilenet_v1_1.0_224.tflite')
-  elif key == 'mobilenet_quant': return os.path.join(root_dir, '3rdparty/mobilenet_v1_1.0_224_quant.tflite')
+  elif key == 'mobilenet': return os.path.join(root_dir, '3rdparty/mobilenet_v1_1.0_224_quant.tflite')
   else: raise ValueError("Unsupported path key: %s" % key)
 
