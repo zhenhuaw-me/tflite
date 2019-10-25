@@ -97,4 +97,5 @@ class BuiltinOptions(object):
     HardSwishOptions = 91
     IfOptions = 92
     WhileOptions = 93
+    DepthToSpaceOptions = 94
 
