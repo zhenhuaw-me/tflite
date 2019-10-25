@@ -18,7 +18,7 @@ FBSC=~/toolchain/flatbuffers/flatbuffers/build/flatc
 root_dir=$(dirname $(dirname $(readlink -f $0})))
 
 schema_path="${root_dir}/3rdparty/schema.fbs"
-output_path="${root_dir}/tflite"
+output_path="${root_dir}"
 
 # download schema.fbs
 repo_tree='https://raw.githubusercontent.com/tensorflow/tensorflow'
@@ -40,6 +40,8 @@ fi
 
 echo "Building flatbuffers python module in ${output_path}"
 ${FBSC} --python -o ${output_path} ${schema_path}
+# revert the __init__.py
+git checkout ${root_dir}/tflite/__init__.py
 
 # commit the schema change?
 echo "The diff of built out python module"
