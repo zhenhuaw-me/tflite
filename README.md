@@ -7,19 +7,35 @@ TFLite models (`*.tflite`) are in [FlatBuffers](https://google.github.io/flatbuf
 
 Using this package, you can parse the TFLite models (`*tflite`) in Python. One target of this package is to let people use it as the one originally built from `schema.fbs`.
 
-This package has been published on [pypi.org](https://pypi.org/project/tflite/), `pip install tflite` will install. Basically, the usage styles include:
+### Installation
+
+This package can be installed via [pip](https://pypi.org/project/tflite/), and is is versioning with [TensorFlow package](https://pypi.org/project/tensorflow/), which means a `tflite==1.14.0` is generated from `tensorflow==1.14.0`. Versions after `1.14.0` is maintained.
+
+So, if you have a TFLite model generated from TensorFlow `1.14.0`, install the dedicated TFLite package by
+
+```sh
+pip install tflite==1.14.0
+```
+
+That's it!
+
+> The compatibility across different versions is guaranteed. It's recommanded to use the correct version.
+
+### Use the package
+
+Basically, the usage styles include:
 
 * **Easy import** avoids too many imports per submodules ([example](tests/test_easy_import.py)): `import tflite`. This is also the recommanded way to use this package.
 * **Nested import** tflite modules `tflite.tflite` as it is the originally built one ([example](tests/test_nested_import.py)): `from tflite.tflite.Model import Model`. This is as a workaround when encountering bug in easy import.
 
 The *easy import* imports the classes and functions of one submodules into top module directly, e.g. import the `{package}.{submodules}.{class or function}` as `{package}.{class or function}`. For example, when building the `Model` object, `tflite.Model.GetRootAsModel(buf, 0)` should be used rather than `tflite.Model.Model.GetRootAsModel(buf, 0)`. This should be much easy to use. Look into the [tests](tests) for more examples.
 
-The package is versioning mirrored to [TensorFlow package](https://pypi.org/project/tensorflow/), which means a `tflite==1.14.0` is generated from `tensorflow==1.14.0`. Versions after `1.14.0` is maintained.
-
-Besides, if you prefer the *very original* style of the FlatBuffers generated package, try [this one](https://github.com/FrozenGene/tflite).
+> Besides, if you prefer the *very original* style of the FlatBuffers generated package, try [this one](https://github.com/FrozenGene/tflite).
 
 
 ## Development
+
+> Package users can safely ignore this part.
 
 To develop this package, additional depdendency can be installed via `pip install -r requirements.txt`.
 
