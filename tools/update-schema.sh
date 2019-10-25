@@ -39,6 +39,7 @@ if [ ${changed_lines} -eq 0 ]; then
 fi
 
 echo "Building flatbuffers python module in ${output_path}"
+rm -f ${root_dir}/tflite/*.py
 ${FBSC} --python -o ${output_path} ${schema_path}
 # revert the __init__.py
 git checkout ${root_dir}/tflite/__init__.py

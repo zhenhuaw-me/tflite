@@ -11,7 +11,7 @@ begin_tag = "########################## BELOW ARE AUTO-GENERATED ###############
 end_tag = "########################## ABOVE ARE AUTO-GENERATED ##########################\n"
 
 # the generated import lines
-pys = [ f[:-3] for f in os.listdir(submodule_dir) \
+pys = [ f[:-3] for f in sorted(os.listdir(submodule_dir)) \
         if os.path.isfile(os.path.join(submodule_dir, f)) and \
         f.endswith('.py') and f != '__init__.py']
 imports = [ "from .%s import *\n" % py for py in pys ]
