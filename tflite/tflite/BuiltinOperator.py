@@ -8,6 +8,7 @@ class BuiltinOperator(object):
     CONCATENATION = 2
     CONV_2D = 3
     DEPTHWISE_CONV_2D = 4
+    DEPTH_TO_SPACE = 5
     DEQUANTIZE = 6
     EMBEDDING_LOOKUP = 7
     FLOOR = 8
@@ -119,4 +120,7 @@ class BuiltinOperator(object):
     QUANTIZE = 114
     MATRIX_SET_DIAG = 115
     ROUND = 116
+    HARD_SWISH = 117
+    IF = 118
+    WHILE = 119
 
