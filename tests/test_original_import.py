@@ -1,4 +1,4 @@
-from tflite.tflite.Model import Model
+from tflite.Model import Model
 import util_for_test
 
 def read_model(key: str):
