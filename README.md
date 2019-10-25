@@ -19,6 +19,8 @@ pip install tflite==1.14.0
 
 That's it!
 
+For the released version, check [PyPI](https://pypi.org/project/tflite/#history) or [GitHub](https://github.com/jackwish/tflite/releases).
+
 > The compatibility across different versions is guaranteed. It's recommanded to use the correct version.
 
 ### Use the package
