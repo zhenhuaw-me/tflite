@@ -5,11 +5,11 @@ TFLite models (`*.tflite`) are in [FlatBuffers](https://google.github.io/flatbuf
 
 ## Usage
 
-Using this package, you can parse the TFLite models (`*tflite`) in Python. One target of this package is to let people use it as the one originally built from `schema.fbs`.
+Using this package, you can parse the TFLite models (`*.tflite`) in Python. One target of this package is to let people use it as the one originally built from `schema.fbs`.
 
 ### Installation
 
-This package can be installed via [pip](https://pypi.org/project/tflite/), and is is versioning with [TensorFlow package](https://pypi.org/project/tensorflow/), which means a `tflite==1.14.0` is generated from `tensorflow==1.14.0`. Versions after `1.14.0` is maintained.
+This package can be installed via [pip](https://pypi.org/project/tflite/), and is versioning with [TensorFlow package](https://pypi.org/project/tensorflow/), which means a `tflite==1.14.0` is generated from `tensorflow==1.14.0`. Versions after `1.14.0` is maintained.
 
 So, if you have a TFLite model generated from TensorFlow `1.14.0`, install the dedicated TFLite package by
 
@@ -19,7 +19,7 @@ pip install tflite==1.14.0
 
 That's it!
 
-For the released version, check [PyPI](https://pypi.org/project/tflite/#history) or [GitHub](https://github.com/jackwish/tflite/releases).
+For the released versions, check [PyPI](https://pypi.org/project/tflite/#history) or [GitHub](https://github.com/jackwish/tflite/releases).
 
 > The compatibility across different versions is guaranteed. It's recommanded to use the correct version.
 
