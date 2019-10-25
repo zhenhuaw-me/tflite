@@ -3,36 +3,43 @@ The python package to parse TFLite models
 
 TFLite models (`*.tflite`) are in [FlatBuffers](https://google.github.io/flatbuffers/) format. This `tflite` package is built to parse the TFLite models from the `schema.fbs` of [TensorFlow](https://github.com/tensorflow/tensorflow).
 
+
 ## Usage
 
 Using this package, you can parse the TFLite models (`*.tflite`) in Python. One target of this package is to let people use it as the one originally built from `schema.fbs`.
 
 ### Installation
 
-This package can be installed via [pip](https://pypi.org/project/tflite/), and is versioning with [TensorFlow package](https://pypi.org/project/tensorflow/), which means a `tflite==1.14.0` is generated from `tensorflow==1.14.0`. Versions after `1.14.0` is maintained.
+This package can be installed via [pip](https://pypi.org/project/tflite/), and is versioning *similar* to [TensorFlow package](https://pypi.org/project/tensorflow/). And the version mapping is as below.
 
-So, if you have a TFLite model generated from TensorFlow `1.14.0`, install the dedicated TFLite package by
+| TensorFlow package version   | tflite package version |
+|------------------------------|------------------------|
+|      1.14.0                  |      1.14.0.post1      |
+|      1.15.0                  |      1.15.0.post1      |
+|      2.0.0                   |      2.0.0.post1       |
+
+It would be better if you use a correct version, such as:
 
 ```sh
-pip install tflite==1.14.0
+pip install tensorflow==1.14.0
+pip install tflite==1.14.0.post1
 ```
 
-That's it!
+### Easy Import
 
-For the released versions, check [PyPI](https://pypi.org/project/tflite/#history) or [GitHub](https://github.com/jackwish/tflite/releases).
+Basically, you can use this package just like the newly FlatBuffers generated one ([example](tests/test_original_import.py)):
 
-> The compatibility across different versions is guaranteed. It's recommanded to use the correct version.
+```python
+from tflite.Model import Model
+# use Model
+```
 
-### Use the package
+In addition, you may use the **Easy Import** (recommanded) to avoid too many imports per submodules ([example](tests/test_easy_import.py)). The *easy import* imports the classes and functions of one submodules into top module directly, e.g. import the `{package}.{submodules}.{class or function}` as `{package}.{class or function}`. For example, when building the `Model` object, `tflite.Model.GetRootAsModel(buf, 0)`.
 
-Basically, the usage styles include:
-
-* **Easy import** avoids too many imports per submodules ([example](tests/test_easy_import.py)): `import tflite`. This is also the recommanded way to use this package.
-* **Nested import** tflite modules `tflite.tflite` as it is the originally built one ([example](tests/test_nested_import.py)): `from tflite.tflite.Model import Model`. This is as a workaround when encountering bug in easy import.
-
-The *easy import* imports the classes and functions of one submodules into top module directly, e.g. import the `{package}.{submodules}.{class or function}` as `{package}.{class or function}`. For example, when building the `Model` object, `tflite.Model.GetRootAsModel(buf, 0)` should be used rather than `tflite.Model.Model.GetRootAsModel(buf, 0)`. This should be much easy to use. Look into the [tests](tests) for more examples.
-
-> Besides, if you prefer the *very original* style of the FlatBuffers generated package, try [this one](https://github.com/FrozenGene/tflite).
+```python
+import tflite
+# use tflite.Model
+```
 
 
 ## Development
@@ -57,7 +64,7 @@ Don't forget to re-install the newly built `tflite` package before testing it. Y
 
 * [GitHub](https://github.com/jackwish/tflite) of this package.
 * [Converting TensorFlow model to TFLite model](https://www.tensorflow.org/lite/convert).
-* [This TFLite package](https://github.com/FrozenGene/tflite) is used in [TVM](https://tvm.ai/).
+* [This package](https://github.com/FrozenGene/tflite) has already been used in [TVM](https://tvm.ai).
 
 
 ## License
