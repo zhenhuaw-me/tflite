@@ -45,8 +45,8 @@ The [`tools`](tools) directory holds some scripts to update the package to corre
 1. [Download](tools/update-schema.sh) the `schema.fbs` change of a version.
 2. [Update](tools/update-importing.py) the classes and functions import of submodules.
 3. Update the versioning in [setup.py](setup.py).
-4. Build and [Test](tests) around.
-5. [Upload](tools/build-and-upload.sh) the package to PyPI.
+4. [Build](tools/build.sh) and [Test](tests) around.
+5. [Upload](tools/upload.sh) the package to PyPI.
 
 Features could be added to make the parsing easy in the future.
 
