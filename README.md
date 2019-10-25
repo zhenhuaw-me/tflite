@@ -67,4 +67,4 @@ Apache License Version 2.0 as TensorFlow's.
 
 ## Disclaimer
 
-The `schema.fbs` is obtained from TensorFlow directly, which could be property of Google. Maitainer of this package has tried to [contact](assets/[TFLite] Propose to maintain a PyPI package for TFLite model parsing.eml) [one](https://github.com/aselle) of the TensorFlow maitainers for legal or permission issues, but receiving no reply. Ownership or maitainship of this package is open to transfer or close if there were any issues.
+The `schema.fbs` is obtained from TensorFlow directly, which could be property of Google. Maitainer of this package has tried to [contact](assets/disclaimer.eml) [one](https://github.com/aselle) of the TensorFlow maitainers for legal or permission issues, but receiving no reply. Ownership or maitainship of this package is open to transfer or close if there were any issues.
