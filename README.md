@@ -6,7 +6,7 @@ TFLite models (`*.tflite`) are in [FlatBuffers](https://google.github.io/flatbuf
 
 ## Usage
 
-Using this package, you can parse the TFLite models (`*.tflite`) in Python. One target of this package is to let people use it as the one originally built from `schema.fbs`.
+Using this package, you can parse the TFLite models (`*.tflite`) in Python. One target of this package is to let people use it as the one originally built from `schema.fbs`. The module and submodules are listed in the [document page](https://jackwish.net/tflite/docs).
 
 ### Installation
 
@@ -62,9 +62,10 @@ Don't forget to re-install the newly built `tflite` package before testing it. Y
 
 ## Resources
 
-* [GitHub](https://github.com/jackwish/tflite) of this package.
+* [GitHub page](https://github.com/jackwish/tflite) of this package.
+* [Module list](https://jackwish.net/tflite/docs) of this package.
 * [Converting TensorFlow model to TFLite model](https://www.tensorflow.org/lite/convert).
-* [This package](https://github.com/FrozenGene/tflite) has already been used in [TVM](https://tvm.ai).
+* [Another package](https://github.com/FrozenGene/tflite) has already been used in [TVM](https://tvm.ai).
 
 
 ## License

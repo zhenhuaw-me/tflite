@@ -2,3 +2,4 @@ wheel
 twine
 flatbuffers
 GitPython
+pdoc
