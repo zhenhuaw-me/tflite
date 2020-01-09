@@ -1,6 +1,8 @@
 Python Package to Parse TFLite Models Easily
 ============================================
 
+![GitHub Action badge](https://github.com/jackwish/tflite/workflows/Build%20and%20Test/badge.svg)
+
 TFLite models (`*.tflite`) are in [FlatBuffers](https://google.github.io/flatbuffers/) format. This `tflite` package is built to parse the TFLite models from the `schema.fbs` of [TensorFlow](https://github.com/tensorflow/tensorflow).
 
 
