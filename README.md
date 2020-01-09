@@ -39,7 +39,12 @@ import tflite
 
 The [MobileNet parsing example](https://github.com/jackwish/tflite/blob/master/tests/mobilenet_example.py) shows how to parse model with `import tflite` **ONLY ONCE**. On contrary, the original generated package needs to import every classes by hand ([see this](https://github.com/apache/incubator-tvm/blob/v0.6.0/python/tvm/relay/frontend/tflite.py#L843-L849)) which is pretty annoying.
 
+In addition, you can use this package just like the newly FlatBuffers generated one ([example](tests/test_original_import.py)):
 
+```python
+from tflite.Model import Model
+# use Model
+```
 
 ## Development
 
