@@ -3,3 +3,4 @@ twine
 flatbuffers
 GitPython
 pdoc
+numpy
