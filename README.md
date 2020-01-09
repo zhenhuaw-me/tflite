@@ -17,6 +17,7 @@ This package can be installed via [pip](https://pypi.org/project/tflite/), and i
 |      1.14.0                  |      1.14.0.post1      |
 |      1.15.0                  |      1.15.0.post1      |
 |      2.0.0                   |      2.0.0.post2       |
+|      2.1.0                   |      2.1.0             |
 
 It would be better if you use a correct version, such as:
 
@@ -27,19 +28,15 @@ pip install tflite==1.14.0.post1
 
 ### Easy Import
 
-Basically, you can use this package just like the newly FlatBuffers generated one ([example](tests/test_original_import.py)):
-
-```python
-from tflite.Model import Model
-# use Model
-```
-
-In addition, you may use the **Easy Import** (recommanded) to avoid too many imports per submodules ([example](tests/test_easy_import.py)). The *easy import* imports the classes and functions of one submodules into top module directly, e.g. import the `{package}.{submodules}.{class or function}` as `{package}.{class or function}`. For example, when building the `Model` object, `tflite.Model.GetRootAsModel(buf, 0)`.
+With this package, you may avoid too many imports per submodules. The *easy import* imports the classes and functions of one submodules into top module directly, e.g. import the `{package}.{submodules}.{class or function}` as `{package}.{class or function}`. For example, when building the `Model` object, `tflite.Model.GetRootAsModel(buf, 0)`.
 
 ```python
 import tflite
 # use tflite.Model
 ```
+
+The [MobileNet parsing example](https://github.com/jackwish/tflite/blob/master/tests/mobilenet_example.py) shows how to parse model with `import tflite` **ONLY ONCE**. On contrary, the original generated package needs to import every classes by hand ([see this](https://github.com/apache/incubator-tvm/blob/v0.6.0/python/tvm/relay/frontend/tflite.py#L843-L849)) which is pretty annoying.
+
 
 
 ## Development
