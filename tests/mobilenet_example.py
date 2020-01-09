@@ -5,7 +5,7 @@ import util_for_test
 # Use this package, you can *import* the `tflite* package ONLY ONCE.
 # Otherwise, you need to import every class when using them.
 
-def read_model(key: str):
+def read_model(key):
     with open(util_for_test.getPath(key), 'rb') as f:
         buf = f.read()
         model = tflite.Model.GetRootAsModel(buf, 0)

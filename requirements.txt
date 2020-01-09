@@ -4,3 +4,4 @@ flatbuffers
 GitPython
 pdoc
 numpy
+setuptools

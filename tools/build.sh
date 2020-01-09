@@ -7,7 +7,7 @@ else
 fi
 rm -f ${root_dir}/assets/dist/tflite-*.whl
 
-python3 ${root_dir}/setup.py bdist_wheel \
+python ${root_dir}/setup.py bdist_wheel \
   --bdist-dir ${root_dir}/assets/build \
   --dist-dir ${root_dir}/assets/dist
 rm -rf ${root_dir}/tflite.egg-info

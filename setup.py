@@ -1,3 +1,4 @@
+# coding: utf-8
 import setuptools, os
 
 here = os.path.abspath(os.path.dirname(__file__))
