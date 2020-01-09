@@ -1064,7 +1064,6 @@ table {
     <li class="mono"><a href="#tflite.FullyConnectedOptions.FullyConnectedOptions.Init">Init</a></li>
     <li class="mono"><a href="#tflite.FullyConnectedOptions.FullyConnectedOptions.KeepNumDims">KeepNumDims</a></li>
     <li class="mono"><a href="#tflite.FullyConnectedOptions.FullyConnectedOptions.WeightsFormat">WeightsFormat</a></li>
-    <li class="mono"><a href="#tflite.FullyConnectedOptions.FullyConnectedOptions.FullyConnectedOptionsBufferHasIdentifier">FullyConnectedOptionsBufferHasIdentifier</a></li>
     <li class="mono"><a href="#tflite.FullyConnectedOptions.FullyConnectedOptions.GetRootAsFullyConnectedOptions">GetRootAsFullyConnectedOptions</a></li>
   </ul>
 
@@ -1104,10 +1103,6 @@ table {
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">FullyConnectedOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
-
     <span class="c1"># FullyConnectedOptions</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
@@ -1131,7 +1126,7 @@ table {
         <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">def</span> <span class="nf">FullyConnectedOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">FullyConnectedOptionsAddFusedActivationFunction</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fusedActivationFunction</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependInt8Slot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fusedActivationFunction</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -1267,10 +1262,6 @@ table {
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">FullyConnectedOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
-
     <span class="c1"># FullyConnectedOptions</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
@@ -1294,7 +1285,7 @@ table {
         <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
   </div>
@@ -1369,7 +1360,7 @@ table {
     <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
-    <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
   </div>
@@ -1402,28 +1393,6 @@ table {
   </div>
   
           <h3>Methods</h3>
-            
-  <div class="item">
-    <div class="name def" id="tflite.FullyConnectedOptions.FullyConnectedOptions.FullyConnectedOptionsBufferHasIdentifier">
-    <p>def <span class="ident">FullyConnectedOptionsBufferHasIdentifier</span>(</p><p>cls, buf, offset, size_prefixed=False)</p>
-    </div>
-    
-
-    
-  
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.FullyConnectedOptions.FullyConnectedOptions.FullyConnectedOptionsBufferHasIdentifier', this);">Show source &equiv;</a></p>
-  <div id="source-tflite.FullyConnectedOptions.FullyConnectedOptions.FullyConnectedOptionsBufferHasIdentifier" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">FullyConnectedOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
             
   <div class="item">
     <div class="name def" id="tflite.FullyConnectedOptions.FullyConnectedOptions.GetRootAsFullyConnectedOptions">

@@ -1063,7 +1063,6 @@ table {
     <li class="mono"><a href="#tflite.UnpackOptions.UnpackOptions.Init">Init</a></li>
     <li class="mono"><a href="#tflite.UnpackOptions.UnpackOptions.Num">Num</a></li>
     <li class="mono"><a href="#tflite.UnpackOptions.UnpackOptions.GetRootAsUnpackOptions">GetRootAsUnpackOptions</a></li>
-    <li class="mono"><a href="#tflite.UnpackOptions.UnpackOptions.UnpackOptionsBufferHasIdentifier">UnpackOptionsBufferHasIdentifier</a></li>
   </ul>
 
         </li>
@@ -1101,10 +1100,6 @@ table {
         <span class="n">x</span> <span class="o">=</span> <span class="n">UnpackOptions</span><span class="p">()</span>
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">UnpackOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
 
     <span class="c1"># UnpackOptions</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -1237,10 +1232,6 @@ table {
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">UnpackOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
-
     <span class="c1"># UnpackOptions</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
@@ -1359,28 +1350,6 @@ table {
     <span class="n">x</span> <span class="o">=</span> <span class="n">UnpackOptions</span><span class="p">()</span>
     <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item">
-    <div class="name def" id="tflite.UnpackOptions.UnpackOptions.UnpackOptionsBufferHasIdentifier">
-    <p>def <span class="ident">UnpackOptionsBufferHasIdentifier</span>(</p><p>cls, buf, offset, size_prefixed=False)</p>
-    </div>
-    
-
-    
-  
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.UnpackOptions.UnpackOptions.UnpackOptionsBufferHasIdentifier', this);">Show source &equiv;</a></p>
-  <div id="source-tflite.UnpackOptions.UnpackOptions.UnpackOptionsBufferHasIdentifier" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">UnpackOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
 </pre></div>
 
   </div>

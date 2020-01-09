@@ -1070,7 +1070,6 @@ table {
     <li class="mono"><a href="#tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.NumColumnsPerChannel">NumColumnsPerChannel</a></li>
     <li class="mono"><a href="#tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.NumColumnsPerChannelAsNumpy">NumColumnsPerChannelAsNumpy</a></li>
     <li class="mono"><a href="#tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.NumColumnsPerChannelLength">NumColumnsPerChannelLength</a></li>
-    <li class="mono"><a href="#tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsBufferHasIdentifier">ConcatEmbeddingsOptionsBufferHasIdentifier</a></li>
     <li class="mono"><a href="#tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.GetRootAsConcatEmbeddingsOptions">GetRootAsConcatEmbeddingsOptions</a></li>
   </ul>
 
@@ -1109,10 +1108,6 @@ table {
         <span class="n">x</span> <span class="o">=</span> <span class="n">ConcatEmbeddingsOptions</span><span class="p">()</span>
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">ConcatEmbeddingsOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
 
     <span class="c1"># ConcatEmbeddingsOptions</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -1344,10 +1339,6 @@ table {
         <span class="n">x</span> <span class="o">=</span> <span class="n">ConcatEmbeddingsOptions</span><span class="p">()</span>
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">ConcatEmbeddingsOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
 
     <span class="c1"># ConcatEmbeddingsOptions</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -1608,28 +1599,6 @@ table {
   </div>
   
           <h3>Methods</h3>
-            
-  <div class="item">
-    <div class="name def" id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsBufferHasIdentifier">
-    <p>def <span class="ident">ConcatEmbeddingsOptionsBufferHasIdentifier</span>(</p><p>cls, buf, offset, size_prefixed=False)</p>
-    </div>
-    
-
-    
-  
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsBufferHasIdentifier', this);">Show source &equiv;</a></p>
-  <div id="source-tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsBufferHasIdentifier" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">ConcatEmbeddingsOptionsBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
             
   <div class="item">
     <div class="name def" id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptions.GetRootAsConcatEmbeddingsOptions">

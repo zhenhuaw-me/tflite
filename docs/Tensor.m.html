@@ -1074,7 +1074,6 @@ table {
     <li class="mono"><a href="#tflite.Tensor.Tensor.ShapeLength">ShapeLength</a></li>
     <li class="mono"><a href="#tflite.Tensor.Tensor.Type">Type</a></li>
     <li class="mono"><a href="#tflite.Tensor.Tensor.GetRootAsTensor">GetRootAsTensor</a></li>
-    <li class="mono"><a href="#tflite.Tensor.Tensor.TensorBufferHasIdentifier">TensorBufferHasIdentifier</a></li>
   </ul>
 
         </li>
@@ -1112,10 +1111,6 @@ table {
         <span class="n">x</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">()</span>
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">TensorBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
 
     <span class="c1"># Tensor</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -1162,7 +1157,7 @@ table {
         <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="c1"># Tensor</span>
     <span class="k">def</span> <span class="nf">Quantization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1173,20 +1168,20 @@ table {
             <span class="n">obj</span> <span class="o">=</span> <span class="n">QuantizationParameters</span><span class="p">()</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Bytes</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">obj</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="c1"># Tensor</span>
     <span class="k">def</span> <span class="nf">IsVariable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">def</span> <span class="nf">TensorStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddShape</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorStartShapeVector</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">numElems</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartVector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">numElems</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddType</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependInt8Slot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">TensorAddBuffer</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUint32Slot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">TensorAddBuffer</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUint32Slot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddName</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddQuantization</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">quantization</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">quantization</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddIsVariable</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">isVariable</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">isVariable</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -1212,7 +1207,7 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.TensorAddBuffer', this);">Show source &equiv;</a></p>
   <div id="source-tflite.Tensor.TensorAddBuffer" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorAddBuffer</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUint32Slot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorAddBuffer</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">buffer</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUint32Slot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1400,10 +1395,6 @@ table {
         <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span>
 
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">TensorBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
-
     <span class="c1"># Tensor</span>
     <span class="k">def</span> <span class="nf">Init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
@@ -1449,7 +1440,7 @@ table {
         <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="c1"># Tensor</span>
     <span class="k">def</span> <span class="nf">Quantization</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1460,14 +1451,14 @@ table {
             <span class="n">obj</span> <span class="o">=</span> <span class="n">QuantizationParameters</span><span class="p">()</span>
             <span class="n">obj</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Bytes</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">obj</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="c1"># Tensor</span>
     <span class="k">def</span> <span class="nf">IsVariable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
   </div>
@@ -1542,7 +1533,7 @@ table {
     <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
-    <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
   </div>
@@ -1566,7 +1557,7 @@ table {
     <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
   </div>
@@ -1594,7 +1585,7 @@ table {
         <span class="n">obj</span> <span class="o">=</span> <span class="n">QuantizationParameters</span><span class="p">()</span>
         <span class="n">obj</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Bytes</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">obj</span>
-    <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
   </div>
@@ -1718,28 +1709,6 @@ table {
     <span class="n">x</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">()</span>
     <span class="n">x</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-
-  </div>
-</div>
-
-  </div>
-  
-            
-  <div class="item">
-    <div class="name def" id="tflite.Tensor.Tensor.TensorBufferHasIdentifier">
-    <p>def <span class="ident">TensorBufferHasIdentifier</span>(</p><p>cls, buf, offset, size_prefixed=False)</p>
-    </div>
-    
-
-    
-  
-  <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.Tensor.TensorBufferHasIdentifier', this);">Show source &equiv;</a></p>
-  <div id="source-tflite.Tensor.Tensor.TensorBufferHasIdentifier" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">TensorBufferHasIdentifier</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">BufferHasIdentifier</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x54\x46\x4C\x33</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">size_prefixed</span><span class="o">=</span><span class="n">size_prefixed</span><span class="p">)</span>
 </pre></div>
 
   </div>
