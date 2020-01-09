@@ -4,19 +4,19 @@
 
 import flatbuffers
 
-class NegOptions(object):
+class NonMaxSuppressionV4Options(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsNegOptions(cls, buf, offset):
+    def GetRootAsNonMaxSuppressionV4Options(cls, buf, offset):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
-        x = NegOptions()
+        x = NonMaxSuppressionV4Options()
         x.Init(buf, n + offset)
         return x
 
-    # NegOptions
+    # NonMaxSuppressionV4Options
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def NegOptionsStart(builder): builder.StartObject(0)
-def NegOptionsEnd(builder): return builder.EndObject()
+def NonMaxSuppressionV4OptionsStart(builder): builder.StartObject(0)
+def NonMaxSuppressionV4OptionsEnd(builder): return builder.EndObject()

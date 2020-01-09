@@ -14,10 +14,6 @@ class PowOptions(object):
         x.Init(buf, n + offset)
         return x
 
-    @classmethod
-    def PowOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
-
     # PowOptions
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)

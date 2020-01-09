@@ -4,19 +4,19 @@
 
 import flatbuffers
 
-class NegOptions(object):
+class ScatterNdOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsNegOptions(cls, buf, offset):
+    def GetRootAsScatterNdOptions(cls, buf, offset):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
-        x = NegOptions()
+        x = ScatterNdOptions()
         x.Init(buf, n + offset)
         return x
 
-    # NegOptions
+    # ScatterNdOptions
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def NegOptionsStart(builder): builder.StartObject(0)
-def NegOptionsEnd(builder): return builder.EndObject()
+def ScatterNdOptionsStart(builder): builder.StartObject(0)
+def ScatterNdOptionsEnd(builder): return builder.EndObject()
