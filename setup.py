@@ -31,7 +31,7 @@ setuptools.setup(
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
     install_requires=[ 'flatbuffers', 'numpy'],
 
-    author='王振华（Zhenhua WANG）',
+    author='王振华(Zhenhua WANG)',
     author_email='i@jackwish.net',
     long_description=long_description,
     long_description_content_type='text/markdown',
