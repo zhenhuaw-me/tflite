@@ -52,7 +52,7 @@ from tflite.Model import Model
 
 To develop this package, additional depdendency can be installed via `pip install -r requirements.txt`.
 
-The [`tools`](tools) directory holds some scripts to update the package to corresponding TensorFlow version. There are three steps currently:
+The [`tools`](tools) directory holds some scripts to update the package to corresponding TensorFlow version. There are steps:
 1. [Download](tools/update-schema.sh) the `schema.fbs` change of a version.
 2. [Update](tools/update-importing.py) the classes and functions import of submodules.
 3. Update the versioning in [setup.py](setup.py).
