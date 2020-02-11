@@ -64,8 +64,6 @@ from .MirrorPadOptions import *
 from .Model import *
 from .MulOptions import *
 from .NegOptions import *
-from .NonMaxSuppressionV4Options import *
-from .NonMaxSuppressionV5Options import *
 from .NotEqualOptions import *
 from .OneHotOptions import *
 from .Operator import *
@@ -89,7 +87,6 @@ from .ResizeNearestNeighborOptions import *
 from .ReverseSequenceOptions import *
 from .ReverseV2Options import *
 from .SVDFOptions import *
-from .ScatterNdOptions import *
 from .SelectOptions import *
 from .SequenceRNNOptions import *
 from .ShapeOptions import *
