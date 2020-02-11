@@ -14,10 +14,6 @@ class MulOptions(object):
         x.Init(buf, n + offset)
         return x
 
-    @classmethod
-    def MulOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
-
     # MulOptions
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)

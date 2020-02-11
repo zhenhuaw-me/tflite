@@ -14,10 +14,6 @@ class ConcatEmbeddingsOptions(object):
         x.Init(buf, n + offset)
         return x
 
-    @classmethod
-    def ConcatEmbeddingsOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
-
     # ConcatEmbeddingsOptions
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)

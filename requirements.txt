@@ -1,4 +1,7 @@
-wheel
-twine
-flatbuffers
 GitPython
+flatbuffers
+numpy
+pdoc
+setuptools
+twine
+wheel

@@ -123,4 +123,7 @@ class BuiltinOperator(object):
     HARD_SWISH = 117
     IF = 118
     WHILE = 119
+    NON_MAX_SUPPRESSION_V4 = 120
+    NON_MAX_SUPPRESSION_V5 = 121
+    SCATTER_ND = 122
 
