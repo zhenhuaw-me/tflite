@@ -50,8 +50,6 @@ ${FBSC} --python -o ${output_path} ${schema_path}
 git checkout ${root_dir}/tflite/__init__.py
 
 # commit the schema change?
-echo "The diff of built out python module"
-echo $(git diff)
 read -p "Going to create a commit for these changes, continue? [Y|N] " input_str
 if [ -z ${input_str} -o "${input_str}" != "Y"  ]; then
   exit 0
