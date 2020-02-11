@@ -3,6 +3,8 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class WhileOptions(object):
     __slots__ = ['_tab']
@@ -13,6 +15,10 @@ class WhileOptions(object):
         x = WhileOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def WhileOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # WhileOptions
     def Init(self, buf, pos):
