@@ -18,7 +18,9 @@ This package can be installed via [pip](https://pypi.org/project/tflite/), and i
 |------------------------------|------------------------|
 |      1.14.0                  |      1.14.0.post1      |
 |      1.15.0                  |      1.15.0.post1      |
+|      1.15.2                  |      1.15.2            |
 |      2.0.0                   |      2.0.0.post2       |
+|      2.0.1                   |      2.0.1             |
 |      2.1.0                   |      2.1.0             |
 
 It would be better if you use a correct version, such as:

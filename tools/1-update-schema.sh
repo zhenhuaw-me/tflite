@@ -40,8 +40,8 @@ fi
 
 echo "Building flatbuffers python module in ${output_path}"
 rm -f ${root_dir}/tflite/*.py
-FBSC="$(which flatc)"
-if [ ! -f ${FBSC} ]; then
+FBSC=$(which flatc)
+if [ ${?} -ne 0 ]; then
   echo "Error: Flatbuffer complier doesn't exist! Build with https://google.github.io/flatbuffers/flatbuffers_guide_building.html"
   exit 1
 fi

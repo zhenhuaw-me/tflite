@@ -21,7 +21,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Build package
-      run: tools/build.sh
+      run: tools/4-build.sh
       shell: bash
     - name: Install package
       run: pip install -U assets/dist/tflite-*.whl
