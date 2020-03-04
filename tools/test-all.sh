@@ -7,7 +7,7 @@ else
 fi
 
 # build and install the package
-${root_dir}/tools/build.sh
+${root_dir}/tools/4-build.sh
 pip install -U ${root_dir}/assets/dist/tflite-*.whl
 
 echo -e "\nTesting: original import..."
