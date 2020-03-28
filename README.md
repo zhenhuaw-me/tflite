@@ -35,7 +35,7 @@ The package can be imported with *easy import* or *original import*, where the d
 
 *Easy import* enables developers using parsing functionality wich one single `import tflite`. This is achieved by importing classes and functions of one submodules into top module [directly](tflite/__init__.py).
 
-[MobileNet parsing example](https://github.com/jackwish/tflite/blob/master/tests/mobilenet_example.py) shows how to parse model with `import tflite` **ONLY ONCE**.
+[MobileNet parsing example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py) shows how to parse model with `import tflite` **ONLY ONCE**.
 
 ### Original Import
 

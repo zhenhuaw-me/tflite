@@ -1,10 +1,13 @@
+import logging
+import shrub
 from tflite.Model import Model
-import util_for_test
 
-def read_model(key):
-    with open(util_for_test.getPath(key), 'rb') as f:
+def test_import():
+    path = shrub.testing.download('mobilenet_v2_1.0_224.tflite')
+    with open(path, 'rb') as f:
         buf = f.read()
         model = Model.GetRootAsModel(buf, 0)
-    return model
+    assert(model.Version() == 3)
 
-assert(read_model('mobilenet').Version() == 3)
+if __name__ == '__main__':
+    test_import()

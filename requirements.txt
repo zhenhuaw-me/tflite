@@ -2,6 +2,8 @@ GitPython
 flatbuffers
 numpy
 pdoc
+pytest
 setuptools
+shrub
 twine
 wheel
