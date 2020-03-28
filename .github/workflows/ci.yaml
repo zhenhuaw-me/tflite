@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
 
   test:
+    name: Build and Test
     runs-on: ubuntu-18.04
     strategy:
       max-parallel: 4
