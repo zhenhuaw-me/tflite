@@ -15,7 +15,7 @@ pip install tensorflow==1.14.0
 pip install tflite==1.14.0.post1
 ```
 
-It would be better if you use a correct version, where the mapping is as below.
+It would be better if you use a correct version, where the mapping is as below. Since `2.0.1`, we don't need `.post?` suffix, so we can keep this version map simple. If you notice that some version is missing, please consider contribute it! :)
 
 | TensorFlow package version   | tflite package version |
 |------------------------------|------------------------|
@@ -49,19 +49,19 @@ from tflite.Model import Model
 The original generated package needs to import every classes by hand ([see this](https://github.com/apache/incubator-tvm/blob/v0.6.0/python/tvm/relay/frontend/tflite.py#L843-L849)) which is pretty annoying.
 
 
-## Upgrade
+## Contributing Updates
 
-> Steps to upgrade this package corresponding to new TensorFlow release. Package users can safely ignore this part.
+As the operator definition may change across different TensorFlow versions, this package needs to be updated accordingly. If you notice that the package is out of date, please feel free to contribute new versions. This is pretty simple, instructions as below.
 
-Install additional depdendency via `pip install -r requirements.txt`, and:
-
-1. [Download](tools/1-update-schema.sh) `schema.fbs` for a new version.
-2. [Update](tools/2-update-importing.py) the classes and functions import of submodules.
-3. Update the versioning in [setup.py](setup.py).
-4. [Build](tools/4-build.sh) and [Test](tests) around. Don't forget to re-install the newly built `tflite` package before testing it.
-5. [Upload](tools/5-upload.sh) the package to PyPI.
-
-Features could be added to make the parsing easy in the future.
+1. [Fork the repository](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and download it.
+2. Install additional depdendency via `pip install -r requirements.txt`
+3. Generate the code for update. Tools have been prepared, there are prompt for actions.
+    1. [Download](tools/1-update-schema.sh) `schema.fbs` for a new version.
+    2. [Update](tools/2-update-importing.py) the classes and functions import of submodules.
+    3. Update the versioning in [setup.py](setup.py).
+    4. [Build](tools/4-build.sh) and [Test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
+4. Push your change and open [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+5. The maintainer will take the responsibility to upload change to PyPI when merged.
 
 
 ## Resources
