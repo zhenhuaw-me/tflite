@@ -101,4 +101,7 @@ class BuiltinOptions(object):
     NonMaxSuppressionV4Options = 95
     NonMaxSuppressionV5Options = 96
     ScatterNdOptions = 97
+    SelectV2Options = 98
+    DensifyOptions = 99
+    SegmentSumOptions = 100
 

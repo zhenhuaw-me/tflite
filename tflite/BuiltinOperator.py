@@ -126,4 +126,7 @@ class BuiltinOperator(object):
     NON_MAX_SUPPRESSION_V4 = 120
     NON_MAX_SUPPRESSION_V5 = 121
     SCATTER_ND = 122
+    SELECT_V2 = 123
+    DENSIFY = 124
+    SEGMENT_SUM = 125
 
