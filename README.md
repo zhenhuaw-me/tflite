@@ -59,7 +59,7 @@ As the operator definition may change across different TensorFlow versions, this
     1. [Download](tools/1-update-schema.sh) `schema.fbs` for a new version.
     2. [Update](tools/2-update-importing.py) the classes and functions import of submodules.
     3. Update the versioning in [setup.py](setup.py).
-    4. [Build](tools/4-build.sh) and [Test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
+    4. [Build](tools/3-build.sh) and [Test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
 4. Push your change and open [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 5. The maintainer will take the responsibility to upload change to PyPI when merged.
 
