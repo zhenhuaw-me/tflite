@@ -8,7 +8,7 @@ with open(os.path.join(here, 'README.md'), 'r') as fh:
 
 setuptools.setup(
     name='tflite',
-    version='2.1.0',
+    version='2.2.0',
     description="Parsing TensorFlow Lite Models (*.tflite) Easily",
     packages=setuptools.find_packages(),
     classifiers=[
