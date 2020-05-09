@@ -22,9 +22,12 @@ from .Conv2DOptions import *
 from .CosOptions import *
 from .CustomOptionsFormat import *
 from .CustomQuantization import *
+from .DensifyOptions import *
 from .DepthToSpaceOptions import *
 from .DepthwiseConv2DOptions import *
 from .DequantizeOptions import *
+from .DimensionMetadata import *
+from .DimensionType import *
 from .DivOptions import *
 from .EmbeddingLookupSparseOptions import *
 from .EqualOptions import *
@@ -42,6 +45,7 @@ from .GreaterEqualOptions import *
 from .GreaterOptions import *
 from .HardSwishOptions import *
 from .IfOptions import *
+from .Int32Vector import *
 from .L2NormOptions import *
 from .LSHProjectionOptions import *
 from .LSHProjectionType import *
@@ -90,7 +94,9 @@ from .ReverseSequenceOptions import *
 from .ReverseV2Options import *
 from .SVDFOptions import *
 from .ScatterNdOptions import *
+from .SegmentSumOptions import *
 from .SelectOptions import *
+from .SelectV2Options import *
 from .SequenceRNNOptions import *
 from .ShapeOptions import *
 from .SkipGramOptions import *
@@ -98,7 +104,9 @@ from .SliceOptions import *
 from .SoftmaxOptions import *
 from .SpaceToBatchNDOptions import *
 from .SpaceToDepthOptions import *
+from .SparseIndexVector import *
 from .SparseToDenseOptions import *
+from .SparsityParameters import *
 from .SplitOptions import *
 from .SplitVOptions import *
 from .SquareOptions import *
@@ -113,6 +121,8 @@ from .TileOptions import *
 from .TopKV2Options import *
 from .TransposeConvOptions import *
 from .TransposeOptions import *
+from .Uint16Vector import *
+from .Uint8Vector import *
 from .UnidirectionalSequenceLSTMOptions import *
 from .UniqueOptions import *
 from .UnpackOptions import *
