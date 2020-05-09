@@ -15,7 +15,7 @@ pip install tensorflow==1.14.0
 pip install tflite==1.14.0.post1
 ```
 
-It would be better if you use a correct version, where the mapping is as below. Since `2.0.1`, we don't need `.post?` suffix, so we can keep this version map simple. If you notice that some version is missing, please consider contribute it! :)
+It would be better if you use a correct version, where the mapping is as below. Since `2.0.1`, we don't need `.post?` suffix, so we can keep this version map simple. If you notice that some version is missing, please consider [contribute it](#contributing-updates)! :)
 
 | TensorFlow package version   | tflite package version |
 |------------------------------|------------------------|
