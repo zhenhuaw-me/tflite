@@ -14,7 +14,7 @@ end_tag = "########################## ABOVE ARE AUTO-GENERATED #################
 pys = [ f[:-3] for f in sorted(os.listdir(submodule_dir)) \
         if os.path.isfile(os.path.join(submodule_dir, f)) and \
         f.endswith('.py') and f != '__init__.py']
-imports = [ "from .%s import *\n" % py for py in pys ]
+imports = [ "from tflite.%s import *\n" % py for py in pys ]
 
 # read the original file
 lines = open(the_file, 'r').readlines()
