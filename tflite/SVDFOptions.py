@@ -38,7 +38,15 @@ class SVDFOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def SVDFOptionsStart(builder): builder.StartObject(2)
+    # SVDFOptions
+    def AsymmetricQuantizeInputs(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+def SVDFOptionsStart(builder): builder.StartObject(3)
 def SVDFOptionsAddRank(builder, rank): builder.PrependInt32Slot(0, rank, 0)
 def SVDFOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+def SVDFOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
 def SVDFOptionsEnd(builder): return builder.EndObject()

@@ -129,4 +129,5 @@ class BuiltinOperator(object):
     SELECT_V2 = 123
     DENSIFY = 124
     SEGMENT_SUM = 125
+    BATCH_MATMUL = 126
 
