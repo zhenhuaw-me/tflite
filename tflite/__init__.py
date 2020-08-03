@@ -7,6 +7,7 @@ from tflite.AddNOptions import *
 from tflite.AddOptions import *
 from tflite.ArgMaxOptions import *
 from tflite.ArgMinOptions import *
+from tflite.BatchMatMulOptions import *
 from tflite.BatchToSpaceNDOptions import *
 from tflite.BidirectionalSequenceLSTMOptions import *
 from tflite.BidirectionalSequenceRNNOptions import *
