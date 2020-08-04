@@ -1,15 +1,16 @@
-import logging
-import shrub
+import os
 import tflite
 
-shrub.util.formatLogging(logging.DEBUG)
 
 # Example of parsing a TFLite model with `tflite` python package.
 # Use this package, you can *import* the `tflite* package ONLY ONCE.
 # Otherwise, you need to import every class when using them.
 
 def test_mobilenet():
-    path = shrub.testing.download('mobilenet_v1_1.0_224_quant.tflite')
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
+    tflm_dir = os.path.abspath(cur_dir + '/../assets/tests')
+    tflm_name = 'mobilenet_v1_1.0_224_quant.tflite'
+    path = os.path.join(tflm_dir, tflm_name)
     with open(path, 'rb') as f:
         buf = f.read()
         model = tflite.Model.GetRootAsModel(buf, 0)

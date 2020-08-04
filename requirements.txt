@@ -4,6 +4,5 @@ numpy
 pdoc
 pytest
 setuptools
-shrub==0.0.2
 twine
 wheel
