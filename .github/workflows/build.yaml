@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Build and Test
 
 on: [push, pull_request]
 
@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install --use-feature=2020-resolver -r requirements.txt
     - name: Build package
       run: tools/3-build.sh
       shell: bash
