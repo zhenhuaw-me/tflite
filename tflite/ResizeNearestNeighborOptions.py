@@ -31,6 +31,14 @@ class ResizeNearestNeighborOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(1)
+    # ResizeNearestNeighborOptions
+    def HalfPixelCenters(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(2)
 def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(0, alignCorners, 0)
+def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(1, halfPixelCenters, 0)
 def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()

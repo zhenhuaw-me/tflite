@@ -104,4 +104,5 @@ class BuiltinOptions(object):
     SelectV2Options = 98
     DensifyOptions = 99
     SegmentSumOptions = 100
+    BatchMatMulOptions = 101
 
