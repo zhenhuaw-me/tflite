@@ -53,7 +53,7 @@ from tflite.Model import Model
 As the operator definition may change across different TensorFlow versions, this package needs to be updated accordingly. If you notice that the package is out of date, please feel free to contribute new versions. This is pretty simple, instructions as below.
 
 1. [Fork the repository](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and download it.
-2. Install additional depdendency via `pip install -r requirements.txt`
+2. Install additional depdendency via `pip install -r requirements.txt`. And install [flatbuffer compiler](https://google.github.io/flatbuffers/flatbuffers_guide_using_schema_compiler.html) (you may need to [manually build it](https://google.github.io/flatbuffers/flatbuffers_guide_building.html)).
 3. Generate the code for update. Tools have been prepared, there are prompt for actions.
     1. [Download](tools/1-update-schema.sh) `schema.fbs` for a new version.
     2. [Update](tools/2-update-importing.py) the classes and functions import of submodules.
