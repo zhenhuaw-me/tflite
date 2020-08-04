@@ -1051,6 +1051,7 @@ table {
         <li class="mono"><a href="AddOptions.m.html">tflite.AddOptions</a></li>
         <li class="mono"><a href="ArgMaxOptions.m.html">tflite.ArgMaxOptions</a></li>
         <li class="mono"><a href="ArgMinOptions.m.html">tflite.ArgMinOptions</a></li>
+        <li class="mono"><a href="BatchMatMulOptions.m.html">tflite.BatchMatMulOptions</a></li>
         <li class="mono"><a href="BatchToSpaceNDOptions.m.html">tflite.BatchToSpaceNDOptions</a></li>
         <li class="mono"><a href="BidirectionalSequenceLSTMOptions.m.html">tflite.BidirectionalSequenceLSTMOptions</a></li>
         <li class="mono"><a href="BidirectionalSequenceRNNOptions.m.html">tflite.BidirectionalSequenceRNNOptions</a></li>
@@ -1066,9 +1067,12 @@ table {
         <li class="mono"><a href="CosOptions.m.html">tflite.CosOptions</a></li>
         <li class="mono"><a href="CustomOptionsFormat.m.html">tflite.CustomOptionsFormat</a></li>
         <li class="mono"><a href="CustomQuantization.m.html">tflite.CustomQuantization</a></li>
+        <li class="mono"><a href="DensifyOptions.m.html">tflite.DensifyOptions</a></li>
         <li class="mono"><a href="DepthToSpaceOptions.m.html">tflite.DepthToSpaceOptions</a></li>
         <li class="mono"><a href="DepthwiseConv2DOptions.m.html">tflite.DepthwiseConv2DOptions</a></li>
         <li class="mono"><a href="DequantizeOptions.m.html">tflite.DequantizeOptions</a></li>
+        <li class="mono"><a href="DimensionMetadata.m.html">tflite.DimensionMetadata</a></li>
+        <li class="mono"><a href="DimensionType.m.html">tflite.DimensionType</a></li>
         <li class="mono"><a href="DivOptions.m.html">tflite.DivOptions</a></li>
         <li class="mono"><a href="EmbeddingLookupSparseOptions.m.html">tflite.EmbeddingLookupSparseOptions</a></li>
         <li class="mono"><a href="EqualOptions.m.html">tflite.EqualOptions</a></li>
@@ -1086,6 +1090,7 @@ table {
         <li class="mono"><a href="GreaterOptions.m.html">tflite.GreaterOptions</a></li>
         <li class="mono"><a href="HardSwishOptions.m.html">tflite.HardSwishOptions</a></li>
         <li class="mono"><a href="IfOptions.m.html">tflite.IfOptions</a></li>
+        <li class="mono"><a href="Int32Vector.m.html">tflite.Int32Vector</a></li>
         <li class="mono"><a href="L2NormOptions.m.html">tflite.L2NormOptions</a></li>
         <li class="mono"><a href="LSHProjectionOptions.m.html">tflite.LSHProjectionOptions</a></li>
         <li class="mono"><a href="LSHProjectionType.m.html">tflite.LSHProjectionType</a></li>
@@ -1134,7 +1139,9 @@ table {
         <li class="mono"><a href="ReverseV2Options.m.html">tflite.ReverseV2Options</a></li>
         <li class="mono"><a href="SVDFOptions.m.html">tflite.SVDFOptions</a></li>
         <li class="mono"><a href="ScatterNdOptions.m.html">tflite.ScatterNdOptions</a></li>
+        <li class="mono"><a href="SegmentSumOptions.m.html">tflite.SegmentSumOptions</a></li>
         <li class="mono"><a href="SelectOptions.m.html">tflite.SelectOptions</a></li>
+        <li class="mono"><a href="SelectV2Options.m.html">tflite.SelectV2Options</a></li>
         <li class="mono"><a href="SequenceRNNOptions.m.html">tflite.SequenceRNNOptions</a></li>
         <li class="mono"><a href="ShapeOptions.m.html">tflite.ShapeOptions</a></li>
         <li class="mono"><a href="SkipGramOptions.m.html">tflite.SkipGramOptions</a></li>
@@ -1142,7 +1149,9 @@ table {
         <li class="mono"><a href="SoftmaxOptions.m.html">tflite.SoftmaxOptions</a></li>
         <li class="mono"><a href="SpaceToBatchNDOptions.m.html">tflite.SpaceToBatchNDOptions</a></li>
         <li class="mono"><a href="SpaceToDepthOptions.m.html">tflite.SpaceToDepthOptions</a></li>
+        <li class="mono"><a href="SparseIndexVector.m.html">tflite.SparseIndexVector</a></li>
         <li class="mono"><a href="SparseToDenseOptions.m.html">tflite.SparseToDenseOptions</a></li>
+        <li class="mono"><a href="SparsityParameters.m.html">tflite.SparsityParameters</a></li>
         <li class="mono"><a href="SplitOptions.m.html">tflite.SplitOptions</a></li>
         <li class="mono"><a href="SplitVOptions.m.html">tflite.SplitVOptions</a></li>
         <li class="mono"><a href="SquareOptions.m.html">tflite.SquareOptions</a></li>
@@ -1157,6 +1166,8 @@ table {
         <li class="mono"><a href="TopKV2Options.m.html">tflite.TopKV2Options</a></li>
         <li class="mono"><a href="TransposeConvOptions.m.html">tflite.TransposeConvOptions</a></li>
         <li class="mono"><a href="TransposeOptions.m.html">tflite.TransposeOptions</a></li>
+        <li class="mono"><a href="Uint16Vector.m.html">tflite.Uint16Vector</a></li>
+        <li class="mono"><a href="Uint8Vector.m.html">tflite.Uint8Vector</a></li>
         <li class="mono"><a href="UnidirectionalSequenceLSTMOptions.m.html">tflite.UnidirectionalSequenceLSTMOptions</a></li>
         <li class="mono"><a href="UniqueOptions.m.html">tflite.UniqueOptions</a></li>
         <li class="mono"><a href="UnpackOptions.m.html">tflite.UnpackOptions</a></li>
@@ -1184,134 +1195,135 @@ table {
     <div class="codehilite"><pre><span></span><span class="c1"># import classes and functions of submodules</span>
 
 <span class="c1">########################## BELOW ARE AUTO-GENERATED ##########################</span>
-<span class="kn">from</span> <span class="nn">.AbsOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ActivationFunctionType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.AddNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.AddOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ArgMaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ArgMinOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.BatchToSpaceNDOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.BidirectionalSequenceLSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.BidirectionalSequenceRNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Buffer</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.BuiltinOperator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.BuiltinOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.CallOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.CastOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.CombinerType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ConcatEmbeddingsOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ConcatenationOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Conv2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.CosOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.CustomOptionsFormat</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.CustomQuantization</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DensifyOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DepthToSpaceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DepthwiseConv2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DequantizeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DimensionMetadata</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DimensionType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.DivOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.EmbeddingLookupSparseOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.EqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ExpOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ExpandDimsOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.FakeQuantOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.FillOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.FloorDivOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.FloorModOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.FullyConnectedOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.FullyConnectedOptionsWeightsFormat</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.GatherNdOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.GatherOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.GreaterEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.GreaterOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.HardSwishOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.IfOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Int32Vector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.L2NormOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LSHProjectionOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LSHProjectionType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LSTMKernelType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LeakyReluOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LessEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LessOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LocalResponseNormalizationOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LogSoftmaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LogicalAndOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LogicalNotOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.LogicalOrOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.MatrixDiagOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.MatrixSetDiagOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.MaximumMinimumOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Metadata</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.MirrorPadMode</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.MirrorPadOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Model</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.MulOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.NegOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.NonMaxSuppressionV4Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.NonMaxSuppressionV5Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.NotEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.OneHotOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Operator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.OperatorCode</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.PackOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.PadOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.PadV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Padding</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Pool2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.PowOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.QuantizationDetails</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.QuantizationParameters</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.QuantizeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.RNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.RangeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.RankOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ReducerOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ReshapeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ResizeBilinearOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ResizeNearestNeighborOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ReverseSequenceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ReverseV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SVDFOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ScatterNdOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SegmentSumOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SelectOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SelectV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SequenceRNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ShapeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SkipGramOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SliceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SoftmaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SpaceToBatchNDOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SpaceToDepthOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SparseIndexVector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SparseToDenseOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SparsityParameters</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SplitOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SplitVOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SquareOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SquaredDifferenceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SqueezeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.StridedSliceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SubGraph</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.SubOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Tensor</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.TensorType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.TileOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.TopKV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.TransposeConvOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.TransposeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Uint16Vector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.Uint8Vector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.UnidirectionalSequenceLSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.UniqueOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.UnpackOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.WhereOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.WhileOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.ZerosLikeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.AbsOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ActivationFunctionType</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.AddNOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.AddOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ArgMaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ArgMinOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.BatchMatMulOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.BatchToSpaceNDOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.BidirectionalSequenceLSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.BidirectionalSequenceRNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Buffer</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.BuiltinOperator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.BuiltinOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.CallOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.CastOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.CombinerType</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ConcatEmbeddingsOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ConcatenationOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Conv2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.CosOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.CustomOptionsFormat</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.CustomQuantization</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DensifyOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DepthToSpaceOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DepthwiseConv2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DequantizeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DimensionMetadata</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DimensionType</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.DivOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.EmbeddingLookupSparseOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.EqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ExpOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ExpandDimsOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.FakeQuantOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.FillOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.FloorDivOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.FloorModOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.FullyConnectedOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.FullyConnectedOptionsWeightsFormat</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.GatherNdOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.GatherOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.GreaterEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.GreaterOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.HardSwishOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.IfOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Int32Vector</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.L2NormOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LSHProjectionOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LSHProjectionType</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LSTMKernelType</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LeakyReluOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LessEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LessOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LocalResponseNormalizationOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LogSoftmaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LogicalAndOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LogicalNotOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.LogicalOrOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.MatrixDiagOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.MatrixSetDiagOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.MaximumMinimumOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Metadata</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.MirrorPadMode</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.MirrorPadOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.MulOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.NegOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.NonMaxSuppressionV4Options</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.NonMaxSuppressionV5Options</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.NotEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.OneHotOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Operator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.OperatorCode</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.PackOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.PadOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.PadV2Options</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Padding</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Pool2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.PowOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.QuantizationDetails</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.QuantizationParameters</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.QuantizeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.RNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.RangeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.RankOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ReducerOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ReshapeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ResizeBilinearOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ResizeNearestNeighborOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ReverseSequenceOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ReverseV2Options</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SVDFOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ScatterNdOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SegmentSumOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SelectOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SelectV2Options</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SequenceRNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ShapeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SkipGramOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SliceOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SoftmaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SpaceToBatchNDOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SpaceToDepthOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SparseIndexVector</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SparseToDenseOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SparsityParameters</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SplitOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SplitVOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SquareOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SquaredDifferenceOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SqueezeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.StridedSliceOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SubGraph</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.SubOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Tensor</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.TensorType</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.TileOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.TopKV2Options</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.TransposeConvOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.TransposeOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Uint16Vector</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.Uint8Vector</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.UnidirectionalSequenceLSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.UniqueOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.UnpackOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.WhereOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.WhileOptions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tflite.ZerosLikeOptions</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="c1">########################## ABOVE ARE AUTO-GENERATED ##########################</span>
 </pre></div>
 
@@ -1356,6 +1368,12 @@ table {
       </div>
       <div class="item">
       <p class="name"><a href="ArgMinOptions.m.html">tflite.ArgMinOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="BatchMatMulOptions.m.html">tflite.BatchMatMulOptions</a></p>
       
   
 
@@ -1451,6 +1469,12 @@ table {
 
       </div>
       <div class="item">
+      <p class="name"><a href="DensifyOptions.m.html">tflite.DensifyOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
       <p class="name"><a href="DepthToSpaceOptions.m.html">tflite.DepthToSpaceOptions</a></p>
       
   
@@ -1464,6 +1488,18 @@ table {
       </div>
       <div class="item">
       <p class="name"><a href="DequantizeOptions.m.html">tflite.DequantizeOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="DimensionMetadata.m.html">tflite.DimensionMetadata</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="DimensionType.m.html">tflite.DimensionType</a></p>
       
   
 
@@ -1566,6 +1602,12 @@ table {
       </div>
       <div class="item">
       <p class="name"><a href="IfOptions.m.html">tflite.IfOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="Int32Vector.m.html">tflite.Int32Vector</a></p>
       
   
 
@@ -1859,7 +1901,19 @@ table {
 
       </div>
       <div class="item">
+      <p class="name"><a href="SegmentSumOptions.m.html">tflite.SegmentSumOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
       <p class="name"><a href="SelectOptions.m.html">tflite.SelectOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="SelectV2Options.m.html">tflite.SelectV2Options</a></p>
       
   
 
@@ -1907,7 +1961,19 @@ table {
 
       </div>
       <div class="item">
+      <p class="name"><a href="SparseIndexVector.m.html">tflite.SparseIndexVector</a></p>
+      
+  
+
+      </div>
+      <div class="item">
       <p class="name"><a href="SparseToDenseOptions.m.html">tflite.SparseToDenseOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="SparsityParameters.m.html">tflite.SparsityParameters</a></p>
       
   
 
@@ -1992,6 +2058,18 @@ table {
       </div>
       <div class="item">
       <p class="name"><a href="TransposeOptions.m.html">tflite.TransposeOptions</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="Uint16Vector.m.html">tflite.Uint16Vector</a></p>
+      
+  
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="Uint8Vector.m.html">tflite.Uint8Vector</a></p>
       
   
 

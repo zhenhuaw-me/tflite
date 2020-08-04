@@ -1049,9 +1049,12 @@ table {
     <li class="mono"><a href="#tflite.Tensor.TensorAddName">TensorAddName</a></li>
     <li class="mono"><a href="#tflite.Tensor.TensorAddQuantization">TensorAddQuantization</a></li>
     <li class="mono"><a href="#tflite.Tensor.TensorAddShape">TensorAddShape</a></li>
+    <li class="mono"><a href="#tflite.Tensor.TensorAddShapeSignature">TensorAddShapeSignature</a></li>
+    <li class="mono"><a href="#tflite.Tensor.TensorAddSparsity">TensorAddSparsity</a></li>
     <li class="mono"><a href="#tflite.Tensor.TensorAddType">TensorAddType</a></li>
     <li class="mono"><a href="#tflite.Tensor.TensorEnd">TensorEnd</a></li>
     <li class="mono"><a href="#tflite.Tensor.TensorStart">TensorStart</a></li>
+    <li class="mono"><a href="#tflite.Tensor.TensorStartShapeSignatureVector">TensorStartShapeSignatureVector</a></li>
     <li class="mono"><a href="#tflite.Tensor.TensorStartShapeVector">TensorStartShapeVector</a></li>
   </ul>
 
@@ -1072,6 +1075,10 @@ table {
     <li class="mono"><a href="#tflite.Tensor.Tensor.Shape">Shape</a></li>
     <li class="mono"><a href="#tflite.Tensor.Tensor.ShapeAsNumpy">ShapeAsNumpy</a></li>
     <li class="mono"><a href="#tflite.Tensor.Tensor.ShapeLength">ShapeLength</a></li>
+    <li class="mono"><a href="#tflite.Tensor.Tensor.ShapeSignature">ShapeSignature</a></li>
+    <li class="mono"><a href="#tflite.Tensor.Tensor.ShapeSignatureAsNumpy">ShapeSignatureAsNumpy</a></li>
+    <li class="mono"><a href="#tflite.Tensor.Tensor.ShapeSignatureLength">ShapeSignatureLength</a></li>
+    <li class="mono"><a href="#tflite.Tensor.Tensor.Sparsity">Sparsity</a></li>
     <li class="mono"><a href="#tflite.Tensor.Tensor.Type">Type</a></li>
     <li class="mono"><a href="#tflite.Tensor.Tensor.GetRootAsTensor">GetRootAsTensor</a></li>
   </ul>
@@ -1177,7 +1184,40 @@ table {
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">TensorStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">Sparsity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Indirect</span><span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">.SparsityParameters</span> <span class="kn">import</span> <span class="n">SparsityParameters</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">SparsityParameters</span><span class="p">()</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Bytes</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">obj</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">ShapeSignature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int32Flags</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">ShapeSignatureAsNumpy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">GetVectorAsNumpy</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int32Flags</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">ShapeSignatureLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">VectorLen</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">TensorStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddShape</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorStartShapeVector</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">numElems</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartVector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">numElems</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddType</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependInt8Slot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
@@ -1185,6 +1225,9 @@ table {
 <span class="k">def</span> <span class="nf">TensorAddName</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddQuantization</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">quantization</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">quantization</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorAddIsVariable</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">isVariable</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">isVariable</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">TensorAddSparsity</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">sparsity</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">TensorAddShapeSignature</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">shapeSignature</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">shapeSignature</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">TensorStartShapeSignatureVector</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">numElems</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartVector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">numElems</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">TensorEnd</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">EndObject</span><span class="p">()</span>
 </pre></div>
 
@@ -1297,6 +1340,46 @@ table {
   
       
   <div class="item">
+    <div class="name def" id="tflite.Tensor.TensorAddShapeSignature">
+    <p>def <span class="ident">TensorAddShapeSignature</span>(</p><p>builder, shapeSignature)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.TensorAddShapeSignature', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.TensorAddShapeSignature" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorAddShapeSignature</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">shapeSignature</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">shapeSignature</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tflite.Tensor.TensorAddSparsity">
+    <p>def <span class="ident">TensorAddSparsity</span>(</p><p>builder, sparsity)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.TensorAddSparsity', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.TensorAddSparsity" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorAddSparsity</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependUOffsetTRelativeSlot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">sparsity</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
     <div class="name def" id="tflite.Tensor.TensorAddType">
     <p>def <span class="ident">TensorAddType</span>(</p><p>builder, type)</p>
     </div>
@@ -1347,7 +1430,27 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.TensorStart', this);">Show source &equiv;</a></p>
   <div id="source-tflite.Tensor.TensorStart" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tflite.Tensor.TensorStartShapeSignatureVector">
+    <p>def <span class="ident">TensorStartShapeSignatureVector</span>(</p><p>builder, numElems)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.TensorStartShapeSignatureVector', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.TensorStartShapeSignatureVector" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">TensorStartShapeSignatureVector</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">numElems</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartVector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">numElems</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1459,6 +1562,39 @@ table {
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">Sparsity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Indirect</span><span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">.SparsityParameters</span> <span class="kn">import</span> <span class="n">SparsityParameters</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">SparsityParameters</span><span class="p">()</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Bytes</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">obj</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">ShapeSignature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int32Flags</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">ShapeSignatureAsNumpy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">GetVectorAsNumpy</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int32Flags</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># Tensor</span>
+    <span class="k">def</span> <span class="nf">ShapeSignatureLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">VectorLen</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
 </pre></div>
 
   </div>
@@ -1659,6 +1795,107 @@ table {
     <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">VectorLen</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tflite.Tensor.Tensor.ShapeSignature">
+    <p>def <span class="ident">ShapeSignature</span>(</p><p>self, j)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.Tensor.ShapeSignature', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.Tensor.ShapeSignature" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ShapeSignature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int32Flags</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tflite.Tensor.Tensor.ShapeSignatureAsNumpy">
+    <p>def <span class="ident">ShapeSignatureAsNumpy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.Tensor.ShapeSignatureAsNumpy', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.Tensor.ShapeSignatureAsNumpy" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ShapeSignatureAsNumpy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">GetVectorAsNumpy</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int32Flags</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tflite.Tensor.Tensor.ShapeSignatureLength">
+    <p>def <span class="ident">ShapeSignatureLength</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.Tensor.ShapeSignatureLength', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.Tensor.ShapeSignatureLength" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ShapeSignatureLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">18</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">VectorLen</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tflite.Tensor.Tensor.Sparsity">
+    <p>def <span class="ident">Sparsity</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.Tensor.Tensor.Sparsity', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.Tensor.Tensor.Sparsity" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">Sparsity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Indirect</span><span class="p">(</span><span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">.SparsityParameters</span> <span class="kn">import</span> <span class="n">SparsityParameters</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">SparsityParameters</span><span class="p">()</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Bytes</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">obj</span>
+    <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
   </div>

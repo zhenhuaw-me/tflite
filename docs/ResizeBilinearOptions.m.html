@@ -1045,6 +1045,7 @@ table {
       
   <ul>
     <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddAlignCorners">ResizeBilinearOptionsAddAlignCorners</a></li>
+    <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddHalfPixelCenters">ResizeBilinearOptionsAddHalfPixelCenters</a></li>
     <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptionsEnd">ResizeBilinearOptionsEnd</a></li>
     <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptionsStart">ResizeBilinearOptionsStart</a></li>
   </ul>
@@ -1059,6 +1060,7 @@ table {
           
   <ul>
     <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptions.AlignCorners">AlignCorners</a></li>
+    <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptions.HalfPixelCenters">HalfPixelCenters</a></li>
     <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptions.Init">Init</a></li>
     <li class="mono"><a href="#tflite.ResizeBilinearOptions.ResizeBilinearOptions.GetRootAsResizeBilinearOptions">GetRootAsResizeBilinearOptions</a></li>
   </ul>
@@ -1110,8 +1112,16 @@ table {
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">ResizeBilinearOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># ResizeBilinearOptions</span>
+    <span class="k">def</span> <span class="nf">HalfPixelCenters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">ResizeBilinearOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ResizeBilinearOptionsAddAlignCorners</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">alignCorners</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">alignCorners</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">ResizeBilinearOptionsAddHalfPixelCenters</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">halfPixelCenters</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">halfPixelCenters</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">ResizeBilinearOptionsEnd</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">EndObject</span><span class="p">()</span>
 </pre></div>
 
@@ -1135,6 +1145,26 @@ table {
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddAlignCorners', this);">Show source &equiv;</a></p>
   <div id="source-tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddAlignCorners" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ResizeBilinearOptionsAddAlignCorners</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">alignCorners</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">alignCorners</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddHalfPixelCenters">
+    <p>def <span class="ident">ResizeBilinearOptionsAddHalfPixelCenters</span>(</p><p>builder, halfPixelCenters)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddHalfPixelCenters', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddHalfPixelCenters" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ResizeBilinearOptionsAddHalfPixelCenters</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">halfPixelCenters</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">halfPixelCenters</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1174,7 +1204,7 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.ResizeBilinearOptions.ResizeBilinearOptionsStart', this);">Show source &equiv;</a></p>
   <div id="source-tflite.ResizeBilinearOptions.ResizeBilinearOptionsStart" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ResizeBilinearOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ResizeBilinearOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1212,6 +1242,13 @@ table {
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
         <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># ResizeBilinearOptions</span>
+    <span class="k">def</span> <span class="nf">HalfPixelCenters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
   </div>
@@ -1239,6 +1276,30 @@ table {
   <div id="source-tflite.ResizeBilinearOptions.ResizeBilinearOptions.AlignCorners" class="source">
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">AlignCorners</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tflite.ResizeBilinearOptions.ResizeBilinearOptions.HalfPixelCenters">
+    <p>def <span class="ident">HalfPixelCenters</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.ResizeBilinearOptions.ResizeBilinearOptions.HalfPixelCenters', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.ResizeBilinearOptions.ResizeBilinearOptions.HalfPixelCenters" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">HalfPixelCenters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
     <span class="k">return</span> <span class="kc">False</span>

@@ -1044,6 +1044,7 @@ table {
     <li class="set"><h3><a href="#header-functions">Functions</a></h3>
       
   <ul>
+    <li class="mono"><a href="#tflite.RNNOptions.RNNOptionsAddAsymmetricQuantizeInputs">RNNOptionsAddAsymmetricQuantizeInputs</a></li>
     <li class="mono"><a href="#tflite.RNNOptions.RNNOptionsAddFusedActivationFunction">RNNOptionsAddFusedActivationFunction</a></li>
     <li class="mono"><a href="#tflite.RNNOptions.RNNOptionsEnd">RNNOptionsEnd</a></li>
     <li class="mono"><a href="#tflite.RNNOptions.RNNOptionsStart">RNNOptionsStart</a></li>
@@ -1058,6 +1059,7 @@ table {
         
           
   <ul>
+    <li class="mono"><a href="#tflite.RNNOptions.RNNOptions.AsymmetricQuantizeInputs">AsymmetricQuantizeInputs</a></li>
     <li class="mono"><a href="#tflite.RNNOptions.RNNOptions.FusedActivationFunction">FusedActivationFunction</a></li>
     <li class="mono"><a href="#tflite.RNNOptions.RNNOptions.Init">Init</a></li>
     <li class="mono"><a href="#tflite.RNNOptions.RNNOptions.GetRootAsRNNOptions">GetRootAsRNNOptions</a></li>
@@ -1110,8 +1112,16 @@ table {
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int8Flags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">RNNOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># RNNOptions</span>
+    <span class="k">def</span> <span class="nf">AsymmetricQuantizeInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">RNNOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">RNNOptionsAddFusedActivationFunction</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">fusedActivationFunction</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependInt8Slot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fusedActivationFunction</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">RNNOptionsAddAsymmetricQuantizeInputs</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">asymmetricQuantizeInputs</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">asymmetricQuantizeInputs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">RNNOptionsEnd</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">EndObject</span><span class="p">()</span>
 </pre></div>
 
@@ -1122,6 +1132,26 @@ table {
   <section id="section-items">
 
     <h2 class="section-title" id="header-functions">Functions</h2>
+      
+  <div class="item">
+    <div class="name def" id="tflite.RNNOptions.RNNOptionsAddAsymmetricQuantizeInputs">
+    <p>def <span class="ident">RNNOptionsAddAsymmetricQuantizeInputs</span>(</p><p>builder, asymmetricQuantizeInputs)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.RNNOptions.RNNOptionsAddAsymmetricQuantizeInputs', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.RNNOptions.RNNOptionsAddAsymmetricQuantizeInputs" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">RNNOptionsAddAsymmetricQuantizeInputs</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span> <span class="n">asymmetricQuantizeInputs</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">PrependBoolSlot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">asymmetricQuantizeInputs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
       
   <div class="item">
     <div class="name def" id="tflite.RNNOptions.RNNOptionsAddFusedActivationFunction">
@@ -1174,7 +1204,7 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.RNNOptions.RNNOptionsStart', this);">Show source &equiv;</a></p>
   <div id="source-tflite.RNNOptions.RNNOptionsStart" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">RNNOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">RNNOptionsStart</span><span class="p">(</span><span class="n">builder</span><span class="p">):</span> <span class="n">builder</span><span class="o">.</span><span class="n">StartObject</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1212,6 +1242,13 @@ table {
         <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">Int8Flags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># RNNOptions</span>
+    <span class="k">def</span> <span class="nf">AsymmetricQuantizeInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
+        <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 
   </div>
@@ -1225,6 +1262,30 @@ table {
           <li>builtins.object</li>
           </ul>
           <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="tflite.RNNOptions.RNNOptions.AsymmetricQuantizeInputs">
+    <p>def <span class="ident">AsymmetricQuantizeInputs</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite.RNNOptions.RNNOptions.AsymmetricQuantizeInputs', this);">Show source &equiv;</a></p>
+  <div id="source-tflite.RNNOptions.RNNOptions.AsymmetricQuantizeInputs" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">AsymmetricQuantizeInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">UOffsetTFlags</span><span class="o">.</span><span class="n">py_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Offset</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">flatbuffers</span><span class="o">.</span><span class="n">number_types</span><span class="o">.</span><span class="n">BoolFlags</span><span class="p">,</span> <span class="n">o</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tab</span><span class="o">.</span><span class="n">Pos</span><span class="p">))</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
             
   <div class="item">
     <div class="name def" id="tflite.RNNOptions.RNNOptions.FusedActivationFunction">
