@@ -1,21 +1,23 @@
 Easily Parse TFLite Models with Python
 ======================================
 
-![Continuous Integration](https://github.com/jackwish/tflite/workflows/Continuous%20Integration/badge.svg)
+![Build and Test](https://github.com/jackwish/tflite/workflows/Build%20and%20Test/badge.svg)
 
-This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite (TFLite) models (`*.tflite`), which are built by [TFLite converter](https://www.tensorflow.org/lite/convert) with the help of [FlatBuffers](https://google.github.io/flatbuffers/). For background, please refer to [Introducing TFLite Parser Python Package](https://jackwish.net/2020/introducing-tflite-parser-package.html).
+This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite (TFLite) models (`*.tflite`), which are built by [TFLite converter](https://www.tensorflow.org/lite/convert). For background, please refer to [Introducing TFLite Parser Python Package](https://jackwish.net/2020/introducing-tflite-parser-package.html).
 
 
-## Installation
+## Usage
 
-Simply install via [pip](https://pypi.org/project/tflite/). This package requires `flatbuffers` and `numpy` which should be installed automatically.
+### Installation
 
 ```sh
 pip install tensorflow==1.14.0
 pip install tflite==1.14.0.post1
 ```
 
-It would be better if you use a correct version, where the mapping is as below. Since `2.0.1`, we don't need `.post?` suffix, so we can keep this version map simple. If you notice that some version is missing, please consider [contribute it](#contributing-updates)! :)
+It would be better if use a correct version regarding tensorflow, where the mapping is as below.
+Since `2.0.1`, the `.post[?]` suffix is not needed, such that we can keep this version map simple.
+If you notice that some version is missing, please consider [contribute it](#contributing-updates)! :)
 
 | TensorFlow package version   | tflite package version |
 |------------------------------|------------------------|
@@ -27,26 +29,23 @@ It would be better if you use a correct version, where the mapping is as below. 
 |      2.1.0                   |      2.1.0             |
 
 
-## Usage
+### Import the package
 
 The package can be imported with *easy import* or *original import*, where the difference is how many `import` you write - no functionality divergence. For supported interfaces, please refer to [document page](https://jackwish.net/tflite/docs/).
 
-### Easy Import (Recommanded)
+**Easy Import (Recommanded)**
 
-*Easy import* enables developers using parsing functionality wich one single `import tflite`. This is achieved by importing classes and functions of one submodules into top module [directly](tflite/__init__.py).
+*Easy import* enables parsing by one single `import tflite`. This is achieved by importing classes and functions of one submodules into top module [directly](tflite/__init__.py).
 
 [MobileNet parsing example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py) shows how to parse model with `import tflite` **ONLY ONCE**.
 
-### Original Import
+**Original Import**
 
 You can use this package just like the newly FlatBuffers generated one ([example](tests/test_original_import.py)) to avoid any break of your legacy code.
 
 ```python
 from tflite.Model import Model
-# use Model
 ```
-
-The original generated package needs to import every classes by hand ([see this](https://github.com/apache/incubator-tvm/blob/v0.6.0/python/tvm/relay/frontend/tflite.py#L843-L849)) which is pretty annoying.
 
 
 ## Contributing Updates

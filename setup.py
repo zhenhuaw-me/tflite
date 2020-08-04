@@ -1,5 +1,5 @@
-# coding: utf-8
-import setuptools, os
+import os
+import setuptools
 
 here = os.path.abspath(os.path.dirname(__file__))
 
