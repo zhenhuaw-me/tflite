@@ -3,8 +3,6 @@
 # namespace: tflite
 
 import flatbuffers
-from flatbuffers.compat import import_numpy
-np = import_numpy()
 
 class MaximumMinimumOptions(object):
     __slots__ = ['_tab']
@@ -15,10 +13,6 @@ class MaximumMinimumOptions(object):
         x = MaximumMinimumOptions()
         x.Init(buf, n + offset)
         return x
-
-    @classmethod
-    def MaximumMinimumOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # MaximumMinimumOptions
     def Init(self, buf, pos):

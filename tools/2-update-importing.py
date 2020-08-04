@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-import os, git
+
+import os
+import git
 """Auto-generate the submodule importing from `tflite/tflite`"""
 
 here = os.path.abspath(os.path.dirname(__file__))

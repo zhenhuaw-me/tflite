@@ -3,8 +3,6 @@
 # namespace: tflite
 
 import flatbuffers
-from flatbuffers.compat import import_numpy
-np = import_numpy()
 
 class L2NormOptions(object):
     __slots__ = ['_tab']
@@ -15,10 +13,6 @@ class L2NormOptions(object):
         x = L2NormOptions()
         x.Init(buf, n + offset)
         return x
-
-    @classmethod
-    def L2NormOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # L2NormOptions
     def Init(self, buf, pos):

@@ -3,8 +3,6 @@
 # namespace: tflite
 
 import flatbuffers
-from flatbuffers.compat import import_numpy
-np = import_numpy()
 
 class Pool2DOptions(object):
     __slots__ = ['_tab']
@@ -15,10 +13,6 @@ class Pool2DOptions(object):
         x = Pool2DOptions()
         x.Init(buf, n + offset)
         return x
-
-    @classmethod
-    def Pool2DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # Pool2DOptions
     def Init(self, buf, pos):

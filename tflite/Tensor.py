@@ -3,8 +3,6 @@
 # namespace: tflite
 
 import flatbuffers
-from flatbuffers.compat import import_numpy
-np = import_numpy()
 
 class Tensor(object):
     __slots__ = ['_tab']
@@ -15,10 +13,6 @@ class Tensor(object):
         x = Tensor()
         x.Init(buf, n + offset)
         return x
-
-    @classmethod
-    def TensorBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # Tensor
     def Init(self, buf, pos):
@@ -47,11 +41,6 @@ class Tensor(object):
         return 0
 
     # Tensor
-    def ShapeIsNone(self):
-        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
-        return o == 0
-
-    # Tensor
     def Type(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
@@ -77,7 +66,7 @@ class Tensor(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
             x = self._tab.Indirect(o + self._tab.Pos)
-            from tflite.QuantizationParameters import QuantizationParameters
+            from .QuantizationParameters import QuantizationParameters
             obj = QuantizationParameters()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -95,7 +84,7 @@ class Tensor(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
         if o != 0:
             x = self._tab.Indirect(o + self._tab.Pos)
-            from tflite.SparsityParameters import SparsityParameters
+            from .SparsityParameters import SparsityParameters
             obj = SparsityParameters()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -122,11 +111,6 @@ class Tensor(object):
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
-
-    # Tensor
-    def ShapeSignatureIsNone(self):
-        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
-        return o == 0
 
 def TensorStart(builder): builder.StartObject(8)
 def TensorAddShape(builder, shape): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(shape), 0)

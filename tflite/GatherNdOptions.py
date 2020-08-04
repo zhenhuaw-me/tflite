@@ -3,8 +3,6 @@
 # namespace: tflite
 
 import flatbuffers
-from flatbuffers.compat import import_numpy
-np = import_numpy()
 
 class GatherNdOptions(object):
     __slots__ = ['_tab']
@@ -15,10 +13,6 @@ class GatherNdOptions(object):
         x = GatherNdOptions()
         x.Init(buf, n + offset)
         return x
-
-    @classmethod
-    def GatherNdOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
-        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # GatherNdOptions
     def Init(self, buf, pos):
