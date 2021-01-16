@@ -130,4 +130,5 @@ from tflite.UnpackOptions import *
 from tflite.WhereOptions import *
 from tflite.WhileOptions import *
 from tflite.ZerosLikeOptions import *
+from tflite.utils import *
 ########################## ABOVE ARE AUTO-GENERATED ##########################
