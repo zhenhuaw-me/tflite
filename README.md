@@ -55,10 +55,10 @@ As the operator definition may change across different TensorFlow versions, this
 1. [Fork the repository](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and download it.
 2. Install additional depdendency via `pip install -r requirements.txt`. And install [flatbuffer compiler](https://google.github.io/flatbuffers/flatbuffers_guide_using_schema_compiler.html) (you may need to [manually build it](https://google.github.io/flatbuffers/flatbuffers_guide_building.html)).
 3. Generate the code for update. Tools have been prepared, there are prompt for actions.
-    1. [Download](tools/1-update-schema.sh) `schema.fbs` for a new version.
-    2. [Update](tools/2-update-importing.py) the classes and functions import of submodules.
+    1. [Download](scripts/update-schema.sh) `schema.fbs` for a new version.
+    2. [Update](scripts/update-importing.py) the classes and functions import of submodules.
     3. Update the versioning in [setup.py](setup.py).
-    4. [Build](tools/3-build.sh) and [Test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
+    4. [Build](scripts/build.sh) and [Test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
 4. Push your change and open [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 5. The maintainer will take the responsibility to upload change to PyPI when merged.
 
