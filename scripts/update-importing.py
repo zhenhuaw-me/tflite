@@ -9,8 +9,8 @@ repo_dir = os.path.abspath(os.path.join(here, '..'))
 submodule_dir = os.path.join(repo_dir, 'tflite')
 the_file = os.path.join(repo_dir, 'tflite/__init__.py')
 
-begin_tag = "########################## BELOW ARE AUTO-GENERATED ##########################\n"
-end_tag = "########################## ABOVE ARE AUTO-GENERATED ##########################\n"
+BEGIN_TAG = "########################## BELOW ARE AUTO-GENERATED ##########################\n"
+END_TAG = "########################## ABOVE ARE AUTO-GENERATED ##########################\n"
 
 # the generated import lines
 pys = [ f[:-3] for f in sorted(os.listdir(submodule_dir)) \
@@ -20,8 +20,8 @@ imports = [ "from tflite.%s import *\n" % py for py in pys ]
 
 # read the original file
 lines = open(the_file, 'r').readlines()
-begin_index = lines.index(begin_tag)
-end_index = lines.index(end_tag)
+begin_index = lines.index(BEGIN_TAG)
+end_index = lines.index(END_TAG)
 
 # write the new file
 new_lines = lines[:begin_index+1] + imports + lines[end_index:]

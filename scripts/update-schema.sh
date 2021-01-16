@@ -48,6 +48,7 @@ fi
 ${FBSC} --python -o ${output_path} ${schema_path}
 # revert the __init__.py
 git checkout ${root_dir}/tflite/__init__.py
+git checkout ${root_dir}/tflite/utils.py
 
 # commit the schema change?
 read -p "Going to create a commit for these changes, continue? [Y|N] " input_str
