@@ -105,4 +105,5 @@ class BuiltinOptions(object):
     DensifyOptions = 99
     SegmentSumOptions = 100
     BatchMatMulOptions = 101
+    CumsumOptions = 102
 

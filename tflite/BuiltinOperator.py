@@ -130,4 +130,6 @@ class BuiltinOperator(object):
     DENSIFY = 124
     SEGMENT_SUM = 125
     BATCH_MATMUL = 126
+    PLACEHOLDER_FOR_GREATER_OP_CODES = 127
+    CUMSUM = 128
 

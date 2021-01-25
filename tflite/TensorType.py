@@ -14,4 +14,5 @@ class TensorType(object):
     COMPLEX64 = 8
     INT8 = 9
     FLOAT64 = 10
+    COMPLEX128 = 11
 
