@@ -25,6 +25,7 @@ from tflite.ConcatEmbeddingsOptions import *
 from tflite.ConcatenationOptions import *
 from tflite.Conv2DOptions import *
 from tflite.CosOptions import *
+from tflite.CumsumOptions import *
 from tflite.CustomOptionsFormat import *
 from tflite.CustomQuantization import *
 from tflite.DensifyOptions import *
@@ -104,6 +105,7 @@ from tflite.SelectOptions import *
 from tflite.SelectV2Options import *
 from tflite.SequenceRNNOptions import *
 from tflite.ShapeOptions import *
+from tflite.SignatureDef import *
 from tflite.SkipGramOptions import *
 from tflite.SliceOptions import *
 from tflite.SoftmaxOptions import *
@@ -121,6 +123,7 @@ from tflite.StridedSliceOptions import *
 from tflite.SubGraph import *
 from tflite.SubOptions import *
 from tflite.Tensor import *
+from tflite.TensorMap import *
 from tflite.TensorType import *
 from tflite.TileOptions import *
 from tflite.TopKV2Options import *
