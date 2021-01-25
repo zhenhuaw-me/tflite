@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>tflite.BuiltinOperator API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.BuiltinOperator</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># automatically generated by the FlatBuffers compiler, do not modify
+
+# namespace: tflite
+
+class BuiltinOperator(object):
+    ADD = 0
+    AVERAGE_POOL_2D = 1
+    CONCATENATION = 2
+    CONV_2D = 3
+    DEPTHWISE_CONV_2D = 4
+    DEPTH_TO_SPACE = 5
+    DEQUANTIZE = 6
+    EMBEDDING_LOOKUP = 7
+    FLOOR = 8
+    FULLY_CONNECTED = 9
+    HASHTABLE_LOOKUP = 10
+    L2_NORMALIZATION = 11
+    L2_POOL_2D = 12
+    LOCAL_RESPONSE_NORMALIZATION = 13
+    LOGISTIC = 14
+    LSH_PROJECTION = 15
+    LSTM = 16
+    MAX_POOL_2D = 17
+    MUL = 18
+    RELU = 19
+    RELU_N1_TO_1 = 20
+    RELU6 = 21
+    RESHAPE = 22
+    RESIZE_BILINEAR = 23
+    RNN = 24
+    SOFTMAX = 25
+    SPACE_TO_DEPTH = 26
+    SVDF = 27
+    TANH = 28
+    CONCAT_EMBEDDINGS = 29
+    SKIP_GRAM = 30
+    CALL = 31
+    CUSTOM = 32
+    EMBEDDING_LOOKUP_SPARSE = 33
+    PAD = 34
+    UNIDIRECTIONAL_SEQUENCE_RNN = 35
+    GATHER = 36
+    BATCH_TO_SPACE_ND = 37
+    SPACE_TO_BATCH_ND = 38
+    TRANSPOSE = 39
+    MEAN = 40
+    SUB = 41
+    DIV = 42
+    SQUEEZE = 43
+    UNIDIRECTIONAL_SEQUENCE_LSTM = 44
+    STRIDED_SLICE = 45
+    BIDIRECTIONAL_SEQUENCE_RNN = 46
+    EXP = 47
+    TOPK_V2 = 48
+    SPLIT = 49
+    LOG_SOFTMAX = 50
+    DELEGATE = 51
+    BIDIRECTIONAL_SEQUENCE_LSTM = 52
+    CAST = 53
+    PRELU = 54
+    MAXIMUM = 55
+    ARG_MAX = 56
+    MINIMUM = 57
+    LESS = 58
+    NEG = 59
+    PADV2 = 60
+    GREATER = 61
+    GREATER_EQUAL = 62
+    LESS_EQUAL = 63
+    SELECT = 64
+    SLICE = 65
+    SIN = 66
+    TRANSPOSE_CONV = 67
+    SPARSE_TO_DENSE = 68
+    TILE = 69
+    EXPAND_DIMS = 70
+    EQUAL = 71
+    NOT_EQUAL = 72
+    LOG = 73
+    SUM = 74
+    SQRT = 75
+    RSQRT = 76
+    SHAPE = 77
+    POW = 78
+    ARG_MIN = 79
+    FAKE_QUANT = 80
+    REDUCE_PROD = 81
+    REDUCE_MAX = 82
+    PACK = 83
+    LOGICAL_OR = 84
+    ONE_HOT = 85
+    LOGICAL_AND = 86
+    LOGICAL_NOT = 87
+    UNPACK = 88
+    REDUCE_MIN = 89
+    FLOOR_DIV = 90
+    REDUCE_ANY = 91
+    SQUARE = 92
+    ZEROS_LIKE = 93
+    FILL = 94
+    FLOOR_MOD = 95
+    RANGE = 96
+    RESIZE_NEAREST_NEIGHBOR = 97
+    LEAKY_RELU = 98
+    SQUARED_DIFFERENCE = 99
+    MIRROR_PAD = 100
+    ABS = 101
+    SPLIT_V = 102
+    UNIQUE = 103
+    CEIL = 104
+    REVERSE_V2 = 105
+    ADD_N = 106
+    GATHER_ND = 107
+    COS = 108
+    WHERE = 109
+    RANK = 110
+    ELU = 111
+    REVERSE_SEQUENCE = 112
+    MATRIX_DIAG = 113
+    QUANTIZE = 114
+    MATRIX_SET_DIAG = 115
+    ROUND = 116
+    HARD_SWISH = 117
+    IF = 118
+    WHILE = 119
+    NON_MAX_SUPPRESSION_V4 = 120
+    NON_MAX_SUPPRESSION_V5 = 121
+    SCATTER_ND = 122
+    SELECT_V2 = 123
+    DENSIFY = 124
+    SEGMENT_SUM = 125
+    BATCH_MATMUL = 126
+    PLACEHOLDER_FOR_GREATER_OP_CODES = 127
+    CUMSUM = 128</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.BuiltinOperator.BuiltinOperator"><code class="flex name class">
+<span>class <span class="ident">BuiltinOperator</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BuiltinOperator(object):
+    ADD = 0
+    AVERAGE_POOL_2D = 1
+    CONCATENATION = 2
+    CONV_2D = 3
+    DEPTHWISE_CONV_2D = 4
+    DEPTH_TO_SPACE = 5
+    DEQUANTIZE = 6
+    EMBEDDING_LOOKUP = 7
+    FLOOR = 8
+    FULLY_CONNECTED = 9
+    HASHTABLE_LOOKUP = 10
+    L2_NORMALIZATION = 11
+    L2_POOL_2D = 12
+    LOCAL_RESPONSE_NORMALIZATION = 13
+    LOGISTIC = 14
+    LSH_PROJECTION = 15
+    LSTM = 16
+    MAX_POOL_2D = 17
+    MUL = 18
+    RELU = 19
+    RELU_N1_TO_1 = 20
+    RELU6 = 21
+    RESHAPE = 22
+    RESIZE_BILINEAR = 23
+    RNN = 24
+    SOFTMAX = 25
+    SPACE_TO_DEPTH = 26
+    SVDF = 27
+    TANH = 28
+    CONCAT_EMBEDDINGS = 29
+    SKIP_GRAM = 30
+    CALL = 31
+    CUSTOM = 32
+    EMBEDDING_LOOKUP_SPARSE = 33
+    PAD = 34
+    UNIDIRECTIONAL_SEQUENCE_RNN = 35
+    GATHER = 36
+    BATCH_TO_SPACE_ND = 37
+    SPACE_TO_BATCH_ND = 38
+    TRANSPOSE = 39
+    MEAN = 40
+    SUB = 41
+    DIV = 42
+    SQUEEZE = 43
+    UNIDIRECTIONAL_SEQUENCE_LSTM = 44
+    STRIDED_SLICE = 45
+    BIDIRECTIONAL_SEQUENCE_RNN = 46
+    EXP = 47
+    TOPK_V2 = 48
+    SPLIT = 49
+    LOG_SOFTMAX = 50
+    DELEGATE = 51
+    BIDIRECTIONAL_SEQUENCE_LSTM = 52
+    CAST = 53
+    PRELU = 54
+    MAXIMUM = 55
+    ARG_MAX = 56
+    MINIMUM = 57
+    LESS = 58
+    NEG = 59
+    PADV2 = 60
+    GREATER = 61
+    GREATER_EQUAL = 62
+    LESS_EQUAL = 63
+    SELECT = 64
+    SLICE = 65
+    SIN = 66
+    TRANSPOSE_CONV = 67
+    SPARSE_TO_DENSE = 68
+    TILE = 69
+    EXPAND_DIMS = 70
+    EQUAL = 71
+    NOT_EQUAL = 72
+    LOG = 73
+    SUM = 74
+    SQRT = 75
+    RSQRT = 76
+    SHAPE = 77
+    POW = 78
+    ARG_MIN = 79
+    FAKE_QUANT = 80
+    REDUCE_PROD = 81
+    REDUCE_MAX = 82
+    PACK = 83
+    LOGICAL_OR = 84
+    ONE_HOT = 85
+    LOGICAL_AND = 86
+    LOGICAL_NOT = 87
+    UNPACK = 88
+    REDUCE_MIN = 89
+    FLOOR_DIV = 90
+    REDUCE_ANY = 91
+    SQUARE = 92
+    ZEROS_LIKE = 93
+    FILL = 94
+    FLOOR_MOD = 95
+    RANGE = 96
+    RESIZE_NEAREST_NEIGHBOR = 97
+    LEAKY_RELU = 98
+    SQUARED_DIFFERENCE = 99
+    MIRROR_PAD = 100
+    ABS = 101
+    SPLIT_V = 102
+    UNIQUE = 103
+    CEIL = 104
+    REVERSE_V2 = 105
+    ADD_N = 106
+    GATHER_ND = 107
+    COS = 108
+    WHERE = 109
+    RANK = 110
+    ELU = 111
+    REVERSE_SEQUENCE = 112
+    MATRIX_DIAG = 113
+    QUANTIZE = 114
+    MATRIX_SET_DIAG = 115
+    ROUND = 116
+    HARD_SWISH = 117
+    IF = 118
+    WHILE = 119
+    NON_MAX_SUPPRESSION_V4 = 120
+    NON_MAX_SUPPRESSION_V5 = 121
+    SCATTER_ND = 122
+    SELECT_V2 = 123
+    DENSIFY = 124
+    SEGMENT_SUM = 125
+    BATCH_MATMUL = 126
+    PLACEHOLDER_FOR_GREATER_OP_CODES = 127
+    CUMSUM = 128</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ABS"><code class="name">var <span class="ident">ABS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ADD"><code class="name">var <span class="ident">ADD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ADD_N"><code class="name">var <span class="ident">ADD_N</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ARG_MAX"><code class="name">var <span class="ident">ARG_MAX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ARG_MIN"><code class="name">var <span class="ident">ARG_MIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.AVERAGE_POOL_2D"><code class="name">var <span class="ident">AVERAGE_POOL_2D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BATCH_MATMUL"><code class="name">var <span class="ident">BATCH_MATMUL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND"><code class="name">var <span class="ident">BATCH_TO_SPACE_ND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM"><code class="name">var <span class="ident">BIDIRECTIONAL_SEQUENCE_LSTM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN"><code class="name">var <span class="ident">BIDIRECTIONAL_SEQUENCE_RNN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CALL"><code class="name">var <span class="ident">CALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CAST"><code class="name">var <span class="ident">CAST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CEIL"><code class="name">var <span class="ident">CEIL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CONCATENATION"><code class="name">var <span class="ident">CONCATENATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CONCAT_EMBEDDINGS"><code class="name">var <span class="ident">CONCAT_EMBEDDINGS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CONV_2D"><code class="name">var <span class="ident">CONV_2D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.COS"><code class="name">var <span class="ident">COS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CUMSUM"><code class="name">var <span class="ident">CUMSUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.CUSTOM"><code class="name">var <span class="ident">CUSTOM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DELEGATE"><code class="name">var <span class="ident">DELEGATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DENSIFY"><code class="name">var <span class="ident">DENSIFY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DEPTHWISE_CONV_2D"><code class="name">var <span class="ident">DEPTHWISE_CONV_2D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DEPTH_TO_SPACE"><code class="name">var <span class="ident">DEPTH_TO_SPACE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DEQUANTIZE"><code class="name">var <span class="ident">DEQUANTIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DIV"><code class="name">var <span class="ident">DIV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ELU"><code class="name">var <span class="ident">ELU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.EMBEDDING_LOOKUP"><code class="name">var <span class="ident">EMBEDDING_LOOKUP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.EMBEDDING_LOOKUP_SPARSE"><code class="name">var <span class="ident">EMBEDDING_LOOKUP_SPARSE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.EQUAL"><code class="name">var <span class="ident">EQUAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.EXP"><code class="name">var <span class="ident">EXP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.EXPAND_DIMS"><code class="name">var <span class="ident">EXPAND_DIMS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.FAKE_QUANT"><code class="name">var <span class="ident">FAKE_QUANT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.FILL"><code class="name">var <span class="ident">FILL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.FLOOR"><code class="name">var <span class="ident">FLOOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.FLOOR_DIV"><code class="name">var <span class="ident">FLOOR_DIV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.FLOOR_MOD"><code class="name">var <span class="ident">FLOOR_MOD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.FULLY_CONNECTED"><code class="name">var <span class="ident">FULLY_CONNECTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.GATHER"><code class="name">var <span class="ident">GATHER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.GATHER_ND"><code class="name">var <span class="ident">GATHER_ND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.GREATER"><code class="name">var <span class="ident">GREATER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.GREATER_EQUAL"><code class="name">var <span class="ident">GREATER_EQUAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.HARD_SWISH"><code class="name">var <span class="ident">HARD_SWISH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.HASHTABLE_LOOKUP"><code class="name">var <span class="ident">HASHTABLE_LOOKUP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.IF"><code class="name">var <span class="ident">IF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.L2_NORMALIZATION"><code class="name">var <span class="ident">L2_NORMALIZATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.L2_POOL_2D"><code class="name">var <span class="ident">L2_POOL_2D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LEAKY_RELU"><code class="name">var <span class="ident">LEAKY_RELU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LESS"><code class="name">var <span class="ident">LESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LESS_EQUAL"><code class="name">var <span class="ident">LESS_EQUAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOCAL_RESPONSE_NORMALIZATION"><code class="name">var <span class="ident">LOCAL_RESPONSE_NORMALIZATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOG"><code class="name">var <span class="ident">LOG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOGICAL_AND"><code class="name">var <span class="ident">LOGICAL_AND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOGICAL_NOT"><code class="name">var <span class="ident">LOGICAL_NOT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOGICAL_OR"><code class="name">var <span class="ident">LOGICAL_OR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOGISTIC"><code class="name">var <span class="ident">LOGISTIC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LOG_SOFTMAX"><code class="name">var <span class="ident">LOG_SOFTMAX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LSH_PROJECTION"><code class="name">var <span class="ident">LSH_PROJECTION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.LSTM"><code class="name">var <span class="ident">LSTM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MATRIX_DIAG"><code class="name">var <span class="ident">MATRIX_DIAG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MATRIX_SET_DIAG"><code class="name">var <span class="ident">MATRIX_SET_DIAG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MAXIMUM"><code class="name">var <span class="ident">MAXIMUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MAX_POOL_2D"><code class="name">var <span class="ident">MAX_POOL_2D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MEAN"><code class="name">var <span class="ident">MEAN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MINIMUM"><code class="name">var <span class="ident">MINIMUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MIRROR_PAD"><code class="name">var <span class="ident">MIRROR_PAD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.MUL"><code class="name">var <span class="ident">MUL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.NEG"><code class="name">var <span class="ident">NEG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.NON_MAX_SUPPRESSION_V4"><code class="name">var <span class="ident">NON_MAX_SUPPRESSION_V4</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.NON_MAX_SUPPRESSION_V5"><code class="name">var <span class="ident">NON_MAX_SUPPRESSION_V5</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.NOT_EQUAL"><code class="name">var <span class="ident">NOT_EQUAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ONE_HOT"><code class="name">var <span class="ident">ONE_HOT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.PACK"><code class="name">var <span class="ident">PACK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.PAD"><code class="name">var <span class="ident">PAD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.PADV2"><code class="name">var <span class="ident">PADV2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.PLACEHOLDER_FOR_GREATER_OP_CODES"><code class="name">var <span class="ident">PLACEHOLDER_FOR_GREATER_OP_CODES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.POW"><code class="name">var <span class="ident">POW</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.PRELU"><code class="name">var <span class="ident">PRELU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.QUANTIZE"><code class="name">var <span class="ident">QUANTIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RANGE"><code class="name">var <span class="ident">RANGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RANK"><code class="name">var <span class="ident">RANK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REDUCE_ANY"><code class="name">var <span class="ident">REDUCE_ANY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REDUCE_MAX"><code class="name">var <span class="ident">REDUCE_MAX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REDUCE_MIN"><code class="name">var <span class="ident">REDUCE_MIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REDUCE_PROD"><code class="name">var <span class="ident">REDUCE_PROD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RELU"><code class="name">var <span class="ident">RELU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RELU6"><code class="name">var <span class="ident">RELU6</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RELU_N1_TO_1"><code class="name">var <span class="ident">RELU_N1_TO_1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RESHAPE"><code class="name">var <span class="ident">RESHAPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RESIZE_BILINEAR"><code class="name">var <span class="ident">RESIZE_BILINEAR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RESIZE_NEAREST_NEIGHBOR"><code class="name">var <span class="ident">RESIZE_NEAREST_NEIGHBOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE"><code class="name">var <span class="ident">REVERSE_SEQUENCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2"><code class="name">var <span class="ident">REVERSE_V2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RNN"><code class="name">var <span class="ident">RNN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ROUND"><code class="name">var <span class="ident">ROUND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RSQRT"><code class="name">var <span class="ident">RSQRT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SCATTER_ND"><code class="name">var <span class="ident">SCATTER_ND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SEGMENT_SUM"><code class="name">var <span class="ident">SEGMENT_SUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SELECT"><code class="name">var <span class="ident">SELECT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SELECT_V2"><code class="name">var <span class="ident">SELECT_V2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SHAPE"><code class="name">var <span class="ident">SHAPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SIN"><code class="name">var <span class="ident">SIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM"><code class="name">var <span class="ident">SKIP_GRAM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SLICE"><code class="name">var <span class="ident">SLICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SOFTMAX"><code class="name">var <span class="ident">SOFTMAX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SPACE_TO_BATCH_ND"><code class="name">var <span class="ident">SPACE_TO_BATCH_ND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SPACE_TO_DEPTH"><code class="name">var <span class="ident">SPACE_TO_DEPTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SPARSE_TO_DENSE"><code class="name">var <span class="ident">SPARSE_TO_DENSE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SPLIT"><code class="name">var <span class="ident">SPLIT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SPLIT_V"><code class="name">var <span class="ident">SPLIT_V</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SQRT"><code class="name">var <span class="ident">SQRT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SQUARE"><code class="name">var <span class="ident">SQUARE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SQUARED_DIFFERENCE"><code class="name">var <span class="ident">SQUARED_DIFFERENCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SQUEEZE"><code class="name">var <span class="ident">SQUEEZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STRIDED_SLICE"><code class="name">var <span class="ident">STRIDED_SLICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SUB"><code class="name">var <span class="ident">SUB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SUM"><code class="name">var <span class="ident">SUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SVDF"><code class="name">var <span class="ident">SVDF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.TANH"><code class="name">var <span class="ident">TANH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.TILE"><code class="name">var <span class="ident">TILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.TOPK_V2"><code class="name">var <span class="ident">TOPK_V2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.TRANSPOSE"><code class="name">var <span class="ident">TRANSPOSE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.TRANSPOSE_CONV"><code class="name">var <span class="ident">TRANSPOSE_CONV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.UNIDIRECTIONAL_SEQUENCE_LSTM"><code class="name">var <span class="ident">UNIDIRECTIONAL_SEQUENCE_LSTM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.UNIDIRECTIONAL_SEQUENCE_RNN"><code class="name">var <span class="ident">UNIDIRECTIONAL_SEQUENCE_RNN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.UNIQUE"><code class="name">var <span class="ident">UNIQUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.UNPACK"><code class="name">var <span class="ident">UNPACK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.WHERE"><code class="name">var <span class="ident">WHERE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.WHILE"><code class="name">var <span class="ident">WHILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.ZEROS_LIKE"><code class="name">var <span class="ident">ZEROS_LIKE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.BuiltinOperator.BuiltinOperator" href="#tflite.BuiltinOperator.BuiltinOperator">BuiltinOperator</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ABS" href="#tflite.BuiltinOperator.BuiltinOperator.ABS">ABS</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ADD" href="#tflite.BuiltinOperator.BuiltinOperator.ADD">ADD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ADD_N" href="#tflite.BuiltinOperator.BuiltinOperator.ADD_N">ADD_N</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ARG_MAX" href="#tflite.BuiltinOperator.BuiltinOperator.ARG_MAX">ARG_MAX</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ARG_MIN" href="#tflite.BuiltinOperator.BuiltinOperator.ARG_MIN">ARG_MIN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.AVERAGE_POOL_2D" href="#tflite.BuiltinOperator.BuiltinOperator.AVERAGE_POOL_2D">AVERAGE_POOL_2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BATCH_MATMUL" href="#tflite.BuiltinOperator.BuiltinOperator.BATCH_MATMUL">BATCH_MATMUL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND" href="#tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND">BATCH_TO_SPACE_ND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM" href="#tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM">BIDIRECTIONAL_SEQUENCE_LSTM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN" href="#tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN">BIDIRECTIONAL_SEQUENCE_RNN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CALL" href="#tflite.BuiltinOperator.BuiltinOperator.CALL">CALL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CAST" href="#tflite.BuiltinOperator.BuiltinOperator.CAST">CAST</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CEIL" href="#tflite.BuiltinOperator.BuiltinOperator.CEIL">CEIL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CONCATENATION" href="#tflite.BuiltinOperator.BuiltinOperator.CONCATENATION">CONCATENATION</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CONCAT_EMBEDDINGS" href="#tflite.BuiltinOperator.BuiltinOperator.CONCAT_EMBEDDINGS">CONCAT_EMBEDDINGS</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CONV_2D" href="#tflite.BuiltinOperator.BuiltinOperator.CONV_2D">CONV_2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.COS" href="#tflite.BuiltinOperator.BuiltinOperator.COS">COS</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CUMSUM" href="#tflite.BuiltinOperator.BuiltinOperator.CUMSUM">CUMSUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.CUSTOM" href="#tflite.BuiltinOperator.BuiltinOperator.CUSTOM">CUSTOM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DELEGATE" href="#tflite.BuiltinOperator.BuiltinOperator.DELEGATE">DELEGATE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DENSIFY" href="#tflite.BuiltinOperator.BuiltinOperator.DENSIFY">DENSIFY</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DEPTHWISE_CONV_2D" href="#tflite.BuiltinOperator.BuiltinOperator.DEPTHWISE_CONV_2D">DEPTHWISE_CONV_2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DEPTH_TO_SPACE" href="#tflite.BuiltinOperator.BuiltinOperator.DEPTH_TO_SPACE">DEPTH_TO_SPACE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DEQUANTIZE" href="#tflite.BuiltinOperator.BuiltinOperator.DEQUANTIZE">DEQUANTIZE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DIV" href="#tflite.BuiltinOperator.BuiltinOperator.DIV">DIV</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ELU" href="#tflite.BuiltinOperator.BuiltinOperator.ELU">ELU</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.EMBEDDING_LOOKUP" href="#tflite.BuiltinOperator.BuiltinOperator.EMBEDDING_LOOKUP">EMBEDDING_LOOKUP</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.EMBEDDING_LOOKUP_SPARSE" href="#tflite.BuiltinOperator.BuiltinOperator.EMBEDDING_LOOKUP_SPARSE">EMBEDDING_LOOKUP_SPARSE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.EQUAL" href="#tflite.BuiltinOperator.BuiltinOperator.EQUAL">EQUAL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.EXP" href="#tflite.BuiltinOperator.BuiltinOperator.EXP">EXP</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.EXPAND_DIMS" href="#tflite.BuiltinOperator.BuiltinOperator.EXPAND_DIMS">EXPAND_DIMS</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.FAKE_QUANT" href="#tflite.BuiltinOperator.BuiltinOperator.FAKE_QUANT">FAKE_QUANT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.FILL" href="#tflite.BuiltinOperator.BuiltinOperator.FILL">FILL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.FLOOR" href="#tflite.BuiltinOperator.BuiltinOperator.FLOOR">FLOOR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.FLOOR_DIV" href="#tflite.BuiltinOperator.BuiltinOperator.FLOOR_DIV">FLOOR_DIV</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.FLOOR_MOD" href="#tflite.BuiltinOperator.BuiltinOperator.FLOOR_MOD">FLOOR_MOD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.FULLY_CONNECTED" href="#tflite.BuiltinOperator.BuiltinOperator.FULLY_CONNECTED">FULLY_CONNECTED</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.GATHER" href="#tflite.BuiltinOperator.BuiltinOperator.GATHER">GATHER</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.GATHER_ND" href="#tflite.BuiltinOperator.BuiltinOperator.GATHER_ND">GATHER_ND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.GREATER" href="#tflite.BuiltinOperator.BuiltinOperator.GREATER">GREATER</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.GREATER_EQUAL" href="#tflite.BuiltinOperator.BuiltinOperator.GREATER_EQUAL">GREATER_EQUAL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.HARD_SWISH" href="#tflite.BuiltinOperator.BuiltinOperator.HARD_SWISH">HARD_SWISH</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.HASHTABLE_LOOKUP" href="#tflite.BuiltinOperator.BuiltinOperator.HASHTABLE_LOOKUP">HASHTABLE_LOOKUP</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.IF" href="#tflite.BuiltinOperator.BuiltinOperator.IF">IF</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.L2_NORMALIZATION" href="#tflite.BuiltinOperator.BuiltinOperator.L2_NORMALIZATION">L2_NORMALIZATION</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.L2_POOL_2D" href="#tflite.BuiltinOperator.BuiltinOperator.L2_POOL_2D">L2_POOL_2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LEAKY_RELU" href="#tflite.BuiltinOperator.BuiltinOperator.LEAKY_RELU">LEAKY_RELU</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LESS" href="#tflite.BuiltinOperator.BuiltinOperator.LESS">LESS</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LESS_EQUAL" href="#tflite.BuiltinOperator.BuiltinOperator.LESS_EQUAL">LESS_EQUAL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOCAL_RESPONSE_NORMALIZATION" href="#tflite.BuiltinOperator.BuiltinOperator.LOCAL_RESPONSE_NORMALIZATION">LOCAL_RESPONSE_NORMALIZATION</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOG" href="#tflite.BuiltinOperator.BuiltinOperator.LOG">LOG</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOGICAL_AND" href="#tflite.BuiltinOperator.BuiltinOperator.LOGICAL_AND">LOGICAL_AND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOGICAL_NOT" href="#tflite.BuiltinOperator.BuiltinOperator.LOGICAL_NOT">LOGICAL_NOT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOGICAL_OR" href="#tflite.BuiltinOperator.BuiltinOperator.LOGICAL_OR">LOGICAL_OR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOGISTIC" href="#tflite.BuiltinOperator.BuiltinOperator.LOGISTIC">LOGISTIC</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LOG_SOFTMAX" href="#tflite.BuiltinOperator.BuiltinOperator.LOG_SOFTMAX">LOG_SOFTMAX</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LSH_PROJECTION" href="#tflite.BuiltinOperator.BuiltinOperator.LSH_PROJECTION">LSH_PROJECTION</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.LSTM" href="#tflite.BuiltinOperator.BuiltinOperator.LSTM">LSTM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MATRIX_DIAG" href="#tflite.BuiltinOperator.BuiltinOperator.MATRIX_DIAG">MATRIX_DIAG</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MATRIX_SET_DIAG" href="#tflite.BuiltinOperator.BuiltinOperator.MATRIX_SET_DIAG">MATRIX_SET_DIAG</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MAXIMUM" href="#tflite.BuiltinOperator.BuiltinOperator.MAXIMUM">MAXIMUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MAX_POOL_2D" href="#tflite.BuiltinOperator.BuiltinOperator.MAX_POOL_2D">MAX_POOL_2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MEAN" href="#tflite.BuiltinOperator.BuiltinOperator.MEAN">MEAN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MINIMUM" href="#tflite.BuiltinOperator.BuiltinOperator.MINIMUM">MINIMUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MIRROR_PAD" href="#tflite.BuiltinOperator.BuiltinOperator.MIRROR_PAD">MIRROR_PAD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.MUL" href="#tflite.BuiltinOperator.BuiltinOperator.MUL">MUL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.NEG" href="#tflite.BuiltinOperator.BuiltinOperator.NEG">NEG</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.NON_MAX_SUPPRESSION_V4" href="#tflite.BuiltinOperator.BuiltinOperator.NON_MAX_SUPPRESSION_V4">NON_MAX_SUPPRESSION_V4</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.NON_MAX_SUPPRESSION_V5" href="#tflite.BuiltinOperator.BuiltinOperator.NON_MAX_SUPPRESSION_V5">NON_MAX_SUPPRESSION_V5</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.NOT_EQUAL" href="#tflite.BuiltinOperator.BuiltinOperator.NOT_EQUAL">NOT_EQUAL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ONE_HOT" href="#tflite.BuiltinOperator.BuiltinOperator.ONE_HOT">ONE_HOT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.PACK" href="#tflite.BuiltinOperator.BuiltinOperator.PACK">PACK</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.PAD" href="#tflite.BuiltinOperator.BuiltinOperator.PAD">PAD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.PADV2" href="#tflite.BuiltinOperator.BuiltinOperator.PADV2">PADV2</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.PLACEHOLDER_FOR_GREATER_OP_CODES" href="#tflite.BuiltinOperator.BuiltinOperator.PLACEHOLDER_FOR_GREATER_OP_CODES">PLACEHOLDER_FOR_GREATER_OP_CODES</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.POW" href="#tflite.BuiltinOperator.BuiltinOperator.POW">POW</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.PRELU" href="#tflite.BuiltinOperator.BuiltinOperator.PRELU">PRELU</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.QUANTIZE" href="#tflite.BuiltinOperator.BuiltinOperator.QUANTIZE">QUANTIZE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RANGE" href="#tflite.BuiltinOperator.BuiltinOperator.RANGE">RANGE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RANK" href="#tflite.BuiltinOperator.BuiltinOperator.RANK">RANK</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_ANY" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_ANY">REDUCE_ANY</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_MAX" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_MAX">REDUCE_MAX</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_MIN" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_MIN">REDUCE_MIN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_PROD" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_PROD">REDUCE_PROD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RELU" href="#tflite.BuiltinOperator.BuiltinOperator.RELU">RELU</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RELU6" href="#tflite.BuiltinOperator.BuiltinOperator.RELU6">RELU6</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RELU_N1_TO_1" href="#tflite.BuiltinOperator.BuiltinOperator.RELU_N1_TO_1">RELU_N1_TO_1</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RESHAPE" href="#tflite.BuiltinOperator.BuiltinOperator.RESHAPE">RESHAPE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RESIZE_BILINEAR" href="#tflite.BuiltinOperator.BuiltinOperator.RESIZE_BILINEAR">RESIZE_BILINEAR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RESIZE_NEAREST_NEIGHBOR" href="#tflite.BuiltinOperator.BuiltinOperator.RESIZE_NEAREST_NEIGHBOR">RESIZE_NEAREST_NEIGHBOR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE" href="#tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE">REVERSE_SEQUENCE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2" href="#tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2">REVERSE_V2</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RNN" href="#tflite.BuiltinOperator.BuiltinOperator.RNN">RNN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ROUND" href="#tflite.BuiltinOperator.BuiltinOperator.ROUND">ROUND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RSQRT" href="#tflite.BuiltinOperator.BuiltinOperator.RSQRT">RSQRT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SCATTER_ND" href="#tflite.BuiltinOperator.BuiltinOperator.SCATTER_ND">SCATTER_ND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SEGMENT_SUM" href="#tflite.BuiltinOperator.BuiltinOperator.SEGMENT_SUM">SEGMENT_SUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SELECT" href="#tflite.BuiltinOperator.BuiltinOperator.SELECT">SELECT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SELECT_V2" href="#tflite.BuiltinOperator.BuiltinOperator.SELECT_V2">SELECT_V2</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SHAPE" href="#tflite.BuiltinOperator.BuiltinOperator.SHAPE">SHAPE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SIN" href="#tflite.BuiltinOperator.BuiltinOperator.SIN">SIN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM" href="#tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM">SKIP_GRAM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.SLICE">SLICE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SOFTMAX" href="#tflite.BuiltinOperator.BuiltinOperator.SOFTMAX">SOFTMAX</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SPACE_TO_BATCH_ND" href="#tflite.BuiltinOperator.BuiltinOperator.SPACE_TO_BATCH_ND">SPACE_TO_BATCH_ND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SPACE_TO_DEPTH" href="#tflite.BuiltinOperator.BuiltinOperator.SPACE_TO_DEPTH">SPACE_TO_DEPTH</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SPARSE_TO_DENSE" href="#tflite.BuiltinOperator.BuiltinOperator.SPARSE_TO_DENSE">SPARSE_TO_DENSE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SPLIT" href="#tflite.BuiltinOperator.BuiltinOperator.SPLIT">SPLIT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SPLIT_V" href="#tflite.BuiltinOperator.BuiltinOperator.SPLIT_V">SPLIT_V</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQRT" href="#tflite.BuiltinOperator.BuiltinOperator.SQRT">SQRT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQUARE" href="#tflite.BuiltinOperator.BuiltinOperator.SQUARE">SQUARE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQUARED_DIFFERENCE" href="#tflite.BuiltinOperator.BuiltinOperator.SQUARED_DIFFERENCE">SQUARED_DIFFERENCE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQUEEZE" href="#tflite.BuiltinOperator.BuiltinOperator.SQUEEZE">SQUEEZE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STRIDED_SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.STRIDED_SLICE">STRIDED_SLICE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SUB" href="#tflite.BuiltinOperator.BuiltinOperator.SUB">SUB</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SUM" href="#tflite.BuiltinOperator.BuiltinOperator.SUM">SUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SVDF" href="#tflite.BuiltinOperator.BuiltinOperator.SVDF">SVDF</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.TANH" href="#tflite.BuiltinOperator.BuiltinOperator.TANH">TANH</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.TILE" href="#tflite.BuiltinOperator.BuiltinOperator.TILE">TILE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.TOPK_V2" href="#tflite.BuiltinOperator.BuiltinOperator.TOPK_V2">TOPK_V2</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.TRANSPOSE" href="#tflite.BuiltinOperator.BuiltinOperator.TRANSPOSE">TRANSPOSE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.TRANSPOSE_CONV" href="#tflite.BuiltinOperator.BuiltinOperator.TRANSPOSE_CONV">TRANSPOSE_CONV</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNIDIRECTIONAL_SEQUENCE_LSTM" href="#tflite.BuiltinOperator.BuiltinOperator.UNIDIRECTIONAL_SEQUENCE_LSTM">UNIDIRECTIONAL_SEQUENCE_LSTM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNIDIRECTIONAL_SEQUENCE_RNN" href="#tflite.BuiltinOperator.BuiltinOperator.UNIDIRECTIONAL_SEQUENCE_RNN">UNIDIRECTIONAL_SEQUENCE_RNN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNIQUE" href="#tflite.BuiltinOperator.BuiltinOperator.UNIQUE">UNIQUE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNPACK" href="#tflite.BuiltinOperator.BuiltinOperator.UNPACK">UNPACK</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.WHERE" href="#tflite.BuiltinOperator.BuiltinOperator.WHERE">WHERE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.WHILE" href="#tflite.BuiltinOperator.BuiltinOperator.WHILE">WHILE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ZEROS_LIKE" href="#tflite.BuiltinOperator.BuiltinOperator.ZEROS_LIKE">ZEROS_LIKE</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

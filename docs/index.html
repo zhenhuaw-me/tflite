@@ -1,2159 +1,866 @@
 <!doctype html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-
-    <title>tflite API documentation</title>
-    <meta name="description" content="" />
-
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
-  
-  <style type="text/css">
-  
-* {
-  box-sizing: border-box;
-}
-/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
-
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
-
-/**
- * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
- */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-    display: block;
-}
-
-/**
- * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
- */
-
-audio,
-canvas,
-video {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-
-audio:not([controls]) {
-    display: none;
-    height: 0;
-}
-
-/**
- * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
- * Known issue: no IE 6 support.
- */
-
-[hidden] {
-    display: none;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
-
-/**
- * 1. Prevent system color scheme's background color being used in Firefox, IE,
- *    and Opera.
- * 2. Prevent system color scheme's text color being used in Firefox, IE, and
- *    Opera.
- * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units.
- * 4. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-
-html {
-    background: #fff; /* 1 */
-    color: #000; /* 2 */
-    font-size: 100%; /* 3 */
-    -webkit-text-size-adjust: 100%; /* 4 */
-    -ms-text-size-adjust: 100%; /* 4 */
-}
-
-/**
- * Address `font-family` inconsistency between `textarea` and other form
- * elements.
- */
-
-html,
-button,
-input,
-select,
-textarea {
-    font-family: sans-serif;
-}
-
-/**
- * Address margins handled incorrectly in IE 6/7.
- */
-
-body {
-    margin: 0;
-}
-
-/* ==========================================================================
-   Links
-   ========================================================================== */
-
-/**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
-
-a:focus {
-    outline: thin dotted;
-}
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-
-a:active,
-a:hover {
-    outline: 0;
-}
-
-/* ==========================================================================
-   Typography
-   ========================================================================== */
-
-/**
- * Address font sizes and margins set differently in IE 6/7.
- * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
- * and Chrome.
- */
-
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
-
-h2 {
-    font-size: 1.5em;
-    margin: 0.83em 0;
-}
-
-h3 {
-    font-size: 1.17em;
-    margin: 1em 0;
-}
-
-h4 {
-    font-size: 1em;
-    margin: 1.33em 0;
-}
-
-h5 {
-    font-size: 0.83em;
-    margin: 1.67em 0;
-}
-
-h6 {
-    font-size: 0.67em;
-    margin: 2.33em 0;
-}
-
-/**
- * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
- */
-
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-
-/**
- * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
- */
-
-b,
-strong {
-    font-weight: bold;
-}
-
-blockquote {
-    margin: 1em 40px;
-}
-
-/**
- * Address styling not present in Safari 5 and Chrome.
- */
-
-dfn {
-    font-style: italic;
-}
-
-/**
- * Address differences between Firefox and other browsers.
- * Known issue: no IE 6/7 normalization.
- */
-
-hr {
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 0;
-}
-
-/**
- * Address styling not present in IE 6/7/8/9.
- */
-
-mark {
-    background: #ff0;
-    color: #000;
-}
-
-/**
- * Address margins set differently in IE 6/7.
- */
-
-p,
-pre {
-    margin: 1em 0;
-}
-
-/**
- * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
- */
-
-code,
-kbd,
-pre,
-samp {
-    font-family: monospace, serif;
-    _font-family: 'courier new', monospace;
-    font-size: 1em;
-}
-
-/**
- * Improve readability of pre-formatted text in all browsers.
- */
-
-pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-/**
- * Address CSS quotes not supported in IE 6/7.
- */
-
-q {
-    quotes: none;
-}
-
-/**
- * Address `quotes` property not supported in Safari 4.
- */
-
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-
-/**
- * Address inconsistent and variable font size in all browsers.
- */
-
-small {
-    font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
- */
-
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-
-sup {
-    top: -0.5em;
-}
-
-sub {
-    bottom: -0.25em;
-}
-
-/* ==========================================================================
-   Lists
-   ========================================================================== */
-
-/**
- * Address margins set differently in IE 6/7.
- */
-
-dl,
-menu,
-ol,
-ul {
-    margin: 1em 0;
-}
-
-dd {
-    margin: 0 0 0 40px;
-}
-
-/**
- * Address paddings set differently in IE 6/7.
- */
-
-menu,
-ol,
-ul {
-    padding: 0 0 0 40px;
-}
-
-/**
- * Correct list images handled incorrectly in IE 7.
- */
-
-nav ul,
-nav ol {
-    list-style: none;
-    list-style-image: none;
-}
-
-/* ==========================================================================
-   Embedded content
-   ========================================================================== */
-
-/**
- * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
- * 2. Improve image quality when scaled in IE 7.
- */
-
-img {
-    border: 0; /* 1 */
-    -ms-interpolation-mode: bicubic; /* 2 */
-}
-
-/**
- * Correct overflow displayed oddly in IE 9.
- */
-
-svg:not(:root) {
-    overflow: hidden;
-}
-
-/* ==========================================================================
-   Figures
-   ========================================================================== */
-
-/**
- * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
- */
-
-figure {
-    margin: 0;
-}
-
-/* ==========================================================================
-   Forms
-   ========================================================================== */
-
-/**
- * Correct margin displayed oddly in IE 6/7.
- */
-
-form {
-    margin: 0;
-}
-
-/**
- * Define consistent border, margin, and padding.
- */
-
-fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
-}
-
-/**
- * 1. Correct color not being inherited in IE 6/7/8/9.
- * 2. Correct text not wrapping in Firefox 3.
- * 3. Correct alignment displayed oddly in IE 6/7.
- */
-
-legend {
-    border: 0; /* 1 */
-    padding: 0;
-    white-space: normal; /* 2 */
-    *margin-left: -7px; /* 3 */
-}
-
-/**
- * 1. Correct font size not being inherited in all browsers.
- * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
- *    and Chrome.
- * 3. Improve appearance and consistency in all browsers.
- */
-
-button,
-input,
-select,
-textarea {
-    font-size: 100%; /* 1 */
-    margin: 0; /* 2 */
-    vertical-align: baseline; /* 3 */
-    *vertical-align: middle; /* 3 */
-}
-
-/**
- * Address Firefox 3+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
-
-button,
-input {
-    line-height: normal;
-}
-
-/**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
- */
-
-button,
-select {
-    text-transform: none;
-}
-
-/**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
- *    Known issue: inner spacing remains in IE 6.
- */
-
-button,
-html input[type="button"], /* 1 */
-input[type="reset"],
-input[type="submit"] {
-    -webkit-appearance: button; /* 2 */
-    cursor: pointer; /* 3 */
-    *overflow: visible;  /* 4 */
-}
-
-/**
- * Re-set default cursor for disabled elements.
- */
-
-button[disabled],
-html input[disabled] {
-    cursor: default;
-}
-
-/**
- * 1. Address box sizing set to content-box in IE 8/9.
- * 2. Remove excess padding in IE 8/9.
- * 3. Remove excess padding in IE 7.
- *    Known issue: excess padding remains in IE 6.
- */
-
-input[type="checkbox"],
-input[type="radio"] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
-    *height: 13px; /* 3 */
-    *width: 13px; /* 3 */
-}
-
-/**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-
-input[type="search"] {
-    -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; /* 2 */
-    box-sizing: content-box;
-}
-
-/**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-
-/**
- * Remove inner padding and border in Firefox 3+.
- */
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}
-
-/**
- * 1. Remove default vertical scrollbar in IE 6/7/8/9.
- * 2. Improve readability and alignment in all browsers.
- */
-
-textarea {
-    overflow: auto; /* 1 */
-    vertical-align: top; /* 2 */
-}
-
-/* ==========================================================================
-   Tables
-   ========================================================================== */
-
-/**
- * Remove most spacing between table cells.
- */
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-  </style>
-
-  <style type="text/css">
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-  }
-  body {
-    background: #fff;
-    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.6em;
-  }
-  #content {
-    width: 70%;
-    max-width: 850px;
-    float: left;
-    padding: 30px 60px;
-    border-left: 1px solid #ddd;
-  }
-  #sidebar {
-    width: 25%;
-    float: left;
-    padding: 30px;
-    overflow: hidden;
-  }
-  #nav {
-    font-size: 130%;
-    margin: 0 0 15px 0;
-  }
-
-  #top {
-    display: block;
-    position: fixed;
-    bottom: 5px;
-    left: 5px;
-    font-size: .85em;
-    text-transform: uppercase;
-  }
-
-  #footer {
-    font-size: .75em;
-    padding: 5px 30px;
-    border-top: 1px solid #ddd;
-    text-align: right;
-  }
-    #footer p {
-      margin: 0 0 0 30px;
-      display: inline-block;
-    }
-
-  h1, h2, h3, h4, h5 {
-    font-weight: 300;
-  }
-  h1 {
-    font-size: 2.5em;
-    line-height: 1.1em;
-    margin: 0 0 .50em 0;
-  }
-
-  h2 {
-    font-size: 1.75em;
-    margin: 1em 0 .50em 0;
-  }
-
-  h3 {
-    margin: 25px 0 10px 0;
-  }
-
-  h4 {
-    margin: 0;
-    font-size: 105%;
-  }
-
-  a {
-    color: #058;
-    text-decoration: none;
-    transition: color .3s ease-in-out;
-  }
-
-  a:hover {
-    color: #e08524;
-    transition: color .3s ease-in-out;
-  }
-
-  pre, code, .mono, .name {
-    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
-  }
-
-  .title .name {
-    font-weight: bold;
-  }
-  .section-title {
-    margin-top: 2em;
-  }
-  .ident {
-    color: #900;
-  }
-
-  code {
-    background: #f9f9f9;
-  } 
-
-  pre {
-    background: #fefefe;
-    border: 1px solid #ddd;
-    box-shadow: 2px 2px 0 #f3f3f3;
-    margin: 0 30px;
-    padding: 15px 30px;
-  }
-
-  .codehilite {
-    margin: 0 30px 10px 30px;
-  }
-
-    .codehilite pre {
-      margin: 0;
-    }
-    .codehilite .err { background: #ff3300; color: #fff !important; } 
-
-  table#module-list {
-    font-size: 110%;
-  }
-
-    table#module-list tr td:first-child {
-      padding-right: 10px;
-      white-space: nowrap;
-    }
-
-    table#module-list td {
-      vertical-align: top;
-      padding-bottom: 8px;
-    }
-
-      table#module-list td p {
-        margin: 0 0 7px 0;
-      }
-
-  .def {
-    display: table;
-  }
-
-    .def p {
-      display: table-cell;
-      vertical-align: top;
-      text-align: left;
-    }
-
-    .def p:first-child {
-      white-space: nowrap;
-    }
-
-    .def p:last-child {
-      width: 100%;
-    }
-
-
-  #index {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-    ul#index .class_name {
-      /* font-size: 110%; */
-      font-weight: bold;
-    }
-    #index ul {
-      margin: 0;
-    }
-
-  .item {
-    margin: 0 0 15px 0;
-  }
-
-    .item .class {
-      margin: 0 0 25px 30px;
-    }
-
-      .item .class ul.class_list {
-        margin: 0 0 20px 0;
-      }
-
-    .item .name {
-      background: #fafafa;
-      margin: 0;
-      font-weight: bold;
-      padding: 5px 10px;
-      border-radius: 3px;
-      display: inline-block;
-      min-width: 40%;
-    }
-      .item .name:hover {
-        background: #f6f6f6;
-      }
-
-    .item .empty_desc {
-      margin: 0 0 5px 0;
-      padding: 0;
-    }
-
-    .item .inheritance {
-      margin: 3px 0 0 30px;
-    }
-
-    .item .inherited {
-      color: #666;
-    }
-
-    .item .desc {
-      padding: 0 8px;
-      margin: 0;
-    }
-
-      .item .desc p {
-        margin: 0 0 10px 0;
-      }
-
-    .source_cont {
-      margin: 0;
-      padding: 0;
-    }
-
-    .source_link a {
-      background: #ffc300;
-      font-weight: 400;
-      font-size: .75em;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow: 1px 1px 0 #f4b700;
-      
-      padding: 3px 8px;
-      border-radius: 2px;
-      transition: background .3s ease-in-out;
-    }
-      .source_link a:hover {
-        background: #FF7200;
-        text-shadow: none;
-        transition: background .3s ease-in-out;
-      }
-
-    .source {
-      display: none;
-      max-height: 600px;
-      overflow-y: scroll;
-      margin-bottom: 15px;
-    }
-
-      .source .codehilite {
-        margin: 0;
-      }
-
-  .desc h1, .desc h2, .desc h3 {
-    font-size: 100% !important;
-  }
-  .clear {
-    clear: both;
-  }
-
-  @media all and (max-width: 950px) {
-    #sidebar {
-      width: 35%;
-    }
-    #content {
-      width: 65%;
-    }
-  }
-  @media all and (max-width: 650px) {
-    #top {
-      display: none;
-    }
-    #sidebar {
-      float: none;
-      width: auto;
-    }
-    #content {
-      float: none;
-      width: auto;
-      padding: 30px;
-    }
-
-    #index ul {
-      padding: 0;
-      margin-bottom: 15px;
-    }
-    #index ul li {
-      display: inline-block;
-      margin-right: 30px;
-    }
-    #footer {
-      text-align: left;
-    }
-    #footer p {
-      display: block;
-      margin: inherit;
-    }
-  }
-
-  /*****************************/
-
-  </style>
-
-  <style type="text/css">
-  pre { line-height: 125%; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-.codehilite .hll { background-color: #ffffcc }
-.codehilite { background: #f8f8f8; }
-.codehilite .c { color: #408080; font-style: italic } /* Comment */
-.codehilite .err { border: 1px solid #FF0000 } /* Error */
-.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
-.codehilite .o { color: #666666 } /* Operator */
-.codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
-.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
-.codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
-.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
-.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
-.codehilite .gd { color: #A00000 } /* Generic.Deleted */
-.codehilite .ge { font-style: italic } /* Generic.Emph */
-.codehilite .gr { color: #FF0000 } /* Generic.Error */
-.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.codehilite .gi { color: #00A000 } /* Generic.Inserted */
-.codehilite .go { color: #888888 } /* Generic.Output */
-.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.codehilite .gs { font-weight: bold } /* Generic.Strong */
-.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.codehilite .gt { color: #0044DD } /* Generic.Traceback */
-.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
-.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
-.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
-.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
-.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
-.codehilite .kt { color: #B00040 } /* Keyword.Type */
-.codehilite .m { color: #666666 } /* Literal.Number */
-.codehilite .s { color: #BA2121 } /* Literal.String */
-.codehilite .na { color: #7D9029 } /* Name.Attribute */
-.codehilite .nb { color: #008000 } /* Name.Builtin */
-.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.codehilite .no { color: #880000 } /* Name.Constant */
-.codehilite .nd { color: #AA22FF } /* Name.Decorator */
-.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.codehilite .nf { color: #0000FF } /* Name.Function */
-.codehilite .nl { color: #A0A000 } /* Name.Label */
-.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
-.codehilite .nv { color: #19177C } /* Name.Variable */
-.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
-.codehilite .mb { color: #666666 } /* Literal.Number.Bin */
-.codehilite .mf { color: #666666 } /* Literal.Number.Float */
-.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
-.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
-.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
-.codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
-.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
-.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
-.codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
-.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
-.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
-.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.codehilite .sx { color: #008000 } /* Literal.String.Other */
-.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
-.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
-.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
-.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.codehilite .fm { color: #0000FF } /* Name.Function.Magic */
-.codehilite .vc { color: #19177C } /* Name.Variable.Class */
-.codehilite .vg { color: #19177C } /* Name.Variable.Global */
-.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
-.codehilite .vm { color: #19177C } /* Name.Variable.Magic */
-.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
-  </style>
-
-  <style type="text/css">
-  
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
-   ========================================================================== */
-
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
-
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
-}
-
-  </style>
-
-  <script type="text/javascript">
-  function toggle(id, $link) {
-    $node = document.getElementById(id);
-    if (!$node)
-    return;
-    if (!$node.style.display || $node.style.display == 'none') {
-    $node.style.display = 'block';
-    $link.innerHTML = 'Hide source &nequiv;';
-    } else {
-    $node.style.display = 'none';
-    $link.innerHTML = 'Show source &equiv;';
-    }
-  }
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>tflite API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
 </head>
 <body>
-<a href="#" id="top">Top</a>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>tflite</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># import classes and functions of submodules
 
-<div id="container">
-    
-  
-  <div id="sidebar">
-    <h1>Index</h1>
-    <ul id="index">
-    <li class="set"><h3><a href="#header-variables">Module variables</a></h3>
-      
-  <ul>
-    <li class="mono"><a href="#tflite.BUILTIN_OPCODE2NAME">BUILTIN_OPCODE2NAME</a></li>
-  </ul>
-
-    </li>
+__version__ = &#39;2.3.0&#39;
 
 
 
-    <li class="set"><h3><a href="#header-submodules">Sub-modules</a></h3>
-      <ul>
-        <li class="mono"><a href="AbsOptions.m.html">tflite.AbsOptions</a></li>
-        <li class="mono"><a href="ActivationFunctionType.m.html">tflite.ActivationFunctionType</a></li>
-        <li class="mono"><a href="AddNOptions.m.html">tflite.AddNOptions</a></li>
-        <li class="mono"><a href="AddOptions.m.html">tflite.AddOptions</a></li>
-        <li class="mono"><a href="ArgMaxOptions.m.html">tflite.ArgMaxOptions</a></li>
-        <li class="mono"><a href="ArgMinOptions.m.html">tflite.ArgMinOptions</a></li>
-        <li class="mono"><a href="BatchMatMulOptions.m.html">tflite.BatchMatMulOptions</a></li>
-        <li class="mono"><a href="BatchToSpaceNDOptions.m.html">tflite.BatchToSpaceNDOptions</a></li>
-        <li class="mono"><a href="BidirectionalSequenceLSTMOptions.m.html">tflite.BidirectionalSequenceLSTMOptions</a></li>
-        <li class="mono"><a href="BidirectionalSequenceRNNOptions.m.html">tflite.BidirectionalSequenceRNNOptions</a></li>
-        <li class="mono"><a href="Buffer.m.html">tflite.Buffer</a></li>
-        <li class="mono"><a href="BuiltinOperator.m.html">tflite.BuiltinOperator</a></li>
-        <li class="mono"><a href="BuiltinOptions.m.html">tflite.BuiltinOptions</a></li>
-        <li class="mono"><a href="CallOptions.m.html">tflite.CallOptions</a></li>
-        <li class="mono"><a href="CastOptions.m.html">tflite.CastOptions</a></li>
-        <li class="mono"><a href="CombinerType.m.html">tflite.CombinerType</a></li>
-        <li class="mono"><a href="ConcatEmbeddingsOptions.m.html">tflite.ConcatEmbeddingsOptions</a></li>
-        <li class="mono"><a href="ConcatenationOptions.m.html">tflite.ConcatenationOptions</a></li>
-        <li class="mono"><a href="Conv2DOptions.m.html">tflite.Conv2DOptions</a></li>
-        <li class="mono"><a href="CosOptions.m.html">tflite.CosOptions</a></li>
-        <li class="mono"><a href="CustomOptionsFormat.m.html">tflite.CustomOptionsFormat</a></li>
-        <li class="mono"><a href="CustomQuantization.m.html">tflite.CustomQuantization</a></li>
-        <li class="mono"><a href="DensifyOptions.m.html">tflite.DensifyOptions</a></li>
-        <li class="mono"><a href="DepthToSpaceOptions.m.html">tflite.DepthToSpaceOptions</a></li>
-        <li class="mono"><a href="DepthwiseConv2DOptions.m.html">tflite.DepthwiseConv2DOptions</a></li>
-        <li class="mono"><a href="DequantizeOptions.m.html">tflite.DequantizeOptions</a></li>
-        <li class="mono"><a href="DimensionMetadata.m.html">tflite.DimensionMetadata</a></li>
-        <li class="mono"><a href="DimensionType.m.html">tflite.DimensionType</a></li>
-        <li class="mono"><a href="DivOptions.m.html">tflite.DivOptions</a></li>
-        <li class="mono"><a href="EmbeddingLookupSparseOptions.m.html">tflite.EmbeddingLookupSparseOptions</a></li>
-        <li class="mono"><a href="EqualOptions.m.html">tflite.EqualOptions</a></li>
-        <li class="mono"><a href="ExpOptions.m.html">tflite.ExpOptions</a></li>
-        <li class="mono"><a href="ExpandDimsOptions.m.html">tflite.ExpandDimsOptions</a></li>
-        <li class="mono"><a href="FakeQuantOptions.m.html">tflite.FakeQuantOptions</a></li>
-        <li class="mono"><a href="FillOptions.m.html">tflite.FillOptions</a></li>
-        <li class="mono"><a href="FloorDivOptions.m.html">tflite.FloorDivOptions</a></li>
-        <li class="mono"><a href="FloorModOptions.m.html">tflite.FloorModOptions</a></li>
-        <li class="mono"><a href="FullyConnectedOptions.m.html">tflite.FullyConnectedOptions</a></li>
-        <li class="mono"><a href="FullyConnectedOptionsWeightsFormat.m.html">tflite.FullyConnectedOptionsWeightsFormat</a></li>
-        <li class="mono"><a href="GatherNdOptions.m.html">tflite.GatherNdOptions</a></li>
-        <li class="mono"><a href="GatherOptions.m.html">tflite.GatherOptions</a></li>
-        <li class="mono"><a href="GreaterEqualOptions.m.html">tflite.GreaterEqualOptions</a></li>
-        <li class="mono"><a href="GreaterOptions.m.html">tflite.GreaterOptions</a></li>
-        <li class="mono"><a href="HardSwishOptions.m.html">tflite.HardSwishOptions</a></li>
-        <li class="mono"><a href="IfOptions.m.html">tflite.IfOptions</a></li>
-        <li class="mono"><a href="Int32Vector.m.html">tflite.Int32Vector</a></li>
-        <li class="mono"><a href="L2NormOptions.m.html">tflite.L2NormOptions</a></li>
-        <li class="mono"><a href="LSHProjectionOptions.m.html">tflite.LSHProjectionOptions</a></li>
-        <li class="mono"><a href="LSHProjectionType.m.html">tflite.LSHProjectionType</a></li>
-        <li class="mono"><a href="LSTMKernelType.m.html">tflite.LSTMKernelType</a></li>
-        <li class="mono"><a href="LSTMOptions.m.html">tflite.LSTMOptions</a></li>
-        <li class="mono"><a href="LeakyReluOptions.m.html">tflite.LeakyReluOptions</a></li>
-        <li class="mono"><a href="LessEqualOptions.m.html">tflite.LessEqualOptions</a></li>
-        <li class="mono"><a href="LessOptions.m.html">tflite.LessOptions</a></li>
-        <li class="mono"><a href="LocalResponseNormalizationOptions.m.html">tflite.LocalResponseNormalizationOptions</a></li>
-        <li class="mono"><a href="LogSoftmaxOptions.m.html">tflite.LogSoftmaxOptions</a></li>
-        <li class="mono"><a href="LogicalAndOptions.m.html">tflite.LogicalAndOptions</a></li>
-        <li class="mono"><a href="LogicalNotOptions.m.html">tflite.LogicalNotOptions</a></li>
-        <li class="mono"><a href="LogicalOrOptions.m.html">tflite.LogicalOrOptions</a></li>
-        <li class="mono"><a href="MatrixDiagOptions.m.html">tflite.MatrixDiagOptions</a></li>
-        <li class="mono"><a href="MatrixSetDiagOptions.m.html">tflite.MatrixSetDiagOptions</a></li>
-        <li class="mono"><a href="MaximumMinimumOptions.m.html">tflite.MaximumMinimumOptions</a></li>
-        <li class="mono"><a href="Metadata.m.html">tflite.Metadata</a></li>
-        <li class="mono"><a href="MirrorPadMode.m.html">tflite.MirrorPadMode</a></li>
-        <li class="mono"><a href="MirrorPadOptions.m.html">tflite.MirrorPadOptions</a></li>
-        <li class="mono"><a href="Model.m.html">tflite.Model</a></li>
-        <li class="mono"><a href="MulOptions.m.html">tflite.MulOptions</a></li>
-        <li class="mono"><a href="NegOptions.m.html">tflite.NegOptions</a></li>
-        <li class="mono"><a href="NonMaxSuppressionV4Options.m.html">tflite.NonMaxSuppressionV4Options</a></li>
-        <li class="mono"><a href="NonMaxSuppressionV5Options.m.html">tflite.NonMaxSuppressionV5Options</a></li>
-        <li class="mono"><a href="NotEqualOptions.m.html">tflite.NotEqualOptions</a></li>
-        <li class="mono"><a href="OneHotOptions.m.html">tflite.OneHotOptions</a></li>
-        <li class="mono"><a href="Operator.m.html">tflite.Operator</a></li>
-        <li class="mono"><a href="OperatorCode.m.html">tflite.OperatorCode</a></li>
-        <li class="mono"><a href="PackOptions.m.html">tflite.PackOptions</a></li>
-        <li class="mono"><a href="PadOptions.m.html">tflite.PadOptions</a></li>
-        <li class="mono"><a href="PadV2Options.m.html">tflite.PadV2Options</a></li>
-        <li class="mono"><a href="Padding.m.html">tflite.Padding</a></li>
-        <li class="mono"><a href="Pool2DOptions.m.html">tflite.Pool2DOptions</a></li>
-        <li class="mono"><a href="PowOptions.m.html">tflite.PowOptions</a></li>
-        <li class="mono"><a href="QuantizationDetails.m.html">tflite.QuantizationDetails</a></li>
-        <li class="mono"><a href="QuantizationParameters.m.html">tflite.QuantizationParameters</a></li>
-        <li class="mono"><a href="QuantizeOptions.m.html">tflite.QuantizeOptions</a></li>
-        <li class="mono"><a href="RNNOptions.m.html">tflite.RNNOptions</a></li>
-        <li class="mono"><a href="RangeOptions.m.html">tflite.RangeOptions</a></li>
-        <li class="mono"><a href="RankOptions.m.html">tflite.RankOptions</a></li>
-        <li class="mono"><a href="ReducerOptions.m.html">tflite.ReducerOptions</a></li>
-        <li class="mono"><a href="ReshapeOptions.m.html">tflite.ReshapeOptions</a></li>
-        <li class="mono"><a href="ResizeBilinearOptions.m.html">tflite.ResizeBilinearOptions</a></li>
-        <li class="mono"><a href="ResizeNearestNeighborOptions.m.html">tflite.ResizeNearestNeighborOptions</a></li>
-        <li class="mono"><a href="ReverseSequenceOptions.m.html">tflite.ReverseSequenceOptions</a></li>
-        <li class="mono"><a href="ReverseV2Options.m.html">tflite.ReverseV2Options</a></li>
-        <li class="mono"><a href="SVDFOptions.m.html">tflite.SVDFOptions</a></li>
-        <li class="mono"><a href="ScatterNdOptions.m.html">tflite.ScatterNdOptions</a></li>
-        <li class="mono"><a href="SegmentSumOptions.m.html">tflite.SegmentSumOptions</a></li>
-        <li class="mono"><a href="SelectOptions.m.html">tflite.SelectOptions</a></li>
-        <li class="mono"><a href="SelectV2Options.m.html">tflite.SelectV2Options</a></li>
-        <li class="mono"><a href="SequenceRNNOptions.m.html">tflite.SequenceRNNOptions</a></li>
-        <li class="mono"><a href="ShapeOptions.m.html">tflite.ShapeOptions</a></li>
-        <li class="mono"><a href="SkipGramOptions.m.html">tflite.SkipGramOptions</a></li>
-        <li class="mono"><a href="SliceOptions.m.html">tflite.SliceOptions</a></li>
-        <li class="mono"><a href="SoftmaxOptions.m.html">tflite.SoftmaxOptions</a></li>
-        <li class="mono"><a href="SpaceToBatchNDOptions.m.html">tflite.SpaceToBatchNDOptions</a></li>
-        <li class="mono"><a href="SpaceToDepthOptions.m.html">tflite.SpaceToDepthOptions</a></li>
-        <li class="mono"><a href="SparseIndexVector.m.html">tflite.SparseIndexVector</a></li>
-        <li class="mono"><a href="SparseToDenseOptions.m.html">tflite.SparseToDenseOptions</a></li>
-        <li class="mono"><a href="SparsityParameters.m.html">tflite.SparsityParameters</a></li>
-        <li class="mono"><a href="SplitOptions.m.html">tflite.SplitOptions</a></li>
-        <li class="mono"><a href="SplitVOptions.m.html">tflite.SplitVOptions</a></li>
-        <li class="mono"><a href="SquareOptions.m.html">tflite.SquareOptions</a></li>
-        <li class="mono"><a href="SquaredDifferenceOptions.m.html">tflite.SquaredDifferenceOptions</a></li>
-        <li class="mono"><a href="SqueezeOptions.m.html">tflite.SqueezeOptions</a></li>
-        <li class="mono"><a href="StridedSliceOptions.m.html">tflite.StridedSliceOptions</a></li>
-        <li class="mono"><a href="SubGraph.m.html">tflite.SubGraph</a></li>
-        <li class="mono"><a href="SubOptions.m.html">tflite.SubOptions</a></li>
-        <li class="mono"><a href="Tensor.m.html">tflite.Tensor</a></li>
-        <li class="mono"><a href="TensorType.m.html">tflite.TensorType</a></li>
-        <li class="mono"><a href="TileOptions.m.html">tflite.TileOptions</a></li>
-        <li class="mono"><a href="TopKV2Options.m.html">tflite.TopKV2Options</a></li>
-        <li class="mono"><a href="TransposeConvOptions.m.html">tflite.TransposeConvOptions</a></li>
-        <li class="mono"><a href="TransposeOptions.m.html">tflite.TransposeOptions</a></li>
-        <li class="mono"><a href="Uint16Vector.m.html">tflite.Uint16Vector</a></li>
-        <li class="mono"><a href="Uint8Vector.m.html">tflite.Uint8Vector</a></li>
-        <li class="mono"><a href="UnidirectionalSequenceLSTMOptions.m.html">tflite.UnidirectionalSequenceLSTMOptions</a></li>
-        <li class="mono"><a href="UniqueOptions.m.html">tflite.UniqueOptions</a></li>
-        <li class="mono"><a href="UnpackOptions.m.html">tflite.UnpackOptions</a></li>
-        <li class="mono"><a href="WhereOptions.m.html">tflite.WhereOptions</a></li>
-        <li class="mono"><a href="WhileOptions.m.html">tflite.WhileOptions</a></li>
-        <li class="mono"><a href="ZerosLikeOptions.m.html">tflite.ZerosLikeOptions</a></li>
-        <li class="mono"><a href="utils.m.html">tflite.utils</a></li>
-      </ul>
-    </li>
-    </ul>
-  </div>
-
-    <article id="content">
-      
-  
-
-  
-
-
-  <header id="section-intro">
-  <h1 class="title"><span class="name">tflite</span> module</h1>
-  
-  
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tflite', this);">Show source &equiv;</a></p>
-  <div id="source-tflite" class="source">
-    <div class="codehilite"><pre><span></span><span class="c1"># import classes and functions of submodules</span>
-
-<span class="c1">########################## BELOW ARE AUTO-GENERATED ##########################</span>
-<span class="kn">from</span> <span class="nn">tflite.AbsOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ActivationFunctionType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.AddNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.AddOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ArgMaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ArgMinOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.BatchMatMulOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.BatchToSpaceNDOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.BidirectionalSequenceLSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.BidirectionalSequenceRNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Buffer</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.BuiltinOperator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.BuiltinOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.CallOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.CastOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.CombinerType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ConcatEmbeddingsOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ConcatenationOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Conv2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.CosOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.CustomOptionsFormat</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.CustomQuantization</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DensifyOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DepthToSpaceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DepthwiseConv2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DequantizeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DimensionMetadata</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DimensionType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.DivOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.EmbeddingLookupSparseOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.EqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ExpOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ExpandDimsOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.FakeQuantOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.FillOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.FloorDivOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.FloorModOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.FullyConnectedOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.FullyConnectedOptionsWeightsFormat</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.GatherNdOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.GatherOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.GreaterEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.GreaterOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.HardSwishOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.IfOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Int32Vector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.L2NormOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LSHProjectionOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LSHProjectionType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LSTMKernelType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LeakyReluOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LessEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LessOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LocalResponseNormalizationOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LogSoftmaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LogicalAndOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LogicalNotOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.LogicalOrOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.MatrixDiagOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.MatrixSetDiagOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.MaximumMinimumOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Metadata</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.MirrorPadMode</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.MirrorPadOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Model</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.MulOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.NegOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.NonMaxSuppressionV4Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.NonMaxSuppressionV5Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.NotEqualOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.OneHotOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Operator</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.OperatorCode</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.PackOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.PadOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.PadV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Padding</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Pool2DOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.PowOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.QuantizationDetails</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.QuantizationParameters</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.QuantizeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.RNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.RangeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.RankOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ReducerOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ReshapeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ResizeBilinearOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ResizeNearestNeighborOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ReverseSequenceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ReverseV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SVDFOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ScatterNdOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SegmentSumOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SelectOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SelectV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SequenceRNNOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ShapeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SkipGramOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SliceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SoftmaxOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SpaceToBatchNDOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SpaceToDepthOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SparseIndexVector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SparseToDenseOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SparsityParameters</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SplitOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SplitVOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SquareOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SquaredDifferenceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SqueezeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.StridedSliceOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SubGraph</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.SubOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Tensor</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.TensorType</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.TileOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.TopKV2Options</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.TransposeConvOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.TransposeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Uint16Vector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.Uint8Vector</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.UnidirectionalSequenceLSTMOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.UniqueOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.UnpackOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.WhereOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.WhileOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.ZerosLikeOptions</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tflite.utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="c1">########################## ABOVE ARE AUTO-GENERATED ##########################</span>
-</pre></div>
-
-  </div>
-
-  </header>
-
-  <section id="section-items">
-    <h2 class="section-title" id="header-variables">Module variables</h2>
-      <div class="item">
-      <p id="tflite.BUILTIN_OPCODE2NAME" class="name">var <span class="ident">BUILTIN_OPCODE2NAME</span></p>
-      
-  
-  <div class="source_cont">
+########################## BELOW ARE AUTO-GENERATED ##########################
+from tflite.AbsOptions import *
+from tflite.ActivationFunctionType import *
+from tflite.AddNOptions import *
+from tflite.AddOptions import *
+from tflite.ArgMaxOptions import *
+from tflite.ArgMinOptions import *
+from tflite.BatchMatMulOptions import *
+from tflite.BatchToSpaceNDOptions import *
+from tflite.BidirectionalSequenceLSTMOptions import *
+from tflite.BidirectionalSequenceRNNOptions import *
+from tflite.Buffer import *
+from tflite.BuiltinOperator import *
+from tflite.BuiltinOptions import *
+from tflite.CallOptions import *
+from tflite.CastOptions import *
+from tflite.CombinerType import *
+from tflite.ConcatEmbeddingsOptions import *
+from tflite.ConcatenationOptions import *
+from tflite.Conv2DOptions import *
+from tflite.CosOptions import *
+from tflite.CumsumOptions import *
+from tflite.CustomOptionsFormat import *
+from tflite.CustomQuantization import *
+from tflite.DensifyOptions import *
+from tflite.DepthToSpaceOptions import *
+from tflite.DepthwiseConv2DOptions import *
+from tflite.DequantizeOptions import *
+from tflite.DimensionMetadata import *
+from tflite.DimensionType import *
+from tflite.DivOptions import *
+from tflite.EmbeddingLookupSparseOptions import *
+from tflite.EqualOptions import *
+from tflite.ExpOptions import *
+from tflite.ExpandDimsOptions import *
+from tflite.FakeQuantOptions import *
+from tflite.FillOptions import *
+from tflite.FloorDivOptions import *
+from tflite.FloorModOptions import *
+from tflite.FullyConnectedOptions import *
+from tflite.FullyConnectedOptionsWeightsFormat import *
+from tflite.GatherNdOptions import *
+from tflite.GatherOptions import *
+from tflite.GreaterEqualOptions import *
+from tflite.GreaterOptions import *
+from tflite.HardSwishOptions import *
+from tflite.IfOptions import *
+from tflite.Int32Vector import *
+from tflite.L2NormOptions import *
+from tflite.LSHProjectionOptions import *
+from tflite.LSHProjectionType import *
+from tflite.LSTMKernelType import *
+from tflite.LSTMOptions import *
+from tflite.LeakyReluOptions import *
+from tflite.LessEqualOptions import *
+from tflite.LessOptions import *
+from tflite.LocalResponseNormalizationOptions import *
+from tflite.LogSoftmaxOptions import *
+from tflite.LogicalAndOptions import *
+from tflite.LogicalNotOptions import *
+from tflite.LogicalOrOptions import *
+from tflite.MatrixDiagOptions import *
+from tflite.MatrixSetDiagOptions import *
+from tflite.MaximumMinimumOptions import *
+from tflite.Metadata import *
+from tflite.MirrorPadMode import *
+from tflite.MirrorPadOptions import *
+from tflite.Model import *
+from tflite.MulOptions import *
+from tflite.NegOptions import *
+from tflite.NonMaxSuppressionV4Options import *
+from tflite.NonMaxSuppressionV5Options import *
+from tflite.NotEqualOptions import *
+from tflite.OneHotOptions import *
+from tflite.Operator import *
+from tflite.OperatorCode import *
+from tflite.PackOptions import *
+from tflite.PadOptions import *
+from tflite.PadV2Options import *
+from tflite.Padding import *
+from tflite.Pool2DOptions import *
+from tflite.PowOptions import *
+from tflite.QuantizationDetails import *
+from tflite.QuantizationParameters import *
+from tflite.QuantizeOptions import *
+from tflite.RNNOptions import *
+from tflite.RangeOptions import *
+from tflite.RankOptions import *
+from tflite.ReducerOptions import *
+from tflite.ReshapeOptions import *
+from tflite.ResizeBilinearOptions import *
+from tflite.ResizeNearestNeighborOptions import *
+from tflite.ReverseSequenceOptions import *
+from tflite.ReverseV2Options import *
+from tflite.SVDFOptions import *
+from tflite.ScatterNdOptions import *
+from tflite.SegmentSumOptions import *
+from tflite.SelectOptions import *
+from tflite.SelectV2Options import *
+from tflite.SequenceRNNOptions import *
+from tflite.ShapeOptions import *
+from tflite.SignatureDef import *
+from tflite.SkipGramOptions import *
+from tflite.SliceOptions import *
+from tflite.SoftmaxOptions import *
+from tflite.SpaceToBatchNDOptions import *
+from tflite.SpaceToDepthOptions import *
+from tflite.SparseIndexVector import *
+from tflite.SparseToDenseOptions import *
+from tflite.SparsityParameters import *
+from tflite.SplitOptions import *
+from tflite.SplitVOptions import *
+from tflite.SquareOptions import *
+from tflite.SquaredDifferenceOptions import *
+from tflite.SqueezeOptions import *
+from tflite.StridedSliceOptions import *
+from tflite.SubGraph import *
+from tflite.SubOptions import *
+from tflite.Tensor import *
+from tflite.TensorMap import *
+from tflite.TensorType import *
+from tflite.TileOptions import *
+from tflite.TopKV2Options import *
+from tflite.TransposeConvOptions import *
+from tflite.TransposeOptions import *
+from tflite.Uint16Vector import *
+from tflite.Uint8Vector import *
+from tflite.UnidirectionalSequenceLSTMOptions import *
+from tflite.UniqueOptions import *
+from tflite.UnpackOptions import *
+from tflite.WhereOptions import *
+from tflite.WhileOptions import *
+from tflite.ZerosLikeOptions import *
+from tflite.utils import *
+########################## ABOVE ARE AUTO-GENERATED ##########################</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="tflite.AbsOptions" href="AbsOptions.html">tflite.AbsOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ActivationFunctionType" href="ActivationFunctionType.html">tflite.ActivationFunctionType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.AddNOptions" href="AddNOptions.html">tflite.AddNOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.AddOptions" href="AddOptions.html">tflite.AddOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ArgMaxOptions" href="ArgMaxOptions.html">tflite.ArgMaxOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ArgMinOptions" href="ArgMinOptions.html">tflite.ArgMinOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BatchMatMulOptions" href="BatchMatMulOptions.html">tflite.BatchMatMulOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BatchToSpaceNDOptions" href="BatchToSpaceNDOptions.html">tflite.BatchToSpaceNDOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BidirectionalSequenceLSTMOptions" href="BidirectionalSequenceLSTMOptions.html">tflite.BidirectionalSequenceLSTMOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BidirectionalSequenceRNNOptions" href="BidirectionalSequenceRNNOptions.html">tflite.BidirectionalSequenceRNNOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Buffer" href="Buffer.html">tflite.Buffer</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BuiltinOperator" href="BuiltinOperator.html">tflite.BuiltinOperator</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BuiltinOptions" href="BuiltinOptions.html">tflite.BuiltinOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CallOptions" href="CallOptions.html">tflite.CallOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CastOptions" href="CastOptions.html">tflite.CastOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CombinerType" href="CombinerType.html">tflite.CombinerType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ConcatEmbeddingsOptions" href="ConcatEmbeddingsOptions.html">tflite.ConcatEmbeddingsOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ConcatenationOptions" href="ConcatenationOptions.html">tflite.ConcatenationOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Conv2DOptions" href="Conv2DOptions.html">tflite.Conv2DOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CosOptions" href="CosOptions.html">tflite.CosOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CumsumOptions" href="CumsumOptions.html">tflite.CumsumOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CustomOptionsFormat" href="CustomOptionsFormat.html">tflite.CustomOptionsFormat</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CustomQuantization" href="CustomQuantization.html">tflite.CustomQuantization</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DensifyOptions" href="DensifyOptions.html">tflite.DensifyOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DepthToSpaceOptions" href="DepthToSpaceOptions.html">tflite.DepthToSpaceOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DepthwiseConv2DOptions" href="DepthwiseConv2DOptions.html">tflite.DepthwiseConv2DOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DequantizeOptions" href="DequantizeOptions.html">tflite.DequantizeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DimensionMetadata" href="DimensionMetadata.html">tflite.DimensionMetadata</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DimensionType" href="DimensionType.html">tflite.DimensionType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DivOptions" href="DivOptions.html">tflite.DivOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.EmbeddingLookupSparseOptions" href="EmbeddingLookupSparseOptions.html">tflite.EmbeddingLookupSparseOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.EqualOptions" href="EqualOptions.html">tflite.EqualOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ExpOptions" href="ExpOptions.html">tflite.ExpOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ExpandDimsOptions" href="ExpandDimsOptions.html">tflite.ExpandDimsOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.FakeQuantOptions" href="FakeQuantOptions.html">tflite.FakeQuantOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.FillOptions" href="FillOptions.html">tflite.FillOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.FloorDivOptions" href="FloorDivOptions.html">tflite.FloorDivOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.FloorModOptions" href="FloorModOptions.html">tflite.FloorModOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.FullyConnectedOptions" href="FullyConnectedOptions.html">tflite.FullyConnectedOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.FullyConnectedOptionsWeightsFormat" href="FullyConnectedOptionsWeightsFormat.html">tflite.FullyConnectedOptionsWeightsFormat</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.GatherNdOptions" href="GatherNdOptions.html">tflite.GatherNdOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.GatherOptions" href="GatherOptions.html">tflite.GatherOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.GreaterEqualOptions" href="GreaterEqualOptions.html">tflite.GreaterEqualOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.GreaterOptions" href="GreaterOptions.html">tflite.GreaterOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.HardSwishOptions" href="HardSwishOptions.html">tflite.HardSwishOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.IfOptions" href="IfOptions.html">tflite.IfOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Int32Vector" href="Int32Vector.html">tflite.Int32Vector</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.L2NormOptions" href="L2NormOptions.html">tflite.L2NormOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LSHProjectionOptions" href="LSHProjectionOptions.html">tflite.LSHProjectionOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LSHProjectionType" href="LSHProjectionType.html">tflite.LSHProjectionType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LSTMKernelType" href="LSTMKernelType.html">tflite.LSTMKernelType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LSTMOptions" href="LSTMOptions.html">tflite.LSTMOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LeakyReluOptions" href="LeakyReluOptions.html">tflite.LeakyReluOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LessEqualOptions" href="LessEqualOptions.html">tflite.LessEqualOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LessOptions" href="LessOptions.html">tflite.LessOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LocalResponseNormalizationOptions" href="LocalResponseNormalizationOptions.html">tflite.LocalResponseNormalizationOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LogSoftmaxOptions" href="LogSoftmaxOptions.html">tflite.LogSoftmaxOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LogicalAndOptions" href="LogicalAndOptions.html">tflite.LogicalAndOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LogicalNotOptions" href="LogicalNotOptions.html">tflite.LogicalNotOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.LogicalOrOptions" href="LogicalOrOptions.html">tflite.LogicalOrOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.MatrixDiagOptions" href="MatrixDiagOptions.html">tflite.MatrixDiagOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.MatrixSetDiagOptions" href="MatrixSetDiagOptions.html">tflite.MatrixSetDiagOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.MaximumMinimumOptions" href="MaximumMinimumOptions.html">tflite.MaximumMinimumOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Metadata" href="Metadata.html">tflite.Metadata</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.MirrorPadMode" href="MirrorPadMode.html">tflite.MirrorPadMode</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.MirrorPadOptions" href="MirrorPadOptions.html">tflite.MirrorPadOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Model" href="Model.html">tflite.Model</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.MulOptions" href="MulOptions.html">tflite.MulOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.NegOptions" href="NegOptions.html">tflite.NegOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.NonMaxSuppressionV4Options" href="NonMaxSuppressionV4Options.html">tflite.NonMaxSuppressionV4Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.NonMaxSuppressionV5Options" href="NonMaxSuppressionV5Options.html">tflite.NonMaxSuppressionV5Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.NotEqualOptions" href="NotEqualOptions.html">tflite.NotEqualOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.OneHotOptions" href="OneHotOptions.html">tflite.OneHotOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Operator" href="Operator.html">tflite.Operator</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.OperatorCode" href="OperatorCode.html">tflite.OperatorCode</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.PackOptions" href="PackOptions.html">tflite.PackOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.PadOptions" href="PadOptions.html">tflite.PadOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.PadV2Options" href="PadV2Options.html">tflite.PadV2Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Padding" href="Padding.html">tflite.Padding</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Pool2DOptions" href="Pool2DOptions.html">tflite.Pool2DOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.PowOptions" href="PowOptions.html">tflite.PowOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.QuantizationDetails" href="QuantizationDetails.html">tflite.QuantizationDetails</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.QuantizationParameters" href="QuantizationParameters.html">tflite.QuantizationParameters</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.QuantizeOptions" href="QuantizeOptions.html">tflite.QuantizeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.RNNOptions" href="RNNOptions.html">tflite.RNNOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.RangeOptions" href="RangeOptions.html">tflite.RangeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.RankOptions" href="RankOptions.html">tflite.RankOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ReducerOptions" href="ReducerOptions.html">tflite.ReducerOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ReshapeOptions" href="ReshapeOptions.html">tflite.ReshapeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ResizeBilinearOptions" href="ResizeBilinearOptions.html">tflite.ResizeBilinearOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ResizeNearestNeighborOptions" href="ResizeNearestNeighborOptions.html">tflite.ResizeNearestNeighborOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ReverseSequenceOptions" href="ReverseSequenceOptions.html">tflite.ReverseSequenceOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ReverseV2Options" href="ReverseV2Options.html">tflite.ReverseV2Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SVDFOptions" href="SVDFOptions.html">tflite.SVDFOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ScatterNdOptions" href="ScatterNdOptions.html">tflite.ScatterNdOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SegmentSumOptions" href="SegmentSumOptions.html">tflite.SegmentSumOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SelectOptions" href="SelectOptions.html">tflite.SelectOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SelectV2Options" href="SelectV2Options.html">tflite.SelectV2Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SequenceRNNOptions" href="SequenceRNNOptions.html">tflite.SequenceRNNOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ShapeOptions" href="ShapeOptions.html">tflite.ShapeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SignatureDef" href="SignatureDef.html">tflite.SignatureDef</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SkipGramOptions" href="SkipGramOptions.html">tflite.SkipGramOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SliceOptions" href="SliceOptions.html">tflite.SliceOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SoftmaxOptions" href="SoftmaxOptions.html">tflite.SoftmaxOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SpaceToBatchNDOptions" href="SpaceToBatchNDOptions.html">tflite.SpaceToBatchNDOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SpaceToDepthOptions" href="SpaceToDepthOptions.html">tflite.SpaceToDepthOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SparseIndexVector" href="SparseIndexVector.html">tflite.SparseIndexVector</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SparseToDenseOptions" href="SparseToDenseOptions.html">tflite.SparseToDenseOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SparsityParameters" href="SparsityParameters.html">tflite.SparsityParameters</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SplitOptions" href="SplitOptions.html">tflite.SplitOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SplitVOptions" href="SplitVOptions.html">tflite.SplitVOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SquareOptions" href="SquareOptions.html">tflite.SquareOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SquaredDifferenceOptions" href="SquaredDifferenceOptions.html">tflite.SquaredDifferenceOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SqueezeOptions" href="SqueezeOptions.html">tflite.SqueezeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.StridedSliceOptions" href="StridedSliceOptions.html">tflite.StridedSliceOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SubGraph" href="SubGraph.html">tflite.SubGraph</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SubOptions" href="SubOptions.html">tflite.SubOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Tensor" href="Tensor.html">tflite.Tensor</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.TensorMap" href="TensorMap.html">tflite.TensorMap</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.TensorType" href="TensorType.html">tflite.TensorType</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.TileOptions" href="TileOptions.html">tflite.TileOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.TopKV2Options" href="TopKV2Options.html">tflite.TopKV2Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.TransposeConvOptions" href="TransposeConvOptions.html">tflite.TransposeConvOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.TransposeOptions" href="TransposeOptions.html">tflite.TransposeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Uint16Vector" href="Uint16Vector.html">tflite.Uint16Vector</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Uint8Vector" href="Uint8Vector.html">tflite.Uint8Vector</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.UnidirectionalSequenceLSTMOptions" href="UnidirectionalSequenceLSTMOptions.html">tflite.UnidirectionalSequenceLSTMOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.UniqueOptions" href="UniqueOptions.html">tflite.UniqueOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.UnpackOptions" href="UnpackOptions.html">tflite.UnpackOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.WhereOptions" href="WhereOptions.html">tflite.WhereOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.WhileOptions" href="WhileOptions.html">tflite.WhileOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ZerosLikeOptions" href="ZerosLikeOptions.html">tflite.ZerosLikeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.utils" href="utils.html">tflite.utils</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
 </div>
-
-      </div>
-
-
-
-    <h2 class="section-title" id="header-submodules">Sub-modules</h2>
-      <div class="item">
-      <p class="name"><a href="AbsOptions.m.html">tflite.AbsOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ActivationFunctionType.m.html">tflite.ActivationFunctionType</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="AddNOptions.m.html">tflite.AddNOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="AddOptions.m.html">tflite.AddOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ArgMaxOptions.m.html">tflite.ArgMaxOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ArgMinOptions.m.html">tflite.ArgMinOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="BatchMatMulOptions.m.html">tflite.BatchMatMulOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="BatchToSpaceNDOptions.m.html">tflite.BatchToSpaceNDOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="BidirectionalSequenceLSTMOptions.m.html">tflite.BidirectionalSequenceLSTMOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="BidirectionalSequenceRNNOptions.m.html">tflite.BidirectionalSequenceRNNOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Buffer.m.html">tflite.Buffer</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="BuiltinOperator.m.html">tflite.BuiltinOperator</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="BuiltinOptions.m.html">tflite.BuiltinOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="CallOptions.m.html">tflite.CallOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="CastOptions.m.html">tflite.CastOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="CombinerType.m.html">tflite.CombinerType</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ConcatEmbeddingsOptions.m.html">tflite.ConcatEmbeddingsOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ConcatenationOptions.m.html">tflite.ConcatenationOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Conv2DOptions.m.html">tflite.Conv2DOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="CosOptions.m.html">tflite.CosOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="CustomOptionsFormat.m.html">tflite.CustomOptionsFormat</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="CustomQuantization.m.html">tflite.CustomQuantization</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DensifyOptions.m.html">tflite.DensifyOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DepthToSpaceOptions.m.html">tflite.DepthToSpaceOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DepthwiseConv2DOptions.m.html">tflite.DepthwiseConv2DOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DequantizeOptions.m.html">tflite.DequantizeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DimensionMetadata.m.html">tflite.DimensionMetadata</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DimensionType.m.html">tflite.DimensionType</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="DivOptions.m.html">tflite.DivOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="EmbeddingLookupSparseOptions.m.html">tflite.EmbeddingLookupSparseOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="EqualOptions.m.html">tflite.EqualOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ExpOptions.m.html">tflite.ExpOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ExpandDimsOptions.m.html">tflite.ExpandDimsOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="FakeQuantOptions.m.html">tflite.FakeQuantOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="FillOptions.m.html">tflite.FillOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="FloorDivOptions.m.html">tflite.FloorDivOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="FloorModOptions.m.html">tflite.FloorModOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="FullyConnectedOptions.m.html">tflite.FullyConnectedOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="FullyConnectedOptionsWeightsFormat.m.html">tflite.FullyConnectedOptionsWeightsFormat</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="GatherNdOptions.m.html">tflite.GatherNdOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="GatherOptions.m.html">tflite.GatherOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="GreaterEqualOptions.m.html">tflite.GreaterEqualOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="GreaterOptions.m.html">tflite.GreaterOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="HardSwishOptions.m.html">tflite.HardSwishOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="IfOptions.m.html">tflite.IfOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Int32Vector.m.html">tflite.Int32Vector</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="L2NormOptions.m.html">tflite.L2NormOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LSHProjectionOptions.m.html">tflite.LSHProjectionOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LSHProjectionType.m.html">tflite.LSHProjectionType</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LSTMKernelType.m.html">tflite.LSTMKernelType</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LSTMOptions.m.html">tflite.LSTMOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LeakyReluOptions.m.html">tflite.LeakyReluOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LessEqualOptions.m.html">tflite.LessEqualOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LessOptions.m.html">tflite.LessOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LocalResponseNormalizationOptions.m.html">tflite.LocalResponseNormalizationOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LogSoftmaxOptions.m.html">tflite.LogSoftmaxOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LogicalAndOptions.m.html">tflite.LogicalAndOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LogicalNotOptions.m.html">tflite.LogicalNotOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="LogicalOrOptions.m.html">tflite.LogicalOrOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="MatrixDiagOptions.m.html">tflite.MatrixDiagOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="MatrixSetDiagOptions.m.html">tflite.MatrixSetDiagOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="MaximumMinimumOptions.m.html">tflite.MaximumMinimumOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Metadata.m.html">tflite.Metadata</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="MirrorPadMode.m.html">tflite.MirrorPadMode</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="MirrorPadOptions.m.html">tflite.MirrorPadOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Model.m.html">tflite.Model</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="MulOptions.m.html">tflite.MulOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="NegOptions.m.html">tflite.NegOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="NonMaxSuppressionV4Options.m.html">tflite.NonMaxSuppressionV4Options</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="NonMaxSuppressionV5Options.m.html">tflite.NonMaxSuppressionV5Options</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="NotEqualOptions.m.html">tflite.NotEqualOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="OneHotOptions.m.html">tflite.OneHotOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Operator.m.html">tflite.Operator</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="OperatorCode.m.html">tflite.OperatorCode</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="PackOptions.m.html">tflite.PackOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="PadOptions.m.html">tflite.PadOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="PadV2Options.m.html">tflite.PadV2Options</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Padding.m.html">tflite.Padding</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Pool2DOptions.m.html">tflite.Pool2DOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="PowOptions.m.html">tflite.PowOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="QuantizationDetails.m.html">tflite.QuantizationDetails</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="QuantizationParameters.m.html">tflite.QuantizationParameters</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="QuantizeOptions.m.html">tflite.QuantizeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="RNNOptions.m.html">tflite.RNNOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="RangeOptions.m.html">tflite.RangeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="RankOptions.m.html">tflite.RankOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ReducerOptions.m.html">tflite.ReducerOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ReshapeOptions.m.html">tflite.ReshapeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ResizeBilinearOptions.m.html">tflite.ResizeBilinearOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ResizeNearestNeighborOptions.m.html">tflite.ResizeNearestNeighborOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ReverseSequenceOptions.m.html">tflite.ReverseSequenceOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ReverseV2Options.m.html">tflite.ReverseV2Options</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SVDFOptions.m.html">tflite.SVDFOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ScatterNdOptions.m.html">tflite.ScatterNdOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SegmentSumOptions.m.html">tflite.SegmentSumOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SelectOptions.m.html">tflite.SelectOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SelectV2Options.m.html">tflite.SelectV2Options</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SequenceRNNOptions.m.html">tflite.SequenceRNNOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ShapeOptions.m.html">tflite.ShapeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SkipGramOptions.m.html">tflite.SkipGramOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SliceOptions.m.html">tflite.SliceOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SoftmaxOptions.m.html">tflite.SoftmaxOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SpaceToBatchNDOptions.m.html">tflite.SpaceToBatchNDOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SpaceToDepthOptions.m.html">tflite.SpaceToDepthOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SparseIndexVector.m.html">tflite.SparseIndexVector</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SparseToDenseOptions.m.html">tflite.SparseToDenseOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SparsityParameters.m.html">tflite.SparsityParameters</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SplitOptions.m.html">tflite.SplitOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SplitVOptions.m.html">tflite.SplitVOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SquareOptions.m.html">tflite.SquareOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SquaredDifferenceOptions.m.html">tflite.SquaredDifferenceOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SqueezeOptions.m.html">tflite.SqueezeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="StridedSliceOptions.m.html">tflite.StridedSliceOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SubGraph.m.html">tflite.SubGraph</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="SubOptions.m.html">tflite.SubOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Tensor.m.html">tflite.Tensor</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="TensorType.m.html">tflite.TensorType</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="TileOptions.m.html">tflite.TileOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="TopKV2Options.m.html">tflite.TopKV2Options</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="TransposeConvOptions.m.html">tflite.TransposeConvOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="TransposeOptions.m.html">tflite.TransposeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Uint16Vector.m.html">tflite.Uint16Vector</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="Uint8Vector.m.html">tflite.Uint8Vector</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="UnidirectionalSequenceLSTMOptions.m.html">tflite.UnidirectionalSequenceLSTMOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="UniqueOptions.m.html">tflite.UniqueOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="UnpackOptions.m.html">tflite.UnpackOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="WhereOptions.m.html">tflite.WhereOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="WhileOptions.m.html">tflite.WhileOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="ZerosLikeOptions.m.html">tflite.ZerosLikeOptions</a></p>
-      
-  
-
-      </div>
-      <div class="item">
-      <p class="name"><a href="utils.m.html">tflite.utils</a></p>
-      
-  
-
-      </div>
-  </section>
-
-    </article>
-  <div class="clear"> </div>
-  <footer id="footer">
-    <p>
-      Documentation generated by
-      <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.2</a>
-    </p>
-
-    <p>pdoc is in the public domain with the
-      <a href="http://unlicense.org">UNLICENSE</a></p>
-
-    <p>Design by <a href="http://nadh.in">Kailash Nadh</a></p>
-  </footer>
-</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="tflite.AbsOptions" href="AbsOptions.html">tflite.AbsOptions</a></code></li>
+<li><code><a title="tflite.ActivationFunctionType" href="ActivationFunctionType.html">tflite.ActivationFunctionType</a></code></li>
+<li><code><a title="tflite.AddNOptions" href="AddNOptions.html">tflite.AddNOptions</a></code></li>
+<li><code><a title="tflite.AddOptions" href="AddOptions.html">tflite.AddOptions</a></code></li>
+<li><code><a title="tflite.ArgMaxOptions" href="ArgMaxOptions.html">tflite.ArgMaxOptions</a></code></li>
+<li><code><a title="tflite.ArgMinOptions" href="ArgMinOptions.html">tflite.ArgMinOptions</a></code></li>
+<li><code><a title="tflite.BatchMatMulOptions" href="BatchMatMulOptions.html">tflite.BatchMatMulOptions</a></code></li>
+<li><code><a title="tflite.BatchToSpaceNDOptions" href="BatchToSpaceNDOptions.html">tflite.BatchToSpaceNDOptions</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions" href="BidirectionalSequenceLSTMOptions.html">tflite.BidirectionalSequenceLSTMOptions</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions" href="BidirectionalSequenceRNNOptions.html">tflite.BidirectionalSequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.Buffer" href="Buffer.html">tflite.Buffer</a></code></li>
+<li><code><a title="tflite.BuiltinOperator" href="BuiltinOperator.html">tflite.BuiltinOperator</a></code></li>
+<li><code><a title="tflite.BuiltinOptions" href="BuiltinOptions.html">tflite.BuiltinOptions</a></code></li>
+<li><code><a title="tflite.CallOptions" href="CallOptions.html">tflite.CallOptions</a></code></li>
+<li><code><a title="tflite.CastOptions" href="CastOptions.html">tflite.CastOptions</a></code></li>
+<li><code><a title="tflite.CombinerType" href="CombinerType.html">tflite.CombinerType</a></code></li>
+<li><code><a title="tflite.ConcatEmbeddingsOptions" href="ConcatEmbeddingsOptions.html">tflite.ConcatEmbeddingsOptions</a></code></li>
+<li><code><a title="tflite.ConcatenationOptions" href="ConcatenationOptions.html">tflite.ConcatenationOptions</a></code></li>
+<li><code><a title="tflite.Conv2DOptions" href="Conv2DOptions.html">tflite.Conv2DOptions</a></code></li>
+<li><code><a title="tflite.CosOptions" href="CosOptions.html">tflite.CosOptions</a></code></li>
+<li><code><a title="tflite.CumsumOptions" href="CumsumOptions.html">tflite.CumsumOptions</a></code></li>
+<li><code><a title="tflite.CustomOptionsFormat" href="CustomOptionsFormat.html">tflite.CustomOptionsFormat</a></code></li>
+<li><code><a title="tflite.CustomQuantization" href="CustomQuantization.html">tflite.CustomQuantization</a></code></li>
+<li><code><a title="tflite.DensifyOptions" href="DensifyOptions.html">tflite.DensifyOptions</a></code></li>
+<li><code><a title="tflite.DepthToSpaceOptions" href="DepthToSpaceOptions.html">tflite.DepthToSpaceOptions</a></code></li>
+<li><code><a title="tflite.DepthwiseConv2DOptions" href="DepthwiseConv2DOptions.html">tflite.DepthwiseConv2DOptions</a></code></li>
+<li><code><a title="tflite.DequantizeOptions" href="DequantizeOptions.html">tflite.DequantizeOptions</a></code></li>
+<li><code><a title="tflite.DimensionMetadata" href="DimensionMetadata.html">tflite.DimensionMetadata</a></code></li>
+<li><code><a title="tflite.DimensionType" href="DimensionType.html">tflite.DimensionType</a></code></li>
+<li><code><a title="tflite.DivOptions" href="DivOptions.html">tflite.DivOptions</a></code></li>
+<li><code><a title="tflite.EmbeddingLookupSparseOptions" href="EmbeddingLookupSparseOptions.html">tflite.EmbeddingLookupSparseOptions</a></code></li>
+<li><code><a title="tflite.EqualOptions" href="EqualOptions.html">tflite.EqualOptions</a></code></li>
+<li><code><a title="tflite.ExpOptions" href="ExpOptions.html">tflite.ExpOptions</a></code></li>
+<li><code><a title="tflite.ExpandDimsOptions" href="ExpandDimsOptions.html">tflite.ExpandDimsOptions</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions" href="FakeQuantOptions.html">tflite.FakeQuantOptions</a></code></li>
+<li><code><a title="tflite.FillOptions" href="FillOptions.html">tflite.FillOptions</a></code></li>
+<li><code><a title="tflite.FloorDivOptions" href="FloorDivOptions.html">tflite.FloorDivOptions</a></code></li>
+<li><code><a title="tflite.FloorModOptions" href="FloorModOptions.html">tflite.FloorModOptions</a></code></li>
+<li><code><a title="tflite.FullyConnectedOptions" href="FullyConnectedOptions.html">tflite.FullyConnectedOptions</a></code></li>
+<li><code><a title="tflite.FullyConnectedOptionsWeightsFormat" href="FullyConnectedOptionsWeightsFormat.html">tflite.FullyConnectedOptionsWeightsFormat</a></code></li>
+<li><code><a title="tflite.GatherNdOptions" href="GatherNdOptions.html">tflite.GatherNdOptions</a></code></li>
+<li><code><a title="tflite.GatherOptions" href="GatherOptions.html">tflite.GatherOptions</a></code></li>
+<li><code><a title="tflite.GreaterEqualOptions" href="GreaterEqualOptions.html">tflite.GreaterEqualOptions</a></code></li>
+<li><code><a title="tflite.GreaterOptions" href="GreaterOptions.html">tflite.GreaterOptions</a></code></li>
+<li><code><a title="tflite.HardSwishOptions" href="HardSwishOptions.html">tflite.HardSwishOptions</a></code></li>
+<li><code><a title="tflite.IfOptions" href="IfOptions.html">tflite.IfOptions</a></code></li>
+<li><code><a title="tflite.Int32Vector" href="Int32Vector.html">tflite.Int32Vector</a></code></li>
+<li><code><a title="tflite.L2NormOptions" href="L2NormOptions.html">tflite.L2NormOptions</a></code></li>
+<li><code><a title="tflite.LSHProjectionOptions" href="LSHProjectionOptions.html">tflite.LSHProjectionOptions</a></code></li>
+<li><code><a title="tflite.LSHProjectionType" href="LSHProjectionType.html">tflite.LSHProjectionType</a></code></li>
+<li><code><a title="tflite.LSTMKernelType" href="LSTMKernelType.html">tflite.LSTMKernelType</a></code></li>
+<li><code><a title="tflite.LSTMOptions" href="LSTMOptions.html">tflite.LSTMOptions</a></code></li>
+<li><code><a title="tflite.LeakyReluOptions" href="LeakyReluOptions.html">tflite.LeakyReluOptions</a></code></li>
+<li><code><a title="tflite.LessEqualOptions" href="LessEqualOptions.html">tflite.LessEqualOptions</a></code></li>
+<li><code><a title="tflite.LessOptions" href="LessOptions.html">tflite.LessOptions</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions" href="LocalResponseNormalizationOptions.html">tflite.LocalResponseNormalizationOptions</a></code></li>
+<li><code><a title="tflite.LogSoftmaxOptions" href="LogSoftmaxOptions.html">tflite.LogSoftmaxOptions</a></code></li>
+<li><code><a title="tflite.LogicalAndOptions" href="LogicalAndOptions.html">tflite.LogicalAndOptions</a></code></li>
+<li><code><a title="tflite.LogicalNotOptions" href="LogicalNotOptions.html">tflite.LogicalNotOptions</a></code></li>
+<li><code><a title="tflite.LogicalOrOptions" href="LogicalOrOptions.html">tflite.LogicalOrOptions</a></code></li>
+<li><code><a title="tflite.MatrixDiagOptions" href="MatrixDiagOptions.html">tflite.MatrixDiagOptions</a></code></li>
+<li><code><a title="tflite.MatrixSetDiagOptions" href="MatrixSetDiagOptions.html">tflite.MatrixSetDiagOptions</a></code></li>
+<li><code><a title="tflite.MaximumMinimumOptions" href="MaximumMinimumOptions.html">tflite.MaximumMinimumOptions</a></code></li>
+<li><code><a title="tflite.Metadata" href="Metadata.html">tflite.Metadata</a></code></li>
+<li><code><a title="tflite.MirrorPadMode" href="MirrorPadMode.html">tflite.MirrorPadMode</a></code></li>
+<li><code><a title="tflite.MirrorPadOptions" href="MirrorPadOptions.html">tflite.MirrorPadOptions</a></code></li>
+<li><code><a title="tflite.Model" href="Model.html">tflite.Model</a></code></li>
+<li><code><a title="tflite.MulOptions" href="MulOptions.html">tflite.MulOptions</a></code></li>
+<li><code><a title="tflite.NegOptions" href="NegOptions.html">tflite.NegOptions</a></code></li>
+<li><code><a title="tflite.NonMaxSuppressionV4Options" href="NonMaxSuppressionV4Options.html">tflite.NonMaxSuppressionV4Options</a></code></li>
+<li><code><a title="tflite.NonMaxSuppressionV5Options" href="NonMaxSuppressionV5Options.html">tflite.NonMaxSuppressionV5Options</a></code></li>
+<li><code><a title="tflite.NotEqualOptions" href="NotEqualOptions.html">tflite.NotEqualOptions</a></code></li>
+<li><code><a title="tflite.OneHotOptions" href="OneHotOptions.html">tflite.OneHotOptions</a></code></li>
+<li><code><a title="tflite.Operator" href="Operator.html">tflite.Operator</a></code></li>
+<li><code><a title="tflite.OperatorCode" href="OperatorCode.html">tflite.OperatorCode</a></code></li>
+<li><code><a title="tflite.PackOptions" href="PackOptions.html">tflite.PackOptions</a></code></li>
+<li><code><a title="tflite.PadOptions" href="PadOptions.html">tflite.PadOptions</a></code></li>
+<li><code><a title="tflite.PadV2Options" href="PadV2Options.html">tflite.PadV2Options</a></code></li>
+<li><code><a title="tflite.Padding" href="Padding.html">tflite.Padding</a></code></li>
+<li><code><a title="tflite.Pool2DOptions" href="Pool2DOptions.html">tflite.Pool2DOptions</a></code></li>
+<li><code><a title="tflite.PowOptions" href="PowOptions.html">tflite.PowOptions</a></code></li>
+<li><code><a title="tflite.QuantizationDetails" href="QuantizationDetails.html">tflite.QuantizationDetails</a></code></li>
+<li><code><a title="tflite.QuantizationParameters" href="QuantizationParameters.html">tflite.QuantizationParameters</a></code></li>
+<li><code><a title="tflite.QuantizeOptions" href="QuantizeOptions.html">tflite.QuantizeOptions</a></code></li>
+<li><code><a title="tflite.RNNOptions" href="RNNOptions.html">tflite.RNNOptions</a></code></li>
+<li><code><a title="tflite.RangeOptions" href="RangeOptions.html">tflite.RangeOptions</a></code></li>
+<li><code><a title="tflite.RankOptions" href="RankOptions.html">tflite.RankOptions</a></code></li>
+<li><code><a title="tflite.ReducerOptions" href="ReducerOptions.html">tflite.ReducerOptions</a></code></li>
+<li><code><a title="tflite.ReshapeOptions" href="ReshapeOptions.html">tflite.ReshapeOptions</a></code></li>
+<li><code><a title="tflite.ResizeBilinearOptions" href="ResizeBilinearOptions.html">tflite.ResizeBilinearOptions</a></code></li>
+<li><code><a title="tflite.ResizeNearestNeighborOptions" href="ResizeNearestNeighborOptions.html">tflite.ResizeNearestNeighborOptions</a></code></li>
+<li><code><a title="tflite.ReverseSequenceOptions" href="ReverseSequenceOptions.html">tflite.ReverseSequenceOptions</a></code></li>
+<li><code><a title="tflite.ReverseV2Options" href="ReverseV2Options.html">tflite.ReverseV2Options</a></code></li>
+<li><code><a title="tflite.SVDFOptions" href="SVDFOptions.html">tflite.SVDFOptions</a></code></li>
+<li><code><a title="tflite.ScatterNdOptions" href="ScatterNdOptions.html">tflite.ScatterNdOptions</a></code></li>
+<li><code><a title="tflite.SegmentSumOptions" href="SegmentSumOptions.html">tflite.SegmentSumOptions</a></code></li>
+<li><code><a title="tflite.SelectOptions" href="SelectOptions.html">tflite.SelectOptions</a></code></li>
+<li><code><a title="tflite.SelectV2Options" href="SelectV2Options.html">tflite.SelectV2Options</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions" href="SequenceRNNOptions.html">tflite.SequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.ShapeOptions" href="ShapeOptions.html">tflite.ShapeOptions</a></code></li>
+<li><code><a title="tflite.SignatureDef" href="SignatureDef.html">tflite.SignatureDef</a></code></li>
+<li><code><a title="tflite.SkipGramOptions" href="SkipGramOptions.html">tflite.SkipGramOptions</a></code></li>
+<li><code><a title="tflite.SliceOptions" href="SliceOptions.html">tflite.SliceOptions</a></code></li>
+<li><code><a title="tflite.SoftmaxOptions" href="SoftmaxOptions.html">tflite.SoftmaxOptions</a></code></li>
+<li><code><a title="tflite.SpaceToBatchNDOptions" href="SpaceToBatchNDOptions.html">tflite.SpaceToBatchNDOptions</a></code></li>
+<li><code><a title="tflite.SpaceToDepthOptions" href="SpaceToDepthOptions.html">tflite.SpaceToDepthOptions</a></code></li>
+<li><code><a title="tflite.SparseIndexVector" href="SparseIndexVector.html">tflite.SparseIndexVector</a></code></li>
+<li><code><a title="tflite.SparseToDenseOptions" href="SparseToDenseOptions.html">tflite.SparseToDenseOptions</a></code></li>
+<li><code><a title="tflite.SparsityParameters" href="SparsityParameters.html">tflite.SparsityParameters</a></code></li>
+<li><code><a title="tflite.SplitOptions" href="SplitOptions.html">tflite.SplitOptions</a></code></li>
+<li><code><a title="tflite.SplitVOptions" href="SplitVOptions.html">tflite.SplitVOptions</a></code></li>
+<li><code><a title="tflite.SquareOptions" href="SquareOptions.html">tflite.SquareOptions</a></code></li>
+<li><code><a title="tflite.SquaredDifferenceOptions" href="SquaredDifferenceOptions.html">tflite.SquaredDifferenceOptions</a></code></li>
+<li><code><a title="tflite.SqueezeOptions" href="SqueezeOptions.html">tflite.SqueezeOptions</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions" href="StridedSliceOptions.html">tflite.StridedSliceOptions</a></code></li>
+<li><code><a title="tflite.SubGraph" href="SubGraph.html">tflite.SubGraph</a></code></li>
+<li><code><a title="tflite.SubOptions" href="SubOptions.html">tflite.SubOptions</a></code></li>
+<li><code><a title="tflite.Tensor" href="Tensor.html">tflite.Tensor</a></code></li>
+<li><code><a title="tflite.TensorMap" href="TensorMap.html">tflite.TensorMap</a></code></li>
+<li><code><a title="tflite.TensorType" href="TensorType.html">tflite.TensorType</a></code></li>
+<li><code><a title="tflite.TileOptions" href="TileOptions.html">tflite.TileOptions</a></code></li>
+<li><code><a title="tflite.TopKV2Options" href="TopKV2Options.html">tflite.TopKV2Options</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions" href="TransposeConvOptions.html">tflite.TransposeConvOptions</a></code></li>
+<li><code><a title="tflite.TransposeOptions" href="TransposeOptions.html">tflite.TransposeOptions</a></code></li>
+<li><code><a title="tflite.Uint16Vector" href="Uint16Vector.html">tflite.Uint16Vector</a></code></li>
+<li><code><a title="tflite.Uint8Vector" href="Uint8Vector.html">tflite.Uint8Vector</a></code></li>
+<li><code><a title="tflite.UnidirectionalSequenceLSTMOptions" href="UnidirectionalSequenceLSTMOptions.html">tflite.UnidirectionalSequenceLSTMOptions</a></code></li>
+<li><code><a title="tflite.UniqueOptions" href="UniqueOptions.html">tflite.UniqueOptions</a></code></li>
+<li><code><a title="tflite.UnpackOptions" href="UnpackOptions.html">tflite.UnpackOptions</a></code></li>
+<li><code><a title="tflite.WhereOptions" href="WhereOptions.html">tflite.WhereOptions</a></code></li>
+<li><code><a title="tflite.WhileOptions" href="WhileOptions.html">tflite.WhileOptions</a></code></li>
+<li><code><a title="tflite.ZerosLikeOptions" href="ZerosLikeOptions.html">tflite.ZerosLikeOptions</a></code></li>
+<li><code><a title="tflite.utils" href="utils.html">tflite.utils</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
 </body>
 </html>

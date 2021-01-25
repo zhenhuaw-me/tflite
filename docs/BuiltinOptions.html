@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>tflite.BuiltinOptions API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.BuiltinOptions</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># automatically generated by the FlatBuffers compiler, do not modify
+
+# namespace: tflite
+
+class BuiltinOptions(object):
+    NONE = 0
+    Conv2DOptions = 1
+    DepthwiseConv2DOptions = 2
+    ConcatEmbeddingsOptions = 3
+    LSHProjectionOptions = 4
+    Pool2DOptions = 5
+    SVDFOptions = 6
+    RNNOptions = 7
+    FullyConnectedOptions = 8
+    SoftmaxOptions = 9
+    ConcatenationOptions = 10
+    AddOptions = 11
+    L2NormOptions = 12
+    LocalResponseNormalizationOptions = 13
+    LSTMOptions = 14
+    ResizeBilinearOptions = 15
+    CallOptions = 16
+    ReshapeOptions = 17
+    SkipGramOptions = 18
+    SpaceToDepthOptions = 19
+    EmbeddingLookupSparseOptions = 20
+    MulOptions = 21
+    PadOptions = 22
+    GatherOptions = 23
+    BatchToSpaceNDOptions = 24
+    SpaceToBatchNDOptions = 25
+    TransposeOptions = 26
+    ReducerOptions = 27
+    SubOptions = 28
+    DivOptions = 29
+    SqueezeOptions = 30
+    SequenceRNNOptions = 31
+    StridedSliceOptions = 32
+    ExpOptions = 33
+    TopKV2Options = 34
+    SplitOptions = 35
+    LogSoftmaxOptions = 36
+    CastOptions = 37
+    DequantizeOptions = 38
+    MaximumMinimumOptions = 39
+    ArgMaxOptions = 40
+    LessOptions = 41
+    NegOptions = 42
+    PadV2Options = 43
+    GreaterOptions = 44
+    GreaterEqualOptions = 45
+    LessEqualOptions = 46
+    SelectOptions = 47
+    SliceOptions = 48
+    TransposeConvOptions = 49
+    SparseToDenseOptions = 50
+    TileOptions = 51
+    ExpandDimsOptions = 52
+    EqualOptions = 53
+    NotEqualOptions = 54
+    ShapeOptions = 55
+    PowOptions = 56
+    ArgMinOptions = 57
+    FakeQuantOptions = 58
+    PackOptions = 59
+    LogicalOrOptions = 60
+    OneHotOptions = 61
+    LogicalAndOptions = 62
+    LogicalNotOptions = 63
+    UnpackOptions = 64
+    FloorDivOptions = 65
+    SquareOptions = 66
+    ZerosLikeOptions = 67
+    FillOptions = 68
+    BidirectionalSequenceLSTMOptions = 69
+    BidirectionalSequenceRNNOptions = 70
+    UnidirectionalSequenceLSTMOptions = 71
+    FloorModOptions = 72
+    RangeOptions = 73
+    ResizeNearestNeighborOptions = 74
+    LeakyReluOptions = 75
+    SquaredDifferenceOptions = 76
+    MirrorPadOptions = 77
+    AbsOptions = 78
+    SplitVOptions = 79
+    UniqueOptions = 80
+    ReverseV2Options = 81
+    AddNOptions = 82
+    GatherNdOptions = 83
+    CosOptions = 84
+    WhereOptions = 85
+    RankOptions = 86
+    ReverseSequenceOptions = 87
+    MatrixDiagOptions = 88
+    QuantizeOptions = 89
+    MatrixSetDiagOptions = 90
+    HardSwishOptions = 91
+    IfOptions = 92
+    WhileOptions = 93
+    DepthToSpaceOptions = 94
+    NonMaxSuppressionV4Options = 95
+    NonMaxSuppressionV5Options = 96
+    ScatterNdOptions = 97
+    SelectV2Options = 98
+    DensifyOptions = 99
+    SegmentSumOptions = 100
+    BatchMatMulOptions = 101
+    CumsumOptions = 102</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.BuiltinOptions.BuiltinOptions"><code class="flex name class">
+<span>class <span class="ident">BuiltinOptions</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BuiltinOptions(object):
+    NONE = 0
+    Conv2DOptions = 1
+    DepthwiseConv2DOptions = 2
+    ConcatEmbeddingsOptions = 3
+    LSHProjectionOptions = 4
+    Pool2DOptions = 5
+    SVDFOptions = 6
+    RNNOptions = 7
+    FullyConnectedOptions = 8
+    SoftmaxOptions = 9
+    ConcatenationOptions = 10
+    AddOptions = 11
+    L2NormOptions = 12
+    LocalResponseNormalizationOptions = 13
+    LSTMOptions = 14
+    ResizeBilinearOptions = 15
+    CallOptions = 16
+    ReshapeOptions = 17
+    SkipGramOptions = 18
+    SpaceToDepthOptions = 19
+    EmbeddingLookupSparseOptions = 20
+    MulOptions = 21
+    PadOptions = 22
+    GatherOptions = 23
+    BatchToSpaceNDOptions = 24
+    SpaceToBatchNDOptions = 25
+    TransposeOptions = 26
+    ReducerOptions = 27
+    SubOptions = 28
+    DivOptions = 29
+    SqueezeOptions = 30
+    SequenceRNNOptions = 31
+    StridedSliceOptions = 32
+    ExpOptions = 33
+    TopKV2Options = 34
+    SplitOptions = 35
+    LogSoftmaxOptions = 36
+    CastOptions = 37
+    DequantizeOptions = 38
+    MaximumMinimumOptions = 39
+    ArgMaxOptions = 40
+    LessOptions = 41
+    NegOptions = 42
+    PadV2Options = 43
+    GreaterOptions = 44
+    GreaterEqualOptions = 45
+    LessEqualOptions = 46
+    SelectOptions = 47
+    SliceOptions = 48
+    TransposeConvOptions = 49
+    SparseToDenseOptions = 50
+    TileOptions = 51
+    ExpandDimsOptions = 52
+    EqualOptions = 53
+    NotEqualOptions = 54
+    ShapeOptions = 55
+    PowOptions = 56
+    ArgMinOptions = 57
+    FakeQuantOptions = 58
+    PackOptions = 59
+    LogicalOrOptions = 60
+    OneHotOptions = 61
+    LogicalAndOptions = 62
+    LogicalNotOptions = 63
+    UnpackOptions = 64
+    FloorDivOptions = 65
+    SquareOptions = 66
+    ZerosLikeOptions = 67
+    FillOptions = 68
+    BidirectionalSequenceLSTMOptions = 69
+    BidirectionalSequenceRNNOptions = 70
+    UnidirectionalSequenceLSTMOptions = 71
+    FloorModOptions = 72
+    RangeOptions = 73
+    ResizeNearestNeighborOptions = 74
+    LeakyReluOptions = 75
+    SquaredDifferenceOptions = 76
+    MirrorPadOptions = 77
+    AbsOptions = 78
+    SplitVOptions = 79
+    UniqueOptions = 80
+    ReverseV2Options = 81
+    AddNOptions = 82
+    GatherNdOptions = 83
+    CosOptions = 84
+    WhereOptions = 85
+    RankOptions = 86
+    ReverseSequenceOptions = 87
+    MatrixDiagOptions = 88
+    QuantizeOptions = 89
+    MatrixSetDiagOptions = 90
+    HardSwishOptions = 91
+    IfOptions = 92
+    WhileOptions = 93
+    DepthToSpaceOptions = 94
+    NonMaxSuppressionV4Options = 95
+    NonMaxSuppressionV5Options = 96
+    ScatterNdOptions = 97
+    SelectV2Options = 98
+    DensifyOptions = 99
+    SegmentSumOptions = 100
+    BatchMatMulOptions = 101
+    CumsumOptions = 102</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.AbsOptions"><code class="name">var <span class="ident">AbsOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.AddNOptions"><code class="name">var <span class="ident">AddNOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.AddOptions"><code class="name">var <span class="ident">AddOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ArgMaxOptions"><code class="name">var <span class="ident">ArgMaxOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ArgMinOptions"><code class="name">var <span class="ident">ArgMinOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BatchMatMulOptions"><code class="name">var <span class="ident">BatchMatMulOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions"><code class="name">var <span class="ident">BatchToSpaceNDOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions"><code class="name">var <span class="ident">BidirectionalSequenceLSTMOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions"><code class="name">var <span class="ident">BidirectionalSequenceRNNOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.CallOptions"><code class="name">var <span class="ident">CallOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.CastOptions"><code class="name">var <span class="ident">CastOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ConcatEmbeddingsOptions"><code class="name">var <span class="ident">ConcatEmbeddingsOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ConcatenationOptions"><code class="name">var <span class="ident">ConcatenationOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.Conv2DOptions"><code class="name">var <span class="ident">Conv2DOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.CosOptions"><code class="name">var <span class="ident">CosOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.CumsumOptions"><code class="name">var <span class="ident">CumsumOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.DensifyOptions"><code class="name">var <span class="ident">DensifyOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.DepthToSpaceOptions"><code class="name">var <span class="ident">DepthToSpaceOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.DepthwiseConv2DOptions"><code class="name">var <span class="ident">DepthwiseConv2DOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.DequantizeOptions"><code class="name">var <span class="ident">DequantizeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.DivOptions"><code class="name">var <span class="ident">DivOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.EmbeddingLookupSparseOptions"><code class="name">var <span class="ident">EmbeddingLookupSparseOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.EqualOptions"><code class="name">var <span class="ident">EqualOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ExpOptions"><code class="name">var <span class="ident">ExpOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ExpandDimsOptions"><code class="name">var <span class="ident">ExpandDimsOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.FakeQuantOptions"><code class="name">var <span class="ident">FakeQuantOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.FillOptions"><code class="name">var <span class="ident">FillOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.FloorDivOptions"><code class="name">var <span class="ident">FloorDivOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.FloorModOptions"><code class="name">var <span class="ident">FloorModOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.FullyConnectedOptions"><code class="name">var <span class="ident">FullyConnectedOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.GatherNdOptions"><code class="name">var <span class="ident">GatherNdOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.GatherOptions"><code class="name">var <span class="ident">GatherOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.GreaterEqualOptions"><code class="name">var <span class="ident">GreaterEqualOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.GreaterOptions"><code class="name">var <span class="ident">GreaterOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.HardSwishOptions"><code class="name">var <span class="ident">HardSwishOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.IfOptions"><code class="name">var <span class="ident">IfOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.L2NormOptions"><code class="name">var <span class="ident">L2NormOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LSHProjectionOptions"><code class="name">var <span class="ident">LSHProjectionOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LSTMOptions"><code class="name">var <span class="ident">LSTMOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LeakyReluOptions"><code class="name">var <span class="ident">LeakyReluOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LessEqualOptions"><code class="name">var <span class="ident">LessEqualOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LessOptions"><code class="name">var <span class="ident">LessOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LocalResponseNormalizationOptions"><code class="name">var <span class="ident">LocalResponseNormalizationOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LogSoftmaxOptions"><code class="name">var <span class="ident">LogSoftmaxOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LogicalAndOptions"><code class="name">var <span class="ident">LogicalAndOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LogicalNotOptions"><code class="name">var <span class="ident">LogicalNotOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.LogicalOrOptions"><code class="name">var <span class="ident">LogicalOrOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.MatrixDiagOptions"><code class="name">var <span class="ident">MatrixDiagOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.MatrixSetDiagOptions"><code class="name">var <span class="ident">MatrixSetDiagOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.MaximumMinimumOptions"><code class="name">var <span class="ident">MaximumMinimumOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.MirrorPadOptions"><code class="name">var <span class="ident">MirrorPadOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.MulOptions"><code class="name">var <span class="ident">MulOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.NONE"><code class="name">var <span class="ident">NONE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.NegOptions"><code class="name">var <span class="ident">NegOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.NonMaxSuppressionV4Options"><code class="name">var <span class="ident">NonMaxSuppressionV4Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.NonMaxSuppressionV5Options"><code class="name">var <span class="ident">NonMaxSuppressionV5Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.NotEqualOptions"><code class="name">var <span class="ident">NotEqualOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.OneHotOptions"><code class="name">var <span class="ident">OneHotOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.PackOptions"><code class="name">var <span class="ident">PackOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.PadOptions"><code class="name">var <span class="ident">PadOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.PadV2Options"><code class="name">var <span class="ident">PadV2Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.Pool2DOptions"><code class="name">var <span class="ident">Pool2DOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.PowOptions"><code class="name">var <span class="ident">PowOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.QuantizeOptions"><code class="name">var <span class="ident">QuantizeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.RNNOptions"><code class="name">var <span class="ident">RNNOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.RangeOptions"><code class="name">var <span class="ident">RangeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.RankOptions"><code class="name">var <span class="ident">RankOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ReducerOptions"><code class="name">var <span class="ident">ReducerOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ReshapeOptions"><code class="name">var <span class="ident">ReshapeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ResizeBilinearOptions"><code class="name">var <span class="ident">ResizeBilinearOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ResizeNearestNeighborOptions"><code class="name">var <span class="ident">ResizeNearestNeighborOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions"><code class="name">var <span class="ident">ReverseSequenceOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options"><code class="name">var <span class="ident">ReverseV2Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SVDFOptions"><code class="name">var <span class="ident">SVDFOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions"><code class="name">var <span class="ident">ScatterNdOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions"><code class="name">var <span class="ident">SegmentSumOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SelectOptions"><code class="name">var <span class="ident">SelectOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SelectV2Options"><code class="name">var <span class="ident">SelectV2Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SequenceRNNOptions"><code class="name">var <span class="ident">SequenceRNNOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ShapeOptions"><code class="name">var <span class="ident">ShapeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SkipGramOptions"><code class="name">var <span class="ident">SkipGramOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SliceOptions"><code class="name">var <span class="ident">SliceOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SoftmaxOptions"><code class="name">var <span class="ident">SoftmaxOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SpaceToBatchNDOptions"><code class="name">var <span class="ident">SpaceToBatchNDOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SpaceToDepthOptions"><code class="name">var <span class="ident">SpaceToDepthOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SparseToDenseOptions"><code class="name">var <span class="ident">SparseToDenseOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SplitOptions"><code class="name">var <span class="ident">SplitOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SplitVOptions"><code class="name">var <span class="ident">SplitVOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SquareOptions"><code class="name">var <span class="ident">SquareOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SquaredDifferenceOptions"><code class="name">var <span class="ident">SquaredDifferenceOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SqueezeOptions"><code class="name">var <span class="ident">SqueezeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.StridedSliceOptions"><code class="name">var <span class="ident">StridedSliceOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SubOptions"><code class="name">var <span class="ident">SubOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.TileOptions"><code class="name">var <span class="ident">TileOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.TopKV2Options"><code class="name">var <span class="ident">TopKV2Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.TransposeConvOptions"><code class="name">var <span class="ident">TransposeConvOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.TransposeOptions"><code class="name">var <span class="ident">TransposeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UnidirectionalSequenceLSTMOptions"><code class="name">var <span class="ident">UnidirectionalSequenceLSTMOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UniqueOptions"><code class="name">var <span class="ident">UniqueOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UnpackOptions"><code class="name">var <span class="ident">UnpackOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.WhereOptions"><code class="name">var <span class="ident">WhereOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.WhileOptions"><code class="name">var <span class="ident">WhileOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ZerosLikeOptions"><code class="name">var <span class="ident">ZerosLikeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.BuiltinOptions.BuiltinOptions" href="#tflite.BuiltinOptions.BuiltinOptions">BuiltinOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AbsOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AbsOptions">AbsOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AddNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AddNOptions">AddNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AddOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AddOptions">AddOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ArgMaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ArgMaxOptions">ArgMaxOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ArgMinOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ArgMinOptions">ArgMinOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BatchMatMulOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BatchMatMulOptions">BatchMatMulOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions">BatchToSpaceNDOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions">BidirectionalSequenceLSTMOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions">BidirectionalSequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CallOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CallOptions">CallOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CastOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CastOptions">CastOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ConcatEmbeddingsOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ConcatEmbeddingsOptions">ConcatEmbeddingsOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ConcatenationOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ConcatenationOptions">ConcatenationOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.Conv2DOptions" href="#tflite.BuiltinOptions.BuiltinOptions.Conv2DOptions">Conv2DOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CosOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CosOptions">CosOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CumsumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CumsumOptions">CumsumOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DensifyOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DensifyOptions">DensifyOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DepthToSpaceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DepthToSpaceOptions">DepthToSpaceOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DepthwiseConv2DOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DepthwiseConv2DOptions">DepthwiseConv2DOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DequantizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DequantizeOptions">DequantizeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DivOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DivOptions">DivOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.EmbeddingLookupSparseOptions" href="#tflite.BuiltinOptions.BuiltinOptions.EmbeddingLookupSparseOptions">EmbeddingLookupSparseOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.EqualOptions" href="#tflite.BuiltinOptions.BuiltinOptions.EqualOptions">EqualOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ExpOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ExpOptions">ExpOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ExpandDimsOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ExpandDimsOptions">ExpandDimsOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.FakeQuantOptions" href="#tflite.BuiltinOptions.BuiltinOptions.FakeQuantOptions">FakeQuantOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.FillOptions" href="#tflite.BuiltinOptions.BuiltinOptions.FillOptions">FillOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.FloorDivOptions" href="#tflite.BuiltinOptions.BuiltinOptions.FloorDivOptions">FloorDivOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.FloorModOptions" href="#tflite.BuiltinOptions.BuiltinOptions.FloorModOptions">FloorModOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.FullyConnectedOptions" href="#tflite.BuiltinOptions.BuiltinOptions.FullyConnectedOptions">FullyConnectedOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GatherNdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GatherNdOptions">GatherNdOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GatherOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GatherOptions">GatherOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GreaterEqualOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GreaterEqualOptions">GreaterEqualOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GreaterOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GreaterOptions">GreaterOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.HardSwishOptions" href="#tflite.BuiltinOptions.BuiltinOptions.HardSwishOptions">HardSwishOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.IfOptions" href="#tflite.BuiltinOptions.BuiltinOptions.IfOptions">IfOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.L2NormOptions" href="#tflite.BuiltinOptions.BuiltinOptions.L2NormOptions">L2NormOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LSHProjectionOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LSHProjectionOptions">LSHProjectionOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LSTMOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LSTMOptions">LSTMOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LeakyReluOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LeakyReluOptions">LeakyReluOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LessEqualOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LessEqualOptions">LessEqualOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LessOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LessOptions">LessOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LocalResponseNormalizationOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LocalResponseNormalizationOptions">LocalResponseNormalizationOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LogSoftmaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LogSoftmaxOptions">LogSoftmaxOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LogicalAndOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LogicalAndOptions">LogicalAndOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LogicalNotOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LogicalNotOptions">LogicalNotOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LogicalOrOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LogicalOrOptions">LogicalOrOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.MatrixDiagOptions" href="#tflite.BuiltinOptions.BuiltinOptions.MatrixDiagOptions">MatrixDiagOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.MatrixSetDiagOptions" href="#tflite.BuiltinOptions.BuiltinOptions.MatrixSetDiagOptions">MatrixSetDiagOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.MaximumMinimumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.MaximumMinimumOptions">MaximumMinimumOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.MirrorPadOptions" href="#tflite.BuiltinOptions.BuiltinOptions.MirrorPadOptions">MirrorPadOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.MulOptions" href="#tflite.BuiltinOptions.BuiltinOptions.MulOptions">MulOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.NONE" href="#tflite.BuiltinOptions.BuiltinOptions.NONE">NONE</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.NegOptions" href="#tflite.BuiltinOptions.BuiltinOptions.NegOptions">NegOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.NonMaxSuppressionV4Options" href="#tflite.BuiltinOptions.BuiltinOptions.NonMaxSuppressionV4Options">NonMaxSuppressionV4Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.NonMaxSuppressionV5Options" href="#tflite.BuiltinOptions.BuiltinOptions.NonMaxSuppressionV5Options">NonMaxSuppressionV5Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.NotEqualOptions" href="#tflite.BuiltinOptions.BuiltinOptions.NotEqualOptions">NotEqualOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.OneHotOptions" href="#tflite.BuiltinOptions.BuiltinOptions.OneHotOptions">OneHotOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.PackOptions" href="#tflite.BuiltinOptions.BuiltinOptions.PackOptions">PackOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.PadOptions" href="#tflite.BuiltinOptions.BuiltinOptions.PadOptions">PadOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.PadV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.PadV2Options">PadV2Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.Pool2DOptions" href="#tflite.BuiltinOptions.BuiltinOptions.Pool2DOptions">Pool2DOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.PowOptions" href="#tflite.BuiltinOptions.BuiltinOptions.PowOptions">PowOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.QuantizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.QuantizeOptions">QuantizeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RNNOptions">RNNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RangeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RangeOptions">RangeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RankOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RankOptions">RankOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReducerOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReducerOptions">ReducerOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReshapeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReshapeOptions">ReshapeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ResizeBilinearOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ResizeBilinearOptions">ResizeBilinearOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ResizeNearestNeighborOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ResizeNearestNeighborOptions">ResizeNearestNeighborOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions">ReverseSequenceOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options">ReverseV2Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SVDFOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SVDFOptions">SVDFOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions">ScatterNdOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions">SegmentSumOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SelectOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SelectOptions">SelectOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SelectV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.SelectV2Options">SelectV2Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SequenceRNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SequenceRNNOptions">SequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ShapeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ShapeOptions">ShapeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SkipGramOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SkipGramOptions">SkipGramOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SliceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SliceOptions">SliceOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SoftmaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SoftmaxOptions">SoftmaxOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SpaceToBatchNDOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SpaceToBatchNDOptions">SpaceToBatchNDOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SpaceToDepthOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SpaceToDepthOptions">SpaceToDepthOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SparseToDenseOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SparseToDenseOptions">SparseToDenseOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SplitOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SplitOptions">SplitOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SplitVOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SplitVOptions">SplitVOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SquareOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SquareOptions">SquareOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SquaredDifferenceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SquaredDifferenceOptions">SquaredDifferenceOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SqueezeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SqueezeOptions">SqueezeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.StridedSliceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.StridedSliceOptions">StridedSliceOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SubOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SubOptions">SubOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.TileOptions" href="#tflite.BuiltinOptions.BuiltinOptions.TileOptions">TileOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.TopKV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.TopKV2Options">TopKV2Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.TransposeConvOptions" href="#tflite.BuiltinOptions.BuiltinOptions.TransposeConvOptions">TransposeConvOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.TransposeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.TransposeOptions">TransposeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnidirectionalSequenceLSTMOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnidirectionalSequenceLSTMOptions">UnidirectionalSequenceLSTMOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UniqueOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UniqueOptions">UniqueOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnpackOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnpackOptions">UnpackOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.WhereOptions" href="#tflite.BuiltinOptions.BuiltinOptions.WhereOptions">WhereOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.WhileOptions" href="#tflite.BuiltinOptions.BuiltinOptions.WhileOptions">WhileOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ZerosLikeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ZerosLikeOptions">ZerosLikeOptions</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
