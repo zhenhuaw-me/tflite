@@ -134,5 +134,7 @@ BUILTIN_OPCODE2NAME = {
     124: 'DENSIFY',
     125: 'SEGMENT_SUM',
     126: 'BATCH_MATMUL',
+    127: 'PLACEHOLDER_FOR_GREATER_OP_CODES',
+    128: 'CUMSUM',
 }
 ########################## ABOVE ARE AUTO-GENERATED ##########################
