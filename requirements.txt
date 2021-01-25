@@ -1,8 +1,7 @@
+build
 GitPython
 flatbuffers
 numpy
 pdoc
 pytest
-setuptools
 twine
-wheel

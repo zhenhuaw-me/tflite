@@ -1,5 +1,9 @@
 # import classes and functions of submodules
 
+__version__ = '2.3.0'
+
+
+
 ########################## BELOW ARE AUTO-GENERATED ##########################
 from tflite.AbsOptions import *
 from tflite.ActivationFunctionType import *
