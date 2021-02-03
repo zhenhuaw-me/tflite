@@ -8,44 +8,32 @@ This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite
 
 ## Usage
 
-### Installation
+Install the package and use it like what you build from the TensorFlow codebase.
+It's recommended to install the version that same as the TensorFlow that generates the TFLite model.
 
 ```sh
-pip install tensorflow==1.14.0
-pip install tflite==1.14.0.post1
+pip install tensorflow==2.3.0
+pip install tflite==2.3.0
 ```
 
-It would be better if use a correct version regarding tensorflow, where the mapping is as below.
-Since `2.0.1`, the `.post[?]` suffix is not needed, such that we can keep this version map simple.
-If you notice that some version is missing, please consider [contribute it](#contributing-updates)! :)
 
-| TensorFlow package version   | tflite package version |
-|------------------------------|------------------------|
-|      1.14.0                  |      1.14.0.post1      |
-|      1.15.0                  |      1.15.0.post1      |
-|      1.15.2                  |      1.15.2            |
-|      2.0.0                   |      2.0.0.post2       |
-|      2.0.1                   |      2.0.1             |
-|      2.1.0                   |      2.1.0             |
+## Enhanced API
+
+The generated python package is friendly to use sometimes.
+We have introduce several enhancements:
+
+* **Easy import**: You don't need to import every classes and funtions in `tflite` ([example](tests/test_original_import.py)), but instead with a sigle `import tflite` ([example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py)).
+* **Builtin opcode helper**: The opcode is _encoded_ as digits which is hard to parse for human. Two APIs added to make it easy to use.
+  * [`tflite.opcode2name()`](https://github.com/jackwish/tflite/blob/master/tflite/utils.py#L1): get the type name of given opcode.
+  * [`tflite.BUILTIN_OPCODE2NAME`](https://github.com/jackwish/tflite/blob/master/tflite/utils.py#L9): a dict that maps the opcode to name of all the builtin operators.
 
 
-### Import the package
+## Compatibility Handling
 
-The package can be imported with *easy import* or *original import*, where the difference is how many `import` you write - no functionality divergence. For supported interfaces, please refer to [document page](https://jackwish.net/tflite/docs/).
+TensorFlow sometimes leaves compability hanlding of the TFLite model to the users.
+As these are API breaking change that can be easily fixed, we do this in the `tflite` package.
 
-**Easy Import (Recommanded)**
-
-*Easy import* enables parsing by one single `import tflite`. This is achieved by importing classes and functions of one submodules into top module [directly](tflite/__init__.py).
-
-[MobileNet parsing example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py) shows how to parse model with `import tflite` **ONLY ONCE**.
-
-**Original Import**
-
-You can use this package just like the newly FlatBuffers generated one ([example](tests/test_original_import.py)) to avoid any break of your legacy code.
-
-```python
-from tflite.Model import Model
-```
+* [`tflite.OperatorCode.BuiltinCode()](https://github.com/jackwish/tflite/blob/master/tflite/OperatorCode.py#L43): maintains API compability in `2.4.0`, see [this issue](https://github.com/tensorflow/tensorflow/issues/46663).
 
 
 ## Contributing Updates
