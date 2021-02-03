@@ -33,7 +33,7 @@ We have introduce several enhancements:
 TensorFlow sometimes leaves compability hanlding of the TFLite model to the users.
 As these are API breaking change that can be easily fixed, we do this in the `tflite` package.
 
-* [`tflite.OperatorCode.BuiltinCode()](https://github.com/jackwish/tflite/blob/master/tflite/OperatorCode.py#L43): maintains API compability in `2.4.0`, see [this issue](https://github.com/tensorflow/tensorflow/issues/46663).
+* [`tflite.OperatorCode.BuiltinCode()`](https://github.com/jackwish/tflite/blob/master/tflite/OperatorCode.py#L43): maintains API compability in `2.4.0`, see [this issue](https://github.com/tensorflow/tensorflow/issues/46663).
 
 
 ## Contributing Updates
