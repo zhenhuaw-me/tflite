@@ -22,7 +22,7 @@ pip install tflite==2.3.0
 The generated python package is not friendly to use sometimes.
 We have introduced several enhancements:
 
-* **Easy import**: A sigle `import tflite` ([example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py)) to replace importing every classes and funtions in `tflite` ([example](tests/test_original_import.py)).
+* **Easy import**: A single `import tflite` ([example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py)) to replace importing every classes and funtions in `tflite` ([example](tests/test_original_import.py)).
 * **Builtin opcode helper**: The opcode is _encoded_ as digits which is hard to parse for human. Two APIs added to make it easy to use.
   * [`tflite.opcode2name()`](https://github.com/jackwish/tflite/blob/master/tflite/utils.py#L1): get the type name of given opcode.
   * [`tflite.BUILTIN_OPCODE2NAME`](https://github.com/jackwish/tflite/blob/master/tflite/utils.py#L9): a dict that maps the opcode to name of all the builtin operators.
