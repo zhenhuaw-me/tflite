@@ -16,6 +16,9 @@ pip install tensorflow==2.3.0
 pip install tflite==2.3.0
 ```
 
+The raw API of `tflite` can be found in [this documentation](https://jackwish.net/tflite/docs/).
+The [MobileNet test](tests/test_mobilenet.py) can serve as a usage example of parsing models.
+
 
 ## Enhancements
 
