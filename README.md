@@ -1,9 +1,9 @@
 Easily Parse TFLite Models with Python
 ======================================
 
-![Build and Test](https://github.com/jackwish/tflite/workflows/Build%20and%20Test/badge.svg)
+![Build and Test](https://github.com/zhenhuaw-me/tflite/workflows/Build%20and%20Test/badge.svg)
 
-This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite (TFLite) models (`*.tflite`), which are built by [TFLite converter](https://www.tensorflow.org/lite/convert). For background, please refer to [Introducing TFLite Parser Python Package](https://jackwish.net/2020/introducing-tflite-parser-package.html).
+This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite (TFLite) models (`*.tflite`), which are built by [TFLite converter](https://www.tensorflow.org/lite/convert). For background, please refer to [Introducing TFLite Parser Python Package](https://zhenhuaw.me/2020/introducing-tflite-parser-package.html).
 
 
 ## Usage
@@ -16,7 +16,7 @@ pip install tensorflow==2.3.0
 pip install tflite==2.3.0
 ```
 
-The raw API of `tflite` can be found in [this documentation](https://jackwish.net/tflite/docs/).
+The raw API of `tflite` can be found in [this documentation](https://zhenhuaw.me/tflite/docs/).
 The [MobileNet test](tests/test_mobilenet.py) can serve as a usage example of parsing models.
 
 
@@ -25,10 +25,10 @@ The [MobileNet test](tests/test_mobilenet.py) can serve as a usage example of pa
 The generated python package is not friendly to use sometimes.
 We have introduced several enhancements:
 
-* **Easy import**: A single `import tflite` ([example](https://github.com/jackwish/tflite/blob/master/tests/test_mobilenet.py)) to replace importing every classes and funtions in `tflite` ([example](tests/test_original_import.py)).
+* **Easy import**: A single `import tflite` ([example](https://github.com/zhenhuaw-me/tflite/blob/master/tests/test_mobilenet.py)) to replace importing every classes and funtions in `tflite` ([example](tests/test_original_import.py)).
 * **Builtin opcode helper**: The opcode is _encoded_ as digits which is hard to parse for human. Two APIs added to make it easy to use.
-  * [`tflite.opcode2name()`](https://github.com/jackwish/tflite/blob/master/tflite/utils.py#L1): get the type name of given opcode.
-  * [`tflite.BUILTIN_OPCODE2NAME`](https://github.com/jackwish/tflite/blob/master/tflite/utils.py#L9): a dict that maps the opcode to name of all the builtin operators.
+  * [`tflite.opcode2name()`](https://github.com/zhenhuaw-me/tflite/blob/master/tflite/utils.py#L1): get the type name of given opcode.
+  * [`tflite.BUILTIN_OPCODE2NAME`](https://github.com/zhenhuaw-me/tflite/blob/master/tflite/utils.py#L9): a dict that maps the opcode to name of all the builtin operators.
 
 
 ## Compatibility Handling
@@ -36,7 +36,7 @@ We have introduced several enhancements:
 TensorFlow sometimes leaves compability hanlding of the TFLite model to the users.
 As these are API breaking change that can be easily fixed, we do this in the `tflite` package.
 
-* [`tflite.OperatorCode.BuiltinCode()`](https://github.com/jackwish/tflite/blob/master/tflite/OperatorCode.py#L43): maintains API compability in `2.4.0`, see [this issue](https://github.com/tensorflow/tensorflow/issues/46663).
+* [`tflite.OperatorCode.BuiltinCode()`](https://github.com/zhenhuaw-me/tflite/blob/master/tflite/OperatorCode.py#L43): maintains API compability in `2.4.0`, see [this issue](https://github.com/tensorflow/tensorflow/issues/46663).
 
 
 ## Contributing Updates
@@ -59,8 +59,8 @@ As the operator definition may change across different TensorFlow versions, this
 ## Resources
 
 * [PyPI page](https://pypi.org/project/tflite/).
-* [GitHub page](https://github.com/jackwish/tflite).
-* [Module list](https://jackwish.net/tflite/docs).
+* [GitHub page](https://github.com/zhenhuaw-me/tflite).
+* [Module list](https://zhenhuaw.me/tflite/docs).
 * [TensorFlow Lite converter](https://www.tensorflow.org/lite/convert).
 
 
