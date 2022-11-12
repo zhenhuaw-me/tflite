@@ -3,7 +3,7 @@ Easily Parse TFLite Models with Python
 
 ![Build and Test](https://github.com/zhenhuaw-me/tflite/workflows/Build%20and%20Test/badge.svg)
 
-This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite (TFLite) models (`*.tflite`), which are built by [TFLite converter](https://www.tensorflow.org/lite/convert). For background, please refer to [Introducing TFLite Parser Python Package](https://zhenhuaw.me/2020/introducing-tflite-parser-package.html).
+This [`tflite` package](https://pypi.org/project/tflite/) parses TensorFlow Lite (TFLite) models (`*.tflite`), which are built by [TFLite converter](https://www.tensorflow.org/lite/convert). For background, please refer to [Introducing TFLite Parser Python Package](https://zhenhuaw.me/blog/2020/introducing-tflite-parser-package.html).
 
 
 ## Usage
