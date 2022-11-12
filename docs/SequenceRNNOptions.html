@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.SequenceRNNOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class SequenceRNNOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSequenceRNNOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SequenceRNNOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSequenceRNNOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SequenceRNNOptions
     def Init(self, buf, pos):
@@ -68,10 +78,20 @@ class SequenceRNNOptions(object):
         return False
 
 def SequenceRNNOptionsStart(builder): builder.StartObject(3)
+def Start(builder):
+    return SequenceRNNOptionsStart(builder)
 def SequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)
+def AddTimeMajor(builder, timeMajor):
+    return SequenceRNNOptionsAddTimeMajor(builder, timeMajor)
 def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
 def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
-def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+def SequenceRNNOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return SequenceRNNOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -81,6 +101,58 @@ def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.SequenceRNNOptions.AddAsymmetricQuantizeInputs"><code class="name flex">
+<span>def <span class="ident">AddAsymmetricQuantizeInputs</span></span>(<span>builder, asymmetricQuantizeInputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SequenceRNNOptions.AddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">AddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SequenceRNNOptions.AddTimeMajor"><code class="name flex">
+<span>def <span class="ident">AddTimeMajor</span></span>(<span>builder, timeMajor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddTimeMajor(builder, timeMajor):
+    return SequenceRNNOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SequenceRNNOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return SequenceRNNOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.SequenceRNNOptions.SequenceRNNOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
 <span>def <span class="ident">SequenceRNNOptionsAddAsymmetricQuantizeInputs</span></span>(<span>builder, asymmetricQuantizeInputs)</span>
 </code></dt>
@@ -141,6 +213,19 @@ def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def SequenceRNNOptionsStart(builder): builder.StartObject(3)</code></pre>
 </details>
 </dd>
+<dt id="tflite.SequenceRNNOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return SequenceRNNOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -159,11 +244,19 @@ def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSequenceRNNOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SequenceRNNOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSequenceRNNOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SequenceRNNOptions
     def Init(self, buf, pos):
@@ -192,8 +285,8 @@ def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAsSequenceRNNOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsSequenceRNNOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -202,11 +295,40 @@ def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsSequenceRNNOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = SequenceRNNOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAsSequenceRNNOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsSequenceRNNOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsSequenceRNNOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SequenceRNNOptions.SequenceRNNOptions.SequenceRNNOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">SequenceRNNOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def SequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -291,11 +413,16 @@ def GetRootAsSequenceRNNOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.SequenceRNNOptions.AddAsymmetricQuantizeInputs" href="#tflite.SequenceRNNOptions.AddAsymmetricQuantizeInputs">AddAsymmetricQuantizeInputs</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions.AddFusedActivationFunction" href="#tflite.SequenceRNNOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions.AddTimeMajor" href="#tflite.SequenceRNNOptions.AddTimeMajor">AddTimeMajor</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions.End" href="#tflite.SequenceRNNOptions.End">End</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptionsAddAsymmetricQuantizeInputs" href="#tflite.SequenceRNNOptions.SequenceRNNOptionsAddAsymmetricQuantizeInputs">SequenceRNNOptionsAddAsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptionsAddFusedActivationFunction" href="#tflite.SequenceRNNOptions.SequenceRNNOptionsAddFusedActivationFunction">SequenceRNNOptionsAddFusedActivationFunction</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptionsAddTimeMajor" href="#tflite.SequenceRNNOptions.SequenceRNNOptionsAddTimeMajor">SequenceRNNOptionsAddTimeMajor</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptionsEnd" href="#tflite.SequenceRNNOptions.SequenceRNNOptionsEnd">SequenceRNNOptionsEnd</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptionsStart" href="#tflite.SequenceRNNOptions.SequenceRNNOptionsStart">SequenceRNNOptionsStart</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions.Start" href="#tflite.SequenceRNNOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -305,8 +432,10 @@ def GetRootAsSequenceRNNOptions(cls, buf, offset):
 <ul class="">
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.AsymmetricQuantizeInputs" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.AsymmetricQuantizeInputs">AsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.FusedActivationFunction" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAs" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAsSequenceRNNOptions" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.GetRootAsSequenceRNNOptions">GetRootAsSequenceRNNOptions</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.Init" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.SequenceRNNOptionsBufferHasIdentifier" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.SequenceRNNOptionsBufferHasIdentifier">SequenceRNNOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions.SequenceRNNOptions.TimeMajor" href="#tflite.SequenceRNNOptions.SequenceRNNOptions.TimeMajor">TimeMajor</a></code></li>
 </ul>
 </li>
@@ -316,7 +445,7 @@ def GetRootAsSequenceRNNOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

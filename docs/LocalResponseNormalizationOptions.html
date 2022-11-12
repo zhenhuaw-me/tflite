@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.LocalResponseNormalizationOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class LocalResponseNormalizationOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = LocalResponseNormalizationOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def LocalResponseNormalizationOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # LocalResponseNormalizationOptions
     def Init(self, buf, pos):
@@ -75,11 +85,23 @@ class LocalResponseNormalizationOptions(object):
         return 0.0
 
 def LocalResponseNormalizationOptionsStart(builder): builder.StartObject(4)
+def Start(builder):
+    return LocalResponseNormalizationOptionsStart(builder)
 def LocalResponseNormalizationOptionsAddRadius(builder, radius): builder.PrependInt32Slot(0, radius, 0)
+def AddRadius(builder, radius):
+    return LocalResponseNormalizationOptionsAddRadius(builder, radius)
 def LocalResponseNormalizationOptionsAddBias(builder, bias): builder.PrependFloat32Slot(1, bias, 0.0)
+def AddBias(builder, bias):
+    return LocalResponseNormalizationOptionsAddBias(builder, bias)
 def LocalResponseNormalizationOptionsAddAlpha(builder, alpha): builder.PrependFloat32Slot(2, alpha, 0.0)
+def AddAlpha(builder, alpha):
+    return LocalResponseNormalizationOptionsAddAlpha(builder, alpha)
 def LocalResponseNormalizationOptionsAddBeta(builder, beta): builder.PrependFloat32Slot(3, beta, 0.0)
-def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddBeta(builder, beta):
+    return LocalResponseNormalizationOptionsAddBeta(builder, beta)
+def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return LocalResponseNormalizationOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -89,6 +111,71 @@ def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</c
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.LocalResponseNormalizationOptions.AddAlpha"><code class="name flex">
+<span>def <span class="ident">AddAlpha</span></span>(<span>builder, alpha)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddAlpha(builder, alpha):
+    return LocalResponseNormalizationOptionsAddAlpha(builder, alpha)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LocalResponseNormalizationOptions.AddBeta"><code class="name flex">
+<span>def <span class="ident">AddBeta</span></span>(<span>builder, beta)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBeta(builder, beta):
+    return LocalResponseNormalizationOptionsAddBeta(builder, beta)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LocalResponseNormalizationOptions.AddBias"><code class="name flex">
+<span>def <span class="ident">AddBias</span></span>(<span>builder, bias)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBias(builder, bias):
+    return LocalResponseNormalizationOptionsAddBias(builder, bias)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LocalResponseNormalizationOptions.AddRadius"><code class="name flex">
+<span>def <span class="ident">AddRadius</span></span>(<span>builder, radius)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddRadius(builder, radius):
+    return LocalResponseNormalizationOptionsAddRadius(builder, radius)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LocalResponseNormalizationOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return LocalResponseNormalizationOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddAlpha"><code class="name flex">
 <span>def <span class="ident">LocalResponseNormalizationOptionsAddAlpha</span></span>(<span>builder, alpha)</span>
 </code></dt>
@@ -161,6 +248,19 @@ def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</c
 <pre><code class="python">def LocalResponseNormalizationOptionsStart(builder): builder.StartObject(4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.LocalResponseNormalizationOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return LocalResponseNormalizationOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -179,11 +279,19 @@ def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</c
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = LocalResponseNormalizationOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def LocalResponseNormalizationOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # LocalResponseNormalizationOptions
     def Init(self, buf, pos):
@@ -219,8 +327,8 @@ def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</c
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAsLocalResponseNormalizationOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsLocalResponseNormalizationOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -229,11 +337,40 @@ def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</c
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = LocalResponseNormalizationOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAsLocalResponseNormalizationOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsLocalResponseNormalizationOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">LocalResponseNormalizationOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def LocalResponseNormalizationOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -334,12 +471,18 @@ def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.LocalResponseNormalizationOptions.AddAlpha" href="#tflite.LocalResponseNormalizationOptions.AddAlpha">AddAlpha</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.AddBeta" href="#tflite.LocalResponseNormalizationOptions.AddBeta">AddBeta</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.AddBias" href="#tflite.LocalResponseNormalizationOptions.AddBias">AddBias</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.AddRadius" href="#tflite.LocalResponseNormalizationOptions.AddRadius">AddRadius</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.End" href="#tflite.LocalResponseNormalizationOptions.End">End</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddAlpha" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddAlpha">LocalResponseNormalizationOptionsAddAlpha</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddBeta" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddBeta">LocalResponseNormalizationOptionsAddBeta</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddBias" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddBias">LocalResponseNormalizationOptionsAddBias</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddRadius" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddRadius">LocalResponseNormalizationOptionsAddRadius</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsEnd" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsEnd">LocalResponseNormalizationOptionsEnd</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsStart" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsStart">LocalResponseNormalizationOptionsStart</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.Start" href="#tflite.LocalResponseNormalizationOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -350,8 +493,10 @@ def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset):
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Alpha" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Alpha">Alpha</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Beta" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Beta">Beta</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Bias" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Bias">Bias</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAs" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAsLocalResponseNormalizationOptions" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.GetRootAsLocalResponseNormalizationOptions">GetRootAsLocalResponseNormalizationOptions</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Init" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsBufferHasIdentifier" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsBufferHasIdentifier">LocalResponseNormalizationOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Radius" href="#tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptions.Radius">Radius</a></code></li>
 </ul>
 </li>
@@ -361,7 +506,7 @@ def GetRootAsLocalResponseNormalizationOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

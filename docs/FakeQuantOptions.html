@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.FakeQuantOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class FakeQuantOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsFakeQuantOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = FakeQuantOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsFakeQuantOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def FakeQuantOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # FakeQuantOptions
     def Init(self, buf, pos):
@@ -75,11 +85,23 @@ class FakeQuantOptions(object):
         return False
 
 def FakeQuantOptionsStart(builder): builder.StartObject(4)
+def Start(builder):
+    return FakeQuantOptionsStart(builder)
 def FakeQuantOptionsAddMin(builder, min): builder.PrependFloat32Slot(0, min, 0.0)
+def AddMin(builder, min):
+    return FakeQuantOptionsAddMin(builder, min)
 def FakeQuantOptionsAddMax(builder, max): builder.PrependFloat32Slot(1, max, 0.0)
+def AddMax(builder, max):
+    return FakeQuantOptionsAddMax(builder, max)
 def FakeQuantOptionsAddNumBits(builder, numBits): builder.PrependInt32Slot(2, numBits, 0)
+def AddNumBits(builder, numBits):
+    return FakeQuantOptionsAddNumBits(builder, numBits)
 def FakeQuantOptionsAddNarrowRange(builder, narrowRange): builder.PrependBoolSlot(3, narrowRange, 0)
-def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddNarrowRange(builder, narrowRange):
+    return FakeQuantOptionsAddNarrowRange(builder, narrowRange)
+def FakeQuantOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return FakeQuantOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -89,6 +111,71 @@ def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.FakeQuantOptions.AddMax"><code class="name flex">
+<span>def <span class="ident">AddMax</span></span>(<span>builder, max)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddMax(builder, max):
+    return FakeQuantOptionsAddMax(builder, max)</code></pre>
+</details>
+</dd>
+<dt id="tflite.FakeQuantOptions.AddMin"><code class="name flex">
+<span>def <span class="ident">AddMin</span></span>(<span>builder, min)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddMin(builder, min):
+    return FakeQuantOptionsAddMin(builder, min)</code></pre>
+</details>
+</dd>
+<dt id="tflite.FakeQuantOptions.AddNarrowRange"><code class="name flex">
+<span>def <span class="ident">AddNarrowRange</span></span>(<span>builder, narrowRange)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddNarrowRange(builder, narrowRange):
+    return FakeQuantOptionsAddNarrowRange(builder, narrowRange)</code></pre>
+</details>
+</dd>
+<dt id="tflite.FakeQuantOptions.AddNumBits"><code class="name flex">
+<span>def <span class="ident">AddNumBits</span></span>(<span>builder, numBits)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddNumBits(builder, numBits):
+    return FakeQuantOptionsAddNumBits(builder, numBits)</code></pre>
+</details>
+</dd>
+<dt id="tflite.FakeQuantOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return FakeQuantOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.FakeQuantOptions.FakeQuantOptionsAddMax"><code class="name flex">
 <span>def <span class="ident">FakeQuantOptionsAddMax</span></span>(<span>builder, max)</span>
 </code></dt>
@@ -161,6 +248,19 @@ def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def FakeQuantOptionsStart(builder): builder.StartObject(4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.FakeQuantOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return FakeQuantOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -179,11 +279,19 @@ def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsFakeQuantOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = FakeQuantOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsFakeQuantOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def FakeQuantOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # FakeQuantOptions
     def Init(self, buf, pos):
@@ -219,8 +327,8 @@ def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.FakeQuantOptions.FakeQuantOptions.GetRootAsFakeQuantOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsFakeQuantOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.FakeQuantOptions.FakeQuantOptions.FakeQuantOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">FakeQuantOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -229,11 +337,40 @@ def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsFakeQuantOptions(cls, buf, offset):
+def FakeQuantOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
+</details>
+</dd>
+<dt id="tflite.FakeQuantOptions.FakeQuantOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = FakeQuantOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.FakeQuantOptions.FakeQuantOptions.GetRootAsFakeQuantOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsFakeQuantOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsFakeQuantOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
 </details>
 </dd>
 </dl>
@@ -334,12 +471,18 @@ def GetRootAsFakeQuantOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.FakeQuantOptions.AddMax" href="#tflite.FakeQuantOptions.AddMax">AddMax</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions.AddMin" href="#tflite.FakeQuantOptions.AddMin">AddMin</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions.AddNarrowRange" href="#tflite.FakeQuantOptions.AddNarrowRange">AddNarrowRange</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions.AddNumBits" href="#tflite.FakeQuantOptions.AddNumBits">AddNumBits</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions.End" href="#tflite.FakeQuantOptions.End">End</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptionsAddMax" href="#tflite.FakeQuantOptions.FakeQuantOptionsAddMax">FakeQuantOptionsAddMax</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptionsAddMin" href="#tflite.FakeQuantOptions.FakeQuantOptionsAddMin">FakeQuantOptionsAddMin</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptionsAddNarrowRange" href="#tflite.FakeQuantOptions.FakeQuantOptionsAddNarrowRange">FakeQuantOptionsAddNarrowRange</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptionsAddNumBits" href="#tflite.FakeQuantOptions.FakeQuantOptionsAddNumBits">FakeQuantOptionsAddNumBits</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptionsEnd" href="#tflite.FakeQuantOptions.FakeQuantOptionsEnd">FakeQuantOptionsEnd</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptionsStart" href="#tflite.FakeQuantOptions.FakeQuantOptionsStart">FakeQuantOptionsStart</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions.Start" href="#tflite.FakeQuantOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -347,6 +490,8 @@ def GetRootAsFakeQuantOptions(cls, buf, offset):
 <li>
 <h4><code><a title="tflite.FakeQuantOptions.FakeQuantOptions" href="#tflite.FakeQuantOptions.FakeQuantOptions">FakeQuantOptions</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.FakeQuantOptions.FakeQuantOptions.FakeQuantOptionsBufferHasIdentifier" href="#tflite.FakeQuantOptions.FakeQuantOptions.FakeQuantOptionsBufferHasIdentifier">FakeQuantOptionsBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.FakeQuantOptions.FakeQuantOptions.GetRootAs" href="#tflite.FakeQuantOptions.FakeQuantOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptions.GetRootAsFakeQuantOptions" href="#tflite.FakeQuantOptions.FakeQuantOptions.GetRootAsFakeQuantOptions">GetRootAsFakeQuantOptions</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptions.Init" href="#tflite.FakeQuantOptions.FakeQuantOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.FakeQuantOptions.FakeQuantOptions.Max" href="#tflite.FakeQuantOptions.FakeQuantOptions.Max">Max</a></code></li>
@@ -361,7 +506,7 @@ def GetRootAsFakeQuantOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

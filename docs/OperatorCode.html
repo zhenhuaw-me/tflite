@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.OperatorCode API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class OperatorCode(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsOperatorCode(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = OperatorCode()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsOperatorCode(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def OperatorCodeBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # OperatorCode
     def Init(self, buf, pos):
@@ -75,11 +85,23 @@ class OperatorCode(object):
         return 0
 
 def OperatorCodeStart(builder): builder.StartObject(4)
+def Start(builder):
+    return OperatorCodeStart(builder)
 def OperatorCodeAddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode): builder.PrependInt8Slot(0, deprecatedBuiltinCode, 0)
+def AddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode):
+    return OperatorCodeAddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode)
 def OperatorCodeAddCustomCode(builder, customCode): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(customCode), 0)
+def AddCustomCode(builder, customCode):
+    return OperatorCodeAddCustomCode(builder, customCode)
 def OperatorCodeAddVersion(builder, version): builder.PrependInt32Slot(2, version, 1)
+def AddVersion(builder, version):
+    return OperatorCodeAddVersion(builder, version)
 def OperatorCodeAddBuiltinCode(builder, builtinCode): builder.PrependInt32Slot(3, builtinCode, 0)
-def OperatorCodeEnd(builder): return builder.EndObject()</code></pre>
+def AddBuiltinCode(builder, builtinCode):
+    return OperatorCodeAddBuiltinCode(builder, builtinCode)
+def OperatorCodeEnd(builder): return builder.EndObject()
+def End(builder):
+    return OperatorCodeEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -89,6 +111,71 @@ def OperatorCodeEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.OperatorCode.AddBuiltinCode"><code class="name flex">
+<span>def <span class="ident">AddBuiltinCode</span></span>(<span>builder, builtinCode)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBuiltinCode(builder, builtinCode):
+    return OperatorCodeAddBuiltinCode(builder, builtinCode)</code></pre>
+</details>
+</dd>
+<dt id="tflite.OperatorCode.AddCustomCode"><code class="name flex">
+<span>def <span class="ident">AddCustomCode</span></span>(<span>builder, customCode)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCustomCode(builder, customCode):
+    return OperatorCodeAddCustomCode(builder, customCode)</code></pre>
+</details>
+</dd>
+<dt id="tflite.OperatorCode.AddDeprecatedBuiltinCode"><code class="name flex">
+<span>def <span class="ident">AddDeprecatedBuiltinCode</span></span>(<span>builder, deprecatedBuiltinCode)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode):
+    return OperatorCodeAddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode)</code></pre>
+</details>
+</dd>
+<dt id="tflite.OperatorCode.AddVersion"><code class="name flex">
+<span>def <span class="ident">AddVersion</span></span>(<span>builder, version)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddVersion(builder, version):
+    return OperatorCodeAddVersion(builder, version)</code></pre>
+</details>
+</dd>
+<dt id="tflite.OperatorCode.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return OperatorCodeEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.OperatorCode.OperatorCodeAddBuiltinCode"><code class="name flex">
 <span>def <span class="ident">OperatorCodeAddBuiltinCode</span></span>(<span>builder, builtinCode)</span>
 </code></dt>
@@ -161,6 +248,19 @@ def OperatorCodeEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def OperatorCodeStart(builder): builder.StartObject(4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.OperatorCode.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return OperatorCodeStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -179,11 +279,19 @@ def OperatorCodeEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsOperatorCode(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = OperatorCode()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsOperatorCode(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def OperatorCodeBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # OperatorCode
     def Init(self, buf, pos):
@@ -219,8 +327,8 @@ def OperatorCodeEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.OperatorCode.OperatorCode.GetRootAsOperatorCode"><code class="name flex">
-<span>def <span class="ident">GetRootAsOperatorCode</span></span>(<span>buf, offset)</span>
+<dt id="tflite.OperatorCode.OperatorCode.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -229,11 +337,40 @@ def OperatorCodeEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsOperatorCode(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = OperatorCode()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.OperatorCode.OperatorCode.GetRootAsOperatorCode"><code class="name flex">
+<span>def <span class="ident">GetRootAsOperatorCode</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsOperatorCode(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.OperatorCode.OperatorCode.OperatorCodeBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">OperatorCodeBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def OperatorCodeBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -334,12 +471,18 @@ def GetRootAsOperatorCode(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.OperatorCode.AddBuiltinCode" href="#tflite.OperatorCode.AddBuiltinCode">AddBuiltinCode</a></code></li>
+<li><code><a title="tflite.OperatorCode.AddCustomCode" href="#tflite.OperatorCode.AddCustomCode">AddCustomCode</a></code></li>
+<li><code><a title="tflite.OperatorCode.AddDeprecatedBuiltinCode" href="#tflite.OperatorCode.AddDeprecatedBuiltinCode">AddDeprecatedBuiltinCode</a></code></li>
+<li><code><a title="tflite.OperatorCode.AddVersion" href="#tflite.OperatorCode.AddVersion">AddVersion</a></code></li>
+<li><code><a title="tflite.OperatorCode.End" href="#tflite.OperatorCode.End">End</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCodeAddBuiltinCode" href="#tflite.OperatorCode.OperatorCodeAddBuiltinCode">OperatorCodeAddBuiltinCode</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCodeAddCustomCode" href="#tflite.OperatorCode.OperatorCodeAddCustomCode">OperatorCodeAddCustomCode</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCodeAddDeprecatedBuiltinCode" href="#tflite.OperatorCode.OperatorCodeAddDeprecatedBuiltinCode">OperatorCodeAddDeprecatedBuiltinCode</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCodeAddVersion" href="#tflite.OperatorCode.OperatorCodeAddVersion">OperatorCodeAddVersion</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCodeEnd" href="#tflite.OperatorCode.OperatorCodeEnd">OperatorCodeEnd</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCodeStart" href="#tflite.OperatorCode.OperatorCodeStart">OperatorCodeStart</a></code></li>
+<li><code><a title="tflite.OperatorCode.Start" href="#tflite.OperatorCode.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -350,8 +493,10 @@ def GetRootAsOperatorCode(cls, buf, offset):
 <li><code><a title="tflite.OperatorCode.OperatorCode.BuiltinCode" href="#tflite.OperatorCode.OperatorCode.BuiltinCode">BuiltinCode</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCode.CustomCode" href="#tflite.OperatorCode.OperatorCode.CustomCode">CustomCode</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCode.DeprecatedBuiltinCode" href="#tflite.OperatorCode.OperatorCode.DeprecatedBuiltinCode">DeprecatedBuiltinCode</a></code></li>
+<li><code><a title="tflite.OperatorCode.OperatorCode.GetRootAs" href="#tflite.OperatorCode.OperatorCode.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCode.GetRootAsOperatorCode" href="#tflite.OperatorCode.OperatorCode.GetRootAsOperatorCode">GetRootAsOperatorCode</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCode.Init" href="#tflite.OperatorCode.OperatorCode.Init">Init</a></code></li>
+<li><code><a title="tflite.OperatorCode.OperatorCode.OperatorCodeBufferHasIdentifier" href="#tflite.OperatorCode.OperatorCode.OperatorCodeBufferHasIdentifier">OperatorCodeBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.OperatorCode.OperatorCode.Version" href="#tflite.OperatorCode.OperatorCode.Version">Version</a></code></li>
 </ul>
 </li>
@@ -361,7 +506,7 @@ def GetRootAsOperatorCode(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

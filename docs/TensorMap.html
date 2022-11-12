@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.TensorMap API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class TensorMap(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsTensorMap(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = TensorMap()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsTensorMap(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def TensorMapBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # TensorMap
     def Init(self, buf, pos):
@@ -61,9 +71,17 @@ class TensorMap(object):
         return 0
 
 def TensorMapStart(builder): builder.StartObject(2)
+def Start(builder):
+    return TensorMapStart(builder)
 def TensorMapAddName(builder, name): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+def AddName(builder, name):
+    return TensorMapAddName(builder, name)
 def TensorMapAddTensorIndex(builder, tensorIndex): builder.PrependUint32Slot(1, tensorIndex, 0)
-def TensorMapEnd(builder): return builder.EndObject()</code></pre>
+def AddTensorIndex(builder, tensorIndex):
+    return TensorMapAddTensorIndex(builder, tensorIndex)
+def TensorMapEnd(builder): return builder.EndObject()
+def End(builder):
+    return TensorMapEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -73,6 +91,58 @@ def TensorMapEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.TensorMap.AddName"><code class="name flex">
+<span>def <span class="ident">AddName</span></span>(<span>builder, name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddName(builder, name):
+    return TensorMapAddName(builder, name)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TensorMap.AddTensorIndex"><code class="name flex">
+<span>def <span class="ident">AddTensorIndex</span></span>(<span>builder, tensorIndex)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddTensorIndex(builder, tensorIndex):
+    return TensorMapAddTensorIndex(builder, tensorIndex)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TensorMap.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return TensorMapEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TensorMap.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return TensorMapStart(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.TensorMap.TensorMapAddName"><code class="name flex">
 <span>def <span class="ident">TensorMapAddName</span></span>(<span>builder, name)</span>
 </code></dt>
@@ -139,11 +209,19 @@ def TensorMapEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsTensorMap(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = TensorMap()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsTensorMap(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def TensorMapBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # TensorMap
     def Init(self, buf, pos):
@@ -165,8 +243,8 @@ def TensorMapEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.TensorMap.TensorMap.GetRootAsTensorMap"><code class="name flex">
-<span>def <span class="ident">GetRootAsTensorMap</span></span>(<span>buf, offset)</span>
+<dt id="tflite.TensorMap.TensorMap.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -175,11 +253,40 @@ def TensorMapEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsTensorMap(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = TensorMap()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.TensorMap.TensorMap.GetRootAsTensorMap"><code class="name flex">
+<span>def <span class="ident">GetRootAsTensorMap</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsTensorMap(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TensorMap.TensorMap.TensorMapBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">TensorMapBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def TensorMapBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -248,6 +355,10 @@ def GetRootAsTensorMap(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.TensorMap.AddName" href="#tflite.TensorMap.AddName">AddName</a></code></li>
+<li><code><a title="tflite.TensorMap.AddTensorIndex" href="#tflite.TensorMap.AddTensorIndex">AddTensorIndex</a></code></li>
+<li><code><a title="tflite.TensorMap.End" href="#tflite.TensorMap.End">End</a></code></li>
+<li><code><a title="tflite.TensorMap.Start" href="#tflite.TensorMap.Start">Start</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMapAddName" href="#tflite.TensorMap.TensorMapAddName">TensorMapAddName</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMapAddTensorIndex" href="#tflite.TensorMap.TensorMapAddTensorIndex">TensorMapAddTensorIndex</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMapEnd" href="#tflite.TensorMap.TensorMapEnd">TensorMapEnd</a></code></li>
@@ -259,10 +370,12 @@ def GetRootAsTensorMap(cls, buf, offset):
 <li>
 <h4><code><a title="tflite.TensorMap.TensorMap" href="#tflite.TensorMap.TensorMap">TensorMap</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.TensorMap.TensorMap.GetRootAs" href="#tflite.TensorMap.TensorMap.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMap.GetRootAsTensorMap" href="#tflite.TensorMap.TensorMap.GetRootAsTensorMap">GetRootAsTensorMap</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMap.Init" href="#tflite.TensorMap.TensorMap.Init">Init</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMap.Name" href="#tflite.TensorMap.TensorMap.Name">Name</a></code></li>
 <li><code><a title="tflite.TensorMap.TensorMap.TensorIndex" href="#tflite.TensorMap.TensorMap.TensorIndex">TensorIndex</a></code></li>
+<li><code><a title="tflite.TensorMap.TensorMap.TensorMapBufferHasIdentifier" href="#tflite.TensorMap.TensorMap.TensorMapBufferHasIdentifier">TensorMapBufferHasIdentifier</a></code></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +384,7 @@ def GetRootAsTensorMap(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

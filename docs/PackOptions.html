@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.PackOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class PackOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsPackOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = PackOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsPackOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def PackOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # PackOptions
     def Init(self, buf, pos):
@@ -61,9 +71,17 @@ class PackOptions(object):
         return 0
 
 def PackOptionsStart(builder): builder.StartObject(2)
+def Start(builder):
+    return PackOptionsStart(builder)
 def PackOptionsAddValuesCount(builder, valuesCount): builder.PrependInt32Slot(0, valuesCount, 0)
+def AddValuesCount(builder, valuesCount):
+    return PackOptionsAddValuesCount(builder, valuesCount)
 def PackOptionsAddAxis(builder, axis): builder.PrependInt32Slot(1, axis, 0)
-def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddAxis(builder, axis):
+    return PackOptionsAddAxis(builder, axis)
+def PackOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return PackOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -73,6 +91,45 @@ def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.PackOptions.AddAxis"><code class="name flex">
+<span>def <span class="ident">AddAxis</span></span>(<span>builder, axis)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddAxis(builder, axis):
+    return PackOptionsAddAxis(builder, axis)</code></pre>
+</details>
+</dd>
+<dt id="tflite.PackOptions.AddValuesCount"><code class="name flex">
+<span>def <span class="ident">AddValuesCount</span></span>(<span>builder, valuesCount)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddValuesCount(builder, valuesCount):
+    return PackOptionsAddValuesCount(builder, valuesCount)</code></pre>
+</details>
+</dd>
+<dt id="tflite.PackOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return PackOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.PackOptions.PackOptionsAddAxis"><code class="name flex">
 <span>def <span class="ident">PackOptionsAddAxis</span></span>(<span>builder, axis)</span>
 </code></dt>
@@ -121,6 +178,19 @@ def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def PackOptionsStart(builder): builder.StartObject(2)</code></pre>
 </details>
 </dd>
+<dt id="tflite.PackOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return PackOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -139,11 +209,19 @@ def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsPackOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = PackOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsPackOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def PackOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # PackOptions
     def Init(self, buf, pos):
@@ -165,8 +243,8 @@ def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.PackOptions.PackOptions.GetRootAsPackOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsPackOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.PackOptions.PackOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -175,11 +253,40 @@ def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsPackOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = PackOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.PackOptions.PackOptions.GetRootAsPackOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsPackOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsPackOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.PackOptions.PackOptions.PackOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">PackOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def PackOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -248,10 +355,14 @@ def GetRootAsPackOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.PackOptions.AddAxis" href="#tflite.PackOptions.AddAxis">AddAxis</a></code></li>
+<li><code><a title="tflite.PackOptions.AddValuesCount" href="#tflite.PackOptions.AddValuesCount">AddValuesCount</a></code></li>
+<li><code><a title="tflite.PackOptions.End" href="#tflite.PackOptions.End">End</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptionsAddAxis" href="#tflite.PackOptions.PackOptionsAddAxis">PackOptionsAddAxis</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptionsAddValuesCount" href="#tflite.PackOptions.PackOptionsAddValuesCount">PackOptionsAddValuesCount</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptionsEnd" href="#tflite.PackOptions.PackOptionsEnd">PackOptionsEnd</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptionsStart" href="#tflite.PackOptions.PackOptionsStart">PackOptionsStart</a></code></li>
+<li><code><a title="tflite.PackOptions.Start" href="#tflite.PackOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -260,8 +371,10 @@ def GetRootAsPackOptions(cls, buf, offset):
 <h4><code><a title="tflite.PackOptions.PackOptions" href="#tflite.PackOptions.PackOptions">PackOptions</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.PackOptions.PackOptions.Axis" href="#tflite.PackOptions.PackOptions.Axis">Axis</a></code></li>
+<li><code><a title="tflite.PackOptions.PackOptions.GetRootAs" href="#tflite.PackOptions.PackOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptions.GetRootAsPackOptions" href="#tflite.PackOptions.PackOptions.GetRootAsPackOptions">GetRootAsPackOptions</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptions.Init" href="#tflite.PackOptions.PackOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.PackOptions.PackOptions.PackOptionsBufferHasIdentifier" href="#tflite.PackOptions.PackOptions.PackOptionsBufferHasIdentifier">PackOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.PackOptions.PackOptions.ValuesCount" href="#tflite.PackOptions.PackOptions.ValuesCount">ValuesCount</a></code></li>
 </ul>
 </li>
@@ -271,7 +384,7 @@ def GetRootAsPackOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.ResizeNearestNeighborOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class ResizeNearestNeighborOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = ResizeNearestNeighborOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsResizeNearestNeighborOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ResizeNearestNeighborOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # ResizeNearestNeighborOptions
     def Init(self, buf, pos):
@@ -61,9 +71,17 @@ class ResizeNearestNeighborOptions(object):
         return False
 
 def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(2)
+def Start(builder):
+    return ResizeNearestNeighborOptionsStart(builder)
 def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(0, alignCorners, 0)
+def AddAlignCorners(builder, alignCorners):
+    return ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)
 def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(1, halfPixelCenters, 0)
-def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddHalfPixelCenters(builder, halfPixelCenters):
+    return ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)
+def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return ResizeNearestNeighborOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -73,6 +91,45 @@ def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code><
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.ResizeNearestNeighborOptions.AddAlignCorners"><code class="name flex">
+<span>def <span class="ident">AddAlignCorners</span></span>(<span>builder, alignCorners)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddAlignCorners(builder, alignCorners):
+    return ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)</code></pre>
+</details>
+</dd>
+<dt id="tflite.ResizeNearestNeighborOptions.AddHalfPixelCenters"><code class="name flex">
+<span>def <span class="ident">AddHalfPixelCenters</span></span>(<span>builder, halfPixelCenters)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddHalfPixelCenters(builder, halfPixelCenters):
+    return ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)</code></pre>
+</details>
+</dd>
+<dt id="tflite.ResizeNearestNeighborOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return ResizeNearestNeighborOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsAddAlignCorners"><code class="name flex">
 <span>def <span class="ident">ResizeNearestNeighborOptionsAddAlignCorners</span></span>(<span>builder, alignCorners)</span>
 </code></dt>
@@ -121,6 +178,19 @@ def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code><
 <pre><code class="python">def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(2)</code></pre>
 </details>
 </dd>
+<dt id="tflite.ResizeNearestNeighborOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return ResizeNearestNeighborOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -139,11 +209,19 @@ def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code><
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = ResizeNearestNeighborOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsResizeNearestNeighborOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ResizeNearestNeighborOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # ResizeNearestNeighborOptions
     def Init(self, buf, pos):
@@ -165,8 +243,8 @@ def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code><
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAsResizeNearestNeighborOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsResizeNearestNeighborOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -175,11 +253,40 @@ def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code><
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = ResizeNearestNeighborOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAsResizeNearestNeighborOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsResizeNearestNeighborOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsResizeNearestNeighborOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">ResizeNearestNeighborOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def ResizeNearestNeighborOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -248,10 +355,14 @@ def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.ResizeNearestNeighborOptions.AddAlignCorners" href="#tflite.ResizeNearestNeighborOptions.AddAlignCorners">AddAlignCorners</a></code></li>
+<li><code><a title="tflite.ResizeNearestNeighborOptions.AddHalfPixelCenters" href="#tflite.ResizeNearestNeighborOptions.AddHalfPixelCenters">AddHalfPixelCenters</a></code></li>
+<li><code><a title="tflite.ResizeNearestNeighborOptions.End" href="#tflite.ResizeNearestNeighborOptions.End">End</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsAddAlignCorners" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsAddAlignCorners">ResizeNearestNeighborOptionsAddAlignCorners</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsAddHalfPixelCenters" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsAddHalfPixelCenters">ResizeNearestNeighborOptionsAddHalfPixelCenters</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsEnd" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsEnd">ResizeNearestNeighborOptionsEnd</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsStart" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsStart">ResizeNearestNeighborOptionsStart</a></code></li>
+<li><code><a title="tflite.ResizeNearestNeighborOptions.Start" href="#tflite.ResizeNearestNeighborOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -260,9 +371,11 @@ def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
 <h4><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions">ResizeNearestNeighborOptions</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.AlignCorners" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.AlignCorners">AlignCorners</a></code></li>
+<li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAs" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAsResizeNearestNeighborOptions" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.GetRootAsResizeNearestNeighborOptions">GetRootAsResizeNearestNeighborOptions</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.HalfPixelCenters" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.HalfPixelCenters">HalfPixelCenters</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.Init" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsBufferHasIdentifier" href="#tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsBufferHasIdentifier">ResizeNearestNeighborOptionsBufferHasIdentifier</a></code></li>
 </ul>
 </li>
 </ul>
@@ -271,7 +384,7 @@ def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

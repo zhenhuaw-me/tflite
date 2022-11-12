@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.SignatureDef API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class SignatureDef(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSignatureDef(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SignatureDef()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSignatureDef(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SignatureDefBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SignatureDef
     def Init(self, buf, pos):
@@ -53,7 +63,7 @@ class SignatureDef(object):
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .TensorMap import TensorMap
+            from tflite.TensorMap import TensorMap
             obj = TensorMap()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -67,13 +77,18 @@ class SignatureDef(object):
         return 0
 
     # SignatureDef
+    def InputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # SignatureDef
     def Outputs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .TensorMap import TensorMap
+            from tflite.TensorMap import TensorMap
             obj = TensorMap()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -87,27 +102,48 @@ class SignatureDef(object):
         return 0
 
     # SignatureDef
-    def MethodName(self):
+    def OutputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # SignatureDef
+    def SignatureKey(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             return self._tab.String(o + self._tab.Pos)
         return None
 
     # SignatureDef
-    def Key(self):
-        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    def SubgraphIndex(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
-            return self._tab.String(o + self._tab.Pos)
-        return None
+            return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
+        return 0
 
-def SignatureDefStart(builder): builder.StartObject(4)
+def SignatureDefStart(builder): builder.StartObject(5)
+def Start(builder):
+    return SignatureDefStart(builder)
 def SignatureDefAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+def AddInputs(builder, inputs):
+    return SignatureDefAddInputs(builder, inputs)
 def SignatureDefStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartInputsVector(builder, numElems):
+    return SignatureDefStartInputsVector(builder, numElems)
 def SignatureDefAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+def AddOutputs(builder, outputs):
+    return SignatureDefAddOutputs(builder, outputs)
 def SignatureDefStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def SignatureDefAddMethodName(builder, methodName): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(methodName), 0)
-def SignatureDefAddKey(builder, key): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(key), 0)
-def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
+def StartOutputsVector(builder, numElems):
+    return SignatureDefStartOutputsVector(builder, numElems)
+def SignatureDefAddSignatureKey(builder, signatureKey): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)
+def AddSignatureKey(builder, signatureKey):
+    return SignatureDefAddSignatureKey(builder, signatureKey)
+def SignatureDefAddSubgraphIndex(builder, subgraphIndex): builder.PrependUint32Slot(4, subgraphIndex, 0)
+def AddSubgraphIndex(builder, subgraphIndex):
+    return SignatureDefAddSubgraphIndex(builder, subgraphIndex)
+def SignatureDefEnd(builder): return builder.EndObject()
+def End(builder):
+    return SignatureDefEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -117,6 +153,71 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.SignatureDef.AddInputs"><code class="name flex">
+<span>def <span class="ident">AddInputs</span></span>(<span>builder, inputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddInputs(builder, inputs):
+    return SignatureDefAddInputs(builder, inputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.AddOutputs"><code class="name flex">
+<span>def <span class="ident">AddOutputs</span></span>(<span>builder, outputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOutputs(builder, outputs):
+    return SignatureDefAddOutputs(builder, outputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.AddSignatureKey"><code class="name flex">
+<span>def <span class="ident">AddSignatureKey</span></span>(<span>builder, signatureKey)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddSignatureKey(builder, signatureKey):
+    return SignatureDefAddSignatureKey(builder, signatureKey)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.AddSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">AddSubgraphIndex</span></span>(<span>builder, subgraphIndex)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddSubgraphIndex(builder, subgraphIndex):
+    return SignatureDefAddSubgraphIndex(builder, subgraphIndex)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return SignatureDefEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.SignatureDef.SignatureDefAddInputs"><code class="name flex">
 <span>def <span class="ident">SignatureDefAddInputs</span></span>(<span>builder, inputs)</span>
 </code></dt>
@@ -129,30 +230,6 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def SignatureDefAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)</code></pre>
 </details>
 </dd>
-<dt id="tflite.SignatureDef.SignatureDefAddKey"><code class="name flex">
-<span>def <span class="ident">SignatureDefAddKey</span></span>(<span>builder, key)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def SignatureDefAddKey(builder, key): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(key), 0)</code></pre>
-</details>
-</dd>
-<dt id="tflite.SignatureDef.SignatureDefAddMethodName"><code class="name flex">
-<span>def <span class="ident">SignatureDefAddMethodName</span></span>(<span>builder, methodName)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def SignatureDefAddMethodName(builder, methodName): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(methodName), 0)</code></pre>
-</details>
-</dd>
 <dt id="tflite.SignatureDef.SignatureDefAddOutputs"><code class="name flex">
 <span>def <span class="ident">SignatureDefAddOutputs</span></span>(<span>builder, outputs)</span>
 </code></dt>
@@ -163,6 +240,30 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def SignatureDefAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDefAddSignatureKey"><code class="name flex">
+<span>def <span class="ident">SignatureDefAddSignatureKey</span></span>(<span>builder, signatureKey)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SignatureDefAddSignatureKey(builder, signatureKey): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDefAddSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">SignatureDefAddSubgraphIndex</span></span>(<span>builder, subgraphIndex)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SignatureDefAddSubgraphIndex(builder, subgraphIndex): builder.PrependUint32Slot(4, subgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefEnd"><code class="name flex">
@@ -186,7 +287,7 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefStart(builder): builder.StartObject(4)</code></pre>
+<pre><code class="python">def SignatureDefStart(builder): builder.StartObject(5)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefStartInputsVector"><code class="name flex">
@@ -213,6 +314,45 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def SignatureDefStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.SignatureDef.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return SignatureDefStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.StartInputsVector"><code class="name flex">
+<span>def <span class="ident">StartInputsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartInputsVector(builder, numElems):
+    return SignatureDefStartInputsVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.StartOutputsVector"><code class="name flex">
+<span>def <span class="ident">StartOutputsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartOutputsVector(builder, numElems):
+    return SignatureDefStartOutputsVector(builder, numElems)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -231,11 +371,19 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSignatureDef(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SignatureDef()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSignatureDef(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SignatureDefBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SignatureDef
     def Init(self, buf, pos):
@@ -248,7 +396,7 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .TensorMap import TensorMap
+            from tflite.TensorMap import TensorMap
             obj = TensorMap()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -262,13 +410,18 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SignatureDef
+    def InputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # SignatureDef
     def Outputs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .TensorMap import TensorMap
+            from tflite.TensorMap import TensorMap
             obj = TensorMap()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -282,23 +435,28 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SignatureDef
-    def MethodName(self):
+    def OutputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # SignatureDef
+    def SignatureKey(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             return self._tab.String(o + self._tab.Pos)
         return None
 
     # SignatureDef
-    def Key(self):
-        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    def SubgraphIndex(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
-            return self._tab.String(o + self._tab.Pos)
-        return None</code></pre>
+            return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
+        return 0</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.SignatureDef.SignatureDef.GetRootAsSignatureDef"><code class="name flex">
-<span>def <span class="ident">GetRootAsSignatureDef</span></span>(<span>buf, offset)</span>
+<dt id="tflite.SignatureDef.SignatureDef.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -307,11 +465,40 @@ def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsSignatureDef(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = SignatureDef()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDef.GetRootAsSignatureDef"><code class="name flex">
+<span>def <span class="ident">GetRootAsSignatureDef</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsSignatureDef(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDef.SignatureDefBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">SignatureDefBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def SignatureDefBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -345,11 +532,25 @@ def GetRootAsSignatureDef(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .TensorMap import TensorMap
+        from tflite.TensorMap import TensorMap
         obj = TensorMap()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDef.InputsIsNone"><code class="name flex">
+<span>def <span class="ident">InputsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDef.InputsLength"><code class="name flex">
@@ -368,38 +569,6 @@ def GetRootAsSignatureDef(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
-<dt id="tflite.SignatureDef.SignatureDef.Key"><code class="name flex">
-<span>def <span class="ident">Key</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def Key(self):
-    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
-    if o != 0:
-        return self._tab.String(o + self._tab.Pos)
-    return None</code></pre>
-</details>
-</dd>
-<dt id="tflite.SignatureDef.SignatureDef.MethodName"><code class="name flex">
-<span>def <span class="ident">MethodName</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def MethodName(self):
-    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
-    if o != 0:
-        return self._tab.String(o + self._tab.Pos)
-    return None</code></pre>
-</details>
-</dd>
 <dt id="tflite.SignatureDef.SignatureDef.Outputs"><code class="name flex">
 <span>def <span class="ident">Outputs</span></span>(<span>self, j)</span>
 </code></dt>
@@ -415,11 +584,25 @@ def GetRootAsSignatureDef(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .TensorMap import TensorMap
+        from tflite.TensorMap import TensorMap
         obj = TensorMap()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDef.OutputsIsNone"><code class="name flex">
+<span>def <span class="ident">OutputsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDef.OutputsLength"><code class="name flex">
@@ -435,6 +618,38 @@ def GetRootAsSignatureDef(cls, buf, offset):
     o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
     if o != 0:
         return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDef.SignatureKey"><code class="name flex">
+<span>def <span class="ident">SignatureKey</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SignatureKey(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.String(o + self._tab.Pos)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.SignatureDef.SignatureDef.SubgraphIndex"><code class="name flex">
+<span>def <span class="ident">SubgraphIndex</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SubgraphIndex(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
     return 0</code></pre>
 </details>
 </dd>
@@ -456,14 +671,22 @@ def GetRootAsSignatureDef(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.SignatureDef.AddInputs" href="#tflite.SignatureDef.AddInputs">AddInputs</a></code></li>
+<li><code><a title="tflite.SignatureDef.AddOutputs" href="#tflite.SignatureDef.AddOutputs">AddOutputs</a></code></li>
+<li><code><a title="tflite.SignatureDef.AddSignatureKey" href="#tflite.SignatureDef.AddSignatureKey">AddSignatureKey</a></code></li>
+<li><code><a title="tflite.SignatureDef.AddSubgraphIndex" href="#tflite.SignatureDef.AddSubgraphIndex">AddSubgraphIndex</a></code></li>
+<li><code><a title="tflite.SignatureDef.End" href="#tflite.SignatureDef.End">End</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDefAddInputs" href="#tflite.SignatureDef.SignatureDefAddInputs">SignatureDefAddInputs</a></code></li>
-<li><code><a title="tflite.SignatureDef.SignatureDefAddKey" href="#tflite.SignatureDef.SignatureDefAddKey">SignatureDefAddKey</a></code></li>
-<li><code><a title="tflite.SignatureDef.SignatureDefAddMethodName" href="#tflite.SignatureDef.SignatureDefAddMethodName">SignatureDefAddMethodName</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDefAddOutputs" href="#tflite.SignatureDef.SignatureDefAddOutputs">SignatureDefAddOutputs</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDefAddSignatureKey" href="#tflite.SignatureDef.SignatureDefAddSignatureKey">SignatureDefAddSignatureKey</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDefAddSubgraphIndex" href="#tflite.SignatureDef.SignatureDefAddSubgraphIndex">SignatureDefAddSubgraphIndex</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDefEnd" href="#tflite.SignatureDef.SignatureDefEnd">SignatureDefEnd</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDefStart" href="#tflite.SignatureDef.SignatureDefStart">SignatureDefStart</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDefStartInputsVector" href="#tflite.SignatureDef.SignatureDefStartInputsVector">SignatureDefStartInputsVector</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDefStartOutputsVector" href="#tflite.SignatureDef.SignatureDefStartOutputsVector">SignatureDefStartOutputsVector</a></code></li>
+<li><code><a title="tflite.SignatureDef.Start" href="#tflite.SignatureDef.Start">Start</a></code></li>
+<li><code><a title="tflite.SignatureDef.StartInputsVector" href="#tflite.SignatureDef.StartInputsVector">StartInputsVector</a></code></li>
+<li><code><a title="tflite.SignatureDef.StartOutputsVector" href="#tflite.SignatureDef.StartOutputsVector">StartOutputsVector</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -471,14 +694,18 @@ def GetRootAsSignatureDef(cls, buf, offset):
 <li>
 <h4><code><a title="tflite.SignatureDef.SignatureDef" href="#tflite.SignatureDef.SignatureDef">SignatureDef</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.SignatureDef.SignatureDef.GetRootAs" href="#tflite.SignatureDef.SignatureDef.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDef.GetRootAsSignatureDef" href="#tflite.SignatureDef.SignatureDef.GetRootAsSignatureDef">GetRootAsSignatureDef</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDef.Init" href="#tflite.SignatureDef.SignatureDef.Init">Init</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDef.Inputs" href="#tflite.SignatureDef.SignatureDef.Inputs">Inputs</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDef.InputsIsNone" href="#tflite.SignatureDef.SignatureDef.InputsIsNone">InputsIsNone</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDef.InputsLength" href="#tflite.SignatureDef.SignatureDef.InputsLength">InputsLength</a></code></li>
-<li><code><a title="tflite.SignatureDef.SignatureDef.Key" href="#tflite.SignatureDef.SignatureDef.Key">Key</a></code></li>
-<li><code><a title="tflite.SignatureDef.SignatureDef.MethodName" href="#tflite.SignatureDef.SignatureDef.MethodName">MethodName</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDef.Outputs" href="#tflite.SignatureDef.SignatureDef.Outputs">Outputs</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDef.OutputsIsNone" href="#tflite.SignatureDef.SignatureDef.OutputsIsNone">OutputsIsNone</a></code></li>
 <li><code><a title="tflite.SignatureDef.SignatureDef.OutputsLength" href="#tflite.SignatureDef.SignatureDef.OutputsLength">OutputsLength</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDef.SignatureDefBufferHasIdentifier" href="#tflite.SignatureDef.SignatureDef.SignatureDefBufferHasIdentifier">SignatureDefBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDef.SignatureKey" href="#tflite.SignatureDef.SignatureDef.SignatureKey">SignatureKey</a></code></li>
+<li><code><a title="tflite.SignatureDef.SignatureDef.SubgraphIndex" href="#tflite.SignatureDef.SignatureDef.SubgraphIndex">SubgraphIndex</a></code></li>
 </ul>
 </li>
 </ul>
@@ -487,7 +714,7 @@ def GetRootAsSignatureDef(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

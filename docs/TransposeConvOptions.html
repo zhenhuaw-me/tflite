@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.TransposeConvOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class TransposeConvOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsTransposeConvOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = TransposeConvOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsTransposeConvOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def TransposeConvOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # TransposeConvOptions
     def Init(self, buf, pos):
@@ -68,10 +78,20 @@ class TransposeConvOptions(object):
         return 0
 
 def TransposeConvOptionsStart(builder): builder.StartObject(3)
+def Start(builder):
+    return TransposeConvOptionsStart(builder)
 def TransposeConvOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+def AddPadding(builder, padding):
+    return TransposeConvOptionsAddPadding(builder, padding)
 def TransposeConvOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+def AddStrideW(builder, strideW):
+    return TransposeConvOptionsAddStrideW(builder, strideW)
 def TransposeConvOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
-def TransposeConvOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddStrideH(builder, strideH):
+    return TransposeConvOptionsAddStrideH(builder, strideH)
+def TransposeConvOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return TransposeConvOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -81,6 +101,71 @@ def TransposeConvOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.TransposeConvOptions.AddPadding"><code class="name flex">
+<span>def <span class="ident">AddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPadding(builder, padding):
+    return TransposeConvOptionsAddPadding(builder, padding)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.AddStrideH"><code class="name flex">
+<span>def <span class="ident">AddStrideH</span></span>(<span>builder, strideH)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideH(builder, strideH):
+    return TransposeConvOptionsAddStrideH(builder, strideH)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.AddStrideW"><code class="name flex">
+<span>def <span class="ident">AddStrideW</span></span>(<span>builder, strideW)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideW(builder, strideW):
+    return TransposeConvOptionsAddStrideW(builder, strideW)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return TransposeConvOptionsEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return TransposeConvOptionsStart(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptionsAddPadding"><code class="name flex">
 <span>def <span class="ident">TransposeConvOptionsAddPadding</span></span>(<span>builder, padding)</span>
 </code></dt>
@@ -159,11 +244,19 @@ def TransposeConvOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsTransposeConvOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = TransposeConvOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsTransposeConvOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def TransposeConvOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # TransposeConvOptions
     def Init(self, buf, pos):
@@ -192,8 +285,8 @@ def TransposeConvOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAsTransposeConvOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsTransposeConvOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -202,11 +295,40 @@ def TransposeConvOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsTransposeConvOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = TransposeConvOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAsTransposeConvOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsTransposeConvOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsTransposeConvOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.TransposeConvOptions.TransposeConvOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">TransposeConvOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def TransposeConvOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -291,6 +413,11 @@ def GetRootAsTransposeConvOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.TransposeConvOptions.AddPadding" href="#tflite.TransposeConvOptions.AddPadding">AddPadding</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions.AddStrideH" href="#tflite.TransposeConvOptions.AddStrideH">AddStrideH</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions.AddStrideW" href="#tflite.TransposeConvOptions.AddStrideW">AddStrideW</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions.End" href="#tflite.TransposeConvOptions.End">End</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions.Start" href="#tflite.TransposeConvOptions.Start">Start</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddPadding" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddPadding">TransposeConvOptionsAddPadding</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddStrideH" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddStrideH">TransposeConvOptionsAddStrideH</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddStrideW" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddStrideW">TransposeConvOptionsAddStrideW</a></code></li>
@@ -303,11 +430,13 @@ def GetRootAsTransposeConvOptions(cls, buf, offset):
 <li>
 <h4><code><a title="tflite.TransposeConvOptions.TransposeConvOptions" href="#tflite.TransposeConvOptions.TransposeConvOptions">TransposeConvOptions</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAs" href="#tflite.TransposeConvOptions.TransposeConvOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAsTransposeConvOptions" href="#tflite.TransposeConvOptions.TransposeConvOptions.GetRootAsTransposeConvOptions">GetRootAsTransposeConvOptions</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.Init" href="#tflite.TransposeConvOptions.TransposeConvOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.Padding" href="#tflite.TransposeConvOptions.TransposeConvOptions.Padding">Padding</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.StrideH" href="#tflite.TransposeConvOptions.TransposeConvOptions.StrideH">StrideH</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.StrideW" href="#tflite.TransposeConvOptions.TransposeConvOptions.StrideW">StrideW</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.TransposeConvOptionsBufferHasIdentifier" href="#tflite.TransposeConvOptions.TransposeConvOptions.TransposeConvOptionsBufferHasIdentifier">TransposeConvOptionsBufferHasIdentifier</a></code></li>
 </ul>
 </li>
 </ul>
@@ -316,7 +445,7 @@ def GetRootAsTransposeConvOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.SubGraph API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class SubGraph(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSubGraph(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SubGraph()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSubGraph(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SubGraphBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SubGraph
     def Init(self, buf, pos):
@@ -53,7 +63,7 @@ class SubGraph(object):
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Tensor import Tensor
+            from tflite.Tensor import Tensor
             obj = Tensor()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -65,6 +75,11 @@ class SubGraph(object):
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
+
+    # SubGraph
+    def TensorsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
 
     # SubGraph
     def Inputs(self, j):
@@ -89,6 +104,11 @@ class SubGraph(object):
         return 0
 
     # SubGraph
+    def InputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # SubGraph
     def Outputs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
@@ -111,13 +131,18 @@ class SubGraph(object):
         return 0
 
     # SubGraph
+    def OutputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
+    # SubGraph
     def Operators(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Operator import Operator
+            from tflite.Operator import Operator
             obj = Operator()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -131,6 +156,11 @@ class SubGraph(object):
         return 0
 
     # SubGraph
+    def OperatorsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        return o == 0
+
+    # SubGraph
     def Name(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
@@ -138,16 +168,38 @@ class SubGraph(object):
         return None
 
 def SubGraphStart(builder): builder.StartObject(5)
+def Start(builder):
+    return SubGraphStart(builder)
 def SubGraphAddTensors(builder, tensors): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(tensors), 0)
+def AddTensors(builder, tensors):
+    return SubGraphAddTensors(builder, tensors)
 def SubGraphStartTensorsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartTensorsVector(builder, numElems):
+    return SubGraphStartTensorsVector(builder, numElems)
 def SubGraphAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+def AddInputs(builder, inputs):
+    return SubGraphAddInputs(builder, inputs)
 def SubGraphStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartInputsVector(builder, numElems):
+    return SubGraphStartInputsVector(builder, numElems)
 def SubGraphAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+def AddOutputs(builder, outputs):
+    return SubGraphAddOutputs(builder, outputs)
 def SubGraphStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartOutputsVector(builder, numElems):
+    return SubGraphStartOutputsVector(builder, numElems)
 def SubGraphAddOperators(builder, operators): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(operators), 0)
+def AddOperators(builder, operators):
+    return SubGraphAddOperators(builder, operators)
 def SubGraphStartOperatorsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartOperatorsVector(builder, numElems):
+    return SubGraphStartOperatorsVector(builder, numElems)
 def SubGraphAddName(builder, name): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
-def SubGraphEnd(builder): return builder.EndObject()</code></pre>
+def AddName(builder, name):
+    return SubGraphAddName(builder, name)
+def SubGraphEnd(builder): return builder.EndObject()
+def End(builder):
+    return SubGraphEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -157,6 +209,149 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.SubGraph.AddInputs"><code class="name flex">
+<span>def <span class="ident">AddInputs</span></span>(<span>builder, inputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddInputs(builder, inputs):
+    return SubGraphAddInputs(builder, inputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.AddName"><code class="name flex">
+<span>def <span class="ident">AddName</span></span>(<span>builder, name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddName(builder, name):
+    return SubGraphAddName(builder, name)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.AddOperators"><code class="name flex">
+<span>def <span class="ident">AddOperators</span></span>(<span>builder, operators)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOperators(builder, operators):
+    return SubGraphAddOperators(builder, operators)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.AddOutputs"><code class="name flex">
+<span>def <span class="ident">AddOutputs</span></span>(<span>builder, outputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOutputs(builder, outputs):
+    return SubGraphAddOutputs(builder, outputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.AddTensors"><code class="name flex">
+<span>def <span class="ident">AddTensors</span></span>(<span>builder, tensors)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddTensors(builder, tensors):
+    return SubGraphAddTensors(builder, tensors)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return SubGraphEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return SubGraphStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.StartInputsVector"><code class="name flex">
+<span>def <span class="ident">StartInputsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartInputsVector(builder, numElems):
+    return SubGraphStartInputsVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.StartOperatorsVector"><code class="name flex">
+<span>def <span class="ident">StartOperatorsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartOperatorsVector(builder, numElems):
+    return SubGraphStartOperatorsVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.StartOutputsVector"><code class="name flex">
+<span>def <span class="ident">StartOutputsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartOutputsVector(builder, numElems):
+    return SubGraphStartOutputsVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.StartTensorsVector"><code class="name flex">
+<span>def <span class="ident">StartTensorsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartTensorsVector(builder, numElems):
+    return SubGraphStartTensorsVector(builder, numElems)</code></pre>
+</details>
+</dd>
 <dt id="tflite.SubGraph.SubGraphAddInputs"><code class="name flex">
 <span>def <span class="ident">SubGraphAddInputs</span></span>(<span>builder, inputs)</span>
 </code></dt>
@@ -307,11 +502,19 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSubGraph(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SubGraph()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSubGraph(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SubGraphBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SubGraph
     def Init(self, buf, pos):
@@ -324,7 +527,7 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Tensor import Tensor
+            from tflite.Tensor import Tensor
             obj = Tensor()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -336,6 +539,11 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
+
+    # SubGraph
+    def TensorsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
 
     # SubGraph
     def Inputs(self, j):
@@ -360,6 +568,11 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SubGraph
+    def InputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # SubGraph
     def Outputs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
@@ -382,13 +595,18 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SubGraph
+    def OutputsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
+    # SubGraph
     def Operators(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Operator import Operator
+            from tflite.Operator import Operator
             obj = Operator()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -402,6 +620,11 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SubGraph
+    def OperatorsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        return o == 0
+
+    # SubGraph
     def Name(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
@@ -410,8 +633,8 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.SubGraph.SubGraph.GetRootAsSubGraph"><code class="name flex">
-<span>def <span class="ident">GetRootAsSubGraph</span></span>(<span>buf, offset)</span>
+<dt id="tflite.SubGraph.SubGraph.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -420,11 +643,40 @@ def SubGraphEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsSubGraph(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = SubGraph()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.SubGraph.GetRootAsSubGraph"><code class="name flex">
+<span>def <span class="ident">GetRootAsSubGraph</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsSubGraph(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.SubGraph.SubGraphBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">SubGraphBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def SubGraphBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -476,6 +728,20 @@ def GetRootAsSubGraph(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
+<dt id="tflite.SubGraph.SubGraph.InputsIsNone"><code class="name flex">
+<span>def <span class="ident">InputsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.SubGraph.SubGraph.InputsLength"><code class="name flex">
 <span>def <span class="ident">InputsLength</span></span>(<span>self)</span>
 </code></dt>
@@ -523,11 +789,25 @@ def GetRootAsSubGraph(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .Operator import Operator
+        from tflite.Operator import Operator
         obj = Operator()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.SubGraph.OperatorsIsNone"><code class="name flex">
+<span>def <span class="ident">OperatorsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OperatorsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubGraph.SubGraph.OperatorsLength"><code class="name flex">
@@ -579,6 +859,20 @@ def GetRootAsSubGraph(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
+<dt id="tflite.SubGraph.SubGraph.OutputsIsNone"><code class="name flex">
+<span>def <span class="ident">OutputsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.SubGraph.SubGraph.OutputsLength"><code class="name flex">
 <span>def <span class="ident">OutputsLength</span></span>(<span>self)</span>
 </code></dt>
@@ -610,11 +904,25 @@ def GetRootAsSubGraph(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .Tensor import Tensor
+        from tflite.Tensor import Tensor
         obj = Tensor()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.SubGraph.SubGraph.TensorsIsNone"><code class="name flex">
+<span>def <span class="ident">TensorsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def TensorsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubGraph.SubGraph.TensorsLength"><code class="name flex">
@@ -651,6 +959,17 @@ def GetRootAsSubGraph(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.SubGraph.AddInputs" href="#tflite.SubGraph.AddInputs">AddInputs</a></code></li>
+<li><code><a title="tflite.SubGraph.AddName" href="#tflite.SubGraph.AddName">AddName</a></code></li>
+<li><code><a title="tflite.SubGraph.AddOperators" href="#tflite.SubGraph.AddOperators">AddOperators</a></code></li>
+<li><code><a title="tflite.SubGraph.AddOutputs" href="#tflite.SubGraph.AddOutputs">AddOutputs</a></code></li>
+<li><code><a title="tflite.SubGraph.AddTensors" href="#tflite.SubGraph.AddTensors">AddTensors</a></code></li>
+<li><code><a title="tflite.SubGraph.End" href="#tflite.SubGraph.End">End</a></code></li>
+<li><code><a title="tflite.SubGraph.Start" href="#tflite.SubGraph.Start">Start</a></code></li>
+<li><code><a title="tflite.SubGraph.StartInputsVector" href="#tflite.SubGraph.StartInputsVector">StartInputsVector</a></code></li>
+<li><code><a title="tflite.SubGraph.StartOperatorsVector" href="#tflite.SubGraph.StartOperatorsVector">StartOperatorsVector</a></code></li>
+<li><code><a title="tflite.SubGraph.StartOutputsVector" href="#tflite.SubGraph.StartOutputsVector">StartOutputsVector</a></code></li>
+<li><code><a title="tflite.SubGraph.StartTensorsVector" href="#tflite.SubGraph.StartTensorsVector">StartTensorsVector</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraphAddInputs" href="#tflite.SubGraph.SubGraphAddInputs">SubGraphAddInputs</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraphAddName" href="#tflite.SubGraph.SubGraphAddName">SubGraphAddName</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraphAddOperators" href="#tflite.SubGraph.SubGraphAddOperators">SubGraphAddOperators</a></code></li>
@@ -668,19 +987,25 @@ def GetRootAsSubGraph(cls, buf, offset):
 <ul>
 <li>
 <h4><code><a title="tflite.SubGraph.SubGraph" href="#tflite.SubGraph.SubGraph">SubGraph</a></code></h4>
-<ul class="two-column">
+<ul class="">
+<li><code><a title="tflite.SubGraph.SubGraph.GetRootAs" href="#tflite.SubGraph.SubGraph.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.GetRootAsSubGraph" href="#tflite.SubGraph.SubGraph.GetRootAsSubGraph">GetRootAsSubGraph</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.Init" href="#tflite.SubGraph.SubGraph.Init">Init</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.Inputs" href="#tflite.SubGraph.SubGraph.Inputs">Inputs</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.InputsAsNumpy" href="#tflite.SubGraph.SubGraph.InputsAsNumpy">InputsAsNumpy</a></code></li>
+<li><code><a title="tflite.SubGraph.SubGraph.InputsIsNone" href="#tflite.SubGraph.SubGraph.InputsIsNone">InputsIsNone</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.InputsLength" href="#tflite.SubGraph.SubGraph.InputsLength">InputsLength</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.Name" href="#tflite.SubGraph.SubGraph.Name">Name</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.Operators" href="#tflite.SubGraph.SubGraph.Operators">Operators</a></code></li>
+<li><code><a title="tflite.SubGraph.SubGraph.OperatorsIsNone" href="#tflite.SubGraph.SubGraph.OperatorsIsNone">OperatorsIsNone</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.OperatorsLength" href="#tflite.SubGraph.SubGraph.OperatorsLength">OperatorsLength</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.Outputs" href="#tflite.SubGraph.SubGraph.Outputs">Outputs</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.OutputsAsNumpy" href="#tflite.SubGraph.SubGraph.OutputsAsNumpy">OutputsAsNumpy</a></code></li>
+<li><code><a title="tflite.SubGraph.SubGraph.OutputsIsNone" href="#tflite.SubGraph.SubGraph.OutputsIsNone">OutputsIsNone</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.OutputsLength" href="#tflite.SubGraph.SubGraph.OutputsLength">OutputsLength</a></code></li>
+<li><code><a title="tflite.SubGraph.SubGraph.SubGraphBufferHasIdentifier" href="#tflite.SubGraph.SubGraph.SubGraphBufferHasIdentifier">SubGraphBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.Tensors" href="#tflite.SubGraph.SubGraph.Tensors">Tensors</a></code></li>
+<li><code><a title="tflite.SubGraph.SubGraph.TensorsIsNone" href="#tflite.SubGraph.SubGraph.TensorsIsNone">TensorsIsNone</a></code></li>
 <li><code><a title="tflite.SubGraph.SubGraph.TensorsLength" href="#tflite.SubGraph.SubGraph.TensorsLength">TensorsLength</a></code></li>
 </ul>
 </li>
@@ -690,7 +1015,7 @@ def GetRootAsSubGraph(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.LSHProjectionOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class LSHProjectionOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsLSHProjectionOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = LSHProjectionOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsLSHProjectionOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def LSHProjectionOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # LSHProjectionOptions
     def Init(self, buf, pos):
@@ -54,8 +64,14 @@ class LSHProjectionOptions(object):
         return 0
 
 def LSHProjectionOptionsStart(builder): builder.StartObject(1)
+def Start(builder):
+    return LSHProjectionOptionsStart(builder)
 def LSHProjectionOptionsAddType(builder, type): builder.PrependInt8Slot(0, type, 0)
-def LSHProjectionOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddType(builder, type):
+    return LSHProjectionOptionsAddType(builder, type)
+def LSHProjectionOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return LSHProjectionOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -65,6 +81,32 @@ def LSHProjectionOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.LSHProjectionOptions.AddType"><code class="name flex">
+<span>def <span class="ident">AddType</span></span>(<span>builder, type)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddType(builder, type):
+    return LSHProjectionOptionsAddType(builder, type)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LSHProjectionOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return LSHProjectionOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.LSHProjectionOptions.LSHProjectionOptionsAddType"><code class="name flex">
 <span>def <span class="ident">LSHProjectionOptionsAddType</span></span>(<span>builder, type)</span>
 </code></dt>
@@ -101,6 +143,19 @@ def LSHProjectionOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def LSHProjectionOptionsStart(builder): builder.StartObject(1)</code></pre>
 </details>
 </dd>
+<dt id="tflite.LSHProjectionOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return LSHProjectionOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -119,11 +174,19 @@ def LSHProjectionOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsLSHProjectionOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = LSHProjectionOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsLSHProjectionOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def LSHProjectionOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # LSHProjectionOptions
     def Init(self, buf, pos):
@@ -138,8 +201,8 @@ def LSHProjectionOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAsLSHProjectionOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsLSHProjectionOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -148,11 +211,40 @@ def LSHProjectionOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsLSHProjectionOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = LSHProjectionOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAsLSHProjectionOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsLSHProjectionOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsLSHProjectionOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.LSHProjectionOptions.LSHProjectionOptions.LSHProjectionOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">LSHProjectionOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def LSHProjectionOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -205,9 +297,12 @@ def GetRootAsLSHProjectionOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.LSHProjectionOptions.AddType" href="#tflite.LSHProjectionOptions.AddType">AddType</a></code></li>
+<li><code><a title="tflite.LSHProjectionOptions.End" href="#tflite.LSHProjectionOptions.End">End</a></code></li>
 <li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptionsAddType" href="#tflite.LSHProjectionOptions.LSHProjectionOptionsAddType">LSHProjectionOptionsAddType</a></code></li>
 <li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptionsEnd" href="#tflite.LSHProjectionOptions.LSHProjectionOptionsEnd">LSHProjectionOptionsEnd</a></code></li>
 <li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptionsStart" href="#tflite.LSHProjectionOptions.LSHProjectionOptionsStart">LSHProjectionOptionsStart</a></code></li>
+<li><code><a title="tflite.LSHProjectionOptions.Start" href="#tflite.LSHProjectionOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -215,8 +310,10 @@ def GetRootAsLSHProjectionOptions(cls, buf, offset):
 <li>
 <h4><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptions" href="#tflite.LSHProjectionOptions.LSHProjectionOptions">LSHProjectionOptions</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAs" href="#tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAsLSHProjectionOptions" href="#tflite.LSHProjectionOptions.LSHProjectionOptions.GetRootAsLSHProjectionOptions">GetRootAsLSHProjectionOptions</a></code></li>
 <li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptions.Init" href="#tflite.LSHProjectionOptions.LSHProjectionOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptions.LSHProjectionOptionsBufferHasIdentifier" href="#tflite.LSHProjectionOptions.LSHProjectionOptions.LSHProjectionOptionsBufferHasIdentifier">LSHProjectionOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.LSHProjectionOptions.LSHProjectionOptions.Type" href="#tflite.LSHProjectionOptions.LSHProjectionOptions.Type">Type</a></code></li>
 </ul>
 </li>
@@ -226,7 +323,7 @@ def GetRootAsLSHProjectionOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

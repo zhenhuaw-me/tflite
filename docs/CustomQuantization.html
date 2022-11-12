@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.CustomQuantization API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class CustomQuantization(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsCustomQuantization(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = CustomQuantization()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsCustomQuantization(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def CustomQuantizationBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # CustomQuantization
     def Init(self, buf, pos):
@@ -68,10 +78,23 @@ class CustomQuantization(object):
             return self._tab.VectorLen(o)
         return 0
 
+    # CustomQuantization
+    def CustomIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
 def CustomQuantizationStart(builder): builder.StartObject(1)
+def Start(builder):
+    return CustomQuantizationStart(builder)
 def CustomQuantizationAddCustom(builder, custom): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)
+def AddCustom(builder, custom):
+    return CustomQuantizationAddCustom(builder, custom)
 def CustomQuantizationStartCustomVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
+def StartCustomVector(builder, numElems):
+    return CustomQuantizationStartCustomVector(builder, numElems)
+def CustomQuantizationEnd(builder): return builder.EndObject()
+def End(builder):
+    return CustomQuantizationEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -81,6 +104,19 @@ def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.CustomQuantization.AddCustom"><code class="name flex">
+<span>def <span class="ident">AddCustom</span></span>(<span>builder, custom)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCustom(builder, custom):
+    return CustomQuantizationAddCustom(builder, custom)</code></pre>
+</details>
+</dd>
 <dt id="tflite.CustomQuantization.CustomQuantizationAddCustom"><code class="name flex">
 <span>def <span class="ident">CustomQuantizationAddCustom</span></span>(<span>builder, custom)</span>
 </code></dt>
@@ -129,6 +165,45 @@ def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def CustomQuantizationStartCustomVector(builder, numElems): return builder.StartVector(1, numElems, 1)</code></pre>
 </details>
 </dd>
+<dt id="tflite.CustomQuantization.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return CustomQuantizationEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.CustomQuantization.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return CustomQuantizationStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.CustomQuantization.StartCustomVector"><code class="name flex">
+<span>def <span class="ident">StartCustomVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartCustomVector(builder, numElems):
+    return CustomQuantizationStartCustomVector(builder, numElems)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -147,11 +222,19 @@ def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsCustomQuantization(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = CustomQuantization()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsCustomQuantization(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def CustomQuantizationBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # CustomQuantization
     def Init(self, buf, pos):
@@ -177,12 +260,17 @@ def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             return self._tab.VectorLen(o)
-        return 0</code></pre>
+        return 0
+
+    # CustomQuantization
+    def CustomIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.CustomQuantization.CustomQuantization.GetRootAsCustomQuantization"><code class="name flex">
-<span>def <span class="ident">GetRootAsCustomQuantization</span></span>(<span>buf, offset)</span>
+<dt id="tflite.CustomQuantization.CustomQuantization.CustomQuantizationBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">CustomQuantizationBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -191,11 +279,40 @@ def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsCustomQuantization(cls, buf, offset):
+def CustomQuantizationBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
+</details>
+</dd>
+<dt id="tflite.CustomQuantization.CustomQuantization.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = CustomQuantization()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.CustomQuantization.CustomQuantization.GetRootAsCustomQuantization"><code class="name flex">
+<span>def <span class="ident">GetRootAsCustomQuantization</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsCustomQuantization(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
 </details>
 </dd>
 </dl>
@@ -232,6 +349,20 @@ def GetRootAsCustomQuantization(cls, buf, offset):
     if o != 0:
         return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint8Flags, o)
     return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.CustomQuantization.CustomQuantization.CustomIsNone"><code class="name flex">
+<span>def <span class="ident">CustomIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CustomIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.CustomQuantization.CustomLength"><code class="name flex">
@@ -281,10 +412,14 @@ def GetRootAsCustomQuantization(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.CustomQuantization.AddCustom" href="#tflite.CustomQuantization.AddCustom">AddCustom</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantizationAddCustom" href="#tflite.CustomQuantization.CustomQuantizationAddCustom">CustomQuantizationAddCustom</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantizationEnd" href="#tflite.CustomQuantization.CustomQuantizationEnd">CustomQuantizationEnd</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantizationStart" href="#tflite.CustomQuantization.CustomQuantizationStart">CustomQuantizationStart</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantizationStartCustomVector" href="#tflite.CustomQuantization.CustomQuantizationStartCustomVector">CustomQuantizationStartCustomVector</a></code></li>
+<li><code><a title="tflite.CustomQuantization.End" href="#tflite.CustomQuantization.End">End</a></code></li>
+<li><code><a title="tflite.CustomQuantization.Start" href="#tflite.CustomQuantization.Start">Start</a></code></li>
+<li><code><a title="tflite.CustomQuantization.StartCustomVector" href="#tflite.CustomQuantization.StartCustomVector">StartCustomVector</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -294,7 +429,10 @@ def GetRootAsCustomQuantization(cls, buf, offset):
 <ul class="">
 <li><code><a title="tflite.CustomQuantization.CustomQuantization.Custom" href="#tflite.CustomQuantization.CustomQuantization.Custom">Custom</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantization.CustomAsNumpy" href="#tflite.CustomQuantization.CustomQuantization.CustomAsNumpy">CustomAsNumpy</a></code></li>
+<li><code><a title="tflite.CustomQuantization.CustomQuantization.CustomIsNone" href="#tflite.CustomQuantization.CustomQuantization.CustomIsNone">CustomIsNone</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantization.CustomLength" href="#tflite.CustomQuantization.CustomQuantization.CustomLength">CustomLength</a></code></li>
+<li><code><a title="tflite.CustomQuantization.CustomQuantization.CustomQuantizationBufferHasIdentifier" href="#tflite.CustomQuantization.CustomQuantization.CustomQuantizationBufferHasIdentifier">CustomQuantizationBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.CustomQuantization.CustomQuantization.GetRootAs" href="#tflite.CustomQuantization.CustomQuantization.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantization.GetRootAsCustomQuantization" href="#tflite.CustomQuantization.CustomQuantization.GetRootAsCustomQuantization">GetRootAsCustomQuantization</a></code></li>
 <li><code><a title="tflite.CustomQuantization.CustomQuantization.Init" href="#tflite.CustomQuantization.CustomQuantization.Init">Init</a></code></li>
 </ul>
@@ -305,7 +443,7 @@ def GetRootAsCustomQuantization(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

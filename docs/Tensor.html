@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.Tensor API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class Tensor(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsTensor(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Tensor()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsTensor(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def TensorBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # Tensor
     def Init(self, buf, pos):
@@ -69,6 +79,11 @@ class Tensor(object):
         return 0
 
     # Tensor
+    def ShapeIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # Tensor
     def Type(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
@@ -94,7 +109,7 @@ class Tensor(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
             x = self._tab.Indirect(o + self._tab.Pos)
-            from .QuantizationParameters import QuantizationParameters
+            from tflite.QuantizationParameters import QuantizationParameters
             obj = QuantizationParameters()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -112,7 +127,7 @@ class Tensor(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
         if o != 0:
             x = self._tab.Indirect(o + self._tab.Pos)
-            from .SparsityParameters import SparsityParameters
+            from tflite.SparsityParameters import SparsityParameters
             obj = SparsityParameters()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -140,18 +155,57 @@ class Tensor(object):
             return self._tab.VectorLen(o)
         return 0
 
-def TensorStart(builder): builder.StartObject(8)
+    # Tensor
+    def ShapeSignatureIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        return o == 0
+
+    # Tensor
+    def HasRank(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+def TensorStart(builder): builder.StartObject(9)
+def Start(builder):
+    return TensorStart(builder)
 def TensorAddShape(builder, shape): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(shape), 0)
+def AddShape(builder, shape):
+    return TensorAddShape(builder, shape)
 def TensorStartShapeVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartShapeVector(builder, numElems):
+    return TensorStartShapeVector(builder, numElems)
 def TensorAddType(builder, type): builder.PrependInt8Slot(1, type, 0)
+def AddType(builder, type):
+    return TensorAddType(builder, type)
 def TensorAddBuffer(builder, buffer): builder.PrependUint32Slot(2, buffer, 0)
+def AddBuffer(builder, buffer):
+    return TensorAddBuffer(builder, buffer)
 def TensorAddName(builder, name): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+def AddName(builder, name):
+    return TensorAddName(builder, name)
 def TensorAddQuantization(builder, quantization): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(quantization), 0)
+def AddQuantization(builder, quantization):
+    return TensorAddQuantization(builder, quantization)
 def TensorAddIsVariable(builder, isVariable): builder.PrependBoolSlot(5, isVariable, 0)
+def AddIsVariable(builder, isVariable):
+    return TensorAddIsVariable(builder, isVariable)
 def TensorAddSparsity(builder, sparsity): builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(sparsity), 0)
+def AddSparsity(builder, sparsity):
+    return TensorAddSparsity(builder, sparsity)
 def TensorAddShapeSignature(builder, shapeSignature): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(shapeSignature), 0)
+def AddShapeSignature(builder, shapeSignature):
+    return TensorAddShapeSignature(builder, shapeSignature)
 def TensorStartShapeSignatureVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def TensorEnd(builder): return builder.EndObject()</code></pre>
+def StartShapeSignatureVector(builder, numElems):
+    return TensorStartShapeSignatureVector(builder, numElems)
+def TensorAddHasRank(builder, hasRank): builder.PrependBoolSlot(8, hasRank, 0)
+def AddHasRank(builder, hasRank):
+    return TensorAddHasRank(builder, hasRank)
+def TensorEnd(builder): return builder.EndObject()
+def End(builder):
+    return TensorEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -161,6 +215,175 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.Tensor.AddBuffer"><code class="name flex">
+<span>def <span class="ident">AddBuffer</span></span>(<span>builder, buffer)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBuffer(builder, buffer):
+    return TensorAddBuffer(builder, buffer)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddHasRank"><code class="name flex">
+<span>def <span class="ident">AddHasRank</span></span>(<span>builder, hasRank)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddHasRank(builder, hasRank):
+    return TensorAddHasRank(builder, hasRank)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddIsVariable"><code class="name flex">
+<span>def <span class="ident">AddIsVariable</span></span>(<span>builder, isVariable)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddIsVariable(builder, isVariable):
+    return TensorAddIsVariable(builder, isVariable)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddName"><code class="name flex">
+<span>def <span class="ident">AddName</span></span>(<span>builder, name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddName(builder, name):
+    return TensorAddName(builder, name)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddQuantization"><code class="name flex">
+<span>def <span class="ident">AddQuantization</span></span>(<span>builder, quantization)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddQuantization(builder, quantization):
+    return TensorAddQuantization(builder, quantization)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddShape"><code class="name flex">
+<span>def <span class="ident">AddShape</span></span>(<span>builder, shape)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddShape(builder, shape):
+    return TensorAddShape(builder, shape)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddShapeSignature"><code class="name flex">
+<span>def <span class="ident">AddShapeSignature</span></span>(<span>builder, shapeSignature)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddShapeSignature(builder, shapeSignature):
+    return TensorAddShapeSignature(builder, shapeSignature)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddSparsity"><code class="name flex">
+<span>def <span class="ident">AddSparsity</span></span>(<span>builder, sparsity)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddSparsity(builder, sparsity):
+    return TensorAddSparsity(builder, sparsity)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.AddType"><code class="name flex">
+<span>def <span class="ident">AddType</span></span>(<span>builder, type)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddType(builder, type):
+    return TensorAddType(builder, type)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return TensorEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return TensorStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.StartShapeSignatureVector"><code class="name flex">
+<span>def <span class="ident">StartShapeSignatureVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartShapeSignatureVector(builder, numElems):
+    return TensorStartShapeSignatureVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.StartShapeVector"><code class="name flex">
+<span>def <span class="ident">StartShapeVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartShapeVector(builder, numElems):
+    return TensorStartShapeVector(builder, numElems)</code></pre>
+</details>
+</dd>
 <dt id="tflite.Tensor.TensorAddBuffer"><code class="name flex">
 <span>def <span class="ident">TensorAddBuffer</span></span>(<span>builder, buffer)</span>
 </code></dt>
@@ -171,6 +394,18 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def TensorAddBuffer(builder, buffer): builder.PrependUint32Slot(2, buffer, 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.TensorAddHasRank"><code class="name flex">
+<span>def <span class="ident">TensorAddHasRank</span></span>(<span>builder, hasRank)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def TensorAddHasRank(builder, hasRank): builder.PrependBoolSlot(8, hasRank, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Tensor.TensorAddIsVariable"><code class="name flex">
@@ -278,7 +513,7 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TensorStart(builder): builder.StartObject(8)</code></pre>
+<pre><code class="python">def TensorStart(builder): builder.StartObject(9)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Tensor.TensorStartShapeSignatureVector"><code class="name flex">
@@ -323,11 +558,19 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsTensor(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Tensor()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsTensor(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def TensorBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # Tensor
     def Init(self, buf, pos):
@@ -356,6 +599,11 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # Tensor
+    def ShapeIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # Tensor
     def Type(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
@@ -381,7 +629,7 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
             x = self._tab.Indirect(o + self._tab.Pos)
-            from .QuantizationParameters import QuantizationParameters
+            from tflite.QuantizationParameters import QuantizationParameters
             obj = QuantizationParameters()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -399,7 +647,7 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
         if o != 0:
             x = self._tab.Indirect(o + self._tab.Pos)
-            from .SparsityParameters import SparsityParameters
+            from tflite.SparsityParameters import SparsityParameters
             obj = SparsityParameters()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -425,12 +673,24 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
         if o != 0:
             return self._tab.VectorLen(o)
-        return 0</code></pre>
+        return 0
+
+    # Tensor
+    def ShapeSignatureIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        return o == 0
+
+    # Tensor
+    def HasRank(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.Tensor.Tensor.GetRootAsTensor"><code class="name flex">
-<span>def <span class="ident">GetRootAsTensor</span></span>(<span>buf, offset)</span>
+<dt id="tflite.Tensor.Tensor.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -439,11 +699,40 @@ def TensorEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsTensor(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = Tensor()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.Tensor.GetRootAsTensor"><code class="name flex">
+<span>def <span class="ident">GetRootAsTensor</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsTensor(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.Tensor.TensorBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">TensorBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def TensorBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -463,6 +752,22 @@ def GetRootAsTensor(cls, buf, offset):
     if o != 0:
         return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
     return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.Tensor.HasRank"><code class="name flex">
+<span>def <span class="ident">HasRank</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def HasRank(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
+    if o != 0:
+        return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+    return False</code></pre>
 </details>
 </dd>
 <dt id="tflite.Tensor.Tensor.Init"><code class="name flex">
@@ -523,7 +828,7 @@ def GetRootAsTensor(cls, buf, offset):
     o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
     if o != 0:
         x = self._tab.Indirect(o + self._tab.Pos)
-        from .QuantizationParameters import QuantizationParameters
+        from tflite.QuantizationParameters import QuantizationParameters
         obj = QuantizationParameters()
         obj.Init(self._tab.Bytes, x)
         return obj
@@ -561,6 +866,20 @@ def GetRootAsTensor(cls, buf, offset):
     if o != 0:
         return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int32Flags, o)
     return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Tensor.Tensor.ShapeIsNone"><code class="name flex">
+<span>def <span class="ident">ShapeIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ShapeIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.Tensor.Tensor.ShapeLength"><code class="name flex">
@@ -612,6 +931,20 @@ def GetRootAsTensor(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
+<dt id="tflite.Tensor.Tensor.ShapeSignatureIsNone"><code class="name flex">
+<span>def <span class="ident">ShapeSignatureIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ShapeSignatureIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    return o == 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.Tensor.Tensor.ShapeSignatureLength"><code class="name flex">
 <span>def <span class="ident">ShapeSignatureLength</span></span>(<span>self)</span>
 </code></dt>
@@ -641,7 +974,7 @@ def GetRootAsTensor(cls, buf, offset):
     o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
     if o != 0:
         x = self._tab.Indirect(o + self._tab.Pos)
-        from .SparsityParameters import SparsityParameters
+        from tflite.SparsityParameters import SparsityParameters
         obj = SparsityParameters()
         obj.Init(self._tab.Bytes, x)
         return obj
@@ -682,7 +1015,21 @@ def GetRootAsTensor(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.Tensor.AddBuffer" href="#tflite.Tensor.AddBuffer">AddBuffer</a></code></li>
+<li><code><a title="tflite.Tensor.AddHasRank" href="#tflite.Tensor.AddHasRank">AddHasRank</a></code></li>
+<li><code><a title="tflite.Tensor.AddIsVariable" href="#tflite.Tensor.AddIsVariable">AddIsVariable</a></code></li>
+<li><code><a title="tflite.Tensor.AddName" href="#tflite.Tensor.AddName">AddName</a></code></li>
+<li><code><a title="tflite.Tensor.AddQuantization" href="#tflite.Tensor.AddQuantization">AddQuantization</a></code></li>
+<li><code><a title="tflite.Tensor.AddShape" href="#tflite.Tensor.AddShape">AddShape</a></code></li>
+<li><code><a title="tflite.Tensor.AddShapeSignature" href="#tflite.Tensor.AddShapeSignature">AddShapeSignature</a></code></li>
+<li><code><a title="tflite.Tensor.AddSparsity" href="#tflite.Tensor.AddSparsity">AddSparsity</a></code></li>
+<li><code><a title="tflite.Tensor.AddType" href="#tflite.Tensor.AddType">AddType</a></code></li>
+<li><code><a title="tflite.Tensor.End" href="#tflite.Tensor.End">End</a></code></li>
+<li><code><a title="tflite.Tensor.Start" href="#tflite.Tensor.Start">Start</a></code></li>
+<li><code><a title="tflite.Tensor.StartShapeSignatureVector" href="#tflite.Tensor.StartShapeSignatureVector">StartShapeSignatureVector</a></code></li>
+<li><code><a title="tflite.Tensor.StartShapeVector" href="#tflite.Tensor.StartShapeVector">StartShapeVector</a></code></li>
 <li><code><a title="tflite.Tensor.TensorAddBuffer" href="#tflite.Tensor.TensorAddBuffer">TensorAddBuffer</a></code></li>
+<li><code><a title="tflite.Tensor.TensorAddHasRank" href="#tflite.Tensor.TensorAddHasRank">TensorAddHasRank</a></code></li>
 <li><code><a title="tflite.Tensor.TensorAddIsVariable" href="#tflite.Tensor.TensorAddIsVariable">TensorAddIsVariable</a></code></li>
 <li><code><a title="tflite.Tensor.TensorAddName" href="#tflite.Tensor.TensorAddName">TensorAddName</a></code></li>
 <li><code><a title="tflite.Tensor.TensorAddQuantization" href="#tflite.Tensor.TensorAddQuantization">TensorAddQuantization</a></code></li>
@@ -702,18 +1049,23 @@ def GetRootAsTensor(cls, buf, offset):
 <h4><code><a title="tflite.Tensor.Tensor" href="#tflite.Tensor.Tensor">Tensor</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.Tensor.Tensor.Buffer" href="#tflite.Tensor.Tensor.Buffer">Buffer</a></code></li>
+<li><code><a title="tflite.Tensor.Tensor.GetRootAs" href="#tflite.Tensor.Tensor.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.GetRootAsTensor" href="#tflite.Tensor.Tensor.GetRootAsTensor">GetRootAsTensor</a></code></li>
+<li><code><a title="tflite.Tensor.Tensor.HasRank" href="#tflite.Tensor.Tensor.HasRank">HasRank</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.Init" href="#tflite.Tensor.Tensor.Init">Init</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.IsVariable" href="#tflite.Tensor.Tensor.IsVariable">IsVariable</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.Name" href="#tflite.Tensor.Tensor.Name">Name</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.Quantization" href="#tflite.Tensor.Tensor.Quantization">Quantization</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.Shape" href="#tflite.Tensor.Tensor.Shape">Shape</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.ShapeAsNumpy" href="#tflite.Tensor.Tensor.ShapeAsNumpy">ShapeAsNumpy</a></code></li>
+<li><code><a title="tflite.Tensor.Tensor.ShapeIsNone" href="#tflite.Tensor.Tensor.ShapeIsNone">ShapeIsNone</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.ShapeLength" href="#tflite.Tensor.Tensor.ShapeLength">ShapeLength</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.ShapeSignature" href="#tflite.Tensor.Tensor.ShapeSignature">ShapeSignature</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.ShapeSignatureAsNumpy" href="#tflite.Tensor.Tensor.ShapeSignatureAsNumpy">ShapeSignatureAsNumpy</a></code></li>
+<li><code><a title="tflite.Tensor.Tensor.ShapeSignatureIsNone" href="#tflite.Tensor.Tensor.ShapeSignatureIsNone">ShapeSignatureIsNone</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.ShapeSignatureLength" href="#tflite.Tensor.Tensor.ShapeSignatureLength">ShapeSignatureLength</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.Sparsity" href="#tflite.Tensor.Tensor.Sparsity">Sparsity</a></code></li>
+<li><code><a title="tflite.Tensor.Tensor.TensorBufferHasIdentifier" href="#tflite.Tensor.Tensor.TensorBufferHasIdentifier">TensorBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.Tensor.Tensor.Type" href="#tflite.Tensor.Tensor.Type">Type</a></code></li>
 </ul>
 </li>
@@ -723,7 +1075,7 @@ def GetRootAsTensor(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

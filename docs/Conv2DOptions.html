@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.Conv2DOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class Conv2DOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsConv2DOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Conv2DOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsConv2DOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def Conv2DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # Conv2DOptions
     def Init(self, buf, pos):
@@ -89,13 +99,29 @@ class Conv2DOptions(object):
         return 1
 
 def Conv2DOptionsStart(builder): builder.StartObject(6)
+def Start(builder):
+    return Conv2DOptionsStart(builder)
 def Conv2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+def AddPadding(builder, padding):
+    return Conv2DOptionsAddPadding(builder, padding)
 def Conv2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+def AddStrideW(builder, strideW):
+    return Conv2DOptionsAddStrideW(builder, strideW)
 def Conv2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
+def AddStrideH(builder, strideH):
+    return Conv2DOptionsAddStrideH(builder, strideH)
 def Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(3, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
 def Conv2DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(4, dilationWFactor, 1)
+def AddDilationWFactor(builder, dilationWFactor):
+    return Conv2DOptionsAddDilationWFactor(builder, dilationWFactor)
 def Conv2DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(5, dilationHFactor, 1)
-def Conv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddDilationHFactor(builder, dilationHFactor):
+    return Conv2DOptionsAddDilationHFactor(builder, dilationHFactor)
+def Conv2DOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return Conv2DOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -105,6 +131,84 @@ def Conv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.Conv2DOptions.AddDilationHFactor"><code class="name flex">
+<span>def <span class="ident">AddDilationHFactor</span></span>(<span>builder, dilationHFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDilationHFactor(builder, dilationHFactor):
+    return Conv2DOptionsAddDilationHFactor(builder, dilationHFactor)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.AddDilationWFactor"><code class="name flex">
+<span>def <span class="ident">AddDilationWFactor</span></span>(<span>builder, dilationWFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDilationWFactor(builder, dilationWFactor):
+    return Conv2DOptionsAddDilationWFactor(builder, dilationWFactor)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.AddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">AddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.AddPadding"><code class="name flex">
+<span>def <span class="ident">AddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPadding(builder, padding):
+    return Conv2DOptionsAddPadding(builder, padding)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.AddStrideH"><code class="name flex">
+<span>def <span class="ident">AddStrideH</span></span>(<span>builder, strideH)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideH(builder, strideH):
+    return Conv2DOptionsAddStrideH(builder, strideH)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.AddStrideW"><code class="name flex">
+<span>def <span class="ident">AddStrideW</span></span>(<span>builder, strideW)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideW(builder, strideW):
+    return Conv2DOptionsAddStrideW(builder, strideW)</code></pre>
+</details>
+</dd>
 <dt id="tflite.Conv2DOptions.Conv2DOptionsAddDilationHFactor"><code class="name flex">
 <span>def <span class="ident">Conv2DOptionsAddDilationHFactor</span></span>(<span>builder, dilationHFactor)</span>
 </code></dt>
@@ -201,6 +305,32 @@ def Conv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def Conv2DOptionsStart(builder): builder.StartObject(6)</code></pre>
 </details>
 </dd>
+<dt id="tflite.Conv2DOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return Conv2DOptionsEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return Conv2DOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -219,11 +349,19 @@ def Conv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsConv2DOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Conv2DOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsConv2DOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def Conv2DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # Conv2DOptions
     def Init(self, buf, pos):
@@ -273,8 +411,8 @@ def Conv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.Conv2DOptions.Conv2DOptions.GetRootAsConv2DOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsConv2DOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.Conv2DOptions.Conv2DOptions.Conv2DOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">Conv2DOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -283,11 +421,40 @@ def Conv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsConv2DOptions(cls, buf, offset):
+def Conv2DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.Conv2DOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = Conv2DOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv2DOptions.Conv2DOptions.GetRootAsConv2DOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsConv2DOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsConv2DOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
 </details>
 </dd>
 </dl>
@@ -420,6 +587,12 @@ def GetRootAsConv2DOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.Conv2DOptions.AddDilationHFactor" href="#tflite.Conv2DOptions.AddDilationHFactor">AddDilationHFactor</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.AddDilationWFactor" href="#tflite.Conv2DOptions.AddDilationWFactor">AddDilationWFactor</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.AddFusedActivationFunction" href="#tflite.Conv2DOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.AddPadding" href="#tflite.Conv2DOptions.AddPadding">AddPadding</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.AddStrideH" href="#tflite.Conv2DOptions.AddStrideH">AddStrideH</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.AddStrideW" href="#tflite.Conv2DOptions.AddStrideW">AddStrideW</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptionsAddDilationHFactor" href="#tflite.Conv2DOptions.Conv2DOptionsAddDilationHFactor">Conv2DOptionsAddDilationHFactor</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptionsAddDilationWFactor" href="#tflite.Conv2DOptions.Conv2DOptionsAddDilationWFactor">Conv2DOptionsAddDilationWFactor</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptionsAddFusedActivationFunction" href="#tflite.Conv2DOptions.Conv2DOptionsAddFusedActivationFunction">Conv2DOptionsAddFusedActivationFunction</a></code></li>
@@ -428,6 +601,8 @@ def GetRootAsConv2DOptions(cls, buf, offset):
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptionsAddStrideW" href="#tflite.Conv2DOptions.Conv2DOptionsAddStrideW">Conv2DOptionsAddStrideW</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptionsEnd" href="#tflite.Conv2DOptions.Conv2DOptionsEnd">Conv2DOptionsEnd</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptionsStart" href="#tflite.Conv2DOptions.Conv2DOptionsStart">Conv2DOptionsStart</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.End" href="#tflite.Conv2DOptions.End">End</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.Start" href="#tflite.Conv2DOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -435,9 +610,11 @@ def GetRootAsConv2DOptions(cls, buf, offset):
 <li>
 <h4><code><a title="tflite.Conv2DOptions.Conv2DOptions" href="#tflite.Conv2DOptions.Conv2DOptions">Conv2DOptions</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.Conv2DOptions.Conv2DOptions.Conv2DOptionsBufferHasIdentifier" href="#tflite.Conv2DOptions.Conv2DOptions.Conv2DOptionsBufferHasIdentifier">Conv2DOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptions.DilationHFactor" href="#tflite.Conv2DOptions.Conv2DOptions.DilationHFactor">DilationHFactor</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptions.DilationWFactor" href="#tflite.Conv2DOptions.Conv2DOptions.DilationWFactor">DilationWFactor</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptions.FusedActivationFunction" href="#tflite.Conv2DOptions.Conv2DOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
+<li><code><a title="tflite.Conv2DOptions.Conv2DOptions.GetRootAs" href="#tflite.Conv2DOptions.Conv2DOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptions.GetRootAsConv2DOptions" href="#tflite.Conv2DOptions.Conv2DOptions.GetRootAsConv2DOptions">GetRootAsConv2DOptions</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptions.Init" href="#tflite.Conv2DOptions.Conv2DOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.Conv2DOptions.Conv2DOptions.Padding" href="#tflite.Conv2DOptions.Conv2DOptions.Padding">Padding</a></code></li>
@@ -451,7 +628,7 @@ def GetRootAsConv2DOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

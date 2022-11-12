@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.BidirectionalSequenceRNNOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class BidirectionalSequenceRNNOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = BidirectionalSequenceRNNOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def BidirectionalSequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # BidirectionalSequenceRNNOptions
     def Init(self, buf, pos):
@@ -75,11 +85,23 @@ class BidirectionalSequenceRNNOptions(object):
         return False
 
 def BidirectionalSequenceRNNOptionsStart(builder): builder.StartObject(4)
+def Start(builder):
+    return BidirectionalSequenceRNNOptionsStart(builder)
 def BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)
+def AddTimeMajor(builder, timeMajor):
+    return BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)
 def BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
 def BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(2, mergeOutputs, 0)
+def AddMergeOutputs(builder, mergeOutputs):
+    return BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)
 def BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)
-def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return BidirectionalSequenceRNNOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -89,6 +111,58 @@ def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</cod
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.BidirectionalSequenceRNNOptions.AddAsymmetricQuantizeInputs"><code class="name flex">
+<span>def <span class="ident">AddAsymmetricQuantizeInputs</span></span>(<span>builder, asymmetricQuantizeInputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.AddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">AddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.AddMergeOutputs"><code class="name flex">
+<span>def <span class="ident">AddMergeOutputs</span></span>(<span>builder, mergeOutputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddMergeOutputs(builder, mergeOutputs):
+    return BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.AddTimeMajor"><code class="name flex">
+<span>def <span class="ident">AddTimeMajor</span></span>(<span>builder, timeMajor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddTimeMajor(builder, timeMajor):
+    return BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+</details>
+</dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
 <span>def <span class="ident">BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs</span></span>(<span>builder, asymmetricQuantizeInputs)</span>
 </code></dt>
@@ -161,6 +235,32 @@ def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</cod
 <pre><code class="python">def BidirectionalSequenceRNNOptionsStart(builder): builder.StartObject(4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return BidirectionalSequenceRNNOptionsEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return BidirectionalSequenceRNNOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -179,11 +279,19 @@ def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</cod
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = BidirectionalSequenceRNNOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def BidirectionalSequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # BidirectionalSequenceRNNOptions
     def Init(self, buf, pos):
@@ -219,8 +327,8 @@ def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</cod
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAsBidirectionalSequenceRNNOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsBidirectionalSequenceRNNOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">BidirectionalSequenceRNNOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -229,11 +337,40 @@ def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</cod
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
+def BidirectionalSequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = BidirectionalSequenceRNNOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAsBidirectionalSequenceRNNOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsBidirectionalSequenceRNNOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
 </details>
 </dd>
 </dl>
@@ -334,12 +471,18 @@ def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.AddAsymmetricQuantizeInputs" href="#tflite.BidirectionalSequenceRNNOptions.AddAsymmetricQuantizeInputs">AddAsymmetricQuantizeInputs</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.AddFusedActivationFunction" href="#tflite.BidirectionalSequenceRNNOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.AddMergeOutputs" href="#tflite.BidirectionalSequenceRNNOptions.AddMergeOutputs">AddMergeOutputs</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.AddTimeMajor" href="#tflite.BidirectionalSequenceRNNOptions.AddTimeMajor">AddTimeMajor</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs">BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddFusedActivationFunction" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddFusedActivationFunction">BidirectionalSequenceRNNOptionsAddFusedActivationFunction</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddMergeOutputs" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddMergeOutputs">BidirectionalSequenceRNNOptionsAddMergeOutputs</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddTimeMajor" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddTimeMajor">BidirectionalSequenceRNNOptionsAddTimeMajor</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsEnd" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsEnd">BidirectionalSequenceRNNOptionsEnd</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsStart" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsStart">BidirectionalSequenceRNNOptionsStart</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.End" href="#tflite.BidirectionalSequenceRNNOptions.End">End</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.Start" href="#tflite.BidirectionalSequenceRNNOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -348,7 +491,9 @@ def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
 <h4><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions">BidirectionalSequenceRNNOptions</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.AsymmetricQuantizeInputs" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.AsymmetricQuantizeInputs">AsymmetricQuantizeInputs</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsBufferHasIdentifier" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsBufferHasIdentifier">BidirectionalSequenceRNNOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.FusedActivationFunction" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAs" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAsBidirectionalSequenceRNNOptions" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.GetRootAsBidirectionalSequenceRNNOptions">GetRootAsBidirectionalSequenceRNNOptions</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.Init" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.MergeOutputs" href="#tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptions.MergeOutputs">MergeOutputs</a></code></li>
@@ -361,7 +506,7 @@ def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>
