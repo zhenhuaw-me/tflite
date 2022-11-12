@@ -51,7 +51,7 @@ As the operator definition may change across different TensorFlow versions, this
     3. [Update](scripts/update-importing.py) the classes and functions import of submodules.
     4. [Update](scripts/gen-doc.sh) the API document.
     5. Update the versioning in [`__init__.py`](tflite/__init__.py).
-    6. [Build](scripts/build.sh) and [Test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
+    6. [Build](scripts/build-wheel.sh) and [test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
 4. Push your change and open [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 5. The maintainer will take the responsibility to upload change to PyPI when merged.
 
