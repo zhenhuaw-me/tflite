@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.BidirectionalSequenceLSTMOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class BidirectionalSequenceLSTMOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = BidirectionalSequenceLSTMOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def BidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # BidirectionalSequenceLSTMOptions
     def Init(self, buf, pos):
@@ -89,13 +99,29 @@ class BidirectionalSequenceLSTMOptions(object):
         return False
 
 def BidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(6)
+def Start(builder):
+    return BidirectionalSequenceLSTMOptionsStart(builder)
 def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
 def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+def AddCellClip(builder, cellClip):
+    return BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
 def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+def AddProjClip(builder, projClip):
+    return BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
 def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(3, mergeOutputs, 0)
+def AddMergeOutputs(builder, mergeOutputs):
+    return BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)
 def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(4, timeMajor, 1)
+def AddTimeMajor(builder, timeMajor):
+    return BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
 def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)
-def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return BidirectionalSequenceLSTMOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -105,6 +131,84 @@ def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</co
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.AddAsymmetricQuantizeInputs"><code class="name flex">
+<span>def <span class="ident">AddAsymmetricQuantizeInputs</span></span>(<span>builder, asymmetricQuantizeInputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.AddCellClip"><code class="name flex">
+<span>def <span class="ident">AddCellClip</span></span>(<span>builder, cellClip)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCellClip(builder, cellClip):
+    return BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.AddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">AddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.AddMergeOutputs"><code class="name flex">
+<span>def <span class="ident">AddMergeOutputs</span></span>(<span>builder, mergeOutputs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddMergeOutputs(builder, mergeOutputs):
+    return BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.AddProjClip"><code class="name flex">
+<span>def <span class="ident">AddProjClip</span></span>(<span>builder, projClip)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddProjClip(builder, projClip):
+    return BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.AddTimeMajor"><code class="name flex">
+<span>def <span class="ident">AddTimeMajor</span></span>(<span>builder, timeMajor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddTimeMajor(builder, timeMajor):
+    return BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+</details>
+</dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
 <span>def <span class="ident">BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs</span></span>(<span>builder, asymmetricQuantizeInputs)</span>
 </code></dt>
@@ -201,6 +305,32 @@ def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</co
 <pre><code class="python">def BidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(6)</code></pre>
 </details>
 </dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return BidirectionalSequenceLSTMOptionsEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return BidirectionalSequenceLSTMOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -219,11 +349,19 @@ def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</co
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = BidirectionalSequenceLSTMOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def BidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # BidirectionalSequenceLSTMOptions
     def Init(self, buf, pos):
@@ -273,8 +411,8 @@ def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</co
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAsBidirectionalSequenceLSTMOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsBidirectionalSequenceLSTMOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">BidirectionalSequenceLSTMOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -283,11 +421,40 @@ def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</co
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
+def BidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = BidirectionalSequenceLSTMOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAsBidirectionalSequenceLSTMOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsBidirectionalSequenceLSTMOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
 </details>
 </dd>
 </dl>
@@ -420,6 +587,12 @@ def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.AddAsymmetricQuantizeInputs" href="#tflite.BidirectionalSequenceLSTMOptions.AddAsymmetricQuantizeInputs">AddAsymmetricQuantizeInputs</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.AddCellClip" href="#tflite.BidirectionalSequenceLSTMOptions.AddCellClip">AddCellClip</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.AddFusedActivationFunction" href="#tflite.BidirectionalSequenceLSTMOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.AddMergeOutputs" href="#tflite.BidirectionalSequenceLSTMOptions.AddMergeOutputs">AddMergeOutputs</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.AddProjClip" href="#tflite.BidirectionalSequenceLSTMOptions.AddProjClip">AddProjClip</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.AddTimeMajor" href="#tflite.BidirectionalSequenceLSTMOptions.AddTimeMajor">AddTimeMajor</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs">BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddCellClip" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddCellClip">BidirectionalSequenceLSTMOptionsAddCellClip</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddFusedActivationFunction" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddFusedActivationFunction">BidirectionalSequenceLSTMOptionsAddFusedActivationFunction</a></code></li>
@@ -428,6 +601,8 @@ def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddTimeMajor" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddTimeMajor">BidirectionalSequenceLSTMOptionsAddTimeMajor</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsEnd" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsEnd">BidirectionalSequenceLSTMOptionsEnd</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsStart" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsStart">BidirectionalSequenceLSTMOptionsStart</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.End" href="#tflite.BidirectionalSequenceLSTMOptions.End">End</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.Start" href="#tflite.BidirectionalSequenceLSTMOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -436,8 +611,10 @@ def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
 <h4><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions">BidirectionalSequenceLSTMOptions</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.AsymmetricQuantizeInputs" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.AsymmetricQuantizeInputs">AsymmetricQuantizeInputs</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsBufferHasIdentifier" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsBufferHasIdentifier">BidirectionalSequenceLSTMOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.CellClip" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.CellClip">CellClip</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.FusedActivationFunction" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
+<li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAs" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAsBidirectionalSequenceLSTMOptions" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.GetRootAsBidirectionalSequenceLSTMOptions">GetRootAsBidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.Init" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.MergeOutputs" href="#tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptions.MergeOutputs">MergeOutputs</a></code></li>
@@ -451,7 +628,7 @@ def GetRootAsBidirectionalSequenceLSTMOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

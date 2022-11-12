@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class BidirectionalSequenceRNNOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = BidirectionalSequenceRNNOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsBidirectionalSequenceRNNOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def BidirectionalSequenceRNNOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # BidirectionalSequenceRNNOptions
     def Init(self, buf, pos):
@@ -47,8 +57,20 @@ class BidirectionalSequenceRNNOptions(object):
         return False
 
 def BidirectionalSequenceRNNOptionsStart(builder): builder.StartObject(4)
+def Start(builder):
+    return BidirectionalSequenceRNNOptionsStart(builder)
 def BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)
+def AddTimeMajor(builder, timeMajor):
+    return BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)
 def BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
 def BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(2, mergeOutputs, 0)
+def AddMergeOutputs(builder, mergeOutputs):
+    return BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)
 def BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)
+def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    return BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
 def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return BidirectionalSequenceRNNOptionsEnd(builder)

@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class ResizeNearestNeighborOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsResizeNearestNeighborOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = ResizeNearestNeighborOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsResizeNearestNeighborOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ResizeNearestNeighborOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # ResizeNearestNeighborOptions
     def Init(self, buf, pos):
@@ -33,6 +43,14 @@ class ResizeNearestNeighborOptions(object):
         return False
 
 def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(2)
+def Start(builder):
+    return ResizeNearestNeighborOptionsStart(builder)
 def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(0, alignCorners, 0)
+def AddAlignCorners(builder, alignCorners):
+    return ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)
 def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(1, halfPixelCenters, 0)
+def AddHalfPixelCenters(builder, halfPixelCenters):
+    return ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)
 def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return ResizeNearestNeighborOptionsEnd(builder)

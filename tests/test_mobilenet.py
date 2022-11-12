@@ -64,10 +64,13 @@ def test_mobilenet():
     op_code = model.OperatorCodes(op.OpcodeIndex())
 
     # The first operator is a convolution.
-    assert(op_code.BuiltinCode() == tflite.BuiltinOperator.CONV_2D)
+    # The builtin code is extended in TensorFlow 2.4.x from 8 bit to 32 bit.
+    # See this example of how to handle it gracefully in your code
+    # https://github.com/apache/tvm/blob/b20b7c4ad4ad3774a42f47614245f8eeabe875cb/python/tvm/relay/frontend/tflite.py#L297-L316
+    assert(op_code.DeprecatedBuiltinCode() == tflite.BuiltinOperator.CONV_2D)
 
     # Custom operator need more interface, won't cover here.
-    assert(op_code.BuiltinCode() != tflite.BuiltinOperator.CUSTOM)
+    assert(op_code.DeprecatedBuiltinCode() != tflite.BuiltinOperator.CUSTOM)
 
 
     ############# the operator ##################################################

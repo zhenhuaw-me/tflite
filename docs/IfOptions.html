@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.IfOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class IfOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsIfOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = IfOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsIfOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def IfOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # IfOptions
     def Init(self, buf, pos):
@@ -61,9 +71,17 @@ class IfOptions(object):
         return 0
 
 def IfOptionsStart(builder): builder.StartObject(2)
+def Start(builder):
+    return IfOptionsStart(builder)
 def IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex): builder.PrependInt32Slot(0, thenSubgraphIndex, 0)
+def AddThenSubgraphIndex(builder, thenSubgraphIndex):
+    return IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex)
 def IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex): builder.PrependInt32Slot(1, elseSubgraphIndex, 0)
-def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddElseSubgraphIndex(builder, elseSubgraphIndex):
+    return IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex)
+def IfOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return IfOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -73,6 +91,45 @@ def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.IfOptions.AddElseSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">AddElseSubgraphIndex</span></span>(<span>builder, elseSubgraphIndex)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddElseSubgraphIndex(builder, elseSubgraphIndex):
+    return IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex)</code></pre>
+</details>
+</dd>
+<dt id="tflite.IfOptions.AddThenSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">AddThenSubgraphIndex</span></span>(<span>builder, thenSubgraphIndex)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddThenSubgraphIndex(builder, thenSubgraphIndex):
+    return IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex)</code></pre>
+</details>
+</dd>
+<dt id="tflite.IfOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return IfOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.IfOptions.IfOptionsAddElseSubgraphIndex"><code class="name flex">
 <span>def <span class="ident">IfOptionsAddElseSubgraphIndex</span></span>(<span>builder, elseSubgraphIndex)</span>
 </code></dt>
@@ -121,6 +178,19 @@ def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def IfOptionsStart(builder): builder.StartObject(2)</code></pre>
 </details>
 </dd>
+<dt id="tflite.IfOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return IfOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -139,11 +209,19 @@ def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsIfOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = IfOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsIfOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def IfOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # IfOptions
     def Init(self, buf, pos):
@@ -165,8 +243,8 @@ def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.IfOptions.IfOptions.GetRootAsIfOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsIfOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.IfOptions.IfOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -175,11 +253,40 @@ def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsIfOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = IfOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.IfOptions.IfOptions.GetRootAsIfOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsIfOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsIfOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.IfOptions.IfOptions.IfOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">IfOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def IfOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -248,10 +355,14 @@ def GetRootAsIfOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.IfOptions.AddElseSubgraphIndex" href="#tflite.IfOptions.AddElseSubgraphIndex">AddElseSubgraphIndex</a></code></li>
+<li><code><a title="tflite.IfOptions.AddThenSubgraphIndex" href="#tflite.IfOptions.AddThenSubgraphIndex">AddThenSubgraphIndex</a></code></li>
+<li><code><a title="tflite.IfOptions.End" href="#tflite.IfOptions.End">End</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptionsAddElseSubgraphIndex" href="#tflite.IfOptions.IfOptionsAddElseSubgraphIndex">IfOptionsAddElseSubgraphIndex</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptionsAddThenSubgraphIndex" href="#tflite.IfOptions.IfOptionsAddThenSubgraphIndex">IfOptionsAddThenSubgraphIndex</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptionsEnd" href="#tflite.IfOptions.IfOptionsEnd">IfOptionsEnd</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptionsStart" href="#tflite.IfOptions.IfOptionsStart">IfOptionsStart</a></code></li>
+<li><code><a title="tflite.IfOptions.Start" href="#tflite.IfOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -260,7 +371,9 @@ def GetRootAsIfOptions(cls, buf, offset):
 <h4><code><a title="tflite.IfOptions.IfOptions" href="#tflite.IfOptions.IfOptions">IfOptions</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.IfOptions.IfOptions.ElseSubgraphIndex" href="#tflite.IfOptions.IfOptions.ElseSubgraphIndex">ElseSubgraphIndex</a></code></li>
+<li><code><a title="tflite.IfOptions.IfOptions.GetRootAs" href="#tflite.IfOptions.IfOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptions.GetRootAsIfOptions" href="#tflite.IfOptions.IfOptions.GetRootAsIfOptions">GetRootAsIfOptions</a></code></li>
+<li><code><a title="tflite.IfOptions.IfOptions.IfOptionsBufferHasIdentifier" href="#tflite.IfOptions.IfOptions.IfOptionsBufferHasIdentifier">IfOptionsBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptions.Init" href="#tflite.IfOptions.IfOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.IfOptions.IfOptions.ThenSubgraphIndex" href="#tflite.IfOptions.IfOptions.ThenSubgraphIndex">ThenSubgraphIndex</a></code></li>
 </ul>
@@ -271,7 +384,7 @@ def GetRootAsIfOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

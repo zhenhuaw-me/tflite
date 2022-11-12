@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class EmbeddingLookupSparseOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsEmbeddingLookupSparseOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = EmbeddingLookupSparseOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsEmbeddingLookupSparseOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def EmbeddingLookupSparseOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # EmbeddingLookupSparseOptions
     def Init(self, buf, pos):
@@ -26,5 +36,11 @@ class EmbeddingLookupSparseOptions(object):
         return 0
 
 def EmbeddingLookupSparseOptionsStart(builder): builder.StartObject(1)
+def Start(builder):
+    return EmbeddingLookupSparseOptionsStart(builder)
 def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner): builder.PrependInt8Slot(0, combiner, 0)
+def AddCombiner(builder, combiner):
+    return EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)
 def EmbeddingLookupSparseOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return EmbeddingLookupSparseOptionsEnd(builder)

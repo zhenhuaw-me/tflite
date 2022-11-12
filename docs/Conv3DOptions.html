@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>tflite.Conv3DOptions API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.Conv3DOptions</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># automatically generated by the FlatBuffers compiler, do not modify
+
+# namespace: tflite
+
+import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
+
+class Conv3DOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = Conv3DOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsConv3DOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def Conv3DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # Conv3DOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # Conv3DOptions
+    def Padding(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def StrideD(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def StrideW(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def StrideH(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def FusedActivationFunction(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def DilationDFactor(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 1
+
+    # Conv3DOptions
+    def DilationWFactor(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 1
+
+    # Conv3DOptions
+    def DilationHFactor(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 1
+
+def Conv3DOptionsStart(builder): builder.StartObject(8)
+def Start(builder):
+    return Conv3DOptionsStart(builder)
+def Conv3DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+def AddPadding(builder, padding):
+    return Conv3DOptionsAddPadding(builder, padding)
+def Conv3DOptionsAddStrideD(builder, strideD): builder.PrependInt32Slot(1, strideD, 0)
+def AddStrideD(builder, strideD):
+    return Conv3DOptionsAddStrideD(builder, strideD)
+def Conv3DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(2, strideW, 0)
+def AddStrideW(builder, strideW):
+    return Conv3DOptionsAddStrideW(builder, strideW)
+def Conv3DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(3, strideH, 0)
+def AddStrideH(builder, strideH):
+    return Conv3DOptionsAddStrideH(builder, strideH)
+def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor): builder.PrependInt32Slot(5, dilationDFactor, 1)
+def AddDilationDFactor(builder, dilationDFactor):
+    return Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)
+def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(6, dilationWFactor, 1)
+def AddDilationWFactor(builder, dilationWFactor):
+    return Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)
+def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(7, dilationHFactor, 1)
+def AddDilationHFactor(builder, dilationHFactor):
+    return Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)
+def Conv3DOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return Conv3DOptionsEnd(builder)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.Conv3DOptions.AddDilationDFactor"><code class="name flex">
+<span>def <span class="ident">AddDilationDFactor</span></span>(<span>builder, dilationDFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDilationDFactor(builder, dilationDFactor):
+    return Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddDilationHFactor"><code class="name flex">
+<span>def <span class="ident">AddDilationHFactor</span></span>(<span>builder, dilationHFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDilationHFactor(builder, dilationHFactor):
+    return Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddDilationWFactor"><code class="name flex">
+<span>def <span class="ident">AddDilationWFactor</span></span>(<span>builder, dilationWFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDilationWFactor(builder, dilationWFactor):
+    return Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">AddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddPadding"><code class="name flex">
+<span>def <span class="ident">AddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPadding(builder, padding):
+    return Conv3DOptionsAddPadding(builder, padding)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddStrideD"><code class="name flex">
+<span>def <span class="ident">AddStrideD</span></span>(<span>builder, strideD)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideD(builder, strideD):
+    return Conv3DOptionsAddStrideD(builder, strideD)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddStrideH"><code class="name flex">
+<span>def <span class="ident">AddStrideH</span></span>(<span>builder, strideH)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideH(builder, strideH):
+    return Conv3DOptionsAddStrideH(builder, strideH)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.AddStrideW"><code class="name flex">
+<span>def <span class="ident">AddStrideW</span></span>(<span>builder, strideW)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddStrideW(builder, strideW):
+    return Conv3DOptionsAddStrideW(builder, strideW)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddDilationDFactor"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddDilationDFactor</span></span>(<span>builder, dilationDFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor): builder.PrependInt32Slot(5, dilationDFactor, 1)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddDilationHFactor"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddDilationHFactor</span></span>(<span>builder, dilationHFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(7, dilationHFactor, 1)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddDilationWFactor"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddDilationWFactor</span></span>(<span>builder, dilationWFactor)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(6, dilationWFactor, 1)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddPadding"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddStrideD"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddStrideD</span></span>(<span>builder, strideD)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddStrideD(builder, strideD): builder.PrependInt32Slot(1, strideD, 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddStrideH"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddStrideH</span></span>(<span>builder, strideH)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(3, strideH, 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsAddStrideW"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsAddStrideW</span></span>(<span>builder, strideW)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(2, strideW, 0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsEnd"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsEnd(builder): return builder.EndObject()</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptionsStart"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Conv3DOptionsStart(builder): builder.StartObject(8)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return Conv3DOptionsEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return Conv3DOptionsStart(builder)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.Conv3DOptions.Conv3DOptions"><code class="flex name class">
+<span>class <span class="ident">Conv3DOptions</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Conv3DOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = Conv3DOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsConv3DOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def Conv3DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # Conv3DOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # Conv3DOptions
+    def Padding(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def StrideD(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def StrideW(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def StrideH(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def FusedActivationFunction(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+        return 0
+
+    # Conv3DOptions
+    def DilationDFactor(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 1
+
+    # Conv3DOptions
+    def DilationWFactor(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 1
+
+    # Conv3DOptions
+    def DilationHFactor(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 1</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.Conv3DOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">Conv3DOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def Conv3DOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAs(cls, buf, offset=0):
+    n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+    x = Conv3DOptions()
+    x.Init(buf, n + offset)
+    return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.GetRootAsConv3DOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsConv3DOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsConv3DOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.DilationDFactor"><code class="name flex">
+<span>def <span class="ident">DilationDFactor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DilationDFactor(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 1</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.DilationHFactor"><code class="name flex">
+<span>def <span class="ident">DilationHFactor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DilationHFactor(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 1</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.DilationWFactor"><code class="name flex">
+<span>def <span class="ident">DilationWFactor</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DilationWFactor(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 1</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.FusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">FusedActivationFunction</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def FusedActivationFunction(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.Padding"><code class="name flex">
+<span>def <span class="ident">Padding</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Padding(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.StrideD"><code class="name flex">
+<span>def <span class="ident">StrideD</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StrideD(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.StrideH"><code class="name flex">
+<span>def <span class="ident">StrideH</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StrideH(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Conv3DOptions.Conv3DOptions.StrideW"><code class="name flex">
+<span>def <span class="ident">StrideW</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StrideW(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.Conv3DOptions.AddDilationDFactor" href="#tflite.Conv3DOptions.AddDilationDFactor">AddDilationDFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddDilationHFactor" href="#tflite.Conv3DOptions.AddDilationHFactor">AddDilationHFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddDilationWFactor" href="#tflite.Conv3DOptions.AddDilationWFactor">AddDilationWFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddFusedActivationFunction" href="#tflite.Conv3DOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddPadding" href="#tflite.Conv3DOptions.AddPadding">AddPadding</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddStrideD" href="#tflite.Conv3DOptions.AddStrideD">AddStrideD</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddStrideH" href="#tflite.Conv3DOptions.AddStrideH">AddStrideH</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.AddStrideW" href="#tflite.Conv3DOptions.AddStrideW">AddStrideW</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddDilationDFactor" href="#tflite.Conv3DOptions.Conv3DOptionsAddDilationDFactor">Conv3DOptionsAddDilationDFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddDilationHFactor" href="#tflite.Conv3DOptions.Conv3DOptionsAddDilationHFactor">Conv3DOptionsAddDilationHFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddDilationWFactor" href="#tflite.Conv3DOptions.Conv3DOptionsAddDilationWFactor">Conv3DOptionsAddDilationWFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddFusedActivationFunction" href="#tflite.Conv3DOptions.Conv3DOptionsAddFusedActivationFunction">Conv3DOptionsAddFusedActivationFunction</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddPadding" href="#tflite.Conv3DOptions.Conv3DOptionsAddPadding">Conv3DOptionsAddPadding</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddStrideD" href="#tflite.Conv3DOptions.Conv3DOptionsAddStrideD">Conv3DOptionsAddStrideD</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddStrideH" href="#tflite.Conv3DOptions.Conv3DOptionsAddStrideH">Conv3DOptionsAddStrideH</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsAddStrideW" href="#tflite.Conv3DOptions.Conv3DOptionsAddStrideW">Conv3DOptionsAddStrideW</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsEnd" href="#tflite.Conv3DOptions.Conv3DOptionsEnd">Conv3DOptionsEnd</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptionsStart" href="#tflite.Conv3DOptions.Conv3DOptionsStart">Conv3DOptionsStart</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.End" href="#tflite.Conv3DOptions.End">End</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Start" href="#tflite.Conv3DOptions.Start">Start</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.Conv3DOptions.Conv3DOptions" href="#tflite.Conv3DOptions.Conv3DOptions">Conv3DOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.Conv3DOptionsBufferHasIdentifier" href="#tflite.Conv3DOptions.Conv3DOptions.Conv3DOptionsBufferHasIdentifier">Conv3DOptionsBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.DilationDFactor" href="#tflite.Conv3DOptions.Conv3DOptions.DilationDFactor">DilationDFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.DilationHFactor" href="#tflite.Conv3DOptions.Conv3DOptions.DilationHFactor">DilationHFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.DilationWFactor" href="#tflite.Conv3DOptions.Conv3DOptions.DilationWFactor">DilationWFactor</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.FusedActivationFunction" href="#tflite.Conv3DOptions.Conv3DOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.GetRootAs" href="#tflite.Conv3DOptions.Conv3DOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.GetRootAsConv3DOptions" href="#tflite.Conv3DOptions.Conv3DOptions.GetRootAsConv3DOptions">GetRootAsConv3DOptions</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.Init" href="#tflite.Conv3DOptions.Conv3DOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.Padding" href="#tflite.Conv3DOptions.Conv3DOptions.Padding">Padding</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.StrideD" href="#tflite.Conv3DOptions.Conv3DOptions.StrideD">StrideD</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.StrideH" href="#tflite.Conv3DOptions.Conv3DOptions.StrideH">StrideH</a></code></li>
+<li><code><a title="tflite.Conv3DOptions.Conv3DOptions.StrideW" href="#tflite.Conv3DOptions.Conv3DOptions.StrideW">StrideW</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.Model API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class Model(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsModel(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Model()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsModel(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ModelBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # Model
     def Init(self, buf, pos):
@@ -60,7 +70,7 @@ class Model(object):
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .OperatorCode import OperatorCode
+            from tflite.OperatorCode import OperatorCode
             obj = OperatorCode()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -74,13 +84,18 @@ class Model(object):
         return 0
 
     # Model
+    def OperatorCodesIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # Model
     def Subgraphs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .SubGraph import SubGraph
+            from tflite.SubGraph import SubGraph
             obj = SubGraph()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -92,6 +107,11 @@ class Model(object):
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
+
+    # Model
+    def SubgraphsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
 
     # Model
     def Description(self):
@@ -107,7 +127,7 @@ class Model(object):
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Buffer import Buffer
+            from tflite.Buffer import Buffer
             obj = Buffer()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -119,6 +139,11 @@ class Model(object):
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
+
+    # Model
+    def BuffersIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        return o == 0
 
     # Model
     def MetadataBuffer(self, j):
@@ -143,13 +168,18 @@ class Model(object):
         return 0
 
     # Model
+    def MetadataBufferIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        return o == 0
+
+    # Model
     def Metadata(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Metadata import Metadata
+            from tflite.Metadata import Metadata
             obj = Metadata()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -163,13 +193,18 @@ class Model(object):
         return 0
 
     # Model
+    def MetadataIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        return o == 0
+
+    # Model
     def SignatureDefs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .SignatureDef import SignatureDef
+            from tflite.SignatureDef import SignatureDef
             obj = SignatureDef()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -182,22 +217,59 @@ class Model(object):
             return self._tab.VectorLen(o)
         return 0
 
+    # Model
+    def SignatureDefsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        return o == 0
+
 def ModelStart(builder): builder.StartObject(8)
+def Start(builder):
+    return ModelStart(builder)
 def ModelAddVersion(builder, version): builder.PrependUint32Slot(0, version, 0)
+def AddVersion(builder, version):
+    return ModelAddVersion(builder, version)
 def ModelAddOperatorCodes(builder, operatorCodes): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(operatorCodes), 0)
+def AddOperatorCodes(builder, operatorCodes):
+    return ModelAddOperatorCodes(builder, operatorCodes)
 def ModelStartOperatorCodesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartOperatorCodesVector(builder, numElems):
+    return ModelStartOperatorCodesVector(builder, numElems)
 def ModelAddSubgraphs(builder, subgraphs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(subgraphs), 0)
+def AddSubgraphs(builder, subgraphs):
+    return ModelAddSubgraphs(builder, subgraphs)
 def ModelStartSubgraphsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartSubgraphsVector(builder, numElems):
+    return ModelStartSubgraphsVector(builder, numElems)
 def ModelAddDescription(builder, description): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(description), 0)
+def AddDescription(builder, description):
+    return ModelAddDescription(builder, description)
 def ModelAddBuffers(builder, buffers): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(buffers), 0)
+def AddBuffers(builder, buffers):
+    return ModelAddBuffers(builder, buffers)
 def ModelStartBuffersVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartBuffersVector(builder, numElems):
+    return ModelStartBuffersVector(builder, numElems)
 def ModelAddMetadataBuffer(builder, metadataBuffer): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(metadataBuffer), 0)
+def AddMetadataBuffer(builder, metadataBuffer):
+    return ModelAddMetadataBuffer(builder, metadataBuffer)
 def ModelStartMetadataBufferVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartMetadataBufferVector(builder, numElems):
+    return ModelStartMetadataBufferVector(builder, numElems)
 def ModelAddMetadata(builder, metadata): builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(metadata), 0)
+def AddMetadata(builder, metadata):
+    return ModelAddMetadata(builder, metadata)
 def ModelStartMetadataVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartMetadataVector(builder, numElems):
+    return ModelStartMetadataVector(builder, numElems)
 def ModelAddSignatureDefs(builder, signatureDefs): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(signatureDefs), 0)
+def AddSignatureDefs(builder, signatureDefs):
+    return ModelAddSignatureDefs(builder, signatureDefs)
 def ModelStartSignatureDefsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def ModelEnd(builder): return builder.EndObject()</code></pre>
+def StartSignatureDefsVector(builder, numElems):
+    return ModelStartSignatureDefsVector(builder, numElems)
+def ModelEnd(builder): return builder.EndObject()
+def End(builder):
+    return ModelEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -207,6 +279,123 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.Model.AddBuffers"><code class="name flex">
+<span>def <span class="ident">AddBuffers</span></span>(<span>builder, buffers)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBuffers(builder, buffers):
+    return ModelAddBuffers(builder, buffers)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddDescription"><code class="name flex">
+<span>def <span class="ident">AddDescription</span></span>(<span>builder, description)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDescription(builder, description):
+    return ModelAddDescription(builder, description)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddMetadata"><code class="name flex">
+<span>def <span class="ident">AddMetadata</span></span>(<span>builder, metadata)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddMetadata(builder, metadata):
+    return ModelAddMetadata(builder, metadata)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddMetadataBuffer"><code class="name flex">
+<span>def <span class="ident">AddMetadataBuffer</span></span>(<span>builder, metadataBuffer)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddMetadataBuffer(builder, metadataBuffer):
+    return ModelAddMetadataBuffer(builder, metadataBuffer)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddOperatorCodes"><code class="name flex">
+<span>def <span class="ident">AddOperatorCodes</span></span>(<span>builder, operatorCodes)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOperatorCodes(builder, operatorCodes):
+    return ModelAddOperatorCodes(builder, operatorCodes)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddSignatureDefs"><code class="name flex">
+<span>def <span class="ident">AddSignatureDefs</span></span>(<span>builder, signatureDefs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddSignatureDefs(builder, signatureDefs):
+    return ModelAddSignatureDefs(builder, signatureDefs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddSubgraphs"><code class="name flex">
+<span>def <span class="ident">AddSubgraphs</span></span>(<span>builder, subgraphs)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddSubgraphs(builder, subgraphs):
+    return ModelAddSubgraphs(builder, subgraphs)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.AddVersion"><code class="name flex">
+<span>def <span class="ident">AddVersion</span></span>(<span>builder, version)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddVersion(builder, version):
+    return ModelAddVersion(builder, version)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return ModelEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.Model.ModelAddBuffers"><code class="name flex">
 <span>def <span class="ident">ModelAddBuffers</span></span>(<span>builder, buffers)</span>
 </code></dt>
@@ -399,6 +588,97 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def ModelStartSubgraphsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.Model.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return ModelStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.StartBuffersVector"><code class="name flex">
+<span>def <span class="ident">StartBuffersVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartBuffersVector(builder, numElems):
+    return ModelStartBuffersVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.StartMetadataBufferVector"><code class="name flex">
+<span>def <span class="ident">StartMetadataBufferVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartMetadataBufferVector(builder, numElems):
+    return ModelStartMetadataBufferVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.StartMetadataVector"><code class="name flex">
+<span>def <span class="ident">StartMetadataVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartMetadataVector(builder, numElems):
+    return ModelStartMetadataVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.StartOperatorCodesVector"><code class="name flex">
+<span>def <span class="ident">StartOperatorCodesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartOperatorCodesVector(builder, numElems):
+    return ModelStartOperatorCodesVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.StartSignatureDefsVector"><code class="name flex">
+<span>def <span class="ident">StartSignatureDefsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartSignatureDefsVector(builder, numElems):
+    return ModelStartSignatureDefsVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.StartSubgraphsVector"><code class="name flex">
+<span>def <span class="ident">StartSubgraphsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartSubgraphsVector(builder, numElems):
+    return ModelStartSubgraphsVector(builder, numElems)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -417,11 +697,19 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsModel(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Model()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsModel(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ModelBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # Model
     def Init(self, buf, pos):
@@ -441,7 +729,7 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .OperatorCode import OperatorCode
+            from tflite.OperatorCode import OperatorCode
             obj = OperatorCode()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -455,13 +743,18 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # Model
+    def OperatorCodesIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # Model
     def Subgraphs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .SubGraph import SubGraph
+            from tflite.SubGraph import SubGraph
             obj = SubGraph()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -473,6 +766,11 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
+
+    # Model
+    def SubgraphsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
 
     # Model
     def Description(self):
@@ -488,7 +786,7 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Buffer import Buffer
+            from tflite.Buffer import Buffer
             obj = Buffer()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -500,6 +798,11 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
+
+    # Model
+    def BuffersIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        return o == 0
 
     # Model
     def MetadataBuffer(self, j):
@@ -524,13 +827,18 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # Model
+    def MetadataBufferIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        return o == 0
+
+    # Model
     def Metadata(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .Metadata import Metadata
+            from tflite.Metadata import Metadata
             obj = Metadata()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -544,13 +852,18 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # Model
+    def MetadataIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        return o == 0
+
+    # Model
     def SignatureDefs(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .SignatureDef import SignatureDef
+            from tflite.SignatureDef import SignatureDef
             obj = SignatureDef()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -561,12 +874,17 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
         if o != 0:
             return self._tab.VectorLen(o)
-        return 0</code></pre>
+        return 0
+
+    # Model
+    def SignatureDefsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        return o == 0</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.Model.Model.GetRootAsModel"><code class="name flex">
-<span>def <span class="ident">GetRootAsModel</span></span>(<span>buf, offset)</span>
+<dt id="tflite.Model.Model.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -575,11 +893,40 @@ def ModelEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsModel(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = Model()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.GetRootAsModel"><code class="name flex">
+<span>def <span class="ident">GetRootAsModel</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsModel(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.ModelBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">ModelBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def ModelBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -600,11 +947,25 @@ def GetRootAsModel(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .Buffer import Buffer
+        from tflite.Buffer import Buffer
         obj = Buffer()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.BuffersIsNone"><code class="name flex">
+<span>def <span class="ident">BuffersIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BuffersIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.Model.BuffersLength"><code class="name flex">
@@ -667,7 +1028,7 @@ def GetRootAsModel(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .Metadata import Metadata
+        from tflite.Metadata import Metadata
         obj = Metadata()
         obj.Init(self._tab.Bytes, x)
         return obj
@@ -707,6 +1068,20 @@ def GetRootAsModel(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
+<dt id="tflite.Model.Model.MetadataBufferIsNone"><code class="name flex">
+<span>def <span class="ident">MetadataBufferIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MetadataBufferIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    return o == 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.Model.Model.MetadataBufferLength"><code class="name flex">
 <span>def <span class="ident">MetadataBufferLength</span></span>(<span>self)</span>
 </code></dt>
@@ -721,6 +1096,20 @@ def GetRootAsModel(cls, buf, offset):
     if o != 0:
         return self._tab.VectorLen(o)
     return 0</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.MetadataIsNone"><code class="name flex">
+<span>def <span class="ident">MetadataIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def MetadataIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.Model.MetadataLength"><code class="name flex">
@@ -754,11 +1143,25 @@ def GetRootAsModel(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .OperatorCode import OperatorCode
+        from tflite.OperatorCode import OperatorCode
         obj = OperatorCode()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.OperatorCodesIsNone"><code class="name flex">
+<span>def <span class="ident">OperatorCodesIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OperatorCodesIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.Model.OperatorCodesLength"><code class="name flex">
@@ -792,11 +1195,25 @@ def GetRootAsModel(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .SignatureDef import SignatureDef
+        from tflite.SignatureDef import SignatureDef
         obj = SignatureDef()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.SignatureDefsIsNone"><code class="name flex">
+<span>def <span class="ident">SignatureDefsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SignatureDefsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.Model.SignatureDefsLength"><code class="name flex">
@@ -830,11 +1247,25 @@ def GetRootAsModel(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .SubGraph import SubGraph
+        from tflite.SubGraph import SubGraph
         obj = SubGraph()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.Model.Model.SubgraphsIsNone"><code class="name flex">
+<span>def <span class="ident">SubgraphsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SubgraphsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.Model.SubgraphsLength"><code class="name flex">
@@ -887,6 +1318,15 @@ def GetRootAsModel(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.Model.AddBuffers" href="#tflite.Model.AddBuffers">AddBuffers</a></code></li>
+<li><code><a title="tflite.Model.AddDescription" href="#tflite.Model.AddDescription">AddDescription</a></code></li>
+<li><code><a title="tflite.Model.AddMetadata" href="#tflite.Model.AddMetadata">AddMetadata</a></code></li>
+<li><code><a title="tflite.Model.AddMetadataBuffer" href="#tflite.Model.AddMetadataBuffer">AddMetadataBuffer</a></code></li>
+<li><code><a title="tflite.Model.AddOperatorCodes" href="#tflite.Model.AddOperatorCodes">AddOperatorCodes</a></code></li>
+<li><code><a title="tflite.Model.AddSignatureDefs" href="#tflite.Model.AddSignatureDefs">AddSignatureDefs</a></code></li>
+<li><code><a title="tflite.Model.AddSubgraphs" href="#tflite.Model.AddSubgraphs">AddSubgraphs</a></code></li>
+<li><code><a title="tflite.Model.AddVersion" href="#tflite.Model.AddVersion">AddVersion</a></code></li>
+<li><code><a title="tflite.Model.End" href="#tflite.Model.End">End</a></code></li>
 <li><code><a title="tflite.Model.ModelAddBuffers" href="#tflite.Model.ModelAddBuffers">ModelAddBuffers</a></code></li>
 <li><code><a title="tflite.Model.ModelAddDescription" href="#tflite.Model.ModelAddDescription">ModelAddDescription</a></code></li>
 <li><code><a title="tflite.Model.ModelAddMetadata" href="#tflite.Model.ModelAddMetadata">ModelAddMetadata</a></code></li>
@@ -903,6 +1343,13 @@ def GetRootAsModel(cls, buf, offset):
 <li><code><a title="tflite.Model.ModelStartOperatorCodesVector" href="#tflite.Model.ModelStartOperatorCodesVector">ModelStartOperatorCodesVector</a></code></li>
 <li><code><a title="tflite.Model.ModelStartSignatureDefsVector" href="#tflite.Model.ModelStartSignatureDefsVector">ModelStartSignatureDefsVector</a></code></li>
 <li><code><a title="tflite.Model.ModelStartSubgraphsVector" href="#tflite.Model.ModelStartSubgraphsVector">ModelStartSubgraphsVector</a></code></li>
+<li><code><a title="tflite.Model.Start" href="#tflite.Model.Start">Start</a></code></li>
+<li><code><a title="tflite.Model.StartBuffersVector" href="#tflite.Model.StartBuffersVector">StartBuffersVector</a></code></li>
+<li><code><a title="tflite.Model.StartMetadataBufferVector" href="#tflite.Model.StartMetadataBufferVector">StartMetadataBufferVector</a></code></li>
+<li><code><a title="tflite.Model.StartMetadataVector" href="#tflite.Model.StartMetadataVector">StartMetadataVector</a></code></li>
+<li><code><a title="tflite.Model.StartOperatorCodesVector" href="#tflite.Model.StartOperatorCodesVector">StartOperatorCodesVector</a></code></li>
+<li><code><a title="tflite.Model.StartSignatureDefsVector" href="#tflite.Model.StartSignatureDefsVector">StartSignatureDefsVector</a></code></li>
+<li><code><a title="tflite.Model.StartSubgraphsVector" href="#tflite.Model.StartSubgraphsVector">StartSubgraphsVector</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -911,20 +1358,28 @@ def GetRootAsModel(cls, buf, offset):
 <h4><code><a title="tflite.Model.Model" href="#tflite.Model.Model">Model</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.Model.Model.Buffers" href="#tflite.Model.Model.Buffers">Buffers</a></code></li>
+<li><code><a title="tflite.Model.Model.BuffersIsNone" href="#tflite.Model.Model.BuffersIsNone">BuffersIsNone</a></code></li>
 <li><code><a title="tflite.Model.Model.BuffersLength" href="#tflite.Model.Model.BuffersLength">BuffersLength</a></code></li>
 <li><code><a title="tflite.Model.Model.Description" href="#tflite.Model.Model.Description">Description</a></code></li>
+<li><code><a title="tflite.Model.Model.GetRootAs" href="#tflite.Model.Model.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.Model.Model.GetRootAsModel" href="#tflite.Model.Model.GetRootAsModel">GetRootAsModel</a></code></li>
 <li><code><a title="tflite.Model.Model.Init" href="#tflite.Model.Model.Init">Init</a></code></li>
 <li><code><a title="tflite.Model.Model.Metadata" href="#tflite.Model.Model.Metadata">Metadata</a></code></li>
 <li><code><a title="tflite.Model.Model.MetadataBuffer" href="#tflite.Model.Model.MetadataBuffer">MetadataBuffer</a></code></li>
 <li><code><a title="tflite.Model.Model.MetadataBufferAsNumpy" href="#tflite.Model.Model.MetadataBufferAsNumpy">MetadataBufferAsNumpy</a></code></li>
+<li><code><a title="tflite.Model.Model.MetadataBufferIsNone" href="#tflite.Model.Model.MetadataBufferIsNone">MetadataBufferIsNone</a></code></li>
 <li><code><a title="tflite.Model.Model.MetadataBufferLength" href="#tflite.Model.Model.MetadataBufferLength">MetadataBufferLength</a></code></li>
+<li><code><a title="tflite.Model.Model.MetadataIsNone" href="#tflite.Model.Model.MetadataIsNone">MetadataIsNone</a></code></li>
 <li><code><a title="tflite.Model.Model.MetadataLength" href="#tflite.Model.Model.MetadataLength">MetadataLength</a></code></li>
+<li><code><a title="tflite.Model.Model.ModelBufferHasIdentifier" href="#tflite.Model.Model.ModelBufferHasIdentifier">ModelBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.Model.Model.OperatorCodes" href="#tflite.Model.Model.OperatorCodes">OperatorCodes</a></code></li>
+<li><code><a title="tflite.Model.Model.OperatorCodesIsNone" href="#tflite.Model.Model.OperatorCodesIsNone">OperatorCodesIsNone</a></code></li>
 <li><code><a title="tflite.Model.Model.OperatorCodesLength" href="#tflite.Model.Model.OperatorCodesLength">OperatorCodesLength</a></code></li>
 <li><code><a title="tflite.Model.Model.SignatureDefs" href="#tflite.Model.Model.SignatureDefs">SignatureDefs</a></code></li>
+<li><code><a title="tflite.Model.Model.SignatureDefsIsNone" href="#tflite.Model.Model.SignatureDefsIsNone">SignatureDefsIsNone</a></code></li>
 <li><code><a title="tflite.Model.Model.SignatureDefsLength" href="#tflite.Model.Model.SignatureDefsLength">SignatureDefsLength</a></code></li>
 <li><code><a title="tflite.Model.Model.Subgraphs" href="#tflite.Model.Model.Subgraphs">Subgraphs</a></code></li>
+<li><code><a title="tflite.Model.Model.SubgraphsIsNone" href="#tflite.Model.Model.SubgraphsIsNone">SubgraphsIsNone</a></code></li>
 <li><code><a title="tflite.Model.Model.SubgraphsLength" href="#tflite.Model.Model.SubgraphsLength">SubgraphsLength</a></code></li>
 <li><code><a title="tflite.Model.Model.Version" href="#tflite.Model.Model.Version">Version</a></code></li>
 </ul>
@@ -935,7 +1390,7 @@ def GetRootAsModel(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.SparsityParameters API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class SparsityParameters(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSparsityParameters(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SparsityParameters()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSparsityParameters(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SparsityParametersBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SparsityParameters
     def Init(self, buf, pos):
@@ -69,6 +79,11 @@ class SparsityParameters(object):
         return 0
 
     # SparsityParameters
+    def TraversalOrderIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # SparsityParameters
     def BlockMap(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
@@ -91,13 +106,18 @@ class SparsityParameters(object):
         return 0
 
     # SparsityParameters
+    def BlockMapIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # SparsityParameters
     def DimMetadata(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .DimensionMetadata import DimensionMetadata
+            from tflite.DimensionMetadata import DimensionMetadata
             obj = DimensionMetadata()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -110,14 +130,35 @@ class SparsityParameters(object):
             return self._tab.VectorLen(o)
         return 0
 
+    # SparsityParameters
+    def DimMetadataIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
 def SparsityParametersStart(builder): builder.StartObject(3)
+def Start(builder):
+    return SparsityParametersStart(builder)
 def SparsityParametersAddTraversalOrder(builder, traversalOrder): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(traversalOrder), 0)
+def AddTraversalOrder(builder, traversalOrder):
+    return SparsityParametersAddTraversalOrder(builder, traversalOrder)
 def SparsityParametersStartTraversalOrderVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartTraversalOrderVector(builder, numElems):
+    return SparsityParametersStartTraversalOrderVector(builder, numElems)
 def SparsityParametersAddBlockMap(builder, blockMap): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(blockMap), 0)
+def AddBlockMap(builder, blockMap):
+    return SparsityParametersAddBlockMap(builder, blockMap)
 def SparsityParametersStartBlockMapVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def StartBlockMapVector(builder, numElems):
+    return SparsityParametersStartBlockMapVector(builder, numElems)
 def SparsityParametersAddDimMetadata(builder, dimMetadata): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(dimMetadata), 0)
+def AddDimMetadata(builder, dimMetadata):
+    return SparsityParametersAddDimMetadata(builder, dimMetadata)
 def SparsityParametersStartDimMetadataVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
+def StartDimMetadataVector(builder, numElems):
+    return SparsityParametersStartDimMetadataVector(builder, numElems)
+def SparsityParametersEnd(builder): return builder.EndObject()
+def End(builder):
+    return SparsityParametersEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -127,6 +168,58 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.SparsityParameters.AddBlockMap"><code class="name flex">
+<span>def <span class="ident">AddBlockMap</span></span>(<span>builder, blockMap)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBlockMap(builder, blockMap):
+    return SparsityParametersAddBlockMap(builder, blockMap)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.AddDimMetadata"><code class="name flex">
+<span>def <span class="ident">AddDimMetadata</span></span>(<span>builder, dimMetadata)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDimMetadata(builder, dimMetadata):
+    return SparsityParametersAddDimMetadata(builder, dimMetadata)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.AddTraversalOrder"><code class="name flex">
+<span>def <span class="ident">AddTraversalOrder</span></span>(<span>builder, traversalOrder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddTraversalOrder(builder, traversalOrder):
+    return SparsityParametersAddTraversalOrder(builder, traversalOrder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return SparsityParametersEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.SparsityParameters.SparsityParametersAddBlockMap"><code class="name flex">
 <span>def <span class="ident">SparsityParametersAddBlockMap</span></span>(<span>builder, blockMap)</span>
 </code></dt>
@@ -223,6 +316,58 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def SparsityParametersStartTraversalOrderVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
+<dt id="tflite.SparsityParameters.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return SparsityParametersStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.StartBlockMapVector"><code class="name flex">
+<span>def <span class="ident">StartBlockMapVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartBlockMapVector(builder, numElems):
+    return SparsityParametersStartBlockMapVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.StartDimMetadataVector"><code class="name flex">
+<span>def <span class="ident">StartDimMetadataVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartDimMetadataVector(builder, numElems):
+    return SparsityParametersStartDimMetadataVector(builder, numElems)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.StartTraversalOrderVector"><code class="name flex">
+<span>def <span class="ident">StartTraversalOrderVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartTraversalOrderVector(builder, numElems):
+    return SparsityParametersStartTraversalOrderVector(builder, numElems)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -241,11 +386,19 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSparsityParameters(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SparsityParameters()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSparsityParameters(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SparsityParametersBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SparsityParameters
     def Init(self, buf, pos):
@@ -274,6 +427,11 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SparsityParameters
+    def TraversalOrderIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # SparsityParameters
     def BlockMap(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
@@ -296,13 +454,18 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
         return 0
 
     # SparsityParameters
+    def BlockMapIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # SparsityParameters
     def DimMetadata(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .DimensionMetadata import DimensionMetadata
+            from tflite.DimensionMetadata import DimensionMetadata
             obj = DimensionMetadata()
             obj.Init(self._tab.Bytes, x)
             return obj
@@ -313,12 +476,17 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             return self._tab.VectorLen(o)
-        return 0</code></pre>
+        return 0
+
+    # SparsityParameters
+    def DimMetadataIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.SparsityParameters.SparsityParameters.GetRootAsSparsityParameters"><code class="name flex">
-<span>def <span class="ident">GetRootAsSparsityParameters</span></span>(<span>buf, offset)</span>
+<dt id="tflite.SparsityParameters.SparsityParameters.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -327,11 +495,40 @@ def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsSparsityParameters(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = SparsityParameters()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.SparsityParameters.GetRootAsSparsityParameters"><code class="name flex">
+<span>def <span class="ident">GetRootAsSparsityParameters</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsSparsityParameters(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.SparsityParameters.SparsityParametersBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">SparsityParametersBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def SparsityParametersBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -370,6 +567,20 @@ def GetRootAsSparsityParameters(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
+<dt id="tflite.SparsityParameters.SparsityParameters.BlockMapIsNone"><code class="name flex">
+<span>def <span class="ident">BlockMapIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BlockMapIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.SparsityParameters.SparsityParameters.BlockMapLength"><code class="name flex">
 <span>def <span class="ident">BlockMapLength</span></span>(<span>self)</span>
 </code></dt>
@@ -401,11 +612,25 @@ def GetRootAsSparsityParameters(cls, buf, offset):
         x = self._tab.Vector(o)
         x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
         x = self._tab.Indirect(x)
-        from .DimensionMetadata import DimensionMetadata
+        from tflite.DimensionMetadata import DimensionMetadata
         obj = DimensionMetadata()
         obj.Init(self._tab.Bytes, x)
         return obj
     return None</code></pre>
+</details>
+</dd>
+<dt id="tflite.SparsityParameters.SparsityParameters.DimMetadataIsNone"><code class="name flex">
+<span>def <span class="ident">DimMetadataIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DimMetadataIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParameters.DimMetadataLength"><code class="name flex">
@@ -470,6 +695,20 @@ def GetRootAsSparsityParameters(cls, buf, offset):
     return 0</code></pre>
 </details>
 </dd>
+<dt id="tflite.SparsityParameters.SparsityParameters.TraversalOrderIsNone"><code class="name flex">
+<span>def <span class="ident">TraversalOrderIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def TraversalOrderIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.SparsityParameters.SparsityParameters.TraversalOrderLength"><code class="name flex">
 <span>def <span class="ident">TraversalOrderLength</span></span>(<span>self)</span>
 </code></dt>
@@ -504,6 +743,10 @@ def GetRootAsSparsityParameters(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.SparsityParameters.AddBlockMap" href="#tflite.SparsityParameters.AddBlockMap">AddBlockMap</a></code></li>
+<li><code><a title="tflite.SparsityParameters.AddDimMetadata" href="#tflite.SparsityParameters.AddDimMetadata">AddDimMetadata</a></code></li>
+<li><code><a title="tflite.SparsityParameters.AddTraversalOrder" href="#tflite.SparsityParameters.AddTraversalOrder">AddTraversalOrder</a></code></li>
+<li><code><a title="tflite.SparsityParameters.End" href="#tflite.SparsityParameters.End">End</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParametersAddBlockMap" href="#tflite.SparsityParameters.SparsityParametersAddBlockMap">SparsityParametersAddBlockMap</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParametersAddDimMetadata" href="#tflite.SparsityParameters.SparsityParametersAddDimMetadata">SparsityParametersAddDimMetadata</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParametersAddTraversalOrder" href="#tflite.SparsityParameters.SparsityParametersAddTraversalOrder">SparsityParametersAddTraversalOrder</a></code></li>
@@ -512,6 +755,10 @@ def GetRootAsSparsityParameters(cls, buf, offset):
 <li><code><a title="tflite.SparsityParameters.SparsityParametersStartBlockMapVector" href="#tflite.SparsityParameters.SparsityParametersStartBlockMapVector">SparsityParametersStartBlockMapVector</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParametersStartDimMetadataVector" href="#tflite.SparsityParameters.SparsityParametersStartDimMetadataVector">SparsityParametersStartDimMetadataVector</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParametersStartTraversalOrderVector" href="#tflite.SparsityParameters.SparsityParametersStartTraversalOrderVector">SparsityParametersStartTraversalOrderVector</a></code></li>
+<li><code><a title="tflite.SparsityParameters.Start" href="#tflite.SparsityParameters.Start">Start</a></code></li>
+<li><code><a title="tflite.SparsityParameters.StartBlockMapVector" href="#tflite.SparsityParameters.StartBlockMapVector">StartBlockMapVector</a></code></li>
+<li><code><a title="tflite.SparsityParameters.StartDimMetadataVector" href="#tflite.SparsityParameters.StartDimMetadataVector">StartDimMetadataVector</a></code></li>
+<li><code><a title="tflite.SparsityParameters.StartTraversalOrderVector" href="#tflite.SparsityParameters.StartTraversalOrderVector">StartTraversalOrderVector</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -521,13 +768,18 @@ def GetRootAsSparsityParameters(cls, buf, offset):
 <ul class="">
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.BlockMap" href="#tflite.SparsityParameters.SparsityParameters.BlockMap">BlockMap</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.BlockMapAsNumpy" href="#tflite.SparsityParameters.SparsityParameters.BlockMapAsNumpy">BlockMapAsNumpy</a></code></li>
+<li><code><a title="tflite.SparsityParameters.SparsityParameters.BlockMapIsNone" href="#tflite.SparsityParameters.SparsityParameters.BlockMapIsNone">BlockMapIsNone</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.BlockMapLength" href="#tflite.SparsityParameters.SparsityParameters.BlockMapLength">BlockMapLength</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.DimMetadata" href="#tflite.SparsityParameters.SparsityParameters.DimMetadata">DimMetadata</a></code></li>
+<li><code><a title="tflite.SparsityParameters.SparsityParameters.DimMetadataIsNone" href="#tflite.SparsityParameters.SparsityParameters.DimMetadataIsNone">DimMetadataIsNone</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.DimMetadataLength" href="#tflite.SparsityParameters.SparsityParameters.DimMetadataLength">DimMetadataLength</a></code></li>
+<li><code><a title="tflite.SparsityParameters.SparsityParameters.GetRootAs" href="#tflite.SparsityParameters.SparsityParameters.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.GetRootAsSparsityParameters" href="#tflite.SparsityParameters.SparsityParameters.GetRootAsSparsityParameters">GetRootAsSparsityParameters</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.Init" href="#tflite.SparsityParameters.SparsityParameters.Init">Init</a></code></li>
+<li><code><a title="tflite.SparsityParameters.SparsityParameters.SparsityParametersBufferHasIdentifier" href="#tflite.SparsityParameters.SparsityParameters.SparsityParametersBufferHasIdentifier">SparsityParametersBufferHasIdentifier</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.TraversalOrder" href="#tflite.SparsityParameters.SparsityParameters.TraversalOrder">TraversalOrder</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.TraversalOrderAsNumpy" href="#tflite.SparsityParameters.SparsityParameters.TraversalOrderAsNumpy">TraversalOrderAsNumpy</a></code></li>
+<li><code><a title="tflite.SparsityParameters.SparsityParameters.TraversalOrderIsNone" href="#tflite.SparsityParameters.SparsityParameters.TraversalOrderIsNone">TraversalOrderIsNone</a></code></li>
 <li><code><a title="tflite.SparsityParameters.SparsityParameters.TraversalOrderLength" href="#tflite.SparsityParameters.SparsityParameters.TraversalOrderLength">TraversalOrderLength</a></code></li>
 </ul>
 </li>
@@ -537,7 +789,7 @@ def GetRootAsSparsityParameters(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

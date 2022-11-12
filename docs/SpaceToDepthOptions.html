@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.SpaceToDepthOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class SpaceToDepthOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSpaceToDepthOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SpaceToDepthOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSpaceToDepthOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SpaceToDepthOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SpaceToDepthOptions
     def Init(self, buf, pos):
@@ -54,8 +64,14 @@ class SpaceToDepthOptions(object):
         return 0
 
 def SpaceToDepthOptionsStart(builder): builder.StartObject(1)
+def Start(builder):
+    return SpaceToDepthOptionsStart(builder)
 def SpaceToDepthOptionsAddBlockSize(builder, blockSize): builder.PrependInt32Slot(0, blockSize, 0)
-def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddBlockSize(builder, blockSize):
+    return SpaceToDepthOptionsAddBlockSize(builder, blockSize)
+def SpaceToDepthOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return SpaceToDepthOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -65,6 +81,32 @@ def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.SpaceToDepthOptions.AddBlockSize"><code class="name flex">
+<span>def <span class="ident">AddBlockSize</span></span>(<span>builder, blockSize)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBlockSize(builder, blockSize):
+    return SpaceToDepthOptionsAddBlockSize(builder, blockSize)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SpaceToDepthOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return SpaceToDepthOptionsEnd(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptionsAddBlockSize"><code class="name flex">
 <span>def <span class="ident">SpaceToDepthOptionsAddBlockSize</span></span>(<span>builder, blockSize)</span>
 </code></dt>
@@ -101,6 +143,19 @@ def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
 <pre><code class="python">def SpaceToDepthOptionsStart(builder): builder.StartObject(1)</code></pre>
 </details>
 </dd>
+<dt id="tflite.SpaceToDepthOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return SpaceToDepthOptionsStart(builder)</code></pre>
+</details>
+</dd>
 </dl>
 </section>
 <section>
@@ -119,11 +174,19 @@ def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsSpaceToDepthOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = SpaceToDepthOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsSpaceToDepthOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def SpaceToDepthOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # SpaceToDepthOptions
     def Init(self, buf, pos):
@@ -138,8 +201,8 @@ def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAsSpaceToDepthOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsSpaceToDepthOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -148,11 +211,40 @@ def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsSpaceToDepthOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = SpaceToDepthOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAsSpaceToDepthOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsSpaceToDepthOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsSpaceToDepthOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptions.SpaceToDepthOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">SpaceToDepthOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def SpaceToDepthOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -205,9 +297,12 @@ def GetRootAsSpaceToDepthOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.SpaceToDepthOptions.AddBlockSize" href="#tflite.SpaceToDepthOptions.AddBlockSize">AddBlockSize</a></code></li>
+<li><code><a title="tflite.SpaceToDepthOptions.End" href="#tflite.SpaceToDepthOptions.End">End</a></code></li>
 <li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptionsAddBlockSize" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptionsAddBlockSize">SpaceToDepthOptionsAddBlockSize</a></code></li>
 <li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptionsEnd" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptionsEnd">SpaceToDepthOptionsEnd</a></code></li>
 <li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptionsStart" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptionsStart">SpaceToDepthOptionsStart</a></code></li>
+<li><code><a title="tflite.SpaceToDepthOptions.Start" href="#tflite.SpaceToDepthOptions.Start">Start</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
@@ -216,8 +311,10 @@ def GetRootAsSpaceToDepthOptions(cls, buf, offset):
 <h4><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptions" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptions">SpaceToDepthOptions</a></code></h4>
 <ul class="">
 <li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptions.BlockSize" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptions.BlockSize">BlockSize</a></code></li>
+<li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAs" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAsSpaceToDepthOptions" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptions.GetRootAsSpaceToDepthOptions">GetRootAsSpaceToDepthOptions</a></code></li>
 <li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptions.Init" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.SpaceToDepthOptions.SpaceToDepthOptions.SpaceToDepthOptionsBufferHasIdentifier" href="#tflite.SpaceToDepthOptions.SpaceToDepthOptions.SpaceToDepthOptionsBufferHasIdentifier">SpaceToDepthOptionsBufferHasIdentifier</a></code></li>
 </ul>
 </li>
 </ul>
@@ -226,7 +323,7 @@ def GetRootAsSpaceToDepthOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

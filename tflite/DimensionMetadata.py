@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class DimensionMetadata(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsDimensionMetadata(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = DimensionMetadata()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsDimensionMetadata(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def DimensionMetadataBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # DimensionMetadata
     def Init(self, buf, pos):
@@ -67,10 +77,26 @@ class DimensionMetadata(object):
         return None
 
 def DimensionMetadataStart(builder): builder.StartObject(6)
+def Start(builder):
+    return DimensionMetadataStart(builder)
 def DimensionMetadataAddFormat(builder, format): builder.PrependInt8Slot(0, format, 0)
+def AddFormat(builder, format):
+    return DimensionMetadataAddFormat(builder, format)
 def DimensionMetadataAddDenseSize(builder, denseSize): builder.PrependInt32Slot(1, denseSize, 0)
+def AddDenseSize(builder, denseSize):
+    return DimensionMetadataAddDenseSize(builder, denseSize)
 def DimensionMetadataAddArraySegmentsType(builder, arraySegmentsType): builder.PrependUint8Slot(2, arraySegmentsType, 0)
+def AddArraySegmentsType(builder, arraySegmentsType):
+    return DimensionMetadataAddArraySegmentsType(builder, arraySegmentsType)
 def DimensionMetadataAddArraySegments(builder, arraySegments): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(arraySegments), 0)
+def AddArraySegments(builder, arraySegments):
+    return DimensionMetadataAddArraySegments(builder, arraySegments)
 def DimensionMetadataAddArrayIndicesType(builder, arrayIndicesType): builder.PrependUint8Slot(4, arrayIndicesType, 0)
+def AddArrayIndicesType(builder, arrayIndicesType):
+    return DimensionMetadataAddArrayIndicesType(builder, arrayIndicesType)
 def DimensionMetadataAddArrayIndices(builder, arrayIndices): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(arrayIndices), 0)
+def AddArrayIndices(builder, arrayIndices):
+    return DimensionMetadataAddArrayIndices(builder, arrayIndices)
 def DimensionMetadataEnd(builder): return builder.EndObject()
+def End(builder):
+    return DimensionMetadataEnd(builder)

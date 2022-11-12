@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class OperatorCode(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsOperatorCode(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = OperatorCode()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsOperatorCode(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def OperatorCodeBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # OperatorCode
     def Init(self, buf, pos):
@@ -41,23 +51,26 @@ class OperatorCode(object):
 
     # OperatorCode
     def BuiltinCode(self):
-        from tflite.BuiltinOperator import BuiltinOperator
-        bc = self.NewBuiltinCode()
-        if bc < BuiltinOperator.PLACEHOLDER_FOR_GREATER_OP_CODES:
-            return self.DeprecatedBuiltinCode()
-        else:
-            return self.NewBuiltinCode()
-
-    # OperatorCode
-    def NewBuiltinCode(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
         if o != 0:
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
 def OperatorCodeStart(builder): builder.StartObject(4)
+def Start(builder):
+    return OperatorCodeStart(builder)
 def OperatorCodeAddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode): builder.PrependInt8Slot(0, deprecatedBuiltinCode, 0)
+def AddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode):
+    return OperatorCodeAddDeprecatedBuiltinCode(builder, deprecatedBuiltinCode)
 def OperatorCodeAddCustomCode(builder, customCode): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(customCode), 0)
+def AddCustomCode(builder, customCode):
+    return OperatorCodeAddCustomCode(builder, customCode)
 def OperatorCodeAddVersion(builder, version): builder.PrependInt32Slot(2, version, 1)
+def AddVersion(builder, version):
+    return OperatorCodeAddVersion(builder, version)
 def OperatorCodeAddBuiltinCode(builder, builtinCode): builder.PrependInt32Slot(3, builtinCode, 0)
+def AddBuiltinCode(builder, builtinCode):
+    return OperatorCodeAddBuiltinCode(builder, builtinCode)
 def OperatorCodeEnd(builder): return builder.EndObject()
+def End(builder):
+    return OperatorCodeEnd(builder)

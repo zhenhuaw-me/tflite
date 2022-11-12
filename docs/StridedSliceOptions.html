@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.StridedSliceOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -31,16 +31,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class StridedSliceOptions(object):
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsStridedSliceOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = StridedSliceOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsStridedSliceOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StridedSliceOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # StridedSliceOptions
     def Init(self, buf, pos):
@@ -82,12 +92,26 @@ class StridedSliceOptions(object):
         return 0
 
 def StridedSliceOptionsStart(builder): builder.StartObject(5)
+def Start(builder):
+    return StridedSliceOptionsStart(builder)
 def StridedSliceOptionsAddBeginMask(builder, beginMask): builder.PrependInt32Slot(0, beginMask, 0)
+def AddBeginMask(builder, beginMask):
+    return StridedSliceOptionsAddBeginMask(builder, beginMask)
 def StridedSliceOptionsAddEndMask(builder, endMask): builder.PrependInt32Slot(1, endMask, 0)
+def AddEndMask(builder, endMask):
+    return StridedSliceOptionsAddEndMask(builder, endMask)
 def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask): builder.PrependInt32Slot(2, ellipsisMask, 0)
+def AddEllipsisMask(builder, ellipsisMask):
+    return StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)
 def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask): builder.PrependInt32Slot(3, newAxisMask, 0)
+def AddNewAxisMask(builder, newAxisMask):
+    return StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)
 def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask): builder.PrependInt32Slot(4, shrinkAxisMask, 0)
-def StridedSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
+def AddShrinkAxisMask(builder, shrinkAxisMask):
+    return StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)
+def StridedSliceOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return StridedSliceOptionsEnd(builder)</code></pre>
 </details>
 </section>
 <section>
@@ -97,6 +121,97 @@ def StridedSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.StridedSliceOptions.AddBeginMask"><code class="name flex">
+<span>def <span class="ident">AddBeginMask</span></span>(<span>builder, beginMask)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBeginMask(builder, beginMask):
+    return StridedSliceOptionsAddBeginMask(builder, beginMask)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.AddEllipsisMask"><code class="name flex">
+<span>def <span class="ident">AddEllipsisMask</span></span>(<span>builder, ellipsisMask)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddEllipsisMask(builder, ellipsisMask):
+    return StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.AddEndMask"><code class="name flex">
+<span>def <span class="ident">AddEndMask</span></span>(<span>builder, endMask)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddEndMask(builder, endMask):
+    return StridedSliceOptionsAddEndMask(builder, endMask)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.AddNewAxisMask"><code class="name flex">
+<span>def <span class="ident">AddNewAxisMask</span></span>(<span>builder, newAxisMask)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddNewAxisMask(builder, newAxisMask):
+    return StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.AddShrinkAxisMask"><code class="name flex">
+<span>def <span class="ident">AddShrinkAxisMask</span></span>(<span>builder, shrinkAxisMask)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddShrinkAxisMask(builder, shrinkAxisMask):
+    return StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StridedSliceOptionsEnd(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    return StridedSliceOptionsStart(builder)</code></pre>
+</details>
+</dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsAddBeginMask"><code class="name flex">
 <span>def <span class="ident">StridedSliceOptionsAddBeginMask</span></span>(<span>builder, beginMask)</span>
 </code></dt>
@@ -199,11 +314,19 @@ def StridedSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
     __slots__ = [&#39;_tab&#39;]
 
     @classmethod
-    def GetRootAsStridedSliceOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = StridedSliceOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsStridedSliceOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StridedSliceOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
 
     # StridedSliceOptions
     def Init(self, buf, pos):
@@ -246,8 +369,8 @@ def StridedSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
 </details>
 <h3>Static methods</h3>
 <dl>
-<dt id="tflite.StridedSliceOptions.StridedSliceOptions.GetRootAsStridedSliceOptions"><code class="name flex">
-<span>def <span class="ident">GetRootAsStridedSliceOptions</span></span>(<span>buf, offset)</span>
+<dt id="tflite.StridedSliceOptions.StridedSliceOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -256,11 +379,40 @@ def StridedSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
-def GetRootAsStridedSliceOptions(cls, buf, offset):
+def GetRootAs(cls, buf, offset=0):
     n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
     x = StridedSliceOptions()
     x.Init(buf, n + offset)
     return x</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.StridedSliceOptions.GetRootAsStridedSliceOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStridedSliceOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def GetRootAsStridedSliceOptions(cls, buf, offset=0):
+    &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+    return cls.GetRootAs(buf, offset)</code></pre>
+</details>
+</dd>
+<dt id="tflite.StridedSliceOptions.StridedSliceOptions.StridedSliceOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StridedSliceOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def StridedSliceOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+    return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)</code></pre>
 </details>
 </dd>
 </dl>
@@ -377,6 +529,13 @@ def GetRootAsStridedSliceOptions(cls, buf, offset):
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.StridedSliceOptions.AddBeginMask" href="#tflite.StridedSliceOptions.AddBeginMask">AddBeginMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.AddEllipsisMask" href="#tflite.StridedSliceOptions.AddEllipsisMask">AddEllipsisMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.AddEndMask" href="#tflite.StridedSliceOptions.AddEndMask">AddEndMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.AddNewAxisMask" href="#tflite.StridedSliceOptions.AddNewAxisMask">AddNewAxisMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.AddShrinkAxisMask" href="#tflite.StridedSliceOptions.AddShrinkAxisMask">AddShrinkAxisMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.End" href="#tflite.StridedSliceOptions.End">End</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.Start" href="#tflite.StridedSliceOptions.Start">Start</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptionsAddBeginMask" href="#tflite.StridedSliceOptions.StridedSliceOptionsAddBeginMask">StridedSliceOptionsAddBeginMask</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptionsAddEllipsisMask" href="#tflite.StridedSliceOptions.StridedSliceOptionsAddEllipsisMask">StridedSliceOptionsAddEllipsisMask</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptionsAddEndMask" href="#tflite.StridedSliceOptions.StridedSliceOptionsAddEndMask">StridedSliceOptionsAddEndMask</a></code></li>
@@ -394,10 +553,12 @@ def GetRootAsStridedSliceOptions(cls, buf, offset):
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.BeginMask" href="#tflite.StridedSliceOptions.StridedSliceOptions.BeginMask">BeginMask</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.EllipsisMask" href="#tflite.StridedSliceOptions.StridedSliceOptions.EllipsisMask">EllipsisMask</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.EndMask" href="#tflite.StridedSliceOptions.StridedSliceOptions.EndMask">EndMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.GetRootAs" href="#tflite.StridedSliceOptions.StridedSliceOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.GetRootAsStridedSliceOptions" href="#tflite.StridedSliceOptions.StridedSliceOptions.GetRootAsStridedSliceOptions">GetRootAsStridedSliceOptions</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.Init" href="#tflite.StridedSliceOptions.StridedSliceOptions.Init">Init</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.NewAxisMask" href="#tflite.StridedSliceOptions.StridedSliceOptions.NewAxisMask">NewAxisMask</a></code></li>
 <li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.ShrinkAxisMask" href="#tflite.StridedSliceOptions.StridedSliceOptions.ShrinkAxisMask">ShrinkAxisMask</a></code></li>
+<li><code><a title="tflite.StridedSliceOptions.StridedSliceOptions.StridedSliceOptionsBufferHasIdentifier" href="#tflite.StridedSliceOptions.StridedSliceOptions.StridedSliceOptionsBufferHasIdentifier">StridedSliceOptionsBufferHasIdentifier</a></code></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +567,7 @@ def GetRootAsStridedSliceOptions(cls, buf, offset):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

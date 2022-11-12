@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class Uint8Vector(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsUint8Vector(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = Uint8Vector()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsUint8Vector(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def Uint8VectorBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # Uint8Vector
     def Init(self, buf, pos):
@@ -40,7 +50,20 @@ class Uint8Vector(object):
             return self._tab.VectorLen(o)
         return 0
 
+    # Uint8Vector
+    def ValuesIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
 def Uint8VectorStart(builder): builder.StartObject(1)
+def Start(builder):
+    return Uint8VectorStart(builder)
 def Uint8VectorAddValues(builder, values): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+def AddValues(builder, values):
+    return Uint8VectorAddValues(builder, values)
 def Uint8VectorStartValuesVector(builder, numElems): return builder.StartVector(1, numElems, 1)
+def StartValuesVector(builder, numElems):
+    return Uint8VectorStartValuesVector(builder, numElems)
 def Uint8VectorEnd(builder): return builder.EndObject()
+def End(builder):
+    return Uint8VectorEnd(builder)

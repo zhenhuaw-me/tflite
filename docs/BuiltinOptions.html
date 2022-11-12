@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite.BuiltinOptions API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -133,7 +133,26 @@ class BuiltinOptions(object):
     DensifyOptions = 99
     SegmentSumOptions = 100
     BatchMatMulOptions = 101
-    CumsumOptions = 102</code></pre>
+    CumsumOptions = 102
+    CallOnceOptions = 103
+    BroadcastToOptions = 104
+    Rfft2dOptions = 105
+    Conv3DOptions = 106
+    HashtableOptions = 107
+    HashtableFindOptions = 108
+    HashtableImportOptions = 109
+    HashtableSizeOptions = 110
+    VarHandleOptions = 111
+    ReadVariableOptions = 112
+    AssignVariableOptions = 113
+    RandomOptions = 114
+    BucketizeOptions = 115
+    GeluOptions = 116
+    DynamicUpdateSliceOptions = 117
+    UnsortedSegmentProdOptions = 118
+    UnsortedSegmentMaxOptions = 119
+    UnsortedSegmentSumOptions = 120
+    ATan2Options = 121</code></pre>
 </details>
 </section>
 <section>
@@ -257,10 +276,33 @@ class BuiltinOptions(object):
     DensifyOptions = 99
     SegmentSumOptions = 100
     BatchMatMulOptions = 101
-    CumsumOptions = 102</code></pre>
+    CumsumOptions = 102
+    CallOnceOptions = 103
+    BroadcastToOptions = 104
+    Rfft2dOptions = 105
+    Conv3DOptions = 106
+    HashtableOptions = 107
+    HashtableFindOptions = 108
+    HashtableImportOptions = 109
+    HashtableSizeOptions = 110
+    VarHandleOptions = 111
+    ReadVariableOptions = 112
+    AssignVariableOptions = 113
+    RandomOptions = 114
+    BucketizeOptions = 115
+    GeluOptions = 116
+    DynamicUpdateSliceOptions = 117
+    UnsortedSegmentProdOptions = 118
+    UnsortedSegmentMaxOptions = 119
+    UnsortedSegmentSumOptions = 120
+    ATan2Options = 121</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ATan2Options"><code class="name">var <span class="ident">ATan2Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.AbsOptions"><code class="name">var <span class="ident">AbsOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -281,6 +323,10 @@ class BuiltinOptions(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.AssignVariableOptions"><code class="name">var <span class="ident">AssignVariableOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.BatchMatMulOptions"><code class="name">var <span class="ident">BatchMatMulOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -294,6 +340,18 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions"><code class="name">var <span class="ident">BidirectionalSequenceRNNOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BroadcastToOptions"><code class="name">var <span class="ident">BroadcastToOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BucketizeOptions"><code class="name">var <span class="ident">BucketizeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.CallOnceOptions"><code class="name">var <span class="ident">CallOnceOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -314,6 +372,10 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.Conv2DOptions"><code class="name">var <span class="ident">Conv2DOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.Conv3DOptions"><code class="name">var <span class="ident">Conv3DOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -342,6 +404,10 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.DivOptions"><code class="name">var <span class="ident">DivOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.DynamicUpdateSliceOptions"><code class="name">var <span class="ident">DynamicUpdateSliceOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -389,6 +455,10 @@ class BuiltinOptions(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.GeluOptions"><code class="name">var <span class="ident">GeluOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.GreaterEqualOptions"><code class="name">var <span class="ident">GreaterEqualOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -398,6 +468,22 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.HardSwishOptions"><code class="name">var <span class="ident">HardSwishOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.HashtableFindOptions"><code class="name">var <span class="ident">HashtableFindOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.HashtableImportOptions"><code class="name">var <span class="ident">HashtableImportOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.HashtableOptions"><code class="name">var <span class="ident">HashtableOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.HashtableSizeOptions"><code class="name">var <span class="ident">HashtableSizeOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -521,11 +607,19 @@ class BuiltinOptions(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.RandomOptions"><code class="name">var <span class="ident">RandomOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.RangeOptions"><code class="name">var <span class="ident">RangeOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.RankOptions"><code class="name">var <span class="ident">RankOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.ReadVariableOptions"><code class="name">var <span class="ident">ReadVariableOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -550,6 +644,10 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options"><code class="name">var <span class="ident">ReverseV2Options</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.Rfft2dOptions"><code class="name">var <span class="ident">Rfft2dOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -661,6 +759,22 @@ class BuiltinOptions(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMaxOptions"><code class="name">var <span class="ident">UnsortedSegmentMaxOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentProdOptions"><code class="name">var <span class="ident">UnsortedSegmentProdOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentSumOptions"><code class="name">var <span class="ident">UnsortedSegmentSumOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.VarHandleOptions"><code class="name">var <span class="ident">VarHandleOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.WhereOptions"><code class="name">var <span class="ident">WhereOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -694,20 +808,26 @@ class BuiltinOptions(object):
 <li>
 <h4><code><a title="tflite.BuiltinOptions.BuiltinOptions" href="#tflite.BuiltinOptions.BuiltinOptions">BuiltinOptions</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ATan2Options" href="#tflite.BuiltinOptions.BuiltinOptions.ATan2Options">ATan2Options</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AbsOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AbsOptions">AbsOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AddNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AddNOptions">AddNOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AddOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AddOptions">AddOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ArgMaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ArgMaxOptions">ArgMaxOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ArgMinOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ArgMinOptions">ArgMinOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.AssignVariableOptions" href="#tflite.BuiltinOptions.BuiltinOptions.AssignVariableOptions">AssignVariableOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BatchMatMulOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BatchMatMulOptions">BatchMatMulOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions">BatchToSpaceNDOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions">BidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions">BidirectionalSequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BroadcastToOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BroadcastToOptions">BroadcastToOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BucketizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BucketizeOptions">BucketizeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CallOnceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CallOnceOptions">CallOnceOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CallOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CallOptions">CallOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CastOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CastOptions">CastOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ConcatEmbeddingsOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ConcatEmbeddingsOptions">ConcatEmbeddingsOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ConcatenationOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ConcatenationOptions">ConcatenationOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.Conv2DOptions" href="#tflite.BuiltinOptions.BuiltinOptions.Conv2DOptions">Conv2DOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.Conv3DOptions" href="#tflite.BuiltinOptions.BuiltinOptions.Conv3DOptions">Conv3DOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CosOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CosOptions">CosOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CumsumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CumsumOptions">CumsumOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DensifyOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DensifyOptions">DensifyOptions</a></code></li>
@@ -715,6 +835,7 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DepthwiseConv2DOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DepthwiseConv2DOptions">DepthwiseConv2DOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DequantizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DequantizeOptions">DequantizeOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DivOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DivOptions">DivOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.DynamicUpdateSliceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.DynamicUpdateSliceOptions">DynamicUpdateSliceOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.EmbeddingLookupSparseOptions" href="#tflite.BuiltinOptions.BuiltinOptions.EmbeddingLookupSparseOptions">EmbeddingLookupSparseOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.EqualOptions" href="#tflite.BuiltinOptions.BuiltinOptions.EqualOptions">EqualOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ExpOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ExpOptions">ExpOptions</a></code></li>
@@ -726,9 +847,14 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.FullyConnectedOptions" href="#tflite.BuiltinOptions.BuiltinOptions.FullyConnectedOptions">FullyConnectedOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GatherNdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GatherNdOptions">GatherNdOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GatherOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GatherOptions">GatherOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GeluOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GeluOptions">GeluOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GreaterEqualOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GreaterEqualOptions">GreaterEqualOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.GreaterOptions" href="#tflite.BuiltinOptions.BuiltinOptions.GreaterOptions">GreaterOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.HardSwishOptions" href="#tflite.BuiltinOptions.BuiltinOptions.HardSwishOptions">HardSwishOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.HashtableFindOptions" href="#tflite.BuiltinOptions.BuiltinOptions.HashtableFindOptions">HashtableFindOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.HashtableImportOptions" href="#tflite.BuiltinOptions.BuiltinOptions.HashtableImportOptions">HashtableImportOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.HashtableOptions" href="#tflite.BuiltinOptions.BuiltinOptions.HashtableOptions">HashtableOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.HashtableSizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.HashtableSizeOptions">HashtableSizeOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.IfOptions" href="#tflite.BuiltinOptions.BuiltinOptions.IfOptions">IfOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.L2NormOptions" href="#tflite.BuiltinOptions.BuiltinOptions.L2NormOptions">L2NormOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.LSHProjectionOptions" href="#tflite.BuiltinOptions.BuiltinOptions.LSHProjectionOptions">LSHProjectionOptions</a></code></li>
@@ -759,14 +885,17 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.PowOptions" href="#tflite.BuiltinOptions.BuiltinOptions.PowOptions">PowOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.QuantizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.QuantizeOptions">QuantizeOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RNNOptions">RNNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RandomOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RandomOptions">RandomOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RangeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RangeOptions">RangeOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RankOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RankOptions">RankOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReadVariableOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReadVariableOptions">ReadVariableOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReducerOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReducerOptions">ReducerOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReshapeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReshapeOptions">ReshapeOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ResizeBilinearOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ResizeBilinearOptions">ResizeBilinearOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ResizeNearestNeighborOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ResizeNearestNeighborOptions">ResizeNearestNeighborOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions">ReverseSequenceOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options">ReverseV2Options</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.Rfft2dOptions" href="#tflite.BuiltinOptions.BuiltinOptions.Rfft2dOptions">Rfft2dOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SVDFOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SVDFOptions">SVDFOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions">ScatterNdOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions">SegmentSumOptions</a></code></li>
@@ -794,6 +923,10 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnidirectionalSequenceLSTMOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnidirectionalSequenceLSTMOptions">UnidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UniqueOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UniqueOptions">UniqueOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnpackOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnpackOptions">UnpackOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMaxOptions">UnsortedSegmentMaxOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentProdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentProdOptions">UnsortedSegmentProdOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentSumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentSumOptions">UnsortedSegmentSumOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.VarHandleOptions" href="#tflite.BuiltinOptions.BuiltinOptions.VarHandleOptions">VarHandleOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.WhereOptions" href="#tflite.BuiltinOptions.BuiltinOptions.WhereOptions">WhereOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.WhileOptions" href="#tflite.BuiltinOptions.BuiltinOptions.WhileOptions">WhileOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ZerosLikeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ZerosLikeOptions">ZerosLikeOptions</a></code></li>
@@ -805,7 +938,7 @@ class BuiltinOptions(object):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

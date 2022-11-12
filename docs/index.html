@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>tflite API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -33,25 +33,31 @@ __version__ = &#39;2.4.0&#39;
 
 
 ########################## BELOW ARE AUTO-GENERATED ##########################
+from tflite.ATan2Options import *
 from tflite.AbsOptions import *
 from tflite.ActivationFunctionType import *
 from tflite.AddNOptions import *
 from tflite.AddOptions import *
 from tflite.ArgMaxOptions import *
 from tflite.ArgMinOptions import *
+from tflite.AssignVariableOptions import *
 from tflite.BatchMatMulOptions import *
 from tflite.BatchToSpaceNDOptions import *
 from tflite.BidirectionalSequenceLSTMOptions import *
 from tflite.BidirectionalSequenceRNNOptions import *
+from tflite.BroadcastToOptions import *
+from tflite.BucketizeOptions import *
 from tflite.Buffer import *
 from tflite.BuiltinOperator import *
 from tflite.BuiltinOptions import *
+from tflite.CallOnceOptions import *
 from tflite.CallOptions import *
 from tflite.CastOptions import *
 from tflite.CombinerType import *
 from tflite.ConcatEmbeddingsOptions import *
 from tflite.ConcatenationOptions import *
 from tflite.Conv2DOptions import *
+from tflite.Conv3DOptions import *
 from tflite.CosOptions import *
 from tflite.CumsumOptions import *
 from tflite.CustomOptionsFormat import *
@@ -63,6 +69,7 @@ from tflite.DequantizeOptions import *
 from tflite.DimensionMetadata import *
 from tflite.DimensionType import *
 from tflite.DivOptions import *
+from tflite.DynamicUpdateSliceOptions import *
 from tflite.EmbeddingLookupSparseOptions import *
 from tflite.EqualOptions import *
 from tflite.ExpOptions import *
@@ -75,9 +82,14 @@ from tflite.FullyConnectedOptions import *
 from tflite.FullyConnectedOptionsWeightsFormat import *
 from tflite.GatherNdOptions import *
 from tflite.GatherOptions import *
+from tflite.GeluOptions import *
 from tflite.GreaterEqualOptions import *
 from tflite.GreaterOptions import *
 from tflite.HardSwishOptions import *
+from tflite.HashtableFindOptions import *
+from tflite.HashtableImportOptions import *
+from tflite.HashtableOptions import *
+from tflite.HashtableSizeOptions import *
 from tflite.IfOptions import *
 from tflite.Int32Vector import *
 from tflite.L2NormOptions import *
@@ -118,14 +130,17 @@ from tflite.QuantizationDetails import *
 from tflite.QuantizationParameters import *
 from tflite.QuantizeOptions import *
 from tflite.RNNOptions import *
+from tflite.RandomOptions import *
 from tflite.RangeOptions import *
 from tflite.RankOptions import *
+from tflite.ReadVariableOptions import *
 from tflite.ReducerOptions import *
 from tflite.ReshapeOptions import *
 from tflite.ResizeBilinearOptions import *
 from tflite.ResizeNearestNeighborOptions import *
 from tflite.ReverseSequenceOptions import *
 from tflite.ReverseV2Options import *
+from tflite.Rfft2dOptions import *
 from tflite.SVDFOptions import *
 from tflite.ScatterNdOptions import *
 from tflite.SegmentSumOptions import *
@@ -162,6 +177,10 @@ from tflite.Uint8Vector import *
 from tflite.UnidirectionalSequenceLSTMOptions import *
 from tflite.UniqueOptions import *
 from tflite.UnpackOptions import *
+from tflite.UnsortedSegmentMaxOptions import *
+from tflite.UnsortedSegmentProdOptions import *
+from tflite.UnsortedSegmentSumOptions import *
+from tflite.VarHandleOptions import *
 from tflite.WhereOptions import *
 from tflite.WhileOptions import *
 from tflite.ZerosLikeOptions import *
@@ -172,6 +191,10 @@ from tflite.utils import *
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
+<dt><code class="name"><a title="tflite.ATan2Options" href="ATan2Options.html">tflite.ATan2Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.AbsOptions" href="AbsOptions.html">tflite.AbsOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -196,6 +219,10 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.AssignVariableOptions" href="AssignVariableOptions.html">tflite.AssignVariableOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.BatchMatMulOptions" href="BatchMatMulOptions.html">tflite.BatchMatMulOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -212,6 +239,14 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.BroadcastToOptions" href="BroadcastToOptions.html">tflite.BroadcastToOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BucketizeOptions" href="BucketizeOptions.html">tflite.BucketizeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.Buffer" href="Buffer.html">tflite.Buffer</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -221,6 +256,10 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.BuiltinOptions" href="BuiltinOptions.html">tflite.BuiltinOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.CallOnceOptions" href="CallOnceOptions.html">tflite.CallOnceOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -245,6 +284,10 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.Conv2DOptions" href="Conv2DOptions.html">tflite.Conv2DOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Conv3DOptions" href="Conv3DOptions.html">tflite.Conv3DOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -289,6 +332,10 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.DivOptions" href="DivOptions.html">tflite.DivOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.DynamicUpdateSliceOptions" href="DynamicUpdateSliceOptions.html">tflite.DynamicUpdateSliceOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -340,6 +387,10 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.GeluOptions" href="GeluOptions.html">tflite.GeluOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.GreaterEqualOptions" href="GreaterEqualOptions.html">tflite.GreaterEqualOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -349,6 +400,22 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.HardSwishOptions" href="HardSwishOptions.html">tflite.HardSwishOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.HashtableFindOptions" href="HashtableFindOptions.html">tflite.HashtableFindOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.HashtableImportOptions" href="HashtableImportOptions.html">tflite.HashtableImportOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.HashtableOptions" href="HashtableOptions.html">tflite.HashtableOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.HashtableSizeOptions" href="HashtableSizeOptions.html">tflite.HashtableSizeOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -512,11 +579,19 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.RandomOptions" href="RandomOptions.html">tflite.RandomOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.RangeOptions" href="RangeOptions.html">tflite.RangeOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.RankOptions" href="RankOptions.html">tflite.RankOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.ReadVariableOptions" href="ReadVariableOptions.html">tflite.ReadVariableOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -541,6 +616,10 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.ReverseV2Options" href="ReverseV2Options.html">tflite.ReverseV2Options</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.Rfft2dOptions" href="Rfft2dOptions.html">tflite.Rfft2dOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -688,6 +767,22 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.UnsortedSegmentMaxOptions" href="UnsortedSegmentMaxOptions.html">tflite.UnsortedSegmentMaxOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.UnsortedSegmentProdOptions" href="UnsortedSegmentProdOptions.html">tflite.UnsortedSegmentProdOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.UnsortedSegmentSumOptions" href="UnsortedSegmentSumOptions.html">tflite.UnsortedSegmentSumOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.VarHandleOptions" href="VarHandleOptions.html">tflite.VarHandleOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.WhereOptions" href="WhereOptions.html">tflite.WhereOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -721,25 +816,31 @@ from tflite.utils import *
 <ul id="index">
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
 <ul>
+<li><code><a title="tflite.ATan2Options" href="ATan2Options.html">tflite.ATan2Options</a></code></li>
 <li><code><a title="tflite.AbsOptions" href="AbsOptions.html">tflite.AbsOptions</a></code></li>
 <li><code><a title="tflite.ActivationFunctionType" href="ActivationFunctionType.html">tflite.ActivationFunctionType</a></code></li>
 <li><code><a title="tflite.AddNOptions" href="AddNOptions.html">tflite.AddNOptions</a></code></li>
 <li><code><a title="tflite.AddOptions" href="AddOptions.html">tflite.AddOptions</a></code></li>
 <li><code><a title="tflite.ArgMaxOptions" href="ArgMaxOptions.html">tflite.ArgMaxOptions</a></code></li>
 <li><code><a title="tflite.ArgMinOptions" href="ArgMinOptions.html">tflite.ArgMinOptions</a></code></li>
+<li><code><a title="tflite.AssignVariableOptions" href="AssignVariableOptions.html">tflite.AssignVariableOptions</a></code></li>
 <li><code><a title="tflite.BatchMatMulOptions" href="BatchMatMulOptions.html">tflite.BatchMatMulOptions</a></code></li>
 <li><code><a title="tflite.BatchToSpaceNDOptions" href="BatchToSpaceNDOptions.html">tflite.BatchToSpaceNDOptions</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions" href="BidirectionalSequenceLSTMOptions.html">tflite.BidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions" href="BidirectionalSequenceRNNOptions.html">tflite.BidirectionalSequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.BroadcastToOptions" href="BroadcastToOptions.html">tflite.BroadcastToOptions</a></code></li>
+<li><code><a title="tflite.BucketizeOptions" href="BucketizeOptions.html">tflite.BucketizeOptions</a></code></li>
 <li><code><a title="tflite.Buffer" href="Buffer.html">tflite.Buffer</a></code></li>
 <li><code><a title="tflite.BuiltinOperator" href="BuiltinOperator.html">tflite.BuiltinOperator</a></code></li>
 <li><code><a title="tflite.BuiltinOptions" href="BuiltinOptions.html">tflite.BuiltinOptions</a></code></li>
+<li><code><a title="tflite.CallOnceOptions" href="CallOnceOptions.html">tflite.CallOnceOptions</a></code></li>
 <li><code><a title="tflite.CallOptions" href="CallOptions.html">tflite.CallOptions</a></code></li>
 <li><code><a title="tflite.CastOptions" href="CastOptions.html">tflite.CastOptions</a></code></li>
 <li><code><a title="tflite.CombinerType" href="CombinerType.html">tflite.CombinerType</a></code></li>
 <li><code><a title="tflite.ConcatEmbeddingsOptions" href="ConcatEmbeddingsOptions.html">tflite.ConcatEmbeddingsOptions</a></code></li>
 <li><code><a title="tflite.ConcatenationOptions" href="ConcatenationOptions.html">tflite.ConcatenationOptions</a></code></li>
 <li><code><a title="tflite.Conv2DOptions" href="Conv2DOptions.html">tflite.Conv2DOptions</a></code></li>
+<li><code><a title="tflite.Conv3DOptions" href="Conv3DOptions.html">tflite.Conv3DOptions</a></code></li>
 <li><code><a title="tflite.CosOptions" href="CosOptions.html">tflite.CosOptions</a></code></li>
 <li><code><a title="tflite.CumsumOptions" href="CumsumOptions.html">tflite.CumsumOptions</a></code></li>
 <li><code><a title="tflite.CustomOptionsFormat" href="CustomOptionsFormat.html">tflite.CustomOptionsFormat</a></code></li>
@@ -751,6 +852,7 @@ from tflite.utils import *
 <li><code><a title="tflite.DimensionMetadata" href="DimensionMetadata.html">tflite.DimensionMetadata</a></code></li>
 <li><code><a title="tflite.DimensionType" href="DimensionType.html">tflite.DimensionType</a></code></li>
 <li><code><a title="tflite.DivOptions" href="DivOptions.html">tflite.DivOptions</a></code></li>
+<li><code><a title="tflite.DynamicUpdateSliceOptions" href="DynamicUpdateSliceOptions.html">tflite.DynamicUpdateSliceOptions</a></code></li>
 <li><code><a title="tflite.EmbeddingLookupSparseOptions" href="EmbeddingLookupSparseOptions.html">tflite.EmbeddingLookupSparseOptions</a></code></li>
 <li><code><a title="tflite.EqualOptions" href="EqualOptions.html">tflite.EqualOptions</a></code></li>
 <li><code><a title="tflite.ExpOptions" href="ExpOptions.html">tflite.ExpOptions</a></code></li>
@@ -763,9 +865,14 @@ from tflite.utils import *
 <li><code><a title="tflite.FullyConnectedOptionsWeightsFormat" href="FullyConnectedOptionsWeightsFormat.html">tflite.FullyConnectedOptionsWeightsFormat</a></code></li>
 <li><code><a title="tflite.GatherNdOptions" href="GatherNdOptions.html">tflite.GatherNdOptions</a></code></li>
 <li><code><a title="tflite.GatherOptions" href="GatherOptions.html">tflite.GatherOptions</a></code></li>
+<li><code><a title="tflite.GeluOptions" href="GeluOptions.html">tflite.GeluOptions</a></code></li>
 <li><code><a title="tflite.GreaterEqualOptions" href="GreaterEqualOptions.html">tflite.GreaterEqualOptions</a></code></li>
 <li><code><a title="tflite.GreaterOptions" href="GreaterOptions.html">tflite.GreaterOptions</a></code></li>
 <li><code><a title="tflite.HardSwishOptions" href="HardSwishOptions.html">tflite.HardSwishOptions</a></code></li>
+<li><code><a title="tflite.HashtableFindOptions" href="HashtableFindOptions.html">tflite.HashtableFindOptions</a></code></li>
+<li><code><a title="tflite.HashtableImportOptions" href="HashtableImportOptions.html">tflite.HashtableImportOptions</a></code></li>
+<li><code><a title="tflite.HashtableOptions" href="HashtableOptions.html">tflite.HashtableOptions</a></code></li>
+<li><code><a title="tflite.HashtableSizeOptions" href="HashtableSizeOptions.html">tflite.HashtableSizeOptions</a></code></li>
 <li><code><a title="tflite.IfOptions" href="IfOptions.html">tflite.IfOptions</a></code></li>
 <li><code><a title="tflite.Int32Vector" href="Int32Vector.html">tflite.Int32Vector</a></code></li>
 <li><code><a title="tflite.L2NormOptions" href="L2NormOptions.html">tflite.L2NormOptions</a></code></li>
@@ -806,14 +913,17 @@ from tflite.utils import *
 <li><code><a title="tflite.QuantizationParameters" href="QuantizationParameters.html">tflite.QuantizationParameters</a></code></li>
 <li><code><a title="tflite.QuantizeOptions" href="QuantizeOptions.html">tflite.QuantizeOptions</a></code></li>
 <li><code><a title="tflite.RNNOptions" href="RNNOptions.html">tflite.RNNOptions</a></code></li>
+<li><code><a title="tflite.RandomOptions" href="RandomOptions.html">tflite.RandomOptions</a></code></li>
 <li><code><a title="tflite.RangeOptions" href="RangeOptions.html">tflite.RangeOptions</a></code></li>
 <li><code><a title="tflite.RankOptions" href="RankOptions.html">tflite.RankOptions</a></code></li>
+<li><code><a title="tflite.ReadVariableOptions" href="ReadVariableOptions.html">tflite.ReadVariableOptions</a></code></li>
 <li><code><a title="tflite.ReducerOptions" href="ReducerOptions.html">tflite.ReducerOptions</a></code></li>
 <li><code><a title="tflite.ReshapeOptions" href="ReshapeOptions.html">tflite.ReshapeOptions</a></code></li>
 <li><code><a title="tflite.ResizeBilinearOptions" href="ResizeBilinearOptions.html">tflite.ResizeBilinearOptions</a></code></li>
 <li><code><a title="tflite.ResizeNearestNeighborOptions" href="ResizeNearestNeighborOptions.html">tflite.ResizeNearestNeighborOptions</a></code></li>
 <li><code><a title="tflite.ReverseSequenceOptions" href="ReverseSequenceOptions.html">tflite.ReverseSequenceOptions</a></code></li>
 <li><code><a title="tflite.ReverseV2Options" href="ReverseV2Options.html">tflite.ReverseV2Options</a></code></li>
+<li><code><a title="tflite.Rfft2dOptions" href="Rfft2dOptions.html">tflite.Rfft2dOptions</a></code></li>
 <li><code><a title="tflite.SVDFOptions" href="SVDFOptions.html">tflite.SVDFOptions</a></code></li>
 <li><code><a title="tflite.ScatterNdOptions" href="ScatterNdOptions.html">tflite.ScatterNdOptions</a></code></li>
 <li><code><a title="tflite.SegmentSumOptions" href="SegmentSumOptions.html">tflite.SegmentSumOptions</a></code></li>
@@ -850,6 +960,10 @@ from tflite.utils import *
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions" href="UnidirectionalSequenceLSTMOptions.html">tflite.UnidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.UniqueOptions" href="UniqueOptions.html">tflite.UniqueOptions</a></code></li>
 <li><code><a title="tflite.UnpackOptions" href="UnpackOptions.html">tflite.UnpackOptions</a></code></li>
+<li><code><a title="tflite.UnsortedSegmentMaxOptions" href="UnsortedSegmentMaxOptions.html">tflite.UnsortedSegmentMaxOptions</a></code></li>
+<li><code><a title="tflite.UnsortedSegmentProdOptions" href="UnsortedSegmentProdOptions.html">tflite.UnsortedSegmentProdOptions</a></code></li>
+<li><code><a title="tflite.UnsortedSegmentSumOptions" href="UnsortedSegmentSumOptions.html">tflite.UnsortedSegmentSumOptions</a></code></li>
+<li><code><a title="tflite.VarHandleOptions" href="VarHandleOptions.html">tflite.VarHandleOptions</a></code></li>
 <li><code><a title="tflite.WhereOptions" href="WhereOptions.html">tflite.WhereOptions</a></code></li>
 <li><code><a title="tflite.WhileOptions" href="WhileOptions.html">tflite.WhileOptions</a></code></li>
 <li><code><a title="tflite.ZerosLikeOptions" href="ZerosLikeOptions.html">tflite.ZerosLikeOptions</a></code></li>
@@ -860,7 +974,7 @@ from tflite.utils import *
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

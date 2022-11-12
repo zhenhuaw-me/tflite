@@ -4,4 +4,3 @@
 
 class CustomOptionsFormat(object):
     FLEXBUFFERS = 0
-

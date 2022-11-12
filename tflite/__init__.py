@@ -1,29 +1,35 @@
 # import classes and functions of submodules
 
-__version__ = '2.4.0'
+__version__ = '2.10.0'
 
 
 
 ########################## BELOW ARE AUTO-GENERATED ##########################
+from tflite.ATan2Options import *
 from tflite.AbsOptions import *
 from tflite.ActivationFunctionType import *
 from tflite.AddNOptions import *
 from tflite.AddOptions import *
 from tflite.ArgMaxOptions import *
 from tflite.ArgMinOptions import *
+from tflite.AssignVariableOptions import *
 from tflite.BatchMatMulOptions import *
 from tflite.BatchToSpaceNDOptions import *
 from tflite.BidirectionalSequenceLSTMOptions import *
 from tflite.BidirectionalSequenceRNNOptions import *
+from tflite.BroadcastToOptions import *
+from tflite.BucketizeOptions import *
 from tflite.Buffer import *
 from tflite.BuiltinOperator import *
 from tflite.BuiltinOptions import *
+from tflite.CallOnceOptions import *
 from tflite.CallOptions import *
 from tflite.CastOptions import *
 from tflite.CombinerType import *
 from tflite.ConcatEmbeddingsOptions import *
 from tflite.ConcatenationOptions import *
 from tflite.Conv2DOptions import *
+from tflite.Conv3DOptions import *
 from tflite.CosOptions import *
 from tflite.CumsumOptions import *
 from tflite.CustomOptionsFormat import *
@@ -35,6 +41,7 @@ from tflite.DequantizeOptions import *
 from tflite.DimensionMetadata import *
 from tflite.DimensionType import *
 from tflite.DivOptions import *
+from tflite.DynamicUpdateSliceOptions import *
 from tflite.EmbeddingLookupSparseOptions import *
 from tflite.EqualOptions import *
 from tflite.ExpOptions import *
@@ -47,9 +54,14 @@ from tflite.FullyConnectedOptions import *
 from tflite.FullyConnectedOptionsWeightsFormat import *
 from tflite.GatherNdOptions import *
 from tflite.GatherOptions import *
+from tflite.GeluOptions import *
 from tflite.GreaterEqualOptions import *
 from tflite.GreaterOptions import *
 from tflite.HardSwishOptions import *
+from tflite.HashtableFindOptions import *
+from tflite.HashtableImportOptions import *
+from tflite.HashtableOptions import *
+from tflite.HashtableSizeOptions import *
 from tflite.IfOptions import *
 from tflite.Int32Vector import *
 from tflite.L2NormOptions import *
@@ -90,14 +102,17 @@ from tflite.QuantizationDetails import *
 from tflite.QuantizationParameters import *
 from tflite.QuantizeOptions import *
 from tflite.RNNOptions import *
+from tflite.RandomOptions import *
 from tflite.RangeOptions import *
 from tflite.RankOptions import *
+from tflite.ReadVariableOptions import *
 from tflite.ReducerOptions import *
 from tflite.ReshapeOptions import *
 from tflite.ResizeBilinearOptions import *
 from tflite.ResizeNearestNeighborOptions import *
 from tflite.ReverseSequenceOptions import *
 from tflite.ReverseV2Options import *
+from tflite.Rfft2dOptions import *
 from tflite.SVDFOptions import *
 from tflite.ScatterNdOptions import *
 from tflite.SegmentSumOptions import *
@@ -134,6 +149,10 @@ from tflite.Uint8Vector import *
 from tflite.UnidirectionalSequenceLSTMOptions import *
 from tflite.UniqueOptions import *
 from tflite.UnpackOptions import *
+from tflite.UnsortedSegmentMaxOptions import *
+from tflite.UnsortedSegmentProdOptions import *
+from tflite.UnsortedSegmentSumOptions import *
+from tflite.VarHandleOptions import *
 from tflite.WhereOptions import *
 from tflite.WhileOptions import *
 from tflite.ZerosLikeOptions import *

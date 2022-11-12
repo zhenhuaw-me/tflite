@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class L2NormOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsL2NormOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = L2NormOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsL2NormOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def L2NormOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # L2NormOptions
     def Init(self, buf, pos):
@@ -26,5 +36,11 @@ class L2NormOptions(object):
         return 0
 
 def L2NormOptionsStart(builder): builder.StartObject(1)
+def Start(builder):
+    return L2NormOptionsStart(builder)
 def L2NormOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    return L2NormOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
 def L2NormOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return L2NormOptionsEnd(builder)

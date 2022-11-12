@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class ShapeOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsShapeOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = ShapeOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsShapeOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ShapeOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # ShapeOptions
     def Init(self, buf, pos):
@@ -26,5 +36,11 @@ class ShapeOptions(object):
         return 0
 
 def ShapeOptionsStart(builder): builder.StartObject(1)
+def Start(builder):
+    return ShapeOptionsStart(builder)
 def ShapeOptionsAddOutType(builder, outType): builder.PrependInt8Slot(0, outType, 0)
+def AddOutType(builder, outType):
+    return ShapeOptionsAddOutType(builder, outType)
 def ShapeOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return ShapeOptionsEnd(builder)

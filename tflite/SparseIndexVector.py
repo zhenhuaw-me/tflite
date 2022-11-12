@@ -7,4 +7,3 @@ class SparseIndexVector(object):
     Int32Vector = 1
     Uint16Vector = 2
     Uint8Vector = 3
-
