@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class PackOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsPackOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = PackOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsPackOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def PackOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # PackOptions
     def Init(self, buf, pos):
@@ -33,6 +43,14 @@ class PackOptions(object):
         return 0
 
 def PackOptionsStart(builder): builder.StartObject(2)
+def Start(builder):
+    return PackOptionsStart(builder)
 def PackOptionsAddValuesCount(builder, valuesCount): builder.PrependInt32Slot(0, valuesCount, 0)
+def AddValuesCount(builder, valuesCount):
+    return PackOptionsAddValuesCount(builder, valuesCount)
 def PackOptionsAddAxis(builder, axis): builder.PrependInt32Slot(1, axis, 0)
+def AddAxis(builder, axis):
+    return PackOptionsAddAxis(builder, axis)
 def PackOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return PackOptionsEnd(builder)

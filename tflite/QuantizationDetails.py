@@ -5,4 +5,3 @@
 class QuantizationDetails(object):
     NONE = 0
     CustomQuantization = 1
-

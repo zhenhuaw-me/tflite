@@ -9,4 +9,3 @@ class ActivationFunctionType(object):
     RELU6 = 3
     TANH = 4
     SIGN_BIT = 5
-

@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class ReverseSequenceOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsReverseSequenceOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = ReverseSequenceOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsReverseSequenceOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def ReverseSequenceOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # ReverseSequenceOptions
     def Init(self, buf, pos):
@@ -33,6 +43,14 @@ class ReverseSequenceOptions(object):
         return 0
 
 def ReverseSequenceOptionsStart(builder): builder.StartObject(2)
+def Start(builder):
+    return ReverseSequenceOptionsStart(builder)
 def ReverseSequenceOptionsAddSeqDim(builder, seqDim): builder.PrependInt32Slot(0, seqDim, 0)
+def AddSeqDim(builder, seqDim):
+    return ReverseSequenceOptionsAddSeqDim(builder, seqDim)
 def ReverseSequenceOptionsAddBatchDim(builder, batchDim): builder.PrependInt32Slot(1, batchDim, 0)
+def AddBatchDim(builder, batchDim):
+    return ReverseSequenceOptionsAddBatchDim(builder, batchDim)
 def ReverseSequenceOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return ReverseSequenceOptionsEnd(builder)

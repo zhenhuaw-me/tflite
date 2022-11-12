@@ -106,4 +106,22 @@ class BuiltinOptions(object):
     SegmentSumOptions = 100
     BatchMatMulOptions = 101
     CumsumOptions = 102
-
+    CallOnceOptions = 103
+    BroadcastToOptions = 104
+    Rfft2dOptions = 105
+    Conv3DOptions = 106
+    HashtableOptions = 107
+    HashtableFindOptions = 108
+    HashtableImportOptions = 109
+    HashtableSizeOptions = 110
+    VarHandleOptions = 111
+    ReadVariableOptions = 112
+    AssignVariableOptions = 113
+    RandomOptions = 114
+    BucketizeOptions = 115
+    GeluOptions = 116
+    DynamicUpdateSliceOptions = 117
+    UnsortedSegmentProdOptions = 118
+    UnsortedSegmentMaxOptions = 119
+    UnsortedSegmentSumOptions = 120
+    ATan2Options = 121

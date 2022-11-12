@@ -3,16 +3,26 @@
 # namespace: tflite
 
 import flatbuffers
+from flatbuffers.compat import import_numpy
+np = import_numpy()
 
 class MirrorPadOptions(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsMirrorPadOptions(cls, buf, offset):
+    def GetRootAs(cls, buf, offset=0):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
         x = MirrorPadOptions()
         x.Init(buf, n + offset)
         return x
+
+    @classmethod
+    def GetRootAsMirrorPadOptions(cls, buf, offset=0):
+        """This method is deprecated. Please switch to GetRootAs."""
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def MirrorPadOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b"\x54\x46\x4C\x33", size_prefixed=size_prefixed)
 
     # MirrorPadOptions
     def Init(self, buf, pos):
@@ -26,5 +36,11 @@ class MirrorPadOptions(object):
         return 0
 
 def MirrorPadOptionsStart(builder): builder.StartObject(1)
+def Start(builder):
+    return MirrorPadOptionsStart(builder)
 def MirrorPadOptionsAddMode(builder, mode): builder.PrependInt8Slot(0, mode, 0)
+def AddMode(builder, mode):
+    return MirrorPadOptionsAddMode(builder, mode)
 def MirrorPadOptionsEnd(builder): return builder.EndObject()
+def End(builder):
+    return MirrorPadOptionsEnd(builder)
