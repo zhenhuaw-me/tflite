@@ -53,8 +53,13 @@ class OperatorCode(object):
     def BuiltinCode(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
         if o != 0:
-            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
-        return 0
+            o = self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+
+        from tflite.BuiltinOperator import BuiltinOperator
+        if o < BuiltinOperator.PLACEHOLDER_FOR_GREATER_OP_CODES:
+            return self.DeprecatedBuiltinCode()
+        else:
+            return o
 
 def OperatorCodeStart(builder): builder.StartObject(4)
 def Start(builder):
