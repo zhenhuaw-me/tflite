@@ -70,16 +70,27 @@ class WhileOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def WhileOptionsStart(builder): builder.StartObject(2)
+def WhileOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return WhileOptionsStart(builder)
-def WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex): builder.PrependInt32Slot(0, condSubgraphIndex, 0)
+    WhileOptionsStart(builder)
+
+def WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex):
+    builder.PrependInt32Slot(0, condSubgraphIndex, 0)
+
 def AddCondSubgraphIndex(builder, condSubgraphIndex):
-    return WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex)
-def WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex): builder.PrependInt32Slot(1, bodySubgraphIndex, 0)
+    WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex)
+
+def WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex):
+    builder.PrependInt32Slot(1, bodySubgraphIndex, 0)
+
 def AddBodySubgraphIndex(builder, bodySubgraphIndex):
-    return WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)
-def WhileOptionsEnd(builder): return builder.EndObject()
+    WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)
+
+def WhileOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return WhileOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBodySubgraphIndex(builder, bodySubgraphIndex):
-    return WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)</code></pre>
+    WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhileOptions.AddCondSubgraphIndex"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCondSubgraphIndex(builder, condSubgraphIndex):
-    return WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex)</code></pre>
+    WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhileOptions.End"><code class="name flex">
@@ -140,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return WhileOptionsStart(builder)</code></pre>
+    WhileOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhileOptions.WhileOptionsAddBodySubgraphIndex"><code class="name flex">
@@ -152,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex): builder.PrependInt32Slot(1, bodySubgraphIndex, 0)</code></pre>
+<pre><code class="python">def WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex):
+    builder.PrependInt32Slot(1, bodySubgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhileOptions.WhileOptionsAddCondSubgraphIndex"><code class="name flex">
@@ -164,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex): builder.PrependInt32Slot(0, condSubgraphIndex, 0)</code></pre>
+<pre><code class="python">def WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex):
+    builder.PrependInt32Slot(0, condSubgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhileOptions.WhileOptionsEnd"><code class="name flex">
@@ -176,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def WhileOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def WhileOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhileOptions.WhileOptionsStart"><code class="name flex">
@@ -188,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def WhileOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def WhileOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 </dl>

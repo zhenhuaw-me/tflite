@@ -70,16 +70,27 @@ class ResizeBilinearOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def ResizeBilinearOptionsStart(builder): builder.StartObject(4)
+def ResizeBilinearOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return ResizeBilinearOptionsStart(builder)
-def ResizeBilinearOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(2, alignCorners, 0)
+    ResizeBilinearOptionsStart(builder)
+
+def ResizeBilinearOptionsAddAlignCorners(builder, alignCorners):
+    builder.PrependBoolSlot(2, alignCorners, 0)
+
 def AddAlignCorners(builder, alignCorners):
-    return ResizeBilinearOptionsAddAlignCorners(builder, alignCorners)
-def ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(3, halfPixelCenters, 0)
+    ResizeBilinearOptionsAddAlignCorners(builder, alignCorners)
+
+def ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters):
+    builder.PrependBoolSlot(3, halfPixelCenters, 0)
+
 def AddHalfPixelCenters(builder, halfPixelCenters):
-    return ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters)
-def ResizeBilinearOptionsEnd(builder): return builder.EndObject()
+    ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters)
+
+def ResizeBilinearOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ResizeBilinearOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAlignCorners(builder, alignCorners):
-    return ResizeBilinearOptionsAddAlignCorners(builder, alignCorners)</code></pre>
+    ResizeBilinearOptionsAddAlignCorners(builder, alignCorners)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeBilinearOptions.AddHalfPixelCenters"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddHalfPixelCenters(builder, halfPixelCenters):
-    return ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters)</code></pre>
+    ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeBilinearOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeBilinearOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(2, alignCorners, 0)</code></pre>
+<pre><code class="python">def ResizeBilinearOptionsAddAlignCorners(builder, alignCorners):
+    builder.PrependBoolSlot(2, alignCorners, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeBilinearOptions.ResizeBilinearOptionsAddHalfPixelCenters"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(3, halfPixelCenters, 0)</code></pre>
+<pre><code class="python">def ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters):
+    builder.PrependBoolSlot(3, halfPixelCenters, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeBilinearOptions.ResizeBilinearOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeBilinearOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ResizeBilinearOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeBilinearOptions.ResizeBilinearOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeBilinearOptionsStart(builder): builder.StartObject(4)</code></pre>
+<pre><code class="python">def ResizeBilinearOptionsStart(builder):
+    builder.StartObject(4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeBilinearOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ResizeBilinearOptionsStart(builder)</code></pre>
+    ResizeBilinearOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

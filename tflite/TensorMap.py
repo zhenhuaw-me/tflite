@@ -42,15 +42,26 @@ class TensorMap(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def TensorMapStart(builder): builder.StartObject(2)
+def TensorMapStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return TensorMapStart(builder)
-def TensorMapAddName(builder, name): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+    TensorMapStart(builder)
+
+def TensorMapAddName(builder, name):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+
 def AddName(builder, name):
-    return TensorMapAddName(builder, name)
-def TensorMapAddTensorIndex(builder, tensorIndex): builder.PrependUint32Slot(1, tensorIndex, 0)
+    TensorMapAddName(builder, name)
+
+def TensorMapAddTensorIndex(builder, tensorIndex):
+    builder.PrependUint32Slot(1, tensorIndex, 0)
+
 def AddTensorIndex(builder, tensorIndex):
-    return TensorMapAddTensorIndex(builder, tensorIndex)
-def TensorMapEnd(builder): return builder.EndObject()
+    TensorMapAddTensorIndex(builder, tensorIndex)
+
+def TensorMapEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TensorMapEnd(builder)

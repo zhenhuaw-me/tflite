@@ -28,9 +28,14 @@ class AssignVariableOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def AssignVariableOptionsStart(builder): builder.StartObject(0)
+def AssignVariableOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return AssignVariableOptionsStart(builder)
-def AssignVariableOptionsEnd(builder): return builder.EndObject()
+    AssignVariableOptionsStart(builder)
+
+def AssignVariableOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AssignVariableOptionsEnd(builder)

@@ -63,13 +63,21 @@ class LeakyReluOptions(object):
             return self._tab.Get(flatbuffers.number_types.Float32Flags, o + self._tab.Pos)
         return 0.0
 
-def LeakyReluOptionsStart(builder): builder.StartObject(1)
+def LeakyReluOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return LeakyReluOptionsStart(builder)
-def LeakyReluOptionsAddAlpha(builder, alpha): builder.PrependFloat32Slot(0, alpha, 0.0)
+    LeakyReluOptionsStart(builder)
+
+def LeakyReluOptionsAddAlpha(builder, alpha):
+    builder.PrependFloat32Slot(0, alpha, 0.0)
+
 def AddAlpha(builder, alpha):
-    return LeakyReluOptionsAddAlpha(builder, alpha)
-def LeakyReluOptionsEnd(builder): return builder.EndObject()
+    LeakyReluOptionsAddAlpha(builder, alpha)
+
+def LeakyReluOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LeakyReluOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAlpha(builder, alpha):
-    return LeakyReluOptionsAddAlpha(builder, alpha)</code></pre>
+    LeakyReluOptionsAddAlpha(builder, alpha)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LeakyReluOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LeakyReluOptionsAddAlpha(builder, alpha): builder.PrependFloat32Slot(0, alpha, 0.0)</code></pre>
+<pre><code class="python">def LeakyReluOptionsAddAlpha(builder, alpha):
+    builder.PrependFloat32Slot(0, alpha, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LeakyReluOptions.LeakyReluOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LeakyReluOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def LeakyReluOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.LeakyReluOptions.LeakyReluOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LeakyReluOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def LeakyReluOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LeakyReluOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return LeakyReluOptionsStart(builder)</code></pre>
+    LeakyReluOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

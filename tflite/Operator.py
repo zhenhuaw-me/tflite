@@ -194,51 +194,98 @@ class Operator(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
         return o == 0
 
-def OperatorStart(builder): builder.StartObject(9)
+def OperatorStart(builder):
+    builder.StartObject(9)
+
 def Start(builder):
-    return OperatorStart(builder)
-def OperatorAddOpcodeIndex(builder, opcodeIndex): builder.PrependUint32Slot(0, opcodeIndex, 0)
+    OperatorStart(builder)
+
+def OperatorAddOpcodeIndex(builder, opcodeIndex):
+    builder.PrependUint32Slot(0, opcodeIndex, 0)
+
 def AddOpcodeIndex(builder, opcodeIndex):
-    return OperatorAddOpcodeIndex(builder, opcodeIndex)
-def OperatorAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+    OperatorAddOpcodeIndex(builder, opcodeIndex)
+
+def OperatorAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+
 def AddInputs(builder, inputs):
-    return OperatorAddInputs(builder, inputs)
-def OperatorStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartInputsVector(builder, numElems):
+    OperatorAddInputs(builder, inputs)
+
+def OperatorStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartInputsVector(builder, numElems: int) -> int:
     return OperatorStartInputsVector(builder, numElems)
-def OperatorAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
+def OperatorAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
 def AddOutputs(builder, outputs):
-    return OperatorAddOutputs(builder, outputs)
-def OperatorStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartOutputsVector(builder, numElems):
+    OperatorAddOutputs(builder, outputs)
+
+def OperatorStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartOutputsVector(builder, numElems: int) -> int:
     return OperatorStartOutputsVector(builder, numElems)
-def OperatorAddBuiltinOptionsType(builder, builtinOptionsType): builder.PrependUint8Slot(3, builtinOptionsType, 0)
+
+def OperatorAddBuiltinOptionsType(builder, builtinOptionsType):
+    builder.PrependUint8Slot(3, builtinOptionsType, 0)
+
 def AddBuiltinOptionsType(builder, builtinOptionsType):
-    return OperatorAddBuiltinOptionsType(builder, builtinOptionsType)
-def OperatorAddBuiltinOptions(builder, builtinOptions): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(builtinOptions), 0)
+    OperatorAddBuiltinOptionsType(builder, builtinOptionsType)
+
+def OperatorAddBuiltinOptions(builder, builtinOptions):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(builtinOptions), 0)
+
 def AddBuiltinOptions(builder, builtinOptions):
-    return OperatorAddBuiltinOptions(builder, builtinOptions)
-def OperatorAddCustomOptions(builder, customOptions): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customOptions), 0)
+    OperatorAddBuiltinOptions(builder, builtinOptions)
+
+def OperatorAddCustomOptions(builder, customOptions):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customOptions), 0)
+
 def AddCustomOptions(builder, customOptions):
-    return OperatorAddCustomOptions(builder, customOptions)
-def OperatorStartCustomOptionsVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartCustomOptionsVector(builder, numElems):
+    OperatorAddCustomOptions(builder, customOptions)
+
+def OperatorStartCustomOptionsVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartCustomOptionsVector(builder, numElems: int) -> int:
     return OperatorStartCustomOptionsVector(builder, numElems)
-def OperatorAddCustomOptionsFormat(builder, customOptionsFormat): builder.PrependInt8Slot(6, customOptionsFormat, 0)
+
+def OperatorAddCustomOptionsFormat(builder, customOptionsFormat):
+    builder.PrependInt8Slot(6, customOptionsFormat, 0)
+
 def AddCustomOptionsFormat(builder, customOptionsFormat):
-    return OperatorAddCustomOptionsFormat(builder, customOptionsFormat)
-def OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(mutatingVariableInputs), 0)
+    OperatorAddCustomOptionsFormat(builder, customOptionsFormat)
+
+def OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(mutatingVariableInputs), 0)
+
 def AddMutatingVariableInputs(builder, mutatingVariableInputs):
-    return OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs)
-def OperatorStartMutatingVariableInputsVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartMutatingVariableInputsVector(builder, numElems):
+    OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs)
+
+def OperatorStartMutatingVariableInputsVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartMutatingVariableInputsVector(builder, numElems: int) -> int:
     return OperatorStartMutatingVariableInputsVector(builder, numElems)
-def OperatorAddIntermediates(builder, intermediates): builder.PrependUOffsetTRelativeSlot(8, flatbuffers.number_types.UOffsetTFlags.py_type(intermediates), 0)
+
+def OperatorAddIntermediates(builder, intermediates):
+    builder.PrependUOffsetTRelativeSlot(8, flatbuffers.number_types.UOffsetTFlags.py_type(intermediates), 0)
+
 def AddIntermediates(builder, intermediates):
-    return OperatorAddIntermediates(builder, intermediates)
-def OperatorStartIntermediatesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartIntermediatesVector(builder, numElems):
+    OperatorAddIntermediates(builder, intermediates)
+
+def OperatorStartIntermediatesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartIntermediatesVector(builder, numElems: int) -> int:
     return OperatorStartIntermediatesVector(builder, numElems)
-def OperatorEnd(builder): return builder.EndObject()
+
+def OperatorEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return OperatorEnd(builder)

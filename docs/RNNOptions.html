@@ -70,16 +70,27 @@ class RNNOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def RNNOptionsStart(builder): builder.StartObject(2)
+def RNNOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return RNNOptionsStart(builder)
-def RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    RNNOptionsStart(builder)
+
+def RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(1, asymmetricQuantizeInputs, 0)
+    RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(1, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def RNNOptionsEnd(builder): return builder.EndObject()
+    RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def RNNOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return RNNOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.RNNOptions.AddFusedActivationFunction"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.RNNOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(1, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def RNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(1, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.RNNOptions.RNNOptionsAddFusedActivationFunction"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def RNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.RNNOptions.RNNOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def RNNOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def RNNOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.RNNOptions.RNNOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def RNNOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def RNNOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.RNNOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return RNNOptionsStart(builder)</code></pre>
+    RNNOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

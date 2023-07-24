@@ -56,10 +56,15 @@ class LessOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LessOptionsStart(builder): builder.StartObject(0)
+def LessOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LessOptionsStart(builder)
-def LessOptionsEnd(builder): return builder.EndObject()
+    LessOptionsStart(builder)
+
+def LessOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LessOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LessOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def LessOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.LessOptions.LessOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LessOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def LessOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LessOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return LessOptionsStart(builder)</code></pre>
+    LessOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

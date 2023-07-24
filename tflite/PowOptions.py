@@ -28,9 +28,14 @@ class PowOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def PowOptionsStart(builder): builder.StartObject(0)
+def PowOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return PowOptionsStart(builder)
-def PowOptionsEnd(builder): return builder.EndObject()
+    PowOptionsStart(builder)
+
+def PowOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return PowOptionsEnd(builder)

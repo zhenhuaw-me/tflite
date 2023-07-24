@@ -222,52 +222,99 @@ class Operator(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
         return o == 0
 
-def OperatorStart(builder): builder.StartObject(9)
+def OperatorStart(builder):
+    builder.StartObject(9)
+
 def Start(builder):
-    return OperatorStart(builder)
-def OperatorAddOpcodeIndex(builder, opcodeIndex): builder.PrependUint32Slot(0, opcodeIndex, 0)
+    OperatorStart(builder)
+
+def OperatorAddOpcodeIndex(builder, opcodeIndex):
+    builder.PrependUint32Slot(0, opcodeIndex, 0)
+
 def AddOpcodeIndex(builder, opcodeIndex):
-    return OperatorAddOpcodeIndex(builder, opcodeIndex)
-def OperatorAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+    OperatorAddOpcodeIndex(builder, opcodeIndex)
+
+def OperatorAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+
 def AddInputs(builder, inputs):
-    return OperatorAddInputs(builder, inputs)
-def OperatorStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartInputsVector(builder, numElems):
+    OperatorAddInputs(builder, inputs)
+
+def OperatorStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartInputsVector(builder, numElems: int) -&gt; int:
     return OperatorStartInputsVector(builder, numElems)
-def OperatorAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
+def OperatorAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
 def AddOutputs(builder, outputs):
-    return OperatorAddOutputs(builder, outputs)
-def OperatorStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartOutputsVector(builder, numElems):
+    OperatorAddOutputs(builder, outputs)
+
+def OperatorStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartOutputsVector(builder, numElems: int) -&gt; int:
     return OperatorStartOutputsVector(builder, numElems)
-def OperatorAddBuiltinOptionsType(builder, builtinOptionsType): builder.PrependUint8Slot(3, builtinOptionsType, 0)
+
+def OperatorAddBuiltinOptionsType(builder, builtinOptionsType):
+    builder.PrependUint8Slot(3, builtinOptionsType, 0)
+
 def AddBuiltinOptionsType(builder, builtinOptionsType):
-    return OperatorAddBuiltinOptionsType(builder, builtinOptionsType)
-def OperatorAddBuiltinOptions(builder, builtinOptions): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(builtinOptions), 0)
+    OperatorAddBuiltinOptionsType(builder, builtinOptionsType)
+
+def OperatorAddBuiltinOptions(builder, builtinOptions):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(builtinOptions), 0)
+
 def AddBuiltinOptions(builder, builtinOptions):
-    return OperatorAddBuiltinOptions(builder, builtinOptions)
-def OperatorAddCustomOptions(builder, customOptions): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customOptions), 0)
+    OperatorAddBuiltinOptions(builder, builtinOptions)
+
+def OperatorAddCustomOptions(builder, customOptions):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customOptions), 0)
+
 def AddCustomOptions(builder, customOptions):
-    return OperatorAddCustomOptions(builder, customOptions)
-def OperatorStartCustomOptionsVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartCustomOptionsVector(builder, numElems):
+    OperatorAddCustomOptions(builder, customOptions)
+
+def OperatorStartCustomOptionsVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartCustomOptionsVector(builder, numElems: int) -&gt; int:
     return OperatorStartCustomOptionsVector(builder, numElems)
-def OperatorAddCustomOptionsFormat(builder, customOptionsFormat): builder.PrependInt8Slot(6, customOptionsFormat, 0)
+
+def OperatorAddCustomOptionsFormat(builder, customOptionsFormat):
+    builder.PrependInt8Slot(6, customOptionsFormat, 0)
+
 def AddCustomOptionsFormat(builder, customOptionsFormat):
-    return OperatorAddCustomOptionsFormat(builder, customOptionsFormat)
-def OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(mutatingVariableInputs), 0)
+    OperatorAddCustomOptionsFormat(builder, customOptionsFormat)
+
+def OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(mutatingVariableInputs), 0)
+
 def AddMutatingVariableInputs(builder, mutatingVariableInputs):
-    return OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs)
-def OperatorStartMutatingVariableInputsVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartMutatingVariableInputsVector(builder, numElems):
+    OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs)
+
+def OperatorStartMutatingVariableInputsVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartMutatingVariableInputsVector(builder, numElems: int) -&gt; int:
     return OperatorStartMutatingVariableInputsVector(builder, numElems)
-def OperatorAddIntermediates(builder, intermediates): builder.PrependUOffsetTRelativeSlot(8, flatbuffers.number_types.UOffsetTFlags.py_type(intermediates), 0)
+
+def OperatorAddIntermediates(builder, intermediates):
+    builder.PrependUOffsetTRelativeSlot(8, flatbuffers.number_types.UOffsetTFlags.py_type(intermediates), 0)
+
 def AddIntermediates(builder, intermediates):
-    return OperatorAddIntermediates(builder, intermediates)
-def OperatorStartIntermediatesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartIntermediatesVector(builder, numElems):
+    OperatorAddIntermediates(builder, intermediates)
+
+def OperatorStartIntermediatesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartIntermediatesVector(builder, numElems: int) -&gt; int:
     return OperatorStartIntermediatesVector(builder, numElems)
-def OperatorEnd(builder): return builder.EndObject()
+
+def OperatorEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return OperatorEnd(builder)</code></pre>
 </details>
@@ -289,7 +336,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBuiltinOptions(builder, builtinOptions):
-    return OperatorAddBuiltinOptions(builder, builtinOptions)</code></pre>
+    OperatorAddBuiltinOptions(builder, builtinOptions)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddBuiltinOptionsType"><code class="name flex">
@@ -302,7 +349,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBuiltinOptionsType(builder, builtinOptionsType):
-    return OperatorAddBuiltinOptionsType(builder, builtinOptionsType)</code></pre>
+    OperatorAddBuiltinOptionsType(builder, builtinOptionsType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddCustomOptions"><code class="name flex">
@@ -315,7 +362,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCustomOptions(builder, customOptions):
-    return OperatorAddCustomOptions(builder, customOptions)</code></pre>
+    OperatorAddCustomOptions(builder, customOptions)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddCustomOptionsFormat"><code class="name flex">
@@ -328,7 +375,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCustomOptionsFormat(builder, customOptionsFormat):
-    return OperatorAddCustomOptionsFormat(builder, customOptionsFormat)</code></pre>
+    OperatorAddCustomOptionsFormat(builder, customOptionsFormat)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddInputs"><code class="name flex">
@@ -341,7 +388,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddInputs(builder, inputs):
-    return OperatorAddInputs(builder, inputs)</code></pre>
+    OperatorAddInputs(builder, inputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddIntermediates"><code class="name flex">
@@ -354,7 +401,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddIntermediates(builder, intermediates):
-    return OperatorAddIntermediates(builder, intermediates)</code></pre>
+    OperatorAddIntermediates(builder, intermediates)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddMutatingVariableInputs"><code class="name flex">
@@ -367,7 +414,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMutatingVariableInputs(builder, mutatingVariableInputs):
-    return OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs)</code></pre>
+    OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddOpcodeIndex"><code class="name flex">
@@ -380,7 +427,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOpcodeIndex(builder, opcodeIndex):
-    return OperatorAddOpcodeIndex(builder, opcodeIndex)</code></pre>
+    OperatorAddOpcodeIndex(builder, opcodeIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.AddOutputs"><code class="name flex">
@@ -393,7 +440,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOutputs(builder, outputs):
-    return OperatorAddOutputs(builder, outputs)</code></pre>
+    OperatorAddOutputs(builder, outputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.End"><code class="name flex">
@@ -418,7 +465,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddBuiltinOptions(builder, builtinOptions): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(builtinOptions), 0)</code></pre>
+<pre><code class="python">def OperatorAddBuiltinOptions(builder, builtinOptions):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(builtinOptions), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddBuiltinOptionsType"><code class="name flex">
@@ -430,7 +478,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddBuiltinOptionsType(builder, builtinOptionsType): builder.PrependUint8Slot(3, builtinOptionsType, 0)</code></pre>
+<pre><code class="python">def OperatorAddBuiltinOptionsType(builder, builtinOptionsType):
+    builder.PrependUint8Slot(3, builtinOptionsType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddCustomOptions"><code class="name flex">
@@ -442,7 +491,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddCustomOptions(builder, customOptions): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customOptions), 0)</code></pre>
+<pre><code class="python">def OperatorAddCustomOptions(builder, customOptions):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customOptions), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddCustomOptionsFormat"><code class="name flex">
@@ -454,7 +504,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddCustomOptionsFormat(builder, customOptionsFormat): builder.PrependInt8Slot(6, customOptionsFormat, 0)</code></pre>
+<pre><code class="python">def OperatorAddCustomOptionsFormat(builder, customOptionsFormat):
+    builder.PrependInt8Slot(6, customOptionsFormat, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddInputs"><code class="name flex">
@@ -466,7 +517,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)</code></pre>
+<pre><code class="python">def OperatorAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddIntermediates"><code class="name flex">
@@ -478,7 +530,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddIntermediates(builder, intermediates): builder.PrependUOffsetTRelativeSlot(8, flatbuffers.number_types.UOffsetTFlags.py_type(intermediates), 0)</code></pre>
+<pre><code class="python">def OperatorAddIntermediates(builder, intermediates):
+    builder.PrependUOffsetTRelativeSlot(8, flatbuffers.number_types.UOffsetTFlags.py_type(intermediates), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddMutatingVariableInputs"><code class="name flex">
@@ -490,7 +543,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(mutatingVariableInputs), 0)</code></pre>
+<pre><code class="python">def OperatorAddMutatingVariableInputs(builder, mutatingVariableInputs):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(mutatingVariableInputs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddOpcodeIndex"><code class="name flex">
@@ -502,7 +556,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddOpcodeIndex(builder, opcodeIndex): builder.PrependUint32Slot(0, opcodeIndex, 0)</code></pre>
+<pre><code class="python">def OperatorAddOpcodeIndex(builder, opcodeIndex):
+    builder.PrependUint32Slot(0, opcodeIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorAddOutputs"><code class="name flex">
@@ -514,7 +569,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)</code></pre>
+<pre><code class="python">def OperatorAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorEnd"><code class="name flex">
@@ -526,7 +582,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def OperatorEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorStart"><code class="name flex">
@@ -538,7 +595,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorStart(builder): builder.StartObject(9)</code></pre>
+<pre><code class="python">def OperatorStart(builder):
+    builder.StartObject(9)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorStartCustomOptionsVector"><code class="name flex">
@@ -550,7 +608,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorStartCustomOptionsVector(builder, numElems): return builder.StartVector(1, numElems, 1)</code></pre>
+<pre><code class="python">def OperatorStartCustomOptionsVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorStartInputsVector"><code class="name flex">
@@ -562,7 +621,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def OperatorStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorStartIntermediatesVector"><code class="name flex">
@@ -574,7 +634,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorStartIntermediatesVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def OperatorStartIntermediatesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorStartMutatingVariableInputsVector"><code class="name flex">
@@ -586,7 +647,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorStartMutatingVariableInputsVector(builder, numElems): return builder.StartVector(1, numElems, 1)</code></pre>
+<pre><code class="python">def OperatorStartMutatingVariableInputsVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.OperatorStartOutputsVector"><code class="name flex">
@@ -598,7 +660,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OperatorStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def OperatorStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.Start"><code class="name flex">
@@ -611,11 +674,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return OperatorStart(builder)</code></pre>
+    OperatorStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.StartCustomOptionsVector"><code class="name flex">
-<span>def <span class="ident">StartCustomOptionsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartCustomOptionsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -623,12 +686,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartCustomOptionsVector(builder, numElems):
+<pre><code class="python">def StartCustomOptionsVector(builder, numElems: int) -&gt; int:
     return OperatorStartCustomOptionsVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.StartInputsVector"><code class="name flex">
-<span>def <span class="ident">StartInputsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartInputsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -636,12 +699,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartInputsVector(builder, numElems):
+<pre><code class="python">def StartInputsVector(builder, numElems: int) -&gt; int:
     return OperatorStartInputsVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.StartIntermediatesVector"><code class="name flex">
-<span>def <span class="ident">StartIntermediatesVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartIntermediatesVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -649,12 +712,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartIntermediatesVector(builder, numElems):
+<pre><code class="python">def StartIntermediatesVector(builder, numElems: int) -&gt; int:
     return OperatorStartIntermediatesVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.StartMutatingVariableInputsVector"><code class="name flex">
-<span>def <span class="ident">StartMutatingVariableInputsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartMutatingVariableInputsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -662,12 +725,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartMutatingVariableInputsVector(builder, numElems):
+<pre><code class="python">def StartMutatingVariableInputsVector(builder, numElems: int) -&gt; int:
     return OperatorStartMutatingVariableInputsVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Operator.StartOutputsVector"><code class="name flex">
-<span>def <span class="ident">StartOutputsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartOutputsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -675,7 +738,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartOutputsVector(builder, numElems):
+<pre><code class="python">def StartOutputsVector(builder, numElems: int) -&gt; int:
     return OperatorStartOutputsVector(builder, numElems)</code></pre>
 </details>
 </dd>

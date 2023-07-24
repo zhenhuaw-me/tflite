@@ -84,22 +84,39 @@ class FakeQuantOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def FakeQuantOptionsStart(builder): builder.StartObject(4)
+def FakeQuantOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return FakeQuantOptionsStart(builder)
-def FakeQuantOptionsAddMin(builder, min): builder.PrependFloat32Slot(0, min, 0.0)
+    FakeQuantOptionsStart(builder)
+
+def FakeQuantOptionsAddMin(builder, min):
+    builder.PrependFloat32Slot(0, min, 0.0)
+
 def AddMin(builder, min):
-    return FakeQuantOptionsAddMin(builder, min)
-def FakeQuantOptionsAddMax(builder, max): builder.PrependFloat32Slot(1, max, 0.0)
+    FakeQuantOptionsAddMin(builder, min)
+
+def FakeQuantOptionsAddMax(builder, max):
+    builder.PrependFloat32Slot(1, max, 0.0)
+
 def AddMax(builder, max):
-    return FakeQuantOptionsAddMax(builder, max)
-def FakeQuantOptionsAddNumBits(builder, numBits): builder.PrependInt32Slot(2, numBits, 0)
+    FakeQuantOptionsAddMax(builder, max)
+
+def FakeQuantOptionsAddNumBits(builder, numBits):
+    builder.PrependInt32Slot(2, numBits, 0)
+
 def AddNumBits(builder, numBits):
-    return FakeQuantOptionsAddNumBits(builder, numBits)
-def FakeQuantOptionsAddNarrowRange(builder, narrowRange): builder.PrependBoolSlot(3, narrowRange, 0)
+    FakeQuantOptionsAddNumBits(builder, numBits)
+
+def FakeQuantOptionsAddNarrowRange(builder, narrowRange):
+    builder.PrependBoolSlot(3, narrowRange, 0)
+
 def AddNarrowRange(builder, narrowRange):
-    return FakeQuantOptionsAddNarrowRange(builder, narrowRange)
-def FakeQuantOptionsEnd(builder): return builder.EndObject()
+    FakeQuantOptionsAddNarrowRange(builder, narrowRange)
+
+def FakeQuantOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return FakeQuantOptionsEnd(builder)</code></pre>
 </details>
@@ -121,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMax(builder, max):
-    return FakeQuantOptionsAddMax(builder, max)</code></pre>
+    FakeQuantOptionsAddMax(builder, max)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.AddMin"><code class="name flex">
@@ -134,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMin(builder, min):
-    return FakeQuantOptionsAddMin(builder, min)</code></pre>
+    FakeQuantOptionsAddMin(builder, min)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.AddNarrowRange"><code class="name flex">
@@ -147,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNarrowRange(builder, narrowRange):
-    return FakeQuantOptionsAddNarrowRange(builder, narrowRange)</code></pre>
+    FakeQuantOptionsAddNarrowRange(builder, narrowRange)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.AddNumBits"><code class="name flex">
@@ -160,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNumBits(builder, numBits):
-    return FakeQuantOptionsAddNumBits(builder, numBits)</code></pre>
+    FakeQuantOptionsAddNumBits(builder, numBits)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.End"><code class="name flex">
@@ -185,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FakeQuantOptionsAddMax(builder, max): builder.PrependFloat32Slot(1, max, 0.0)</code></pre>
+<pre><code class="python">def FakeQuantOptionsAddMax(builder, max):
+    builder.PrependFloat32Slot(1, max, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.FakeQuantOptionsAddMin"><code class="name flex">
@@ -197,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FakeQuantOptionsAddMin(builder, min): builder.PrependFloat32Slot(0, min, 0.0)</code></pre>
+<pre><code class="python">def FakeQuantOptionsAddMin(builder, min):
+    builder.PrependFloat32Slot(0, min, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.FakeQuantOptionsAddNarrowRange"><code class="name flex">
@@ -209,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FakeQuantOptionsAddNarrowRange(builder, narrowRange): builder.PrependBoolSlot(3, narrowRange, 0)</code></pre>
+<pre><code class="python">def FakeQuantOptionsAddNarrowRange(builder, narrowRange):
+    builder.PrependBoolSlot(3, narrowRange, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.FakeQuantOptionsAddNumBits"><code class="name flex">
@@ -221,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FakeQuantOptionsAddNumBits(builder, numBits): builder.PrependInt32Slot(2, numBits, 0)</code></pre>
+<pre><code class="python">def FakeQuantOptionsAddNumBits(builder, numBits):
+    builder.PrependInt32Slot(2, numBits, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.FakeQuantOptionsEnd"><code class="name flex">
@@ -233,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FakeQuantOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def FakeQuantOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.FakeQuantOptionsStart"><code class="name flex">
@@ -245,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FakeQuantOptionsStart(builder): builder.StartObject(4)</code></pre>
+<pre><code class="python">def FakeQuantOptionsStart(builder):
+    builder.StartObject(4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FakeQuantOptions.Start"><code class="name flex">
@@ -258,7 +281,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return FakeQuantOptionsStart(builder)</code></pre>
+    FakeQuantOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -56,10 +56,15 @@ class AddNOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def AddNOptionsStart(builder): builder.StartObject(0)
+def AddNOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return AddNOptionsStart(builder)
-def AddNOptionsEnd(builder): return builder.EndObject()
+    AddNOptionsStart(builder)
+
+def AddNOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AddNOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AddNOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def AddNOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddNOptions.AddNOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AddNOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def AddNOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddNOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return AddNOptionsStart(builder)</code></pre>
+    AddNOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

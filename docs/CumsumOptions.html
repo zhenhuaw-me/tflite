@@ -70,16 +70,27 @@ class CumsumOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def CumsumOptionsStart(builder): builder.StartObject(2)
+def CumsumOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return CumsumOptionsStart(builder)
-def CumsumOptionsAddExclusive(builder, exclusive): builder.PrependBoolSlot(0, exclusive, 0)
+    CumsumOptionsStart(builder)
+
+def CumsumOptionsAddExclusive(builder, exclusive):
+    builder.PrependBoolSlot(0, exclusive, 0)
+
 def AddExclusive(builder, exclusive):
-    return CumsumOptionsAddExclusive(builder, exclusive)
-def CumsumOptionsAddReverse(builder, reverse): builder.PrependBoolSlot(1, reverse, 0)
+    CumsumOptionsAddExclusive(builder, exclusive)
+
+def CumsumOptionsAddReverse(builder, reverse):
+    builder.PrependBoolSlot(1, reverse, 0)
+
 def AddReverse(builder, reverse):
-    return CumsumOptionsAddReverse(builder, reverse)
-def CumsumOptionsEnd(builder): return builder.EndObject()
+    CumsumOptionsAddReverse(builder, reverse)
+
+def CumsumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CumsumOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddExclusive(builder, exclusive):
-    return CumsumOptionsAddExclusive(builder, exclusive)</code></pre>
+    CumsumOptionsAddExclusive(builder, exclusive)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CumsumOptions.AddReverse"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddReverse(builder, reverse):
-    return CumsumOptionsAddReverse(builder, reverse)</code></pre>
+    CumsumOptionsAddReverse(builder, reverse)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CumsumOptions.CumsumOptionsAddExclusive"><code class="name flex">
@@ -126,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CumsumOptionsAddExclusive(builder, exclusive): builder.PrependBoolSlot(0, exclusive, 0)</code></pre>
+<pre><code class="python">def CumsumOptionsAddExclusive(builder, exclusive):
+    builder.PrependBoolSlot(0, exclusive, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CumsumOptions.CumsumOptionsAddReverse"><code class="name flex">
@@ -138,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CumsumOptionsAddReverse(builder, reverse): builder.PrependBoolSlot(1, reverse, 0)</code></pre>
+<pre><code class="python">def CumsumOptionsAddReverse(builder, reverse):
+    builder.PrependBoolSlot(1, reverse, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CumsumOptions.CumsumOptionsEnd"><code class="name flex">
@@ -150,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CumsumOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def CumsumOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.CumsumOptions.CumsumOptionsStart"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CumsumOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def CumsumOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CumsumOptions.End"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return CumsumOptionsStart(builder)</code></pre>
+    CumsumOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

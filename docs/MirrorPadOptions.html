@@ -63,13 +63,21 @@ class MirrorPadOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def MirrorPadOptionsStart(builder): builder.StartObject(1)
+def MirrorPadOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return MirrorPadOptionsStart(builder)
-def MirrorPadOptionsAddMode(builder, mode): builder.PrependInt8Slot(0, mode, 0)
+    MirrorPadOptionsStart(builder)
+
+def MirrorPadOptionsAddMode(builder, mode):
+    builder.PrependInt8Slot(0, mode, 0)
+
 def AddMode(builder, mode):
-    return MirrorPadOptionsAddMode(builder, mode)
-def MirrorPadOptionsEnd(builder): return builder.EndObject()
+    MirrorPadOptionsAddMode(builder, mode)
+
+def MirrorPadOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MirrorPadOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMode(builder, mode):
-    return MirrorPadOptionsAddMode(builder, mode)</code></pre>
+    MirrorPadOptionsAddMode(builder, mode)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MirrorPadOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MirrorPadOptionsAddMode(builder, mode): builder.PrependInt8Slot(0, mode, 0)</code></pre>
+<pre><code class="python">def MirrorPadOptionsAddMode(builder, mode):
+    builder.PrependInt8Slot(0, mode, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MirrorPadOptions.MirrorPadOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MirrorPadOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def MirrorPadOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.MirrorPadOptions.MirrorPadOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MirrorPadOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def MirrorPadOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MirrorPadOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return MirrorPadOptionsStart(builder)</code></pre>
+    MirrorPadOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

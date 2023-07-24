@@ -28,9 +28,14 @@ class SelectOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SelectOptionsStart(builder): builder.StartObject(0)
+def SelectOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SelectOptionsStart(builder)
-def SelectOptionsEnd(builder): return builder.EndObject()
+    SelectOptionsStart(builder)
+
+def SelectOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SelectOptionsEnd(builder)

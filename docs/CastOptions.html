@@ -70,16 +70,27 @@ class CastOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def CastOptionsStart(builder): builder.StartObject(2)
+def CastOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return CastOptionsStart(builder)
-def CastOptionsAddInDataType(builder, inDataType): builder.PrependInt8Slot(0, inDataType, 0)
+    CastOptionsStart(builder)
+
+def CastOptionsAddInDataType(builder, inDataType):
+    builder.PrependInt8Slot(0, inDataType, 0)
+
 def AddInDataType(builder, inDataType):
-    return CastOptionsAddInDataType(builder, inDataType)
-def CastOptionsAddOutDataType(builder, outDataType): builder.PrependInt8Slot(1, outDataType, 0)
+    CastOptionsAddInDataType(builder, inDataType)
+
+def CastOptionsAddOutDataType(builder, outDataType):
+    builder.PrependInt8Slot(1, outDataType, 0)
+
 def AddOutDataType(builder, outDataType):
-    return CastOptionsAddOutDataType(builder, outDataType)
-def CastOptionsEnd(builder): return builder.EndObject()
+    CastOptionsAddOutDataType(builder, outDataType)
+
+def CastOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CastOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddInDataType(builder, inDataType):
-    return CastOptionsAddInDataType(builder, inDataType)</code></pre>
+    CastOptionsAddInDataType(builder, inDataType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CastOptions.AddOutDataType"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOutDataType(builder, outDataType):
-    return CastOptionsAddOutDataType(builder, outDataType)</code></pre>
+    CastOptionsAddOutDataType(builder, outDataType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CastOptions.CastOptionsAddInDataType"><code class="name flex">
@@ -126,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CastOptionsAddInDataType(builder, inDataType): builder.PrependInt8Slot(0, inDataType, 0)</code></pre>
+<pre><code class="python">def CastOptionsAddInDataType(builder, inDataType):
+    builder.PrependInt8Slot(0, inDataType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CastOptions.CastOptionsAddOutDataType"><code class="name flex">
@@ -138,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CastOptionsAddOutDataType(builder, outDataType): builder.PrependInt8Slot(1, outDataType, 0)</code></pre>
+<pre><code class="python">def CastOptionsAddOutDataType(builder, outDataType):
+    builder.PrependInt8Slot(1, outDataType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CastOptions.CastOptionsEnd"><code class="name flex">
@@ -150,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CastOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def CastOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.CastOptions.CastOptionsStart"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CastOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def CastOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CastOptions.End"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return CastOptionsStart(builder)</code></pre>
+    CastOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

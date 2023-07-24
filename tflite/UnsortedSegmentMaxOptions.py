@@ -28,9 +28,14 @@ class UnsortedSegmentMaxOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def UnsortedSegmentMaxOptionsStart(builder): builder.StartObject(0)
+def UnsortedSegmentMaxOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return UnsortedSegmentMaxOptionsStart(builder)
-def UnsortedSegmentMaxOptionsEnd(builder): return builder.EndObject()
+    UnsortedSegmentMaxOptionsStart(builder)
+
+def UnsortedSegmentMaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnsortedSegmentMaxOptionsEnd(builder)

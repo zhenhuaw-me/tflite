@@ -56,10 +56,15 @@ class DequantizeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def DequantizeOptionsStart(builder): builder.StartObject(0)
+def DequantizeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return DequantizeOptionsStart(builder)
-def DequantizeOptionsEnd(builder): return builder.EndObject()
+    DequantizeOptionsStart(builder)
+
+def DequantizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DequantizeOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DequantizeOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def DequantizeOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.DequantizeOptions.DequantizeOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DequantizeOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def DequantizeOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DequantizeOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return DequantizeOptionsStart(builder)</code></pre>
+    DequantizeOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -28,9 +28,14 @@ class UnsortedSegmentProdOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def UnsortedSegmentProdOptionsStart(builder): builder.StartObject(0)
+def UnsortedSegmentProdOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return UnsortedSegmentProdOptionsStart(builder)
-def UnsortedSegmentProdOptionsEnd(builder): return builder.EndObject()
+    UnsortedSegmentProdOptionsStart(builder)
+
+def UnsortedSegmentProdOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnsortedSegmentProdOptionsEnd(builder)

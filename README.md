@@ -45,14 +45,23 @@ As these are API breaking change that can be easily fixed, we do this in the `tf
 As the operator definition may change across different TensorFlow versions, this package needs to be updated accordingly. If you notice that the package is out of date, please feel free to contribute new versions. This is pretty simple, instructions as below.
 
 1. [Fork the repository](https://help.github.com/en/github/getting-started-with-github/fork-a-repo), and download it.
-2. Install additional depdendency via `pip install -r requirements.txt`. And install [flatbuffer compiler](https://google.github.io/flatbuffers/flatbuffers_guide_using_schema_compiler.html) (you may need to [manually build it](https://google.github.io/flatbuffers/flatbuffers_guide_building.html)).
-3. Generate the code for update. Tools have been prepared, there are prompt for actions.
-    1. [Download](scripts/update-schema.sh) `schema.fbs` for a new version.
-    2. [Update](scripts/gen-op-list.py) the builtin operator mapping.
-    3. [Update](scripts/update-importing.py) the classes and functions import of submodules.
-    4. [Update](scripts/gen-doc.sh) the API document.
-    5. Update the versioning in [`__init__.py`](tflite/__init__.py).
-    6. [Build](scripts/build-wheel.sh) and [test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
+2. Update the bindings:
+    * Via Docker:
+
+        ```
+        scripts/build-new-version-docker.sh --version v2.13.0
+        ```
+
+    * Or, by hand:
+        1. Install additional depdendency via `pip install -r requirements.txt`. And install [flatbuffer compiler](https://google.github.io/flatbuffers/flatbuffers_guide_using_schema_compiler.html) (you may need to [manually build it](https://google.github.io/flatbuffers/flatbuffers_guide_building.html)).
+        2. Generate the code for update. Tools have been prepared, there are prompt for actions.
+            1. [Download](scripts/update-schema.sh) `schema.fbs` for a new version.
+            2. [Update](scripts/gen-op-list.py) the builtin operator mapping.
+            3. [Update](scripts/update-importing.py) the classes and functions import of submodules.
+            4. [Update](scripts/gen-doc.sh) the API document.
+            5. Update the versioning in [`__init__.py`](tflite/__init__.py).
+            6. [Build](scripts/build-wheel.sh) and [test](tests) (simply `pytest`) around. Don't forget to re-install the newly built `tflite` package before testing it.
+
 4. Push your change and open [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 5. The maintainer will take the responsibility to upload change to PyPI when merged.
 

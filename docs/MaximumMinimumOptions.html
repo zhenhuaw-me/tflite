@@ -56,10 +56,15 @@ class MaximumMinimumOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def MaximumMinimumOptionsStart(builder): builder.StartObject(0)
+def MaximumMinimumOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return MaximumMinimumOptionsStart(builder)
-def MaximumMinimumOptionsEnd(builder): return builder.EndObject()
+    MaximumMinimumOptionsStart(builder)
+
+def MaximumMinimumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MaximumMinimumOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MaximumMinimumOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def MaximumMinimumOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.MaximumMinimumOptions.MaximumMinimumOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MaximumMinimumOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def MaximumMinimumOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MaximumMinimumOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return MaximumMinimumOptionsStart(builder)</code></pre>
+    MaximumMinimumOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

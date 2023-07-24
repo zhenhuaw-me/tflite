@@ -28,9 +28,14 @@ class ScatterNdOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ScatterNdOptionsStart(builder): builder.StartObject(0)
+def ScatterNdOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ScatterNdOptionsStart(builder)
-def ScatterNdOptionsEnd(builder): return builder.EndObject()
+    ScatterNdOptionsStart(builder)
+
+def ScatterNdOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ScatterNdOptionsEnd(builder)

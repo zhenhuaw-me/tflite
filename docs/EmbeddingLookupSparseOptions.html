@@ -63,13 +63,21 @@ class EmbeddingLookupSparseOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def EmbeddingLookupSparseOptionsStart(builder): builder.StartObject(1)
+def EmbeddingLookupSparseOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return EmbeddingLookupSparseOptionsStart(builder)
-def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner): builder.PrependInt8Slot(0, combiner, 0)
+    EmbeddingLookupSparseOptionsStart(builder)
+
+def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner):
+    builder.PrependInt8Slot(0, combiner, 0)
+
 def AddCombiner(builder, combiner):
-    return EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)
-def EmbeddingLookupSparseOptionsEnd(builder): return builder.EndObject()
+    EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)
+
+def EmbeddingLookupSparseOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return EmbeddingLookupSparseOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCombiner(builder, combiner):
-    return EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)</code></pre>
+    EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)</code></pre>
 </details>
 </dd>
 <dt id="tflite.EmbeddingLookupSparseOptions.EmbeddingLookupSparseOptionsAddCombiner"><code class="name flex">
@@ -103,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner): builder.PrependInt8Slot(0, combiner, 0)</code></pre>
+<pre><code class="python">def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner):
+    builder.PrependInt8Slot(0, combiner, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.EmbeddingLookupSparseOptions.EmbeddingLookupSparseOptionsEnd"><code class="name flex">
@@ -115,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def EmbeddingLookupSparseOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def EmbeddingLookupSparseOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.EmbeddingLookupSparseOptions.EmbeddingLookupSparseOptionsStart"><code class="name flex">
@@ -127,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def EmbeddingLookupSparseOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def EmbeddingLookupSparseOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.EmbeddingLookupSparseOptions.End"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return EmbeddingLookupSparseOptionsStart(builder)</code></pre>
+    EmbeddingLookupSparseOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

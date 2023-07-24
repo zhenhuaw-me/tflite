@@ -28,7 +28,7 @@
 </summary>
 <pre><code class="python"># import classes and functions of submodules
 
-__version__ = &#39;2.4.0&#39;
+__version__ = &#39;2.10.0&#39;
 
 
 
@@ -45,6 +45,8 @@ from tflite.BatchMatMulOptions import *
 from tflite.BatchToSpaceNDOptions import *
 from tflite.BidirectionalSequenceLSTMOptions import *
 from tflite.BidirectionalSequenceRNNOptions import *
+from tflite.BitcastOptions import *
+from tflite.BitwiseXorOptions import *
 from tflite.BroadcastToOptions import *
 from tflite.BucketizeOptions import *
 from tflite.Buffer import *
@@ -141,6 +143,7 @@ from tflite.ResizeNearestNeighborOptions import *
 from tflite.ReverseSequenceOptions import *
 from tflite.ReverseV2Options import *
 from tflite.Rfft2dOptions import *
+from tflite.RightShiftOptions import *
 from tflite.SVDFOptions import *
 from tflite.ScatterNdOptions import *
 from tflite.SegmentSumOptions import *
@@ -148,6 +151,7 @@ from tflite.SelectOptions import *
 from tflite.SelectV2Options import *
 from tflite.SequenceRNNOptions import *
 from tflite.ShapeOptions import *
+from tflite.SignOptions import *
 from tflite.SignatureDef import *
 from tflite.SkipGramOptions import *
 from tflite.SliceOptions import *
@@ -178,9 +182,11 @@ from tflite.UnidirectionalSequenceLSTMOptions import *
 from tflite.UniqueOptions import *
 from tflite.UnpackOptions import *
 from tflite.UnsortedSegmentMaxOptions import *
+from tflite.UnsortedSegmentMinOptions import *
 from tflite.UnsortedSegmentProdOptions import *
 from tflite.UnsortedSegmentSumOptions import *
 from tflite.VarHandleOptions import *
+from tflite.VariantSubType import *
 from tflite.WhereOptions import *
 from tflite.WhileOptions import *
 from tflite.ZerosLikeOptions import *
@@ -236,6 +242,14 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.BidirectionalSequenceRNNOptions" href="BidirectionalSequenceRNNOptions.html">tflite.BidirectionalSequenceRNNOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BitcastOptions" href="BitcastOptions.html">tflite.BitcastOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.BitwiseXorOptions" href="BitwiseXorOptions.html">tflite.BitwiseXorOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -623,6 +637,10 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.RightShiftOptions" href="RightShiftOptions.html">tflite.RightShiftOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.SVDFOptions" href="SVDFOptions.html">tflite.SVDFOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -648,6 +666,10 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.ShapeOptions" href="ShapeOptions.html">tflite.ShapeOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.SignOptions" href="SignOptions.html">tflite.SignOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -771,6 +793,10 @@ from tflite.utils import *
 <dd>
 <div class="desc"></div>
 </dd>
+<dt><code class="name"><a title="tflite.UnsortedSegmentMinOptions" href="UnsortedSegmentMinOptions.html">tflite.UnsortedSegmentMinOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt><code class="name"><a title="tflite.UnsortedSegmentProdOptions" href="UnsortedSegmentProdOptions.html">tflite.UnsortedSegmentProdOptions</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -780,6 +806,10 @@ from tflite.utils import *
 <div class="desc"></div>
 </dd>
 <dt><code class="name"><a title="tflite.VarHandleOptions" href="VarHandleOptions.html">tflite.VarHandleOptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="tflite.VariantSubType" href="VariantSubType.html">tflite.VariantSubType</a></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -828,6 +858,8 @@ from tflite.utils import *
 <li><code><a title="tflite.BatchToSpaceNDOptions" href="BatchToSpaceNDOptions.html">tflite.BatchToSpaceNDOptions</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceLSTMOptions" href="BidirectionalSequenceLSTMOptions.html">tflite.BidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.BidirectionalSequenceRNNOptions" href="BidirectionalSequenceRNNOptions.html">tflite.BidirectionalSequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.BitcastOptions" href="BitcastOptions.html">tflite.BitcastOptions</a></code></li>
+<li><code><a title="tflite.BitwiseXorOptions" href="BitwiseXorOptions.html">tflite.BitwiseXorOptions</a></code></li>
 <li><code><a title="tflite.BroadcastToOptions" href="BroadcastToOptions.html">tflite.BroadcastToOptions</a></code></li>
 <li><code><a title="tflite.BucketizeOptions" href="BucketizeOptions.html">tflite.BucketizeOptions</a></code></li>
 <li><code><a title="tflite.Buffer" href="Buffer.html">tflite.Buffer</a></code></li>
@@ -924,6 +956,7 @@ from tflite.utils import *
 <li><code><a title="tflite.ReverseSequenceOptions" href="ReverseSequenceOptions.html">tflite.ReverseSequenceOptions</a></code></li>
 <li><code><a title="tflite.ReverseV2Options" href="ReverseV2Options.html">tflite.ReverseV2Options</a></code></li>
 <li><code><a title="tflite.Rfft2dOptions" href="Rfft2dOptions.html">tflite.Rfft2dOptions</a></code></li>
+<li><code><a title="tflite.RightShiftOptions" href="RightShiftOptions.html">tflite.RightShiftOptions</a></code></li>
 <li><code><a title="tflite.SVDFOptions" href="SVDFOptions.html">tflite.SVDFOptions</a></code></li>
 <li><code><a title="tflite.ScatterNdOptions" href="ScatterNdOptions.html">tflite.ScatterNdOptions</a></code></li>
 <li><code><a title="tflite.SegmentSumOptions" href="SegmentSumOptions.html">tflite.SegmentSumOptions</a></code></li>
@@ -931,6 +964,7 @@ from tflite.utils import *
 <li><code><a title="tflite.SelectV2Options" href="SelectV2Options.html">tflite.SelectV2Options</a></code></li>
 <li><code><a title="tflite.SequenceRNNOptions" href="SequenceRNNOptions.html">tflite.SequenceRNNOptions</a></code></li>
 <li><code><a title="tflite.ShapeOptions" href="ShapeOptions.html">tflite.ShapeOptions</a></code></li>
+<li><code><a title="tflite.SignOptions" href="SignOptions.html">tflite.SignOptions</a></code></li>
 <li><code><a title="tflite.SignatureDef" href="SignatureDef.html">tflite.SignatureDef</a></code></li>
 <li><code><a title="tflite.SkipGramOptions" href="SkipGramOptions.html">tflite.SkipGramOptions</a></code></li>
 <li><code><a title="tflite.SliceOptions" href="SliceOptions.html">tflite.SliceOptions</a></code></li>
@@ -961,9 +995,11 @@ from tflite.utils import *
 <li><code><a title="tflite.UniqueOptions" href="UniqueOptions.html">tflite.UniqueOptions</a></code></li>
 <li><code><a title="tflite.UnpackOptions" href="UnpackOptions.html">tflite.UnpackOptions</a></code></li>
 <li><code><a title="tflite.UnsortedSegmentMaxOptions" href="UnsortedSegmentMaxOptions.html">tflite.UnsortedSegmentMaxOptions</a></code></li>
+<li><code><a title="tflite.UnsortedSegmentMinOptions" href="UnsortedSegmentMinOptions.html">tflite.UnsortedSegmentMinOptions</a></code></li>
 <li><code><a title="tflite.UnsortedSegmentProdOptions" href="UnsortedSegmentProdOptions.html">tflite.UnsortedSegmentProdOptions</a></code></li>
 <li><code><a title="tflite.UnsortedSegmentSumOptions" href="UnsortedSegmentSumOptions.html">tflite.UnsortedSegmentSumOptions</a></code></li>
 <li><code><a title="tflite.VarHandleOptions" href="VarHandleOptions.html">tflite.VarHandleOptions</a></code></li>
+<li><code><a title="tflite.VariantSubType" href="VariantSubType.html">tflite.VariantSubType</a></code></li>
 <li><code><a title="tflite.WhereOptions" href="WhereOptions.html">tflite.WhereOptions</a></code></li>
 <li><code><a title="tflite.WhileOptions" href="WhileOptions.html">tflite.WhileOptions</a></code></li>
 <li><code><a title="tflite.ZerosLikeOptions" href="ZerosLikeOptions.html">tflite.ZerosLikeOptions</a></code></li>

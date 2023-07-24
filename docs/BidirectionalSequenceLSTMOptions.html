@@ -98,28 +98,51 @@ class BidirectionalSequenceLSTMOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def BidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(6)
+def BidirectionalSequenceLSTMOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return BidirectionalSequenceLSTMOptionsStart(builder)
-def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    BidirectionalSequenceLSTMOptionsStart(builder)
+
+def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+    BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)
+
 def AddCellClip(builder, cellClip):
-    return BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
-def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+    BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
+
+def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)
+
 def AddProjClip(builder, projClip):
-    return BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
-def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(3, mergeOutputs, 0)
+    BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
+
+def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs):
+    builder.PrependBoolSlot(3, mergeOutputs, 0)
+
 def AddMergeOutputs(builder, mergeOutputs):
-    return BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)
-def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(4, timeMajor, 1)
+    BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)
+
+def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(4, timeMajor, 1)
+
 def AddTimeMajor(builder, timeMajor):
-    return BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
-def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)
+    BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
+
+def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()
+    BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def BidirectionalSequenceLSTMOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BidirectionalSequenceLSTMOptionsEnd(builder)</code></pre>
 </details>
@@ -141,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.AddCellClip"><code class="name flex">
@@ -154,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCellClip(builder, cellClip):
-    return BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)</code></pre>
+    BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.AddFusedActivationFunction"><code class="name flex">
@@ -167,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.AddMergeOutputs"><code class="name flex">
@@ -180,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMergeOutputs(builder, mergeOutputs):
-    return BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)</code></pre>
+    BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.AddProjClip"><code class="name flex">
@@ -193,7 +216,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddProjClip(builder, projClip):
-    return BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)</code></pre>
+    BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.AddTimeMajor"><code class="name flex">
@@ -206,7 +229,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTimeMajor(builder, timeMajor):
-    return BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+    BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
@@ -218,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddCellClip"><code class="name flex">
@@ -230,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddFusedActivationFunction"><code class="name flex">
@@ -242,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddMergeOutputs"><code class="name flex">
@@ -254,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(3, mergeOutputs, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs):
+    builder.PrependBoolSlot(3, mergeOutputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddProjClip"><code class="name flex">
@@ -266,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsAddTimeMajor"><code class="name flex">
@@ -278,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(4, timeMajor, 1)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(4, timeMajor, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsEnd"><code class="name flex">
@@ -290,7 +319,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.BidirectionalSequenceLSTMOptionsStart"><code class="name flex">
@@ -302,7 +332,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(6)</code></pre>
+<pre><code class="python">def BidirectionalSequenceLSTMOptionsStart(builder):
+    builder.StartObject(6)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceLSTMOptions.End"><code class="name flex">
@@ -328,7 +359,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return BidirectionalSequenceLSTMOptionsStart(builder)</code></pre>
+    BidirectionalSequenceLSTMOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

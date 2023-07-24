@@ -84,22 +84,39 @@ class FullyConnectedOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def FullyConnectedOptionsStart(builder): builder.StartObject(4)
+def FullyConnectedOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return FullyConnectedOptionsStart(builder)
-def FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    FullyConnectedOptionsStart(builder)
+
+def FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat): builder.PrependInt8Slot(1, weightsFormat, 0)
+    FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat):
+    builder.PrependInt8Slot(1, weightsFormat, 0)
+
 def AddWeightsFormat(builder, weightsFormat):
-    return FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat)
-def FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims): builder.PrependBoolSlot(2, keepNumDims, 0)
+    FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat)
+
+def FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims):
+    builder.PrependBoolSlot(2, keepNumDims, 0)
+
 def AddKeepNumDims(builder, keepNumDims):
-    return FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims)
-def FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)
+    FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims)
+
+def FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def FullyConnectedOptionsEnd(builder): return builder.EndObject()
+    FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def FullyConnectedOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return FullyConnectedOptionsEnd(builder)</code></pre>
 </details>
@@ -121,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.AddFusedActivationFunction"><code class="name flex">
@@ -134,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.AddKeepNumDims"><code class="name flex">
@@ -147,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddKeepNumDims(builder, keepNumDims):
-    return FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims)</code></pre>
+    FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.AddWeightsFormat"><code class="name flex">
@@ -160,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddWeightsFormat(builder, weightsFormat):
-    return FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat)</code></pre>
+    FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.End"><code class="name flex">
@@ -185,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def FullyConnectedOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.FullyConnectedOptionsAddFusedActivationFunction"><code class="name flex">
@@ -197,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def FullyConnectedOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.FullyConnectedOptionsAddKeepNumDims"><code class="name flex">
@@ -209,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims): builder.PrependBoolSlot(2, keepNumDims, 0)</code></pre>
+<pre><code class="python">def FullyConnectedOptionsAddKeepNumDims(builder, keepNumDims):
+    builder.PrependBoolSlot(2, keepNumDims, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.FullyConnectedOptionsAddWeightsFormat"><code class="name flex">
@@ -221,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat): builder.PrependInt8Slot(1, weightsFormat, 0)</code></pre>
+<pre><code class="python">def FullyConnectedOptionsAddWeightsFormat(builder, weightsFormat):
+    builder.PrependInt8Slot(1, weightsFormat, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.FullyConnectedOptionsEnd"><code class="name flex">
@@ -233,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FullyConnectedOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def FullyConnectedOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.FullyConnectedOptionsStart"><code class="name flex">
@@ -245,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def FullyConnectedOptionsStart(builder): builder.StartObject(4)</code></pre>
+<pre><code class="python">def FullyConnectedOptionsStart(builder):
+    builder.StartObject(4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.FullyConnectedOptions.Start"><code class="name flex">
@@ -258,7 +281,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return FullyConnectedOptionsStart(builder)</code></pre>
+    FullyConnectedOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -56,10 +56,15 @@ class HashtableImportOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HashtableImportOptionsStart(builder): builder.StartObject(0)
+def HashtableImportOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HashtableImportOptionsStart(builder)
-def HashtableImportOptionsEnd(builder): return builder.EndObject()
+    HashtableImportOptionsStart(builder)
+
+def HashtableImportOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableImportOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableImportOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def HashtableImportOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableImportOptions.HashtableImportOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableImportOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def HashtableImportOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableImportOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return HashtableImportOptionsStart(builder)</code></pre>
+    HashtableImportOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

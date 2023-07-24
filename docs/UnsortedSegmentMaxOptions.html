@@ -56,10 +56,15 @@ class UnsortedSegmentMaxOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def UnsortedSegmentMaxOptionsStart(builder): builder.StartObject(0)
+def UnsortedSegmentMaxOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return UnsortedSegmentMaxOptionsStart(builder)
-def UnsortedSegmentMaxOptionsEnd(builder): return builder.EndObject()
+    UnsortedSegmentMaxOptionsStart(builder)
+
+def UnsortedSegmentMaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnsortedSegmentMaxOptionsEnd(builder)</code></pre>
 </details>
@@ -94,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return UnsortedSegmentMaxOptionsStart(builder)</code></pre>
+    UnsortedSegmentMaxOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnsortedSegmentMaxOptions.UnsortedSegmentMaxOptionsEnd"><code class="name flex">
@@ -106,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnsortedSegmentMaxOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def UnsortedSegmentMaxOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnsortedSegmentMaxOptions.UnsortedSegmentMaxOptionsStart"><code class="name flex">
@@ -118,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnsortedSegmentMaxOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def UnsortedSegmentMaxOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 </dl>

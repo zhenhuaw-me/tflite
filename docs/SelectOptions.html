@@ -56,10 +56,15 @@ class SelectOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SelectOptionsStart(builder): builder.StartObject(0)
+def SelectOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SelectOptionsStart(builder)
-def SelectOptionsEnd(builder): return builder.EndObject()
+    SelectOptionsStart(builder)
+
+def SelectOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SelectOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SelectOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SelectOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SelectOptions.SelectOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SelectOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def SelectOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SelectOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SelectOptionsStart(builder)</code></pre>
+    SelectOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

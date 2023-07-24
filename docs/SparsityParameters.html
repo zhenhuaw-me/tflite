@@ -135,28 +135,51 @@ class SparsityParameters(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         return o == 0
 
-def SparsityParametersStart(builder): builder.StartObject(3)
+def SparsityParametersStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return SparsityParametersStart(builder)
-def SparsityParametersAddTraversalOrder(builder, traversalOrder): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(traversalOrder), 0)
+    SparsityParametersStart(builder)
+
+def SparsityParametersAddTraversalOrder(builder, traversalOrder):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(traversalOrder), 0)
+
 def AddTraversalOrder(builder, traversalOrder):
-    return SparsityParametersAddTraversalOrder(builder, traversalOrder)
-def SparsityParametersStartTraversalOrderVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartTraversalOrderVector(builder, numElems):
+    SparsityParametersAddTraversalOrder(builder, traversalOrder)
+
+def SparsityParametersStartTraversalOrderVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartTraversalOrderVector(builder, numElems: int) -&gt; int:
     return SparsityParametersStartTraversalOrderVector(builder, numElems)
-def SparsityParametersAddBlockMap(builder, blockMap): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(blockMap), 0)
+
+def SparsityParametersAddBlockMap(builder, blockMap):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(blockMap), 0)
+
 def AddBlockMap(builder, blockMap):
-    return SparsityParametersAddBlockMap(builder, blockMap)
-def SparsityParametersStartBlockMapVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartBlockMapVector(builder, numElems):
+    SparsityParametersAddBlockMap(builder, blockMap)
+
+def SparsityParametersStartBlockMapVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartBlockMapVector(builder, numElems: int) -&gt; int:
     return SparsityParametersStartBlockMapVector(builder, numElems)
-def SparsityParametersAddDimMetadata(builder, dimMetadata): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(dimMetadata), 0)
+
+def SparsityParametersAddDimMetadata(builder, dimMetadata):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(dimMetadata), 0)
+
 def AddDimMetadata(builder, dimMetadata):
-    return SparsityParametersAddDimMetadata(builder, dimMetadata)
-def SparsityParametersStartDimMetadataVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartDimMetadataVector(builder, numElems):
+    SparsityParametersAddDimMetadata(builder, dimMetadata)
+
+def SparsityParametersStartDimMetadataVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartDimMetadataVector(builder, numElems: int) -&gt; int:
     return SparsityParametersStartDimMetadataVector(builder, numElems)
-def SparsityParametersEnd(builder): return builder.EndObject()
+
+def SparsityParametersEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SparsityParametersEnd(builder)</code></pre>
 </details>
@@ -178,7 +201,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBlockMap(builder, blockMap):
-    return SparsityParametersAddBlockMap(builder, blockMap)</code></pre>
+    SparsityParametersAddBlockMap(builder, blockMap)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.AddDimMetadata"><code class="name flex">
@@ -191,7 +214,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDimMetadata(builder, dimMetadata):
-    return SparsityParametersAddDimMetadata(builder, dimMetadata)</code></pre>
+    SparsityParametersAddDimMetadata(builder, dimMetadata)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.AddTraversalOrder"><code class="name flex">
@@ -204,7 +227,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTraversalOrder(builder, traversalOrder):
-    return SparsityParametersAddTraversalOrder(builder, traversalOrder)</code></pre>
+    SparsityParametersAddTraversalOrder(builder, traversalOrder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.End"><code class="name flex">
@@ -229,7 +252,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersAddBlockMap(builder, blockMap): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(blockMap), 0)</code></pre>
+<pre><code class="python">def SparsityParametersAddBlockMap(builder, blockMap):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(blockMap), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersAddDimMetadata"><code class="name flex">
@@ -241,7 +265,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersAddDimMetadata(builder, dimMetadata): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(dimMetadata), 0)</code></pre>
+<pre><code class="python">def SparsityParametersAddDimMetadata(builder, dimMetadata):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(dimMetadata), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersAddTraversalOrder"><code class="name flex">
@@ -253,7 +278,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersAddTraversalOrder(builder, traversalOrder): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(traversalOrder), 0)</code></pre>
+<pre><code class="python">def SparsityParametersAddTraversalOrder(builder, traversalOrder):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(traversalOrder), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersEnd"><code class="name flex">
@@ -265,7 +291,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SparsityParametersEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersStart"><code class="name flex">
@@ -277,7 +304,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def SparsityParametersStart(builder):
+    builder.StartObject(3)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersStartBlockMapVector"><code class="name flex">
@@ -289,7 +317,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersStartBlockMapVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def SparsityParametersStartBlockMapVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersStartDimMetadataVector"><code class="name flex">
@@ -301,7 +330,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersStartDimMetadataVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def SparsityParametersStartDimMetadataVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.SparsityParametersStartTraversalOrderVector"><code class="name flex">
@@ -313,7 +343,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparsityParametersStartTraversalOrderVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def SparsityParametersStartTraversalOrderVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.Start"><code class="name flex">
@@ -326,11 +357,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SparsityParametersStart(builder)</code></pre>
+    SparsityParametersStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.StartBlockMapVector"><code class="name flex">
-<span>def <span class="ident">StartBlockMapVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartBlockMapVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -338,12 +369,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartBlockMapVector(builder, numElems):
+<pre><code class="python">def StartBlockMapVector(builder, numElems: int) -&gt; int:
     return SparsityParametersStartBlockMapVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.StartDimMetadataVector"><code class="name flex">
-<span>def <span class="ident">StartDimMetadataVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartDimMetadataVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -351,12 +382,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartDimMetadataVector(builder, numElems):
+<pre><code class="python">def StartDimMetadataVector(builder, numElems: int) -&gt; int:
     return SparsityParametersStartDimMetadataVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparsityParameters.StartTraversalOrderVector"><code class="name flex">
-<span>def <span class="ident">StartTraversalOrderVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartTraversalOrderVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -364,7 +395,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartTraversalOrderVector(builder, numElems):
+<pre><code class="python">def StartTraversalOrderVector(builder, numElems: int) -&gt; int:
     return SparsityParametersStartTraversalOrderVector(builder, numElems)</code></pre>
 </details>
 </dd>

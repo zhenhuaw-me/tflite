@@ -63,13 +63,21 @@ class CallOptions(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def CallOptionsStart(builder): builder.StartObject(1)
+def CallOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return CallOptionsStart(builder)
-def CallOptionsAddSubgraph(builder, subgraph): builder.PrependUint32Slot(0, subgraph, 0)
+    CallOptionsStart(builder)
+
+def CallOptionsAddSubgraph(builder, subgraph):
+    builder.PrependUint32Slot(0, subgraph, 0)
+
 def AddSubgraph(builder, subgraph):
-    return CallOptionsAddSubgraph(builder, subgraph)
-def CallOptionsEnd(builder): return builder.EndObject()
+    CallOptionsAddSubgraph(builder, subgraph)
+
+def CallOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CallOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSubgraph(builder, subgraph):
-    return CallOptionsAddSubgraph(builder, subgraph)</code></pre>
+    CallOptionsAddSubgraph(builder, subgraph)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOptions.CallOptionsAddSubgraph"><code class="name flex">
@@ -103,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CallOptionsAddSubgraph(builder, subgraph): builder.PrependUint32Slot(0, subgraph, 0)</code></pre>
+<pre><code class="python">def CallOptionsAddSubgraph(builder, subgraph):
+    builder.PrependUint32Slot(0, subgraph, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOptions.CallOptionsEnd"><code class="name flex">
@@ -115,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CallOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def CallOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOptions.CallOptionsStart"><code class="name flex">
@@ -127,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CallOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def CallOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOptions.End"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return CallOptionsStart(builder)</code></pre>
+    CallOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

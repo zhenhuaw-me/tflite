@@ -63,13 +63,21 @@ class MulOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def MulOptionsStart(builder): builder.StartObject(1)
+def MulOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return MulOptionsStart(builder)
-def MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    MulOptionsStart(builder)
+
+def MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def MulOptionsEnd(builder): return builder.EndObject()
+    MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def MulOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MulOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MulOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def MulOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MulOptions.MulOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MulOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def MulOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.MulOptions.MulOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def MulOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def MulOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.MulOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return MulOptionsStart(builder)</code></pre>
+    MulOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

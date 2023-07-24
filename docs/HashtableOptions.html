@@ -77,19 +77,33 @@ class HashtableOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def HashtableOptionsStart(builder): builder.StartObject(3)
+def HashtableOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return HashtableOptionsStart(builder)
-def HashtableOptionsAddTableId(builder, tableId): builder.PrependInt32Slot(0, tableId, 0)
+    HashtableOptionsStart(builder)
+
+def HashtableOptionsAddTableId(builder, tableId):
+    builder.PrependInt32Slot(0, tableId, 0)
+
 def AddTableId(builder, tableId):
-    return HashtableOptionsAddTableId(builder, tableId)
-def HashtableOptionsAddKeyDtype(builder, keyDtype): builder.PrependInt8Slot(1, keyDtype, 0)
+    HashtableOptionsAddTableId(builder, tableId)
+
+def HashtableOptionsAddKeyDtype(builder, keyDtype):
+    builder.PrependInt8Slot(1, keyDtype, 0)
+
 def AddKeyDtype(builder, keyDtype):
-    return HashtableOptionsAddKeyDtype(builder, keyDtype)
-def HashtableOptionsAddValueDtype(builder, valueDtype): builder.PrependInt8Slot(2, valueDtype, 0)
+    HashtableOptionsAddKeyDtype(builder, keyDtype)
+
+def HashtableOptionsAddValueDtype(builder, valueDtype):
+    builder.PrependInt8Slot(2, valueDtype, 0)
+
 def AddValueDtype(builder, valueDtype):
-    return HashtableOptionsAddValueDtype(builder, valueDtype)
-def HashtableOptionsEnd(builder): return builder.EndObject()
+    HashtableOptionsAddValueDtype(builder, valueDtype)
+
+def HashtableOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableOptionsEnd(builder)</code></pre>
 </details>
@@ -111,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddKeyDtype(builder, keyDtype):
-    return HashtableOptionsAddKeyDtype(builder, keyDtype)</code></pre>
+    HashtableOptionsAddKeyDtype(builder, keyDtype)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.AddTableId"><code class="name flex">
@@ -124,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTableId(builder, tableId):
-    return HashtableOptionsAddTableId(builder, tableId)</code></pre>
+    HashtableOptionsAddTableId(builder, tableId)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.AddValueDtype"><code class="name flex">
@@ -137,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddValueDtype(builder, valueDtype):
-    return HashtableOptionsAddValueDtype(builder, valueDtype)</code></pre>
+    HashtableOptionsAddValueDtype(builder, valueDtype)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.End"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableOptionsAddKeyDtype(builder, keyDtype): builder.PrependInt8Slot(1, keyDtype, 0)</code></pre>
+<pre><code class="python">def HashtableOptionsAddKeyDtype(builder, keyDtype):
+    builder.PrependInt8Slot(1, keyDtype, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.HashtableOptionsAddTableId"><code class="name flex">
@@ -174,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableOptionsAddTableId(builder, tableId): builder.PrependInt32Slot(0, tableId, 0)</code></pre>
+<pre><code class="python">def HashtableOptionsAddTableId(builder, tableId):
+    builder.PrependInt32Slot(0, tableId, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.HashtableOptionsAddValueDtype"><code class="name flex">
@@ -186,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableOptionsAddValueDtype(builder, valueDtype): builder.PrependInt8Slot(2, valueDtype, 0)</code></pre>
+<pre><code class="python">def HashtableOptionsAddValueDtype(builder, valueDtype):
+    builder.PrependInt8Slot(2, valueDtype, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.HashtableOptionsEnd"><code class="name flex">
@@ -198,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def HashtableOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.HashtableOptionsStart"><code class="name flex">
@@ -210,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableOptionsStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def HashtableOptionsStart(builder):
+    builder.StartObject(3)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableOptions.Start"><code class="name flex">
@@ -223,7 +242,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return HashtableOptionsStart(builder)</code></pre>
+    HashtableOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -63,13 +63,21 @@ class OneHotOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def OneHotOptionsStart(builder): builder.StartObject(1)
+def OneHotOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return OneHotOptionsStart(builder)
-def OneHotOptionsAddAxis(builder, axis): builder.PrependInt32Slot(0, axis, 0)
+    OneHotOptionsStart(builder)
+
+def OneHotOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(0, axis, 0)
+
 def AddAxis(builder, axis):
-    return OneHotOptionsAddAxis(builder, axis)
-def OneHotOptionsEnd(builder): return builder.EndObject()
+    OneHotOptionsAddAxis(builder, axis)
+
+def OneHotOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return OneHotOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAxis(builder, axis):
-    return OneHotOptionsAddAxis(builder, axis)</code></pre>
+    OneHotOptionsAddAxis(builder, axis)</code></pre>
 </details>
 </dd>
 <dt id="tflite.OneHotOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OneHotOptionsAddAxis(builder, axis): builder.PrependInt32Slot(0, axis, 0)</code></pre>
+<pre><code class="python">def OneHotOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(0, axis, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.OneHotOptions.OneHotOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OneHotOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def OneHotOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.OneHotOptions.OneHotOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def OneHotOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def OneHotOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.OneHotOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return OneHotOptionsStart(builder)</code></pre>
+    OneHotOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

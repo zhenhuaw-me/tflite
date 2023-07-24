@@ -28,9 +28,14 @@ class AbsOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def AbsOptionsStart(builder): builder.StartObject(0)
+def AbsOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return AbsOptionsStart(builder)
-def AbsOptionsEnd(builder): return builder.EndObject()
+    AbsOptionsStart(builder)
+
+def AbsOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AbsOptionsEnd(builder)

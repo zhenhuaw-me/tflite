@@ -83,16 +83,27 @@ class CustomQuantization(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def CustomQuantizationStart(builder): builder.StartObject(1)
+def CustomQuantizationStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return CustomQuantizationStart(builder)
-def CustomQuantizationAddCustom(builder, custom): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)
+    CustomQuantizationStart(builder)
+
+def CustomQuantizationAddCustom(builder, custom):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)
+
 def AddCustom(builder, custom):
-    return CustomQuantizationAddCustom(builder, custom)
-def CustomQuantizationStartCustomVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartCustomVector(builder, numElems):
+    CustomQuantizationAddCustom(builder, custom)
+
+def CustomQuantizationStartCustomVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartCustomVector(builder, numElems: int) -&gt; int:
     return CustomQuantizationStartCustomVector(builder, numElems)
-def CustomQuantizationEnd(builder): return builder.EndObject()
+
+def CustomQuantizationEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CustomQuantizationEnd(builder)</code></pre>
 </details>
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCustom(builder, custom):
-    return CustomQuantizationAddCustom(builder, custom)</code></pre>
+    CustomQuantizationAddCustom(builder, custom)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.CustomQuantizationAddCustom"><code class="name flex">
@@ -126,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CustomQuantizationAddCustom(builder, custom): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)</code></pre>
+<pre><code class="python">def CustomQuantizationAddCustom(builder, custom):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.CustomQuantizationEnd"><code class="name flex">
@@ -138,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CustomQuantizationEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def CustomQuantizationEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.CustomQuantizationStart"><code class="name flex">
@@ -150,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CustomQuantizationStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def CustomQuantizationStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.CustomQuantizationStartCustomVector"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CustomQuantizationStartCustomVector(builder, numElems): return builder.StartVector(1, numElems, 1)</code></pre>
+<pre><code class="python">def CustomQuantizationStartCustomVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.End"><code class="name flex">
@@ -188,11 +203,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return CustomQuantizationStart(builder)</code></pre>
+    CustomQuantizationStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CustomQuantization.StartCustomVector"><code class="name flex">
-<span>def <span class="ident">StartCustomVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartCustomVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -200,7 +215,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartCustomVector(builder, numElems):
+<pre><code class="python">def StartCustomVector(builder, numElems: int) -&gt; int:
     return CustomQuantizationStartCustomVector(builder, numElems)</code></pre>
 </details>
 </dd>

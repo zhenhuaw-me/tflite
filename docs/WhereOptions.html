@@ -56,10 +56,15 @@ class WhereOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def WhereOptionsStart(builder): builder.StartObject(0)
+def WhereOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return WhereOptionsStart(builder)
-def WhereOptionsEnd(builder): return builder.EndObject()
+    WhereOptionsStart(builder)
+
+def WhereOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return WhereOptionsEnd(builder)</code></pre>
 </details>
@@ -94,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return WhereOptionsStart(builder)</code></pre>
+    WhereOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhereOptions.WhereOptionsEnd"><code class="name flex">
@@ -106,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def WhereOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def WhereOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.WhereOptions.WhereOptionsStart"><code class="name flex">
@@ -118,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def WhereOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def WhereOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 </dl>

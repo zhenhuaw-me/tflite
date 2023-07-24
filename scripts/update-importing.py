@@ -2,7 +2,12 @@
 
 import os
 import git
+import argparse
+
 """Auto-generate the submodule importing from `tflite/tflite`"""
+parser = argparse.ArgumentParser(description='update_importing')
+parser.add_argument('--no-commit', action='store_true', required=False)
+args, unknown = parser.parse_known_args()
 
 here = os.path.abspath(os.path.dirname(__file__))
 repo_dir = os.path.abspath(os.path.join(here, '..'))
@@ -30,12 +35,12 @@ with open(the_file, 'w') as f:
         f.write(line)
 
 # commit change?
-with git.Repo(repo_dir) as repo:
-    if len(repo.git.diff(the_file)) == 0:
-        print("No change, skip commit...")
-        exit(0)
-    input_str = input("Will commit the __init__.py change, continue [Y|N]? ")
-    if input_str == 'Y':
-        repo.git.add(the_file)
-        repo.index.commit('Auto-generate tflite/__init__.py to new schema.fbs')
-
+if not args.no_commit:
+    with git.Repo(repo_dir) as repo:
+        if len(repo.git.diff(the_file)) == 0:
+            print("No change, skip commit...")
+            exit(0)
+        input_str = input("Will commit the __init__.py change, continue [Y|N]? ")
+        if input_str == 'Y':
+            repo.git.add(the_file)
+            repo.index.commit('Auto-generate tflite/__init__.py to new schema.fbs')

@@ -63,13 +63,21 @@ class CallOnceOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def CallOnceOptionsStart(builder): builder.StartObject(1)
+def CallOnceOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return CallOnceOptionsStart(builder)
-def CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex): builder.PrependInt32Slot(0, initSubgraphIndex, 0)
+    CallOnceOptionsStart(builder)
+
+def CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex):
+    builder.PrependInt32Slot(0, initSubgraphIndex, 0)
+
 def AddInitSubgraphIndex(builder, initSubgraphIndex):
-    return CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex)
-def CallOnceOptionsEnd(builder): return builder.EndObject()
+    CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex)
+
+def CallOnceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CallOnceOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddInitSubgraphIndex(builder, initSubgraphIndex):
-    return CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex)</code></pre>
+    CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOnceOptions.CallOnceOptionsAddInitSubgraphIndex"><code class="name flex">
@@ -103,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex): builder.PrependInt32Slot(0, initSubgraphIndex, 0)</code></pre>
+<pre><code class="python">def CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex):
+    builder.PrependInt32Slot(0, initSubgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOnceOptions.CallOnceOptionsEnd"><code class="name flex">
@@ -115,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CallOnceOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def CallOnceOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOnceOptions.CallOnceOptionsStart"><code class="name flex">
@@ -127,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def CallOnceOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def CallOnceOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.CallOnceOptions.End"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return CallOnceOptionsStart(builder)</code></pre>
+    CallOnceOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

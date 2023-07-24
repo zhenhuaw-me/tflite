@@ -70,16 +70,27 @@ class ResizeNearestNeighborOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(2)
+def ResizeNearestNeighborOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return ResizeNearestNeighborOptionsStart(builder)
-def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(0, alignCorners, 0)
+    ResizeNearestNeighborOptionsStart(builder)
+
+def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners):
+    builder.PrependBoolSlot(0, alignCorners, 0)
+
 def AddAlignCorners(builder, alignCorners):
-    return ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)
-def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(1, halfPixelCenters, 0)
+    ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)
+
+def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters):
+    builder.PrependBoolSlot(1, halfPixelCenters, 0)
+
 def AddHalfPixelCenters(builder, halfPixelCenters):
-    return ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)
-def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()
+    ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)
+
+def ResizeNearestNeighborOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ResizeNearestNeighborOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAlignCorners(builder, alignCorners):
-    return ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)</code></pre>
+    ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeNearestNeighborOptions.AddHalfPixelCenters"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddHalfPixelCenters(builder, halfPixelCenters):
-    return ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)</code></pre>
+    ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeNearestNeighborOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(0, alignCorners, 0)</code></pre>
+<pre><code class="python">def ResizeNearestNeighborOptionsAddAlignCorners(builder, alignCorners):
+    builder.PrependBoolSlot(0, alignCorners, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsAddHalfPixelCenters"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(1, halfPixelCenters, 0)</code></pre>
+<pre><code class="python">def ResizeNearestNeighborOptionsAddHalfPixelCenters(builder, halfPixelCenters):
+    builder.PrependBoolSlot(1, halfPixelCenters, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeNearestNeighborOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ResizeNearestNeighborOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeNearestNeighborOptions.ResizeNearestNeighborOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ResizeNearestNeighborOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def ResizeNearestNeighborOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ResizeNearestNeighborOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ResizeNearestNeighborOptionsStart(builder)</code></pre>
+    ResizeNearestNeighborOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

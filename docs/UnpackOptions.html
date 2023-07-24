@@ -70,16 +70,27 @@ class UnpackOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def UnpackOptionsStart(builder): builder.StartObject(2)
+def UnpackOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return UnpackOptionsStart(builder)
-def UnpackOptionsAddNum(builder, num): builder.PrependInt32Slot(0, num, 0)
+    UnpackOptionsStart(builder)
+
+def UnpackOptionsAddNum(builder, num):
+    builder.PrependInt32Slot(0, num, 0)
+
 def AddNum(builder, num):
-    return UnpackOptionsAddNum(builder, num)
-def UnpackOptionsAddAxis(builder, axis): builder.PrependInt32Slot(1, axis, 0)
+    UnpackOptionsAddNum(builder, num)
+
+def UnpackOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(1, axis, 0)
+
 def AddAxis(builder, axis):
-    return UnpackOptionsAddAxis(builder, axis)
-def UnpackOptionsEnd(builder): return builder.EndObject()
+    UnpackOptionsAddAxis(builder, axis)
+
+def UnpackOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnpackOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAxis(builder, axis):
-    return UnpackOptionsAddAxis(builder, axis)</code></pre>
+    UnpackOptionsAddAxis(builder, axis)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnpackOptions.AddNum"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNum(builder, num):
-    return UnpackOptionsAddNum(builder, num)</code></pre>
+    UnpackOptionsAddNum(builder, num)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnpackOptions.End"><code class="name flex">
@@ -140,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return UnpackOptionsStart(builder)</code></pre>
+    UnpackOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnpackOptions.UnpackOptionsAddAxis"><code class="name flex">
@@ -152,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnpackOptionsAddAxis(builder, axis): builder.PrependInt32Slot(1, axis, 0)</code></pre>
+<pre><code class="python">def UnpackOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(1, axis, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnpackOptions.UnpackOptionsAddNum"><code class="name flex">
@@ -164,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnpackOptionsAddNum(builder, num): builder.PrependInt32Slot(0, num, 0)</code></pre>
+<pre><code class="python">def UnpackOptionsAddNum(builder, num):
+    builder.PrependInt32Slot(0, num, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnpackOptions.UnpackOptionsEnd"><code class="name flex">
@@ -176,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnpackOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def UnpackOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnpackOptions.UnpackOptionsStart"><code class="name flex">
@@ -188,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnpackOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def UnpackOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 </dl>

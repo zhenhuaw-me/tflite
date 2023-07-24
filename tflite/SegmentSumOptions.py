@@ -28,9 +28,14 @@ class SegmentSumOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SegmentSumOptionsStart(builder): builder.StartObject(0)
+def SegmentSumOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SegmentSumOptionsStart(builder)
-def SegmentSumOptionsEnd(builder): return builder.EndObject()
+    SegmentSumOptionsStart(builder)
+
+def SegmentSumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SegmentSumOptionsEnd(builder)

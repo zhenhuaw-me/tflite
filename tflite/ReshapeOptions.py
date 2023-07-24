@@ -55,15 +55,26 @@ class ReshapeOptions(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def ReshapeOptionsStart(builder): builder.StartObject(1)
+def ReshapeOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return ReshapeOptionsStart(builder)
-def ReshapeOptionsAddNewShape(builder, newShape): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(newShape), 0)
+    ReshapeOptionsStart(builder)
+
+def ReshapeOptionsAddNewShape(builder, newShape):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(newShape), 0)
+
 def AddNewShape(builder, newShape):
-    return ReshapeOptionsAddNewShape(builder, newShape)
-def ReshapeOptionsStartNewShapeVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartNewShapeVector(builder, numElems):
+    ReshapeOptionsAddNewShape(builder, newShape)
+
+def ReshapeOptionsStartNewShapeVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartNewShapeVector(builder, numElems: int) -> int:
     return ReshapeOptionsStartNewShapeVector(builder, numElems)
-def ReshapeOptionsEnd(builder): return builder.EndObject()
+
+def ReshapeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ReshapeOptionsEnd(builder)

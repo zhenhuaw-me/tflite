@@ -28,9 +28,14 @@ class NegOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def NegOptionsStart(builder): builder.StartObject(0)
+def NegOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return NegOptionsStart(builder)
-def NegOptionsEnd(builder): return builder.EndObject()
+    NegOptionsStart(builder)
+
+def NegOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return NegOptionsEnd(builder)

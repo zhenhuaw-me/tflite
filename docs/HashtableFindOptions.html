@@ -56,10 +56,15 @@ class HashtableFindOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HashtableFindOptionsStart(builder): builder.StartObject(0)
+def HashtableFindOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HashtableFindOptionsStart(builder)
-def HashtableFindOptionsEnd(builder): return builder.EndObject()
+    HashtableFindOptionsStart(builder)
+
+def HashtableFindOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableFindOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableFindOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def HashtableFindOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableFindOptions.HashtableFindOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableFindOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def HashtableFindOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableFindOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return HashtableFindOptionsStart(builder)</code></pre>
+    HashtableFindOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

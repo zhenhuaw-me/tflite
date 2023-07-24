@@ -70,16 +70,27 @@ class GatherOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def GatherOptionsStart(builder): builder.StartObject(2)
+def GatherOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return GatherOptionsStart(builder)
-def GatherOptionsAddAxis(builder, axis): builder.PrependInt32Slot(0, axis, 0)
+    GatherOptionsStart(builder)
+
+def GatherOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(0, axis, 0)
+
 def AddAxis(builder, axis):
-    return GatherOptionsAddAxis(builder, axis)
-def GatherOptionsAddBatchDims(builder, batchDims): builder.PrependInt32Slot(1, batchDims, 0)
+    GatherOptionsAddAxis(builder, axis)
+
+def GatherOptionsAddBatchDims(builder, batchDims):
+    builder.PrependInt32Slot(1, batchDims, 0)
+
 def AddBatchDims(builder, batchDims):
-    return GatherOptionsAddBatchDims(builder, batchDims)
-def GatherOptionsEnd(builder): return builder.EndObject()
+    GatherOptionsAddBatchDims(builder, batchDims)
+
+def GatherOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GatherOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAxis(builder, axis):
-    return GatherOptionsAddAxis(builder, axis)</code></pre>
+    GatherOptionsAddAxis(builder, axis)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherOptions.AddBatchDims"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBatchDims(builder, batchDims):
-    return GatherOptionsAddBatchDims(builder, batchDims)</code></pre>
+    GatherOptionsAddBatchDims(builder, batchDims)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GatherOptionsAddAxis(builder, axis): builder.PrependInt32Slot(0, axis, 0)</code></pre>
+<pre><code class="python">def GatherOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(0, axis, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherOptions.GatherOptionsAddBatchDims"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GatherOptionsAddBatchDims(builder, batchDims): builder.PrependInt32Slot(1, batchDims, 0)</code></pre>
+<pre><code class="python">def GatherOptionsAddBatchDims(builder, batchDims):
+    builder.PrependInt32Slot(1, batchDims, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherOptions.GatherOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GatherOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def GatherOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherOptions.GatherOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GatherOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def GatherOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return GatherOptionsStart(builder)</code></pre>
+    GatherOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -70,16 +70,27 @@ class PackOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def PackOptionsStart(builder): builder.StartObject(2)
+def PackOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return PackOptionsStart(builder)
-def PackOptionsAddValuesCount(builder, valuesCount): builder.PrependInt32Slot(0, valuesCount, 0)
+    PackOptionsStart(builder)
+
+def PackOptionsAddValuesCount(builder, valuesCount):
+    builder.PrependInt32Slot(0, valuesCount, 0)
+
 def AddValuesCount(builder, valuesCount):
-    return PackOptionsAddValuesCount(builder, valuesCount)
-def PackOptionsAddAxis(builder, axis): builder.PrependInt32Slot(1, axis, 0)
+    PackOptionsAddValuesCount(builder, valuesCount)
+
+def PackOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(1, axis, 0)
+
 def AddAxis(builder, axis):
-    return PackOptionsAddAxis(builder, axis)
-def PackOptionsEnd(builder): return builder.EndObject()
+    PackOptionsAddAxis(builder, axis)
+
+def PackOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return PackOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAxis(builder, axis):
-    return PackOptionsAddAxis(builder, axis)</code></pre>
+    PackOptionsAddAxis(builder, axis)</code></pre>
 </details>
 </dd>
 <dt id="tflite.PackOptions.AddValuesCount"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddValuesCount(builder, valuesCount):
-    return PackOptionsAddValuesCount(builder, valuesCount)</code></pre>
+    PackOptionsAddValuesCount(builder, valuesCount)</code></pre>
 </details>
 </dd>
 <dt id="tflite.PackOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def PackOptionsAddAxis(builder, axis): builder.PrependInt32Slot(1, axis, 0)</code></pre>
+<pre><code class="python">def PackOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(1, axis, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.PackOptions.PackOptionsAddValuesCount"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def PackOptionsAddValuesCount(builder, valuesCount): builder.PrependInt32Slot(0, valuesCount, 0)</code></pre>
+<pre><code class="python">def PackOptionsAddValuesCount(builder, valuesCount):
+    builder.PrependInt32Slot(0, valuesCount, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.PackOptions.PackOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def PackOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def PackOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.PackOptions.PackOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def PackOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def PackOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.PackOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return PackOptionsStart(builder)</code></pre>
+    PackOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -83,16 +83,27 @@ class BucketizeOptions(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def BucketizeOptionsStart(builder): builder.StartObject(1)
+def BucketizeOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return BucketizeOptionsStart(builder)
-def BucketizeOptionsAddBoundaries(builder, boundaries): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(boundaries), 0)
+    BucketizeOptionsStart(builder)
+
+def BucketizeOptionsAddBoundaries(builder, boundaries):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(boundaries), 0)
+
 def AddBoundaries(builder, boundaries):
-    return BucketizeOptionsAddBoundaries(builder, boundaries)
-def BucketizeOptionsStartBoundariesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartBoundariesVector(builder, numElems):
+    BucketizeOptionsAddBoundaries(builder, boundaries)
+
+def BucketizeOptionsStartBoundariesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartBoundariesVector(builder, numElems: int) -&gt; int:
     return BucketizeOptionsStartBoundariesVector(builder, numElems)
-def BucketizeOptionsEnd(builder): return builder.EndObject()
+
+def BucketizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BucketizeOptionsEnd(builder)</code></pre>
 </details>
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBoundaries(builder, boundaries):
-    return BucketizeOptionsAddBoundaries(builder, boundaries)</code></pre>
+    BucketizeOptionsAddBoundaries(builder, boundaries)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BucketizeOptions.BucketizeOptionsAddBoundaries"><code class="name flex">
@@ -126,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BucketizeOptionsAddBoundaries(builder, boundaries): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(boundaries), 0)</code></pre>
+<pre><code class="python">def BucketizeOptionsAddBoundaries(builder, boundaries):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(boundaries), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BucketizeOptions.BucketizeOptionsEnd"><code class="name flex">
@@ -138,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BucketizeOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def BucketizeOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.BucketizeOptions.BucketizeOptionsStart"><code class="name flex">
@@ -150,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BucketizeOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def BucketizeOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BucketizeOptions.BucketizeOptionsStartBoundariesVector"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BucketizeOptionsStartBoundariesVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def BucketizeOptionsStartBoundariesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BucketizeOptions.End"><code class="name flex">
@@ -188,11 +203,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return BucketizeOptionsStart(builder)</code></pre>
+    BucketizeOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BucketizeOptions.StartBoundariesVector"><code class="name flex">
-<span>def <span class="ident">StartBoundariesVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartBoundariesVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -200,7 +215,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartBoundariesVector(builder, numElems):
+<pre><code class="python">def StartBoundariesVector(builder, numElems: int) -&gt; int:
     return BucketizeOptionsStartBoundariesVector(builder, numElems)</code></pre>
 </details>
 </dd>

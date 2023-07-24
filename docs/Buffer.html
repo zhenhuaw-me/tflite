@@ -83,16 +83,27 @@ class Buffer(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def BufferStart(builder): builder.StartObject(1)
+def BufferStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return BufferStart(builder)
-def BufferAddData(builder, data): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(data), 0)
+    BufferStart(builder)
+
+def BufferAddData(builder, data):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(data), 0)
+
 def AddData(builder, data):
-    return BufferAddData(builder, data)
-def BufferStartDataVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartDataVector(builder, numElems):
+    BufferAddData(builder, data)
+
+def BufferStartDataVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartDataVector(builder, numElems: int) -&gt; int:
     return BufferStartDataVector(builder, numElems)
-def BufferEnd(builder): return builder.EndObject()
+
+def BufferEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BufferEnd(builder)</code></pre>
 </details>
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddData(builder, data):
-    return BufferAddData(builder, data)</code></pre>
+    BufferAddData(builder, data)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Buffer.BufferAddData"><code class="name flex">
@@ -126,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BufferAddData(builder, data): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(data), 0)</code></pre>
+<pre><code class="python">def BufferAddData(builder, data):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(data), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Buffer.BufferEnd"><code class="name flex">
@@ -138,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BufferEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def BufferEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.Buffer.BufferStart"><code class="name flex">
@@ -150,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BufferStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def BufferStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Buffer.BufferStartDataVector"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BufferStartDataVector(builder, numElems): return builder.StartVector(1, numElems, 1)</code></pre>
+<pre><code class="python">def BufferStartDataVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Buffer.End"><code class="name flex">
@@ -188,11 +203,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return BufferStart(builder)</code></pre>
+    BufferStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Buffer.StartDataVector"><code class="name flex">
-<span>def <span class="ident">StartDataVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartDataVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -200,7 +215,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartDataVector(builder, numElems):
+<pre><code class="python">def StartDataVector(builder, numElems: int) -&gt; int:
     return BufferStartDataVector(builder, numElems)</code></pre>
 </details>
 </dd>

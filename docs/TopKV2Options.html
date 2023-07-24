@@ -56,10 +56,15 @@ class TopKV2Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def TopKV2OptionsStart(builder): builder.StartObject(0)
+def TopKV2OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return TopKV2OptionsStart(builder)
-def TopKV2OptionsEnd(builder): return builder.EndObject()
+    TopKV2OptionsStart(builder)
+
+def TopKV2OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TopKV2OptionsEnd(builder)</code></pre>
 </details>
@@ -94,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return TopKV2OptionsStart(builder)</code></pre>
+    TopKV2OptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TopKV2Options.TopKV2OptionsEnd"><code class="name flex">
@@ -106,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TopKV2OptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def TopKV2OptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.TopKV2Options.TopKV2OptionsStart"><code class="name flex">
@@ -118,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TopKV2OptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def TopKV2OptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 </dl>

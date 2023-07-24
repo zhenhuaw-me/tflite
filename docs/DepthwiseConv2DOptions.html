@@ -105,31 +105,57 @@ class DepthwiseConv2DOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 1
 
-def DepthwiseConv2DOptionsStart(builder): builder.StartObject(7)
+def DepthwiseConv2DOptionsStart(builder):
+    builder.StartObject(7)
+
 def Start(builder):
-    return DepthwiseConv2DOptionsStart(builder)
-def DepthwiseConv2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    DepthwiseConv2DOptionsStart(builder)
+
+def DepthwiseConv2DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return DepthwiseConv2DOptionsAddPadding(builder, padding)
-def DepthwiseConv2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+    DepthwiseConv2DOptionsAddPadding(builder, padding)
+
+def DepthwiseConv2DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return DepthwiseConv2DOptionsAddStrideW(builder, strideW)
-def DepthwiseConv2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
+    DepthwiseConv2DOptionsAddStrideW(builder, strideW)
+
+def DepthwiseConv2DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return DepthwiseConv2DOptionsAddStrideH(builder, strideH)
-def DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier): builder.PrependInt32Slot(3, depthMultiplier, 0)
+    DepthwiseConv2DOptionsAddStrideH(builder, strideH)
+
+def DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier):
+    builder.PrependInt32Slot(3, depthMultiplier, 0)
+
 def AddDepthMultiplier(builder, depthMultiplier):
-    return DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier)
-def DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+    DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier)
+
+def DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(5, dilationWFactor, 1)
+    DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor):
+    builder.PrependInt32Slot(5, dilationWFactor, 1)
+
 def AddDilationWFactor(builder, dilationWFactor):
-    return DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor)
-def DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(6, dilationHFactor, 1)
+    DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor)
+
+def DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor):
+    builder.PrependInt32Slot(6, dilationHFactor, 1)
+
 def AddDilationHFactor(builder, dilationHFactor):
-    return DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor)
-def DepthwiseConv2DOptionsEnd(builder): return builder.EndObject()
+    DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor)
+
+def DepthwiseConv2DOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DepthwiseConv2DOptionsEnd(builder)</code></pre>
 </details>
@@ -151,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDepthMultiplier(builder, depthMultiplier):
-    return DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier)</code></pre>
+    DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.AddDilationHFactor"><code class="name flex">
@@ -164,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDilationHFactor(builder, dilationHFactor):
-    return DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor)</code></pre>
+    DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.AddDilationWFactor"><code class="name flex">
@@ -177,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDilationWFactor(builder, dilationWFactor):
-    return DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor)</code></pre>
+    DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.AddFusedActivationFunction"><code class="name flex">
@@ -190,7 +216,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.AddPadding"><code class="name flex">
@@ -203,7 +229,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddPadding(builder, padding):
-    return DepthwiseConv2DOptionsAddPadding(builder, padding)</code></pre>
+    DepthwiseConv2DOptionsAddPadding(builder, padding)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.AddStrideH"><code class="name flex">
@@ -216,7 +242,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideH(builder, strideH):
-    return DepthwiseConv2DOptionsAddStrideH(builder, strideH)</code></pre>
+    DepthwiseConv2DOptionsAddStrideH(builder, strideH)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.AddStrideW"><code class="name flex">
@@ -229,7 +255,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideW(builder, strideW):
-    return DepthwiseConv2DOptionsAddStrideW(builder, strideW)</code></pre>
+    DepthwiseConv2DOptionsAddStrideW(builder, strideW)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddDepthMultiplier"><code class="name flex">
@@ -241,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier): builder.PrependInt32Slot(3, depthMultiplier, 0)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddDepthMultiplier(builder, depthMultiplier):
+    builder.PrependInt32Slot(3, depthMultiplier, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddDilationHFactor"><code class="name flex">
@@ -253,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(6, dilationHFactor, 1)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddDilationHFactor(builder, dilationHFactor):
+    builder.PrependInt32Slot(6, dilationHFactor, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddDilationWFactor"><code class="name flex">
@@ -265,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(5, dilationWFactor, 1)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddDilationWFactor(builder, dilationWFactor):
+    builder.PrependInt32Slot(5, dilationWFactor, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddFusedActivationFunction"><code class="name flex">
@@ -277,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(4, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddPadding"><code class="name flex">
@@ -289,7 +319,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddStrideH"><code class="name flex">
@@ -301,7 +332,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsAddStrideW"><code class="name flex">
@@ -313,7 +345,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsEnd"><code class="name flex">
@@ -325,7 +358,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.DepthwiseConv2DOptionsStart"><code class="name flex">
@@ -337,7 +371,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DepthwiseConv2DOptionsStart(builder): builder.StartObject(7)</code></pre>
+<pre><code class="python">def DepthwiseConv2DOptionsStart(builder):
+    builder.StartObject(7)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DepthwiseConv2DOptions.End"><code class="name flex">
@@ -363,7 +398,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return DepthwiseConv2DOptionsStart(builder)</code></pre>
+    DepthwiseConv2DOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

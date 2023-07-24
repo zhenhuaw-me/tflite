@@ -28,9 +28,14 @@ class AddNOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def AddNOptionsStart(builder): builder.StartObject(0)
+def AddNOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return AddNOptionsStart(builder)
-def AddNOptionsEnd(builder): return builder.EndObject()
+    AddNOptionsStart(builder)
+
+def AddNOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AddNOptionsEnd(builder)

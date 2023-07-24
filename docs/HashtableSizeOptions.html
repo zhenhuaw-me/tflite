@@ -56,10 +56,15 @@ class HashtableSizeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HashtableSizeOptionsStart(builder): builder.StartObject(0)
+def HashtableSizeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HashtableSizeOptionsStart(builder)
-def HashtableSizeOptionsEnd(builder): return builder.EndObject()
+    HashtableSizeOptionsStart(builder)
+
+def HashtableSizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableSizeOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableSizeOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def HashtableSizeOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableSizeOptions.HashtableSizeOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def HashtableSizeOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def HashtableSizeOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.HashtableSizeOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return HashtableSizeOptionsStart(builder)</code></pre>
+    HashtableSizeOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

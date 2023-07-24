@@ -63,13 +63,21 @@ class SplitVOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def SplitVOptionsStart(builder): builder.StartObject(1)
+def SplitVOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SplitVOptionsStart(builder)
-def SplitVOptionsAddNumSplits(builder, numSplits): builder.PrependInt32Slot(0, numSplits, 0)
+    SplitVOptionsStart(builder)
+
+def SplitVOptionsAddNumSplits(builder, numSplits):
+    builder.PrependInt32Slot(0, numSplits, 0)
+
 def AddNumSplits(builder, numSplits):
-    return SplitVOptionsAddNumSplits(builder, numSplits)
-def SplitVOptionsEnd(builder): return builder.EndObject()
+    SplitVOptionsAddNumSplits(builder, numSplits)
+
+def SplitVOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SplitVOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNumSplits(builder, numSplits):
-    return SplitVOptionsAddNumSplits(builder, numSplits)</code></pre>
+    SplitVOptionsAddNumSplits(builder, numSplits)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SplitVOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SplitVOptionsAddNumSplits(builder, numSplits): builder.PrependInt32Slot(0, numSplits, 0)</code></pre>
+<pre><code class="python">def SplitVOptionsAddNumSplits(builder, numSplits):
+    builder.PrependInt32Slot(0, numSplits, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SplitVOptions.SplitVOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SplitVOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SplitVOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SplitVOptions.SplitVOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SplitVOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def SplitVOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SplitVOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SplitVOptionsStart(builder)</code></pre>
+    SplitVOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -49,18 +49,32 @@ class SequenceRNNOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SequenceRNNOptionsStart(builder): builder.StartObject(3)
+def SequenceRNNOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return SequenceRNNOptionsStart(builder)
-def SequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)
+    SequenceRNNOptionsStart(builder)
+
+def SequenceRNNOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(0, timeMajor, 0)
+
 def AddTimeMajor(builder, timeMajor):
-    return SequenceRNNOptionsAddTimeMajor(builder, timeMajor)
-def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+    SequenceRNNOptionsAddTimeMajor(builder, timeMajor)
+
+def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+    SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def SequenceRNNOptionsEnd(builder): return builder.EndObject()
+    SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def SequenceRNNOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SequenceRNNOptionsEnd(builder)

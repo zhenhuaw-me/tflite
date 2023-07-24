@@ -77,19 +77,33 @@ class SkipGramOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SkipGramOptionsStart(builder): builder.StartObject(3)
+def SkipGramOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return SkipGramOptionsStart(builder)
-def SkipGramOptionsAddNgramSize(builder, ngramSize): builder.PrependInt32Slot(0, ngramSize, 0)
+    SkipGramOptionsStart(builder)
+
+def SkipGramOptionsAddNgramSize(builder, ngramSize):
+    builder.PrependInt32Slot(0, ngramSize, 0)
+
 def AddNgramSize(builder, ngramSize):
-    return SkipGramOptionsAddNgramSize(builder, ngramSize)
-def SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize): builder.PrependInt32Slot(1, maxSkipSize, 0)
+    SkipGramOptionsAddNgramSize(builder, ngramSize)
+
+def SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize):
+    builder.PrependInt32Slot(1, maxSkipSize, 0)
+
 def AddMaxSkipSize(builder, maxSkipSize):
-    return SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize)
-def SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams): builder.PrependBoolSlot(2, includeAllNgrams, 0)
+    SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize)
+
+def SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams):
+    builder.PrependBoolSlot(2, includeAllNgrams, 0)
+
 def AddIncludeAllNgrams(builder, includeAllNgrams):
-    return SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams)
-def SkipGramOptionsEnd(builder): return builder.EndObject()
+    SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams)
+
+def SkipGramOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SkipGramOptionsEnd(builder)</code></pre>
 </details>
@@ -111,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddIncludeAllNgrams(builder, includeAllNgrams):
-    return SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams)</code></pre>
+    SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.AddMaxSkipSize"><code class="name flex">
@@ -124,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMaxSkipSize(builder, maxSkipSize):
-    return SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize)</code></pre>
+    SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.AddNgramSize"><code class="name flex">
@@ -137,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNgramSize(builder, ngramSize):
-    return SkipGramOptionsAddNgramSize(builder, ngramSize)</code></pre>
+    SkipGramOptionsAddNgramSize(builder, ngramSize)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.End"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams): builder.PrependBoolSlot(2, includeAllNgrams, 0)</code></pre>
+<pre><code class="python">def SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams):
+    builder.PrependBoolSlot(2, includeAllNgrams, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.SkipGramOptionsAddMaxSkipSize"><code class="name flex">
@@ -174,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize): builder.PrependInt32Slot(1, maxSkipSize, 0)</code></pre>
+<pre><code class="python">def SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize):
+    builder.PrependInt32Slot(1, maxSkipSize, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.SkipGramOptionsAddNgramSize"><code class="name flex">
@@ -186,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SkipGramOptionsAddNgramSize(builder, ngramSize): builder.PrependInt32Slot(0, ngramSize, 0)</code></pre>
+<pre><code class="python">def SkipGramOptionsAddNgramSize(builder, ngramSize):
+    builder.PrependInt32Slot(0, ngramSize, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.SkipGramOptionsEnd"><code class="name flex">
@@ -198,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SkipGramOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SkipGramOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.SkipGramOptionsStart"><code class="name flex">
@@ -210,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SkipGramOptionsStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def SkipGramOptionsStart(builder):
+    builder.StartObject(3)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SkipGramOptions.Start"><code class="name flex">
@@ -223,7 +242,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SkipGramOptionsStart(builder)</code></pre>
+    SkipGramOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

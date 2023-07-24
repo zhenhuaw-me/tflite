@@ -55,15 +55,26 @@ class SqueezeOptions(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def SqueezeOptionsStart(builder): builder.StartObject(1)
+def SqueezeOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SqueezeOptionsStart(builder)
-def SqueezeOptionsAddSqueezeDims(builder, squeezeDims): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(squeezeDims), 0)
+    SqueezeOptionsStart(builder)
+
+def SqueezeOptionsAddSqueezeDims(builder, squeezeDims):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(squeezeDims), 0)
+
 def AddSqueezeDims(builder, squeezeDims):
-    return SqueezeOptionsAddSqueezeDims(builder, squeezeDims)
-def SqueezeOptionsStartSqueezeDimsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartSqueezeDimsVector(builder, numElems):
+    SqueezeOptionsAddSqueezeDims(builder, squeezeDims)
+
+def SqueezeOptionsStartSqueezeDimsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartSqueezeDimsVector(builder, numElems: int) -> int:
     return SqueezeOptionsStartSqueezeDimsVector(builder, numElems)
-def SqueezeOptionsEnd(builder): return builder.EndObject()
+
+def SqueezeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SqueezeOptionsEnd(builder)

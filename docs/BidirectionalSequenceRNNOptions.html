@@ -84,22 +84,39 @@ class BidirectionalSequenceRNNOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def BidirectionalSequenceRNNOptionsStart(builder): builder.StartObject(4)
+def BidirectionalSequenceRNNOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return BidirectionalSequenceRNNOptionsStart(builder)
-def BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)
+    BidirectionalSequenceRNNOptionsStart(builder)
+
+def BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(0, timeMajor, 0)
+
 def AddTimeMajor(builder, timeMajor):
-    return BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)
-def BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+    BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)
+
+def BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(2, mergeOutputs, 0)
+    BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs):
+    builder.PrependBoolSlot(2, mergeOutputs, 0)
+
 def AddMergeOutputs(builder, mergeOutputs):
-    return BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)
-def BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)
+    BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)
+
+def BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()
+    BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def BidirectionalSequenceRNNOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BidirectionalSequenceRNNOptionsEnd(builder)</code></pre>
 </details>
@@ -121,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.AddFusedActivationFunction"><code class="name flex">
@@ -134,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.AddMergeOutputs"><code class="name flex">
@@ -147,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMergeOutputs(builder, mergeOutputs):
-    return BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)</code></pre>
+    BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.AddTimeMajor"><code class="name flex">
@@ -160,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTimeMajor(builder, timeMajor):
-    return BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+    BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
@@ -172,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(3, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddFusedActivationFunction"><code class="name flex">
@@ -184,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(1, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddMergeOutputs"><code class="name flex">
@@ -196,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(2, mergeOutputs, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceRNNOptionsAddMergeOutputs(builder, mergeOutputs):
+    builder.PrependBoolSlot(2, mergeOutputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsAddTimeMajor"><code class="name flex">
@@ -208,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)</code></pre>
+<pre><code class="python">def BidirectionalSequenceRNNOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(0, timeMajor, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsEnd"><code class="name flex">
@@ -220,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def BidirectionalSequenceRNNOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.BidirectionalSequenceRNNOptionsStart"><code class="name flex">
@@ -232,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BidirectionalSequenceRNNOptionsStart(builder): builder.StartObject(4)</code></pre>
+<pre><code class="python">def BidirectionalSequenceRNNOptionsStart(builder):
+    builder.StartObject(4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BidirectionalSequenceRNNOptions.End"><code class="name flex">
@@ -258,7 +281,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return BidirectionalSequenceRNNOptionsStart(builder)</code></pre>
+    BidirectionalSequenceRNNOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

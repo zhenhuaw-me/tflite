@@ -164,5 +164,10 @@ BUILTIN_OPCODE2NAME = {
     154: 'UNSORTED_SEGMENT_MAX',
     155: 'UNSORTED_SEGMENT_SUM',
     156: 'ATAN2',
+    157: 'UNSORTED_SEGMENT_MIN',
+    158: 'SIGN',
+    159: 'BITCAST',
+    160: 'BITWISE_XOR',
+    161: 'RIGHT_SHIFT',
 }
 ########################## ABOVE ARE AUTO-GENERATED ##########################

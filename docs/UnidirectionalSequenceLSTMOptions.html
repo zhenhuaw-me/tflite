@@ -91,25 +91,58 @@ class UnidirectionalSequenceLSTMOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def UnidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(5)
+    # UnidirectionalSequenceLSTMOptions
+    def DiagonalRecurrentTensors(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+def UnidirectionalSequenceLSTMOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return UnidirectionalSequenceLSTMOptionsStart(builder)
-def UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    UnidirectionalSequenceLSTMOptionsStart(builder)
+
+def UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+    UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)
+
 def AddCellClip(builder, cellClip):
-    return UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
-def UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+    UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
+
+def UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)
+
 def AddProjClip(builder, projClip):
-    return UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
-def UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(3, timeMajor, 0)
+    UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
+
+def UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(3, timeMajor, 0)
+
 def AddTimeMajor(builder, timeMajor):
-    return UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
-def UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+    UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
+
+def UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def UnidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()
+    UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors):
+    builder.PrependBoolSlot(5, diagonalRecurrentTensors, 0)
+
+def AddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors):
+    UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors)
+
+def UnidirectionalSequenceLSTMOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnidirectionalSequenceLSTMOptionsEnd(builder)</code></pre>
 </details>
@@ -131,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.AddCellClip"><code class="name flex">
@@ -144,7 +177,20 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCellClip(builder, cellClip):
-    return UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)</code></pre>
+    UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)</code></pre>
+</details>
+</dd>
+<dt id="tflite.UnidirectionalSequenceLSTMOptions.AddDiagonalRecurrentTensors"><code class="name flex">
+<span>def <span class="ident">AddDiagonalRecurrentTensors</span></span>(<span>builder, diagonalRecurrentTensors)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors):
+    UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.AddFusedActivationFunction"><code class="name flex">
@@ -157,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.AddProjClip"><code class="name flex">
@@ -170,7 +216,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddProjClip(builder, projClip):
-    return UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)</code></pre>
+    UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.AddTimeMajor"><code class="name flex">
@@ -183,7 +229,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTimeMajor(builder, timeMajor):
-    return UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+    UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.End"><code class="name flex">
@@ -209,7 +255,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return UnidirectionalSequenceLSTMOptionsStart(builder)</code></pre>
+    UnidirectionalSequenceLSTMOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
@@ -221,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddCellClip"><code class="name flex">
@@ -233,7 +280,21 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors"><code class="name flex">
+<span>def <span class="ident">UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors</span></span>(<span>builder, diagonalRecurrentTensors)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors):
+    builder.PrependBoolSlot(5, diagonalRecurrentTensors, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction"><code class="name flex">
@@ -245,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddProjClip"><code class="name flex">
@@ -257,7 +319,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddTimeMajor"><code class="name flex">
@@ -269,7 +332,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(3, timeMajor, 0)</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(3, timeMajor, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsEnd"><code class="name flex">
@@ -281,7 +345,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsStart"><code class="name flex">
@@ -293,7 +358,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(5)</code></pre>
+<pre><code class="python">def UnidirectionalSequenceLSTMOptionsStart(builder):
+    builder.StartObject(6)</code></pre>
 </details>
 </dd>
 </dl>
@@ -363,6 +429,13 @@ def End(builder):
     # UnidirectionalSequenceLSTMOptions
     def AsymmetricQuantizeInputs(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+    # UnidirectionalSequenceLSTMOptions
+    def DiagonalRecurrentTensors(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
         if o != 0:
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False</code></pre>
@@ -450,6 +523,22 @@ def UnidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_
     return 0.0</code></pre>
 </details>
 </dd>
+<dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.DiagonalRecurrentTensors"><code class="name flex">
+<span>def <span class="ident">DiagonalRecurrentTensors</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def DiagonalRecurrentTensors(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+    return False</code></pre>
+</details>
+</dd>
 <dt id="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.FusedActivationFunction"><code class="name flex">
 <span>def <span class="ident">FusedActivationFunction</span></span>(<span>self)</span>
 </code></dt>
@@ -531,6 +620,7 @@ def UnidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_
 <ul class="">
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.AddAsymmetricQuantizeInputs" href="#tflite.UnidirectionalSequenceLSTMOptions.AddAsymmetricQuantizeInputs">AddAsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.AddCellClip" href="#tflite.UnidirectionalSequenceLSTMOptions.AddCellClip">AddCellClip</a></code></li>
+<li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.AddDiagonalRecurrentTensors" href="#tflite.UnidirectionalSequenceLSTMOptions.AddDiagonalRecurrentTensors">AddDiagonalRecurrentTensors</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.AddFusedActivationFunction" href="#tflite.UnidirectionalSequenceLSTMOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.AddProjClip" href="#tflite.UnidirectionalSequenceLSTMOptions.AddProjClip">AddProjClip</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.AddTimeMajor" href="#tflite.UnidirectionalSequenceLSTMOptions.AddTimeMajor">AddTimeMajor</a></code></li>
@@ -538,6 +628,7 @@ def UnidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.Start" href="#tflite.UnidirectionalSequenceLSTMOptions.Start">Start</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs">UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddCellClip" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddCellClip">UnidirectionalSequenceLSTMOptionsAddCellClip</a></code></li>
+<li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors">UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction">UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddProjClip" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddProjClip">UnidirectionalSequenceLSTMOptionsAddProjClip</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddTimeMajor" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptionsAddTimeMajor">UnidirectionalSequenceLSTMOptionsAddTimeMajor</a></code></li>
@@ -552,6 +643,7 @@ def UnidirectionalSequenceLSTMOptionsBufferHasIdentifier(cls, buf, offset, size_
 <ul class="">
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.AsymmetricQuantizeInputs" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.AsymmetricQuantizeInputs">AsymmetricQuantizeInputs</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.CellClip" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.CellClip">CellClip</a></code></li>
+<li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.DiagonalRecurrentTensors" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.DiagonalRecurrentTensors">DiagonalRecurrentTensors</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.FusedActivationFunction" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.GetRootAs" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.GetRootAsUnidirectionalSequenceLSTMOptions" href="#tflite.UnidirectionalSequenceLSTMOptions.UnidirectionalSequenceLSTMOptions.GetRootAsUnidirectionalSequenceLSTMOptions">GetRootAsUnidirectionalSequenceLSTMOptions</a></code></li>

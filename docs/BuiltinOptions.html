@@ -151,8 +151,13 @@ class BuiltinOptions(object):
     DynamicUpdateSliceOptions = 117
     UnsortedSegmentProdOptions = 118
     UnsortedSegmentMaxOptions = 119
-    UnsortedSegmentSumOptions = 120
-    ATan2Options = 121</code></pre>
+    UnsortedSegmentMinOptions = 120
+    UnsortedSegmentSumOptions = 121
+    ATan2Options = 122
+    SignOptions = 123
+    BitcastOptions = 124
+    BitwiseXorOptions = 125
+    RightShiftOptions = 126</code></pre>
 </details>
 </section>
 <section>
@@ -294,8 +299,13 @@ class BuiltinOptions(object):
     DynamicUpdateSliceOptions = 117
     UnsortedSegmentProdOptions = 118
     UnsortedSegmentMaxOptions = 119
-    UnsortedSegmentSumOptions = 120
-    ATan2Options = 121</code></pre>
+    UnsortedSegmentMinOptions = 120
+    UnsortedSegmentSumOptions = 121
+    ATan2Options = 122
+    SignOptions = 123
+    BitcastOptions = 124
+    BitwiseXorOptions = 125
+    RightShiftOptions = 126</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
@@ -340,6 +350,14 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions"><code class="name">var <span class="ident">BidirectionalSequenceRNNOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BitcastOptions"><code class="name">var <span class="ident">BitcastOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.BitwiseXorOptions"><code class="name">var <span class="ident">BitwiseXorOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -651,6 +669,10 @@ class BuiltinOptions(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.RightShiftOptions"><code class="name">var <span class="ident">RightShiftOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.SVDFOptions"><code class="name">var <span class="ident">SVDFOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -676,6 +698,10 @@ class BuiltinOptions(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.ShapeOptions"><code class="name">var <span class="ident">ShapeOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.SignOptions"><code class="name">var <span class="ident">SignOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -763,6 +789,10 @@ class BuiltinOptions(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMinOptions"><code class="name">var <span class="ident">UnsortedSegmentMinOptions</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentProdOptions"><code class="name">var <span class="ident">UnsortedSegmentProdOptions</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -819,6 +849,8 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BatchToSpaceNDOptions">BatchToSpaceNDOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceLSTMOptions">BidirectionalSequenceLSTMOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BidirectionalSequenceRNNOptions">BidirectionalSequenceRNNOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BitcastOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BitcastOptions">BitcastOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BitwiseXorOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BitwiseXorOptions">BitwiseXorOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BroadcastToOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BroadcastToOptions">BroadcastToOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.BucketizeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.BucketizeOptions">BucketizeOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.CallOnceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.CallOnceOptions">CallOnceOptions</a></code></li>
@@ -896,6 +928,7 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ReverseSequenceOptions">ReverseSequenceOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.ReverseV2Options">ReverseV2Options</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.Rfft2dOptions" href="#tflite.BuiltinOptions.BuiltinOptions.Rfft2dOptions">Rfft2dOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.RightShiftOptions" href="#tflite.BuiltinOptions.BuiltinOptions.RightShiftOptions">RightShiftOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SVDFOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SVDFOptions">SVDFOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ScatterNdOptions">ScatterNdOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SegmentSumOptions">SegmentSumOptions</a></code></li>
@@ -903,6 +936,7 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SelectV2Options" href="#tflite.BuiltinOptions.BuiltinOptions.SelectV2Options">SelectV2Options</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SequenceRNNOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SequenceRNNOptions">SequenceRNNOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.ShapeOptions" href="#tflite.BuiltinOptions.BuiltinOptions.ShapeOptions">ShapeOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SignOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SignOptions">SignOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SkipGramOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SkipGramOptions">SkipGramOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SliceOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SliceOptions">SliceOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.SoftmaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.SoftmaxOptions">SoftmaxOptions</a></code></li>
@@ -924,6 +958,7 @@ class BuiltinOptions(object):
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UniqueOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UniqueOptions">UniqueOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnpackOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnpackOptions">UnpackOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMaxOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMaxOptions">UnsortedSegmentMaxOptions</a></code></li>
+<li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMinOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentMinOptions">UnsortedSegmentMinOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentProdOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentProdOptions">UnsortedSegmentProdOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentSumOptions" href="#tflite.BuiltinOptions.BuiltinOptions.UnsortedSegmentSumOptions">UnsortedSegmentSumOptions</a></code></li>
 <li><code><a title="tflite.BuiltinOptions.BuiltinOptions.VarHandleOptions" href="#tflite.BuiltinOptions.BuiltinOptions.VarHandleOptions">VarHandleOptions</a></code></li>

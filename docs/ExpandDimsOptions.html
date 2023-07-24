@@ -56,10 +56,15 @@ class ExpandDimsOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ExpandDimsOptionsStart(builder): builder.StartObject(0)
+def ExpandDimsOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ExpandDimsOptionsStart(builder)
-def ExpandDimsOptionsEnd(builder): return builder.EndObject()
+    ExpandDimsOptionsStart(builder)
+
+def ExpandDimsOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ExpandDimsOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ExpandDimsOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ExpandDimsOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ExpandDimsOptions.ExpandDimsOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ExpandDimsOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def ExpandDimsOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ExpandDimsOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ExpandDimsOptionsStart(builder)</code></pre>
+    ExpandDimsOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

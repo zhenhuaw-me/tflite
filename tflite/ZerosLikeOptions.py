@@ -28,9 +28,14 @@ class ZerosLikeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ZerosLikeOptionsStart(builder): builder.StartObject(0)
+def ZerosLikeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ZerosLikeOptionsStart(builder)
-def ZerosLikeOptionsEnd(builder): return builder.EndObject()
+    ZerosLikeOptionsStart(builder)
+
+def ZerosLikeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ZerosLikeOptionsEnd(builder)

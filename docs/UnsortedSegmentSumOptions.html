@@ -56,10 +56,15 @@ class UnsortedSegmentSumOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def UnsortedSegmentSumOptionsStart(builder): builder.StartObject(0)
+def UnsortedSegmentSumOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return UnsortedSegmentSumOptionsStart(builder)
-def UnsortedSegmentSumOptionsEnd(builder): return builder.EndObject()
+    UnsortedSegmentSumOptionsStart(builder)
+
+def UnsortedSegmentSumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnsortedSegmentSumOptionsEnd(builder)</code></pre>
 </details>
@@ -94,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return UnsortedSegmentSumOptionsStart(builder)</code></pre>
+    UnsortedSegmentSumOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnsortedSegmentSumOptions.UnsortedSegmentSumOptionsEnd"><code class="name flex">
@@ -106,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnsortedSegmentSumOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def UnsortedSegmentSumOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnsortedSegmentSumOptions.UnsortedSegmentSumOptionsStart"><code class="name flex">
@@ -118,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnsortedSegmentSumOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def UnsortedSegmentSumOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 </dl>

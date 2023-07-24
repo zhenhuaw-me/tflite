@@ -56,10 +56,15 @@ class BatchToSpaceNDOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def BatchToSpaceNDOptionsStart(builder): builder.StartObject(0)
+def BatchToSpaceNDOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return BatchToSpaceNDOptionsStart(builder)
-def BatchToSpaceNDOptionsEnd(builder): return builder.EndObject()
+    BatchToSpaceNDOptionsStart(builder)
+
+def BatchToSpaceNDOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BatchToSpaceNDOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchToSpaceNDOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def BatchToSpaceNDOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchToSpaceNDOptions.BatchToSpaceNDOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchToSpaceNDOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def BatchToSpaceNDOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchToSpaceNDOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return BatchToSpaceNDOptionsStart(builder)</code></pre>
+    BatchToSpaceNDOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

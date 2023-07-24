@@ -98,28 +98,51 @@ class Pool2DOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def Pool2DOptionsStart(builder): builder.StartObject(6)
+def Pool2DOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return Pool2DOptionsStart(builder)
-def Pool2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    Pool2DOptionsStart(builder)
+
+def Pool2DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return Pool2DOptionsAddPadding(builder, padding)
-def Pool2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+    Pool2DOptionsAddPadding(builder, padding)
+
+def Pool2DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return Pool2DOptionsAddStrideW(builder, strideW)
-def Pool2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
+    Pool2DOptionsAddStrideW(builder, strideW)
+
+def Pool2DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return Pool2DOptionsAddStrideH(builder, strideH)
-def Pool2DOptionsAddFilterWidth(builder, filterWidth): builder.PrependInt32Slot(3, filterWidth, 0)
+    Pool2DOptionsAddStrideH(builder, strideH)
+
+def Pool2DOptionsAddFilterWidth(builder, filterWidth):
+    builder.PrependInt32Slot(3, filterWidth, 0)
+
 def AddFilterWidth(builder, filterWidth):
-    return Pool2DOptionsAddFilterWidth(builder, filterWidth)
-def Pool2DOptionsAddFilterHeight(builder, filterHeight): builder.PrependInt32Slot(4, filterHeight, 0)
+    Pool2DOptionsAddFilterWidth(builder, filterWidth)
+
+def Pool2DOptionsAddFilterHeight(builder, filterHeight):
+    builder.PrependInt32Slot(4, filterHeight, 0)
+
 def AddFilterHeight(builder, filterHeight):
-    return Pool2DOptionsAddFilterHeight(builder, filterHeight)
-def Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(5, fusedActivationFunction, 0)
+    Pool2DOptionsAddFilterHeight(builder, filterHeight)
+
+def Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(5, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def Pool2DOptionsEnd(builder): return builder.EndObject()
+    Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def Pool2DOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Pool2DOptionsEnd(builder)</code></pre>
 </details>
@@ -141,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFilterHeight(builder, filterHeight):
-    return Pool2DOptionsAddFilterHeight(builder, filterHeight)</code></pre>
+    Pool2DOptionsAddFilterHeight(builder, filterHeight)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.AddFilterWidth"><code class="name flex">
@@ -154,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFilterWidth(builder, filterWidth):
-    return Pool2DOptionsAddFilterWidth(builder, filterWidth)</code></pre>
+    Pool2DOptionsAddFilterWidth(builder, filterWidth)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.AddFusedActivationFunction"><code class="name flex">
@@ -167,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.AddPadding"><code class="name flex">
@@ -180,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddPadding(builder, padding):
-    return Pool2DOptionsAddPadding(builder, padding)</code></pre>
+    Pool2DOptionsAddPadding(builder, padding)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.AddStrideH"><code class="name flex">
@@ -193,7 +216,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideH(builder, strideH):
-    return Pool2DOptionsAddStrideH(builder, strideH)</code></pre>
+    Pool2DOptionsAddStrideH(builder, strideH)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.AddStrideW"><code class="name flex">
@@ -206,7 +229,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideW(builder, strideW):
-    return Pool2DOptionsAddStrideW(builder, strideW)</code></pre>
+    Pool2DOptionsAddStrideW(builder, strideW)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.End"><code class="name flex">
@@ -231,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsAddFilterHeight(builder, filterHeight): builder.PrependInt32Slot(4, filterHeight, 0)</code></pre>
+<pre><code class="python">def Pool2DOptionsAddFilterHeight(builder, filterHeight):
+    builder.PrependInt32Slot(4, filterHeight, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsAddFilterWidth"><code class="name flex">
@@ -243,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsAddFilterWidth(builder, filterWidth): builder.PrependInt32Slot(3, filterWidth, 0)</code></pre>
+<pre><code class="python">def Pool2DOptionsAddFilterWidth(builder, filterWidth):
+    builder.PrependInt32Slot(3, filterWidth, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsAddFusedActivationFunction"><code class="name flex">
@@ -255,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(5, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(5, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsAddPadding"><code class="name flex">
@@ -267,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)</code></pre>
+<pre><code class="python">def Pool2DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsAddStrideH"><code class="name flex">
@@ -279,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)</code></pre>
+<pre><code class="python">def Pool2DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsAddStrideW"><code class="name flex">
@@ -291,7 +319,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)</code></pre>
+<pre><code class="python">def Pool2DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsEnd"><code class="name flex">
@@ -303,7 +332,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def Pool2DOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Pool2DOptionsStart"><code class="name flex">
@@ -315,7 +345,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Pool2DOptionsStart(builder): builder.StartObject(6)</code></pre>
+<pre><code class="python">def Pool2DOptionsStart(builder):
+    builder.StartObject(6)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Pool2DOptions.Start"><code class="name flex">
@@ -328,7 +359,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return Pool2DOptionsStart(builder)</code></pre>
+    Pool2DOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

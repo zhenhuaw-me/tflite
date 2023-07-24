@@ -42,15 +42,26 @@ class WhileOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def WhileOptionsStart(builder): builder.StartObject(2)
+def WhileOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return WhileOptionsStart(builder)
-def WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex): builder.PrependInt32Slot(0, condSubgraphIndex, 0)
+    WhileOptionsStart(builder)
+
+def WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex):
+    builder.PrependInt32Slot(0, condSubgraphIndex, 0)
+
 def AddCondSubgraphIndex(builder, condSubgraphIndex):
-    return WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex)
-def WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex): builder.PrependInt32Slot(1, bodySubgraphIndex, 0)
+    WhileOptionsAddCondSubgraphIndex(builder, condSubgraphIndex)
+
+def WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex):
+    builder.PrependInt32Slot(1, bodySubgraphIndex, 0)
+
 def AddBodySubgraphIndex(builder, bodySubgraphIndex):
-    return WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)
-def WhileOptionsEnd(builder): return builder.EndObject()
+    WhileOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)
+
+def WhileOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return WhileOptionsEnd(builder)

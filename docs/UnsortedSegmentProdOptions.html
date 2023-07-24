@@ -56,10 +56,15 @@ class UnsortedSegmentProdOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def UnsortedSegmentProdOptionsStart(builder): builder.StartObject(0)
+def UnsortedSegmentProdOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return UnsortedSegmentProdOptionsStart(builder)
-def UnsortedSegmentProdOptionsEnd(builder): return builder.EndObject()
+    UnsortedSegmentProdOptionsStart(builder)
+
+def UnsortedSegmentProdOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnsortedSegmentProdOptionsEnd(builder)</code></pre>
 </details>
@@ -94,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return UnsortedSegmentProdOptionsStart(builder)</code></pre>
+    UnsortedSegmentProdOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnsortedSegmentProdOptions.UnsortedSegmentProdOptionsEnd"><code class="name flex">
@@ -106,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnsortedSegmentProdOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def UnsortedSegmentProdOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.UnsortedSegmentProdOptions.UnsortedSegmentProdOptionsStart"><code class="name flex">
@@ -118,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UnsortedSegmentProdOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def UnsortedSegmentProdOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 </dl>

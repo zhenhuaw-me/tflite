@@ -56,10 +56,15 @@ class SquaredDifferenceOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SquaredDifferenceOptionsStart(builder): builder.StartObject(0)
+def SquaredDifferenceOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SquaredDifferenceOptionsStart(builder)
-def SquaredDifferenceOptionsEnd(builder): return builder.EndObject()
+    SquaredDifferenceOptionsStart(builder)
+
+def SquaredDifferenceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SquaredDifferenceOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SquaredDifferenceOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SquaredDifferenceOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SquaredDifferenceOptions.SquaredDifferenceOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SquaredDifferenceOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def SquaredDifferenceOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SquaredDifferenceOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SquaredDifferenceOptionsStart(builder)</code></pre>
+    SquaredDifferenceOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -28,9 +28,14 @@ class LessOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LessOptionsStart(builder): builder.StartObject(0)
+def LessOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LessOptionsStart(builder)
-def LessOptionsEnd(builder): return builder.EndObject()
+    LessOptionsStart(builder)
+
+def LessOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LessOptionsEnd(builder)

@@ -63,13 +63,21 @@ class ArgMaxOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def ArgMaxOptionsStart(builder): builder.StartObject(1)
+def ArgMaxOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return ArgMaxOptionsStart(builder)
-def ArgMaxOptionsAddOutputType(builder, outputType): builder.PrependInt8Slot(0, outputType, 0)
+    ArgMaxOptionsStart(builder)
+
+def ArgMaxOptionsAddOutputType(builder, outputType):
+    builder.PrependInt8Slot(0, outputType, 0)
+
 def AddOutputType(builder, outputType):
-    return ArgMaxOptionsAddOutputType(builder, outputType)
-def ArgMaxOptionsEnd(builder): return builder.EndObject()
+    ArgMaxOptionsAddOutputType(builder, outputType)
+
+def ArgMaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ArgMaxOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOutputType(builder, outputType):
-    return ArgMaxOptionsAddOutputType(builder, outputType)</code></pre>
+    ArgMaxOptionsAddOutputType(builder, outputType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMaxOptions.ArgMaxOptionsAddOutputType"><code class="name flex">
@@ -103,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ArgMaxOptionsAddOutputType(builder, outputType): builder.PrependInt8Slot(0, outputType, 0)</code></pre>
+<pre><code class="python">def ArgMaxOptionsAddOutputType(builder, outputType):
+    builder.PrependInt8Slot(0, outputType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMaxOptions.ArgMaxOptionsEnd"><code class="name flex">
@@ -115,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ArgMaxOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ArgMaxOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMaxOptions.ArgMaxOptionsStart"><code class="name flex">
@@ -127,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ArgMaxOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def ArgMaxOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMaxOptions.End"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ArgMaxOptionsStart(builder)</code></pre>
+    ArgMaxOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

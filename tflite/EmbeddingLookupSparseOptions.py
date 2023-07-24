@@ -35,12 +35,20 @@ class EmbeddingLookupSparseOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def EmbeddingLookupSparseOptionsStart(builder): builder.StartObject(1)
+def EmbeddingLookupSparseOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return EmbeddingLookupSparseOptionsStart(builder)
-def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner): builder.PrependInt8Slot(0, combiner, 0)
+    EmbeddingLookupSparseOptionsStart(builder)
+
+def EmbeddingLookupSparseOptionsAddCombiner(builder, combiner):
+    builder.PrependInt8Slot(0, combiner, 0)
+
 def AddCombiner(builder, combiner):
-    return EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)
-def EmbeddingLookupSparseOptionsEnd(builder): return builder.EndObject()
+    EmbeddingLookupSparseOptionsAddCombiner(builder, combiner)
+
+def EmbeddingLookupSparseOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return EmbeddingLookupSparseOptionsEnd(builder)

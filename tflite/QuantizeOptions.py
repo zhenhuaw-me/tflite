@@ -28,9 +28,14 @@ class QuantizeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def QuantizeOptionsStart(builder): builder.StartObject(0)
+def QuantizeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return QuantizeOptionsStart(builder)
-def QuantizeOptionsEnd(builder): return builder.EndObject()
+    QuantizeOptionsStart(builder)
+
+def QuantizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return QuantizeOptionsEnd(builder)

@@ -35,12 +35,20 @@ class LeakyReluOptions(object):
             return self._tab.Get(flatbuffers.number_types.Float32Flags, o + self._tab.Pos)
         return 0.0
 
-def LeakyReluOptionsStart(builder): builder.StartObject(1)
+def LeakyReluOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return LeakyReluOptionsStart(builder)
-def LeakyReluOptionsAddAlpha(builder, alpha): builder.PrependFloat32Slot(0, alpha, 0.0)
+    LeakyReluOptionsStart(builder)
+
+def LeakyReluOptionsAddAlpha(builder, alpha):
+    builder.PrependFloat32Slot(0, alpha, 0.0)
+
 def AddAlpha(builder, alpha):
-    return LeakyReluOptionsAddAlpha(builder, alpha)
-def LeakyReluOptionsEnd(builder): return builder.EndObject()
+    LeakyReluOptionsAddAlpha(builder, alpha)
+
+def LeakyReluOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LeakyReluOptionsEnd(builder)

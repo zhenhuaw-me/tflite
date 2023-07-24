@@ -63,13 +63,21 @@ class SparseToDenseOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SparseToDenseOptionsStart(builder): builder.StartObject(1)
+def SparseToDenseOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SparseToDenseOptionsStart(builder)
-def SparseToDenseOptionsAddValidateIndices(builder, validateIndices): builder.PrependBoolSlot(0, validateIndices, 0)
+    SparseToDenseOptionsStart(builder)
+
+def SparseToDenseOptionsAddValidateIndices(builder, validateIndices):
+    builder.PrependBoolSlot(0, validateIndices, 0)
+
 def AddValidateIndices(builder, validateIndices):
-    return SparseToDenseOptionsAddValidateIndices(builder, validateIndices)
-def SparseToDenseOptionsEnd(builder): return builder.EndObject()
+    SparseToDenseOptionsAddValidateIndices(builder, validateIndices)
+
+def SparseToDenseOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SparseToDenseOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddValidateIndices(builder, validateIndices):
-    return SparseToDenseOptionsAddValidateIndices(builder, validateIndices)</code></pre>
+    SparseToDenseOptionsAddValidateIndices(builder, validateIndices)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparseToDenseOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparseToDenseOptionsAddValidateIndices(builder, validateIndices): builder.PrependBoolSlot(0, validateIndices, 0)</code></pre>
+<pre><code class="python">def SparseToDenseOptionsAddValidateIndices(builder, validateIndices):
+    builder.PrependBoolSlot(0, validateIndices, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparseToDenseOptions.SparseToDenseOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparseToDenseOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SparseToDenseOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparseToDenseOptions.SparseToDenseOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SparseToDenseOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def SparseToDenseOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SparseToDenseOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SparseToDenseOptionsStart(builder)</code></pre>
+    SparseToDenseOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -70,16 +70,27 @@ class ReverseSequenceOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def ReverseSequenceOptionsStart(builder): builder.StartObject(2)
+def ReverseSequenceOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return ReverseSequenceOptionsStart(builder)
-def ReverseSequenceOptionsAddSeqDim(builder, seqDim): builder.PrependInt32Slot(0, seqDim, 0)
+    ReverseSequenceOptionsStart(builder)
+
+def ReverseSequenceOptionsAddSeqDim(builder, seqDim):
+    builder.PrependInt32Slot(0, seqDim, 0)
+
 def AddSeqDim(builder, seqDim):
-    return ReverseSequenceOptionsAddSeqDim(builder, seqDim)
-def ReverseSequenceOptionsAddBatchDim(builder, batchDim): builder.PrependInt32Slot(1, batchDim, 0)
+    ReverseSequenceOptionsAddSeqDim(builder, seqDim)
+
+def ReverseSequenceOptionsAddBatchDim(builder, batchDim):
+    builder.PrependInt32Slot(1, batchDim, 0)
+
 def AddBatchDim(builder, batchDim):
-    return ReverseSequenceOptionsAddBatchDim(builder, batchDim)
-def ReverseSequenceOptionsEnd(builder): return builder.EndObject()
+    ReverseSequenceOptionsAddBatchDim(builder, batchDim)
+
+def ReverseSequenceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ReverseSequenceOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBatchDim(builder, batchDim):
-    return ReverseSequenceOptionsAddBatchDim(builder, batchDim)</code></pre>
+    ReverseSequenceOptionsAddBatchDim(builder, batchDim)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReverseSequenceOptions.AddSeqDim"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSeqDim(builder, seqDim):
-    return ReverseSequenceOptionsAddSeqDim(builder, seqDim)</code></pre>
+    ReverseSequenceOptionsAddSeqDim(builder, seqDim)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReverseSequenceOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ReverseSequenceOptionsAddBatchDim(builder, batchDim): builder.PrependInt32Slot(1, batchDim, 0)</code></pre>
+<pre><code class="python">def ReverseSequenceOptionsAddBatchDim(builder, batchDim):
+    builder.PrependInt32Slot(1, batchDim, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReverseSequenceOptions.ReverseSequenceOptionsAddSeqDim"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ReverseSequenceOptionsAddSeqDim(builder, seqDim): builder.PrependInt32Slot(0, seqDim, 0)</code></pre>
+<pre><code class="python">def ReverseSequenceOptionsAddSeqDim(builder, seqDim):
+    builder.PrependInt32Slot(0, seqDim, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReverseSequenceOptions.ReverseSequenceOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ReverseSequenceOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ReverseSequenceOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReverseSequenceOptions.ReverseSequenceOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ReverseSequenceOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def ReverseSequenceOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReverseSequenceOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ReverseSequenceOptionsStart(builder)</code></pre>
+    ReverseSequenceOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

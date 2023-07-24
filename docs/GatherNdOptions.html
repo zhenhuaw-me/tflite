@@ -56,10 +56,15 @@ class GatherNdOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def GatherNdOptionsStart(builder): builder.StartObject(0)
+def GatherNdOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return GatherNdOptionsStart(builder)
-def GatherNdOptionsEnd(builder): return builder.EndObject()
+    GatherNdOptionsStart(builder)
+
+def GatherNdOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GatherNdOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GatherNdOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def GatherNdOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherNdOptions.GatherNdOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GatherNdOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def GatherNdOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GatherNdOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return GatherNdOptionsStart(builder)</code></pre>
+    GatherNdOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

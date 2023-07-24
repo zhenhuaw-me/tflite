@@ -56,10 +56,15 @@ class ExpOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ExpOptionsStart(builder): builder.StartObject(0)
+def ExpOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ExpOptionsStart(builder)
-def ExpOptionsEnd(builder): return builder.EndObject()
+    ExpOptionsStart(builder)
+
+def ExpOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ExpOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ExpOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ExpOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ExpOptions.ExpOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ExpOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def ExpOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ExpOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ExpOptionsStart(builder)</code></pre>
+    ExpOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

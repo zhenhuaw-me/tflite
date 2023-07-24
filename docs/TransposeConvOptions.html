@@ -77,19 +77,46 @@ class TransposeConvOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def TransposeConvOptionsStart(builder): builder.StartObject(3)
+    # TransposeConvOptions
+    def FusedActivationFunction(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+        return 0
+
+def TransposeConvOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return TransposeConvOptionsStart(builder)
-def TransposeConvOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    TransposeConvOptionsStart(builder)
+
+def TransposeConvOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return TransposeConvOptionsAddPadding(builder, padding)
-def TransposeConvOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+    TransposeConvOptionsAddPadding(builder, padding)
+
+def TransposeConvOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return TransposeConvOptionsAddStrideW(builder, strideW)
-def TransposeConvOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
+    TransposeConvOptionsAddStrideW(builder, strideW)
+
+def TransposeConvOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return TransposeConvOptionsAddStrideH(builder, strideH)
-def TransposeConvOptionsEnd(builder): return builder.EndObject()
+    TransposeConvOptionsAddStrideH(builder, strideH)
+
+def TransposeConvOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(3, fusedActivationFunction, 0)
+
+def AddFusedActivationFunction(builder, fusedActivationFunction):
+    TransposeConvOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def TransposeConvOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TransposeConvOptionsEnd(builder)</code></pre>
 </details>
@@ -101,6 +128,19 @@ def End(builder):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="tflite.TransposeConvOptions.AddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">AddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
+    TransposeConvOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+</details>
+</dd>
 <dt id="tflite.TransposeConvOptions.AddPadding"><code class="name flex">
 <span>def <span class="ident">AddPadding</span></span>(<span>builder, padding)</span>
 </code></dt>
@@ -111,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddPadding(builder, padding):
-    return TransposeConvOptionsAddPadding(builder, padding)</code></pre>
+    TransposeConvOptionsAddPadding(builder, padding)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.AddStrideH"><code class="name flex">
@@ -124,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideH(builder, strideH):
-    return TransposeConvOptionsAddStrideH(builder, strideH)</code></pre>
+    TransposeConvOptionsAddStrideH(builder, strideH)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.AddStrideW"><code class="name flex">
@@ -137,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideW(builder, strideW):
-    return TransposeConvOptionsAddStrideW(builder, strideW)</code></pre>
+    TransposeConvOptionsAddStrideW(builder, strideW)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.End"><code class="name flex">
@@ -163,7 +203,20 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return TransposeConvOptionsStart(builder)</code></pre>
+    TransposeConvOptionsStart(builder)</code></pre>
+</details>
+</dd>
+<dt id="tflite.TransposeConvOptions.TransposeConvOptionsAddFusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">TransposeConvOptionsAddFusedActivationFunction</span></span>(<span>builder, fusedActivationFunction)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def TransposeConvOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(3, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptionsAddPadding"><code class="name flex">
@@ -175,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TransposeConvOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)</code></pre>
+<pre><code class="python">def TransposeConvOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptionsAddStrideH"><code class="name flex">
@@ -187,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TransposeConvOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)</code></pre>
+<pre><code class="python">def TransposeConvOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptionsAddStrideW"><code class="name flex">
@@ -199,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TransposeConvOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)</code></pre>
+<pre><code class="python">def TransposeConvOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptionsEnd"><code class="name flex">
@@ -211,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TransposeConvOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def TransposeConvOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptionsStart"><code class="name flex">
@@ -223,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TransposeConvOptionsStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def TransposeConvOptionsStart(builder):
+    builder.StartObject(4)</code></pre>
 </details>
 </dd>
 </dl>
@@ -281,6 +339,13 @@ def End(builder):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # TransposeConvOptions
+    def FusedActivationFunction(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0</code></pre>
 </details>
 <h3>Static methods</h3>
@@ -334,6 +399,22 @@ def TransposeConvOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=Fals
 </dl>
 <h3>Methods</h3>
 <dl>
+<dt id="tflite.TransposeConvOptions.TransposeConvOptions.FusedActivationFunction"><code class="name flex">
+<span>def <span class="ident">FusedActivationFunction</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def FusedActivationFunction(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+</dd>
 <dt id="tflite.TransposeConvOptions.TransposeConvOptions.Init"><code class="name flex">
 <span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
 </code></dt>
@@ -413,11 +494,13 @@ def TransposeConvOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=Fals
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="tflite.TransposeConvOptions.AddFusedActivationFunction" href="#tflite.TransposeConvOptions.AddFusedActivationFunction">AddFusedActivationFunction</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.AddPadding" href="#tflite.TransposeConvOptions.AddPadding">AddPadding</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.AddStrideH" href="#tflite.TransposeConvOptions.AddStrideH">AddStrideH</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.AddStrideW" href="#tflite.TransposeConvOptions.AddStrideW">AddStrideW</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.End" href="#tflite.TransposeConvOptions.End">End</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.Start" href="#tflite.TransposeConvOptions.Start">Start</a></code></li>
+<li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddFusedActivationFunction" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddFusedActivationFunction">TransposeConvOptionsAddFusedActivationFunction</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddPadding" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddPadding">TransposeConvOptionsAddPadding</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddStrideH" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddStrideH">TransposeConvOptionsAddStrideH</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptionsAddStrideW" href="#tflite.TransposeConvOptions.TransposeConvOptionsAddStrideW">TransposeConvOptionsAddStrideW</a></code></li>
@@ -430,6 +513,7 @@ def TransposeConvOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=Fals
 <li>
 <h4><code><a title="tflite.TransposeConvOptions.TransposeConvOptions" href="#tflite.TransposeConvOptions.TransposeConvOptions">TransposeConvOptions</a></code></h4>
 <ul class="">
+<li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.FusedActivationFunction" href="#tflite.TransposeConvOptions.TransposeConvOptions.FusedActivationFunction">FusedActivationFunction</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAs" href="#tflite.TransposeConvOptions.TransposeConvOptions.GetRootAs">GetRootAs</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.GetRootAsTransposeConvOptions" href="#tflite.TransposeConvOptions.TransposeConvOptions.GetRootAsTransposeConvOptions">GetRootAsTransposeConvOptions</a></code></li>
 <li><code><a title="tflite.TransposeConvOptions.TransposeConvOptions.Init" href="#tflite.TransposeConvOptions.TransposeConvOptions.Init">Init</a></code></li>

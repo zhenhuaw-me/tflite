@@ -63,13 +63,21 @@ class ArgMinOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def ArgMinOptionsStart(builder): builder.StartObject(1)
+def ArgMinOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return ArgMinOptionsStart(builder)
-def ArgMinOptionsAddOutputType(builder, outputType): builder.PrependInt8Slot(0, outputType, 0)
+    ArgMinOptionsStart(builder)
+
+def ArgMinOptionsAddOutputType(builder, outputType):
+    builder.PrependInt8Slot(0, outputType, 0)
+
 def AddOutputType(builder, outputType):
-    return ArgMinOptionsAddOutputType(builder, outputType)
-def ArgMinOptionsEnd(builder): return builder.EndObject()
+    ArgMinOptionsAddOutputType(builder, outputType)
+
+def ArgMinOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ArgMinOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOutputType(builder, outputType):
-    return ArgMinOptionsAddOutputType(builder, outputType)</code></pre>
+    ArgMinOptionsAddOutputType(builder, outputType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMinOptions.ArgMinOptionsAddOutputType"><code class="name flex">
@@ -103,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ArgMinOptionsAddOutputType(builder, outputType): builder.PrependInt8Slot(0, outputType, 0)</code></pre>
+<pre><code class="python">def ArgMinOptionsAddOutputType(builder, outputType):
+    builder.PrependInt8Slot(0, outputType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMinOptions.ArgMinOptionsEnd"><code class="name flex">
@@ -115,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ArgMinOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ArgMinOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMinOptions.ArgMinOptionsStart"><code class="name flex">
@@ -127,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ArgMinOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def ArgMinOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ArgMinOptions.End"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ArgMinOptionsStart(builder)</code></pre>
+    ArgMinOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

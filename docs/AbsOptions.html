@@ -56,10 +56,15 @@ class AbsOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def AbsOptionsStart(builder): builder.StartObject(0)
+def AbsOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return AbsOptionsStart(builder)
-def AbsOptionsEnd(builder): return builder.EndObject()
+    AbsOptionsStart(builder)
+
+def AbsOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AbsOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AbsOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def AbsOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.AbsOptions.AbsOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AbsOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def AbsOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AbsOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return AbsOptionsStart(builder)</code></pre>
+    AbsOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -35,12 +35,20 @@ class GeluOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def GeluOptionsStart(builder): builder.StartObject(1)
+def GeluOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return GeluOptionsStart(builder)
-def GeluOptionsAddApproximate(builder, approximate): builder.PrependBoolSlot(0, approximate, 0)
+    GeluOptionsStart(builder)
+
+def GeluOptionsAddApproximate(builder, approximate):
+    builder.PrependBoolSlot(0, approximate, 0)
+
 def AddApproximate(builder, approximate):
-    return GeluOptionsAddApproximate(builder, approximate)
-def GeluOptionsEnd(builder): return builder.EndObject()
+    GeluOptionsAddApproximate(builder, approximate)
+
+def GeluOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GeluOptionsEnd(builder)

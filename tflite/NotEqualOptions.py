@@ -28,9 +28,14 @@ class NotEqualOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def NotEqualOptionsStart(builder): builder.StartObject(0)
+def NotEqualOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return NotEqualOptionsStart(builder)
-def NotEqualOptionsEnd(builder): return builder.EndObject()
+    NotEqualOptionsStart(builder)
+
+def NotEqualOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return NotEqualOptionsEnd(builder)

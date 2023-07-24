@@ -56,10 +56,15 @@ class ZerosLikeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ZerosLikeOptionsStart(builder): builder.StartObject(0)
+def ZerosLikeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ZerosLikeOptionsStart(builder)
-def ZerosLikeOptionsEnd(builder): return builder.EndObject()
+    ZerosLikeOptionsStart(builder)
+
+def ZerosLikeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ZerosLikeOptionsEnd(builder)</code></pre>
 </details>
@@ -94,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ZerosLikeOptionsStart(builder)</code></pre>
+    ZerosLikeOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ZerosLikeOptions.ZerosLikeOptionsEnd"><code class="name flex">
@@ -106,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ZerosLikeOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ZerosLikeOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ZerosLikeOptions.ZerosLikeOptionsStart"><code class="name flex">
@@ -118,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ZerosLikeOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def ZerosLikeOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 </dl>

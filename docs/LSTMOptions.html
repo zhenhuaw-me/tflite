@@ -91,25 +91,45 @@ class LSTMOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def LSTMOptionsStart(builder): builder.StartObject(5)
+def LSTMOptionsStart(builder):
+    builder.StartObject(5)
+
 def Start(builder):
-    return LSTMOptionsStart(builder)
-def LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    LSTMOptionsStart(builder)
+
+def LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def LSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+    LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def LSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)
+
 def AddCellClip(builder, cellClip):
-    return LSTMOptionsAddCellClip(builder, cellClip)
-def LSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+    LSTMOptionsAddCellClip(builder, cellClip)
+
+def LSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)
+
 def AddProjClip(builder, projClip):
-    return LSTMOptionsAddProjClip(builder, projClip)
-def LSTMOptionsAddKernelType(builder, kernelType): builder.PrependInt8Slot(3, kernelType, 0)
+    LSTMOptionsAddProjClip(builder, projClip)
+
+def LSTMOptionsAddKernelType(builder, kernelType):
+    builder.PrependInt8Slot(3, kernelType, 0)
+
 def AddKernelType(builder, kernelType):
-    return LSTMOptionsAddKernelType(builder, kernelType)
-def LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+    LSTMOptionsAddKernelType(builder, kernelType)
+
+def LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def LSTMOptionsEnd(builder): return builder.EndObject()
+    LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def LSTMOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LSTMOptionsEnd(builder)</code></pre>
 </details>
@@ -131,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.AddCellClip"><code class="name flex">
@@ -144,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddCellClip(builder, cellClip):
-    return LSTMOptionsAddCellClip(builder, cellClip)</code></pre>
+    LSTMOptionsAddCellClip(builder, cellClip)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.AddFusedActivationFunction"><code class="name flex">
@@ -157,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.AddKernelType"><code class="name flex">
@@ -170,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddKernelType(builder, kernelType):
-    return LSTMOptionsAddKernelType(builder, kernelType)</code></pre>
+    LSTMOptionsAddKernelType(builder, kernelType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.AddProjClip"><code class="name flex">
@@ -183,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddProjClip(builder, projClip):
-    return LSTMOptionsAddProjClip(builder, projClip)</code></pre>
+    LSTMOptionsAddProjClip(builder, projClip)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.End"><code class="name flex">
@@ -208,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.LSTMOptionsAddCellClip"><code class="name flex">
@@ -220,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)</code></pre>
+<pre><code class="python">def LSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.LSTMOptionsAddFusedActivationFunction"><code class="name flex">
@@ -232,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.LSTMOptionsAddKernelType"><code class="name flex">
@@ -244,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsAddKernelType(builder, kernelType): builder.PrependInt8Slot(3, kernelType, 0)</code></pre>
+<pre><code class="python">def LSTMOptionsAddKernelType(builder, kernelType):
+    builder.PrependInt8Slot(3, kernelType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.LSTMOptionsAddProjClip"><code class="name flex">
@@ -256,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)</code></pre>
+<pre><code class="python">def LSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.LSTMOptionsEnd"><code class="name flex">
@@ -268,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def LSTMOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.LSTMOptionsStart"><code class="name flex">
@@ -280,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LSTMOptionsStart(builder): builder.StartObject(5)</code></pre>
+<pre><code class="python">def LSTMOptionsStart(builder):
+    builder.StartObject(5)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LSTMOptions.Start"><code class="name flex">
@@ -293,7 +320,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return LSTMOptionsStart(builder)</code></pre>
+    LSTMOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

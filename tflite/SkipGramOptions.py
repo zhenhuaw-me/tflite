@@ -49,18 +49,32 @@ class SkipGramOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SkipGramOptionsStart(builder): builder.StartObject(3)
+def SkipGramOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return SkipGramOptionsStart(builder)
-def SkipGramOptionsAddNgramSize(builder, ngramSize): builder.PrependInt32Slot(0, ngramSize, 0)
+    SkipGramOptionsStart(builder)
+
+def SkipGramOptionsAddNgramSize(builder, ngramSize):
+    builder.PrependInt32Slot(0, ngramSize, 0)
+
 def AddNgramSize(builder, ngramSize):
-    return SkipGramOptionsAddNgramSize(builder, ngramSize)
-def SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize): builder.PrependInt32Slot(1, maxSkipSize, 0)
+    SkipGramOptionsAddNgramSize(builder, ngramSize)
+
+def SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize):
+    builder.PrependInt32Slot(1, maxSkipSize, 0)
+
 def AddMaxSkipSize(builder, maxSkipSize):
-    return SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize)
-def SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams): builder.PrependBoolSlot(2, includeAllNgrams, 0)
+    SkipGramOptionsAddMaxSkipSize(builder, maxSkipSize)
+
+def SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams):
+    builder.PrependBoolSlot(2, includeAllNgrams, 0)
+
 def AddIncludeAllNgrams(builder, includeAllNgrams):
-    return SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams)
-def SkipGramOptionsEnd(builder): return builder.EndObject()
+    SkipGramOptionsAddIncludeAllNgrams(builder, includeAllNgrams)
+
+def SkipGramOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SkipGramOptionsEnd(builder)

@@ -222,52 +222,99 @@ class Model(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
         return o == 0
 
-def ModelStart(builder): builder.StartObject(8)
+def ModelStart(builder):
+    builder.StartObject(8)
+
 def Start(builder):
-    return ModelStart(builder)
-def ModelAddVersion(builder, version): builder.PrependUint32Slot(0, version, 0)
+    ModelStart(builder)
+
+def ModelAddVersion(builder, version):
+    builder.PrependUint32Slot(0, version, 0)
+
 def AddVersion(builder, version):
-    return ModelAddVersion(builder, version)
-def ModelAddOperatorCodes(builder, operatorCodes): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(operatorCodes), 0)
+    ModelAddVersion(builder, version)
+
+def ModelAddOperatorCodes(builder, operatorCodes):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(operatorCodes), 0)
+
 def AddOperatorCodes(builder, operatorCodes):
-    return ModelAddOperatorCodes(builder, operatorCodes)
-def ModelStartOperatorCodesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartOperatorCodesVector(builder, numElems):
+    ModelAddOperatorCodes(builder, operatorCodes)
+
+def ModelStartOperatorCodesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartOperatorCodesVector(builder, numElems: int) -&gt; int:
     return ModelStartOperatorCodesVector(builder, numElems)
-def ModelAddSubgraphs(builder, subgraphs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(subgraphs), 0)
+
+def ModelAddSubgraphs(builder, subgraphs):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(subgraphs), 0)
+
 def AddSubgraphs(builder, subgraphs):
-    return ModelAddSubgraphs(builder, subgraphs)
-def ModelStartSubgraphsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartSubgraphsVector(builder, numElems):
+    ModelAddSubgraphs(builder, subgraphs)
+
+def ModelStartSubgraphsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartSubgraphsVector(builder, numElems: int) -&gt; int:
     return ModelStartSubgraphsVector(builder, numElems)
-def ModelAddDescription(builder, description): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(description), 0)
+
+def ModelAddDescription(builder, description):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(description), 0)
+
 def AddDescription(builder, description):
-    return ModelAddDescription(builder, description)
-def ModelAddBuffers(builder, buffers): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(buffers), 0)
+    ModelAddDescription(builder, description)
+
+def ModelAddBuffers(builder, buffers):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(buffers), 0)
+
 def AddBuffers(builder, buffers):
-    return ModelAddBuffers(builder, buffers)
-def ModelStartBuffersVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartBuffersVector(builder, numElems):
+    ModelAddBuffers(builder, buffers)
+
+def ModelStartBuffersVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartBuffersVector(builder, numElems: int) -&gt; int:
     return ModelStartBuffersVector(builder, numElems)
-def ModelAddMetadataBuffer(builder, metadataBuffer): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(metadataBuffer), 0)
+
+def ModelAddMetadataBuffer(builder, metadataBuffer):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(metadataBuffer), 0)
+
 def AddMetadataBuffer(builder, metadataBuffer):
-    return ModelAddMetadataBuffer(builder, metadataBuffer)
-def ModelStartMetadataBufferVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartMetadataBufferVector(builder, numElems):
+    ModelAddMetadataBuffer(builder, metadataBuffer)
+
+def ModelStartMetadataBufferVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartMetadataBufferVector(builder, numElems: int) -&gt; int:
     return ModelStartMetadataBufferVector(builder, numElems)
-def ModelAddMetadata(builder, metadata): builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(metadata), 0)
+
+def ModelAddMetadata(builder, metadata):
+    builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(metadata), 0)
+
 def AddMetadata(builder, metadata):
-    return ModelAddMetadata(builder, metadata)
-def ModelStartMetadataVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartMetadataVector(builder, numElems):
+    ModelAddMetadata(builder, metadata)
+
+def ModelStartMetadataVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartMetadataVector(builder, numElems: int) -&gt; int:
     return ModelStartMetadataVector(builder, numElems)
-def ModelAddSignatureDefs(builder, signatureDefs): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(signatureDefs), 0)
+
+def ModelAddSignatureDefs(builder, signatureDefs):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(signatureDefs), 0)
+
 def AddSignatureDefs(builder, signatureDefs):
-    return ModelAddSignatureDefs(builder, signatureDefs)
-def ModelStartSignatureDefsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartSignatureDefsVector(builder, numElems):
+    ModelAddSignatureDefs(builder, signatureDefs)
+
+def ModelStartSignatureDefsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartSignatureDefsVector(builder, numElems: int) -&gt; int:
     return ModelStartSignatureDefsVector(builder, numElems)
-def ModelEnd(builder): return builder.EndObject()
+
+def ModelEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ModelEnd(builder)</code></pre>
 </details>
@@ -289,7 +336,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBuffers(builder, buffers):
-    return ModelAddBuffers(builder, buffers)</code></pre>
+    ModelAddBuffers(builder, buffers)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddDescription"><code class="name flex">
@@ -302,7 +349,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDescription(builder, description):
-    return ModelAddDescription(builder, description)</code></pre>
+    ModelAddDescription(builder, description)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddMetadata"><code class="name flex">
@@ -315,7 +362,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMetadata(builder, metadata):
-    return ModelAddMetadata(builder, metadata)</code></pre>
+    ModelAddMetadata(builder, metadata)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddMetadataBuffer"><code class="name flex">
@@ -328,7 +375,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMetadataBuffer(builder, metadataBuffer):
-    return ModelAddMetadataBuffer(builder, metadataBuffer)</code></pre>
+    ModelAddMetadataBuffer(builder, metadataBuffer)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddOperatorCodes"><code class="name flex">
@@ -341,7 +388,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOperatorCodes(builder, operatorCodes):
-    return ModelAddOperatorCodes(builder, operatorCodes)</code></pre>
+    ModelAddOperatorCodes(builder, operatorCodes)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddSignatureDefs"><code class="name flex">
@@ -354,7 +401,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSignatureDefs(builder, signatureDefs):
-    return ModelAddSignatureDefs(builder, signatureDefs)</code></pre>
+    ModelAddSignatureDefs(builder, signatureDefs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddSubgraphs"><code class="name flex">
@@ -367,7 +414,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSubgraphs(builder, subgraphs):
-    return ModelAddSubgraphs(builder, subgraphs)</code></pre>
+    ModelAddSubgraphs(builder, subgraphs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.AddVersion"><code class="name flex">
@@ -380,7 +427,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddVersion(builder, version):
-    return ModelAddVersion(builder, version)</code></pre>
+    ModelAddVersion(builder, version)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.End"><code class="name flex">
@@ -405,7 +452,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddBuffers(builder, buffers): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(buffers), 0)</code></pre>
+<pre><code class="python">def ModelAddBuffers(builder, buffers):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(buffers), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddDescription"><code class="name flex">
@@ -417,7 +465,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddDescription(builder, description): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(description), 0)</code></pre>
+<pre><code class="python">def ModelAddDescription(builder, description):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(description), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddMetadata"><code class="name flex">
@@ -429,7 +478,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddMetadata(builder, metadata): builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(metadata), 0)</code></pre>
+<pre><code class="python">def ModelAddMetadata(builder, metadata):
+    builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(metadata), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddMetadataBuffer"><code class="name flex">
@@ -441,7 +491,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddMetadataBuffer(builder, metadataBuffer): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(metadataBuffer), 0)</code></pre>
+<pre><code class="python">def ModelAddMetadataBuffer(builder, metadataBuffer):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(metadataBuffer), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddOperatorCodes"><code class="name flex">
@@ -453,7 +504,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddOperatorCodes(builder, operatorCodes): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(operatorCodes), 0)</code></pre>
+<pre><code class="python">def ModelAddOperatorCodes(builder, operatorCodes):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(operatorCodes), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddSignatureDefs"><code class="name flex">
@@ -465,7 +517,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddSignatureDefs(builder, signatureDefs): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(signatureDefs), 0)</code></pre>
+<pre><code class="python">def ModelAddSignatureDefs(builder, signatureDefs):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(signatureDefs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddSubgraphs"><code class="name flex">
@@ -477,7 +530,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddSubgraphs(builder, subgraphs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(subgraphs), 0)</code></pre>
+<pre><code class="python">def ModelAddSubgraphs(builder, subgraphs):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(subgraphs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelAddVersion"><code class="name flex">
@@ -489,7 +543,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelAddVersion(builder, version): builder.PrependUint32Slot(0, version, 0)</code></pre>
+<pre><code class="python">def ModelAddVersion(builder, version):
+    builder.PrependUint32Slot(0, version, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelEnd"><code class="name flex">
@@ -501,7 +556,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ModelEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStart"><code class="name flex">
@@ -513,7 +569,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStart(builder): builder.StartObject(8)</code></pre>
+<pre><code class="python">def ModelStart(builder):
+    builder.StartObject(8)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStartBuffersVector"><code class="name flex">
@@ -525,7 +582,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStartBuffersVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ModelStartBuffersVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStartMetadataBufferVector"><code class="name flex">
@@ -537,7 +595,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStartMetadataBufferVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ModelStartMetadataBufferVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStartMetadataVector"><code class="name flex">
@@ -549,7 +608,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStartMetadataVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ModelStartMetadataVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStartOperatorCodesVector"><code class="name flex">
@@ -561,7 +621,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStartOperatorCodesVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ModelStartOperatorCodesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStartSignatureDefsVector"><code class="name flex">
@@ -573,7 +634,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStartSignatureDefsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ModelStartSignatureDefsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.ModelStartSubgraphsVector"><code class="name flex">
@@ -585,7 +647,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ModelStartSubgraphsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ModelStartSubgraphsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.Start"><code class="name flex">
@@ -598,11 +661,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ModelStart(builder)</code></pre>
+    ModelStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.StartBuffersVector"><code class="name flex">
-<span>def <span class="ident">StartBuffersVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartBuffersVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -610,12 +673,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartBuffersVector(builder, numElems):
+<pre><code class="python">def StartBuffersVector(builder, numElems: int) -&gt; int:
     return ModelStartBuffersVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.StartMetadataBufferVector"><code class="name flex">
-<span>def <span class="ident">StartMetadataBufferVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartMetadataBufferVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -623,12 +686,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartMetadataBufferVector(builder, numElems):
+<pre><code class="python">def StartMetadataBufferVector(builder, numElems: int) -&gt; int:
     return ModelStartMetadataBufferVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.StartMetadataVector"><code class="name flex">
-<span>def <span class="ident">StartMetadataVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartMetadataVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -636,12 +699,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartMetadataVector(builder, numElems):
+<pre><code class="python">def StartMetadataVector(builder, numElems: int) -&gt; int:
     return ModelStartMetadataVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.StartOperatorCodesVector"><code class="name flex">
-<span>def <span class="ident">StartOperatorCodesVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartOperatorCodesVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -649,12 +712,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartOperatorCodesVector(builder, numElems):
+<pre><code class="python">def StartOperatorCodesVector(builder, numElems: int) -&gt; int:
     return ModelStartOperatorCodesVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.StartSignatureDefsVector"><code class="name flex">
-<span>def <span class="ident">StartSignatureDefsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartSignatureDefsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -662,12 +725,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartSignatureDefsVector(builder, numElems):
+<pre><code class="python">def StartSignatureDefsVector(builder, numElems: int) -&gt; int:
     return ModelStartSignatureDefsVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Model.StartSubgraphsVector"><code class="name flex">
-<span>def <span class="ident">StartSubgraphsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartSubgraphsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -675,7 +738,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartSubgraphsVector(builder, numElems):
+<pre><code class="python">def StartSubgraphsVector(builder, numElems: int) -&gt; int:
     return ModelStartSubgraphsVector(builder, numElems)</code></pre>
 </details>
 </dd>

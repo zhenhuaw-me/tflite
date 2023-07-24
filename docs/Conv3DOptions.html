@@ -112,34 +112,63 @@ class Conv3DOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 1
 
-def Conv3DOptionsStart(builder): builder.StartObject(8)
+def Conv3DOptionsStart(builder):
+    builder.StartObject(8)
+
 def Start(builder):
-    return Conv3DOptionsStart(builder)
-def Conv3DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    Conv3DOptionsStart(builder)
+
+def Conv3DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return Conv3DOptionsAddPadding(builder, padding)
-def Conv3DOptionsAddStrideD(builder, strideD): builder.PrependInt32Slot(1, strideD, 0)
+    Conv3DOptionsAddPadding(builder, padding)
+
+def Conv3DOptionsAddStrideD(builder, strideD):
+    builder.PrependInt32Slot(1, strideD, 0)
+
 def AddStrideD(builder, strideD):
-    return Conv3DOptionsAddStrideD(builder, strideD)
-def Conv3DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(2, strideW, 0)
+    Conv3DOptionsAddStrideD(builder, strideD)
+
+def Conv3DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(2, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return Conv3DOptionsAddStrideW(builder, strideW)
-def Conv3DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(3, strideH, 0)
+    Conv3DOptionsAddStrideW(builder, strideW)
+
+def Conv3DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(3, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return Conv3DOptionsAddStrideH(builder, strideH)
-def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+    Conv3DOptionsAddStrideH(builder, strideH)
+
+def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor): builder.PrependInt32Slot(5, dilationDFactor, 1)
+    Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor):
+    builder.PrependInt32Slot(5, dilationDFactor, 1)
+
 def AddDilationDFactor(builder, dilationDFactor):
-    return Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)
-def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(6, dilationWFactor, 1)
+    Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)
+
+def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor):
+    builder.PrependInt32Slot(6, dilationWFactor, 1)
+
 def AddDilationWFactor(builder, dilationWFactor):
-    return Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)
-def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(7, dilationHFactor, 1)
+    Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)
+
+def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor):
+    builder.PrependInt32Slot(7, dilationHFactor, 1)
+
 def AddDilationHFactor(builder, dilationHFactor):
-    return Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)
-def Conv3DOptionsEnd(builder): return builder.EndObject()
+    Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)
+
+def Conv3DOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Conv3DOptionsEnd(builder)</code></pre>
 </details>
@@ -161,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDilationDFactor(builder, dilationDFactor):
-    return Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)</code></pre>
+    Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddDilationHFactor"><code class="name flex">
@@ -174,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDilationHFactor(builder, dilationHFactor):
-    return Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)</code></pre>
+    Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddDilationWFactor"><code class="name flex">
@@ -187,7 +216,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDilationWFactor(builder, dilationWFactor):
-    return Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)</code></pre>
+    Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddFusedActivationFunction"><code class="name flex">
@@ -200,7 +229,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddPadding"><code class="name flex">
@@ -213,7 +242,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddPadding(builder, padding):
-    return Conv3DOptionsAddPadding(builder, padding)</code></pre>
+    Conv3DOptionsAddPadding(builder, padding)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddStrideD"><code class="name flex">
@@ -226,7 +255,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideD(builder, strideD):
-    return Conv3DOptionsAddStrideD(builder, strideD)</code></pre>
+    Conv3DOptionsAddStrideD(builder, strideD)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddStrideH"><code class="name flex">
@@ -239,7 +268,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideH(builder, strideH):
-    return Conv3DOptionsAddStrideH(builder, strideH)</code></pre>
+    Conv3DOptionsAddStrideH(builder, strideH)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.AddStrideW"><code class="name flex">
@@ -252,7 +281,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddStrideW(builder, strideW):
-    return Conv3DOptionsAddStrideW(builder, strideW)</code></pre>
+    Conv3DOptionsAddStrideW(builder, strideW)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddDilationDFactor"><code class="name flex">
@@ -264,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor): builder.PrependInt32Slot(5, dilationDFactor, 1)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor):
+    builder.PrependInt32Slot(5, dilationDFactor, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddDilationHFactor"><code class="name flex">
@@ -276,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(7, dilationHFactor, 1)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor):
+    builder.PrependInt32Slot(7, dilationHFactor, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddDilationWFactor"><code class="name flex">
@@ -288,7 +319,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(6, dilationWFactor, 1)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor):
+    builder.PrependInt32Slot(6, dilationWFactor, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddFusedActivationFunction"><code class="name flex">
@@ -300,7 +332,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(4, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddPadding"><code class="name flex">
@@ -312,7 +345,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddStrideD"><code class="name flex">
@@ -324,7 +358,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddStrideD(builder, strideD): builder.PrependInt32Slot(1, strideD, 0)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddStrideD(builder, strideD):
+    builder.PrependInt32Slot(1, strideD, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddStrideH"><code class="name flex">
@@ -336,7 +371,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(3, strideH, 0)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(3, strideH, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsAddStrideW"><code class="name flex">
@@ -348,7 +384,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(2, strideW, 0)</code></pre>
+<pre><code class="python">def Conv3DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(2, strideW, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsEnd"><code class="name flex">
@@ -360,7 +397,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def Conv3DOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.Conv3DOptionsStart"><code class="name flex">
@@ -372,7 +410,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Conv3DOptionsStart(builder): builder.StartObject(8)</code></pre>
+<pre><code class="python">def Conv3DOptionsStart(builder):
+    builder.StartObject(8)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Conv3DOptions.End"><code class="name flex">
@@ -398,7 +437,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return Conv3DOptionsStart(builder)</code></pre>
+    Conv3DOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

@@ -70,16 +70,27 @@ class SubOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return True
 
-def SubOptionsStart(builder): builder.StartObject(2)
+def SubOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return SubOptionsStart(builder)
-def SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    SubOptionsStart(builder)
+
+def SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def SubOptionsAddPotScaleInt16(builder, potScaleInt16): builder.PrependBoolSlot(1, potScaleInt16, 1)
+    SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def SubOptionsAddPotScaleInt16(builder, potScaleInt16):
+    builder.PrependBoolSlot(1, potScaleInt16, 1)
+
 def AddPotScaleInt16(builder, potScaleInt16):
-    return SubOptionsAddPotScaleInt16(builder, potScaleInt16)
-def SubOptionsEnd(builder): return builder.EndObject()
+    SubOptionsAddPotScaleInt16(builder, potScaleInt16)
+
+def SubOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SubOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubOptions.AddPotScaleInt16"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddPotScaleInt16(builder, potScaleInt16):
-    return SubOptionsAddPotScaleInt16(builder, potScaleInt16)</code></pre>
+    SubOptionsAddPotScaleInt16(builder, potScaleInt16)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubOptions.End"><code class="name flex">
@@ -140,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SubOptionsStart(builder)</code></pre>
+    SubOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubOptions.SubOptionsAddFusedActivationFunction"><code class="name flex">
@@ -152,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubOptions.SubOptionsAddPotScaleInt16"><code class="name flex">
@@ -164,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SubOptionsAddPotScaleInt16(builder, potScaleInt16): builder.PrependBoolSlot(1, potScaleInt16, 1)</code></pre>
+<pre><code class="python">def SubOptionsAddPotScaleInt16(builder, potScaleInt16):
+    builder.PrependBoolSlot(1, potScaleInt16, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubOptions.SubOptionsEnd"><code class="name flex">
@@ -176,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SubOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SubOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SubOptions.SubOptionsStart"><code class="name flex">
@@ -188,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SubOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def SubOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 </dl>

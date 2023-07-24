@@ -187,7 +187,12 @@ class BuiltinOperator(object):
     UNSORTED_SEGMENT_PROD = 153
     UNSORTED_SEGMENT_MAX = 154
     UNSORTED_SEGMENT_SUM = 155
-    ATAN2 = 156</code></pre>
+    ATAN2 = 156
+    UNSORTED_SEGMENT_MIN = 157
+    SIGN = 158
+    BITCAST = 159
+    BITWISE_XOR = 160
+    RIGHT_SHIFT = 161</code></pre>
 </details>
 </section>
 <section>
@@ -365,7 +370,12 @@ class BuiltinOperator(object):
     UNSORTED_SEGMENT_PROD = 153
     UNSORTED_SEGMENT_MAX = 154
     UNSORTED_SEGMENT_SUM = 155
-    ATAN2 = 156</code></pre>
+    ATAN2 = 156
+    UNSORTED_SEGMENT_MIN = 157
+    SIGN = 158
+    BITCAST = 159
+    BITWISE_XOR = 160
+    RIGHT_SHIFT = 161</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
@@ -414,6 +424,14 @@ class BuiltinOperator(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN"><code class="name">var <span class="ident">BIDIRECTIONAL_SEQUENCE_RNN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BITCAST"><code class="name">var <span class="ident">BITCAST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BITWISE_XOR"><code class="name">var <span class="ident">BITWISE_XOR</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -833,6 +851,10 @@ class BuiltinOperator(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RIGHT_SHIFT"><code class="name">var <span class="ident">RIGHT_SHIFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.RNN"><code class="name">var <span class="ident">RNN</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -862,6 +884,10 @@ class BuiltinOperator(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.SHAPE"><code class="name">var <span class="ident">SHAPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SIGN"><code class="name">var <span class="ident">SIGN</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -973,6 +999,10 @@ class BuiltinOperator(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MIN"><code class="name">var <span class="ident">UNSORTED_SEGMENT_MIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_PROD"><code class="name">var <span class="ident">UNSORTED_SEGMENT_PROD</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -1030,6 +1060,8 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND" href="#tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND">BATCH_TO_SPACE_ND</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM" href="#tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM">BIDIRECTIONAL_SEQUENCE_LSTM</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN" href="#tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN">BIDIRECTIONAL_SEQUENCE_RNN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BITCAST" href="#tflite.BuiltinOperator.BuiltinOperator.BITCAST">BITCAST</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BITWISE_XOR" href="#tflite.BuiltinOperator.BuiltinOperator.BITWISE_XOR">BITWISE_XOR</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BROADCAST_ARGS" href="#tflite.BuiltinOperator.BuiltinOperator.BROADCAST_ARGS">BROADCAST_ARGS</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BROADCAST_TO" href="#tflite.BuiltinOperator.BuiltinOperator.BROADCAST_TO">BROADCAST_TO</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BUCKETIZE" href="#tflite.BuiltinOperator.BuiltinOperator.BUCKETIZE">BUCKETIZE</a></code></li>
@@ -1134,6 +1166,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE" href="#tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE">REVERSE_SEQUENCE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2" href="#tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2">REVERSE_V2</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RFFT2D" href="#tflite.BuiltinOperator.BuiltinOperator.RFFT2D">RFFT2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RIGHT_SHIFT" href="#tflite.BuiltinOperator.BuiltinOperator.RIGHT_SHIFT">RIGHT_SHIFT</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RNN" href="#tflite.BuiltinOperator.BuiltinOperator.RNN">RNN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ROUND" href="#tflite.BuiltinOperator.BuiltinOperator.ROUND">ROUND</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RSQRT" href="#tflite.BuiltinOperator.BuiltinOperator.RSQRT">RSQRT</a></code></li>
@@ -1142,6 +1175,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SELECT" href="#tflite.BuiltinOperator.BuiltinOperator.SELECT">SELECT</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SELECT_V2" href="#tflite.BuiltinOperator.BuiltinOperator.SELECT_V2">SELECT_V2</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SHAPE" href="#tflite.BuiltinOperator.BuiltinOperator.SHAPE">SHAPE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SIGN" href="#tflite.BuiltinOperator.BuiltinOperator.SIGN">SIGN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SIN" href="#tflite.BuiltinOperator.BuiltinOperator.SIN">SIN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM" href="#tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM">SKIP_GRAM</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.SLICE">SLICE</a></code></li>
@@ -1169,6 +1203,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNIQUE" href="#tflite.BuiltinOperator.BuiltinOperator.UNIQUE">UNIQUE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNPACK" href="#tflite.BuiltinOperator.BuiltinOperator.UNPACK">UNPACK</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MAX" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MAX">UNSORTED_SEGMENT_MAX</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MIN" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MIN">UNSORTED_SEGMENT_MIN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_PROD" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_PROD">UNSORTED_SEGMENT_PROD</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_SUM" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_SUM">UNSORTED_SEGMENT_SUM</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.VAR_HANDLE" href="#tflite.BuiltinOperator.BuiltinOperator.VAR_HANDLE">VAR_HANDLE</a></code></li>

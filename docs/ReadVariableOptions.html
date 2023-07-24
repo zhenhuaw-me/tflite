@@ -56,10 +56,15 @@ class ReadVariableOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ReadVariableOptionsStart(builder): builder.StartObject(0)
+def ReadVariableOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ReadVariableOptionsStart(builder)
-def ReadVariableOptionsEnd(builder): return builder.EndObject()
+    ReadVariableOptionsStart(builder)
+
+def ReadVariableOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ReadVariableOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ReadVariableOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ReadVariableOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReadVariableOptions.ReadVariableOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ReadVariableOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def ReadVariableOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ReadVariableOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ReadVariableOptionsStart(builder)</code></pre>
+    ReadVariableOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

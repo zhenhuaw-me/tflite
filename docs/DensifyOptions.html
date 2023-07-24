@@ -56,10 +56,15 @@ class DensifyOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def DensifyOptionsStart(builder): builder.StartObject(0)
+def DensifyOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return DensifyOptionsStart(builder)
-def DensifyOptionsEnd(builder): return builder.EndObject()
+    DensifyOptionsStart(builder)
+
+def DensifyOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DensifyOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DensifyOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def DensifyOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.DensifyOptions.DensifyOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DensifyOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def DensifyOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DensifyOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return DensifyOptionsStart(builder)</code></pre>
+    DensifyOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

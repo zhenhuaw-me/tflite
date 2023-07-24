@@ -63,13 +63,21 @@ class SpaceToDepthOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def SpaceToDepthOptionsStart(builder): builder.StartObject(1)
+def SpaceToDepthOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SpaceToDepthOptionsStart(builder)
-def SpaceToDepthOptionsAddBlockSize(builder, blockSize): builder.PrependInt32Slot(0, blockSize, 0)
+    SpaceToDepthOptionsStart(builder)
+
+def SpaceToDepthOptionsAddBlockSize(builder, blockSize):
+    builder.PrependInt32Slot(0, blockSize, 0)
+
 def AddBlockSize(builder, blockSize):
-    return SpaceToDepthOptionsAddBlockSize(builder, blockSize)
-def SpaceToDepthOptionsEnd(builder): return builder.EndObject()
+    SpaceToDepthOptionsAddBlockSize(builder, blockSize)
+
+def SpaceToDepthOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SpaceToDepthOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBlockSize(builder, blockSize):
-    return SpaceToDepthOptionsAddBlockSize(builder, blockSize)</code></pre>
+    SpaceToDepthOptionsAddBlockSize(builder, blockSize)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SpaceToDepthOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SpaceToDepthOptionsAddBlockSize(builder, blockSize): builder.PrependInt32Slot(0, blockSize, 0)</code></pre>
+<pre><code class="python">def SpaceToDepthOptionsAddBlockSize(builder, blockSize):
+    builder.PrependInt32Slot(0, blockSize, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SpaceToDepthOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SpaceToDepthOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SpaceToDepthOptions.SpaceToDepthOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SpaceToDepthOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def SpaceToDepthOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SpaceToDepthOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SpaceToDepthOptionsStart(builder)</code></pre>
+    SpaceToDepthOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

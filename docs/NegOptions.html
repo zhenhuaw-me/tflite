@@ -56,10 +56,15 @@ class NegOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def NegOptionsStart(builder): builder.StartObject(0)
+def NegOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return NegOptionsStart(builder)
-def NegOptionsEnd(builder): return builder.EndObject()
+    NegOptionsStart(builder)
+
+def NegOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return NegOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def NegOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def NegOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.NegOptions.NegOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def NegOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def NegOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.NegOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return NegOptionsStart(builder)</code></pre>
+    NegOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

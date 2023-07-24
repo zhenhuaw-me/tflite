@@ -91,25 +91,45 @@ class StridedSliceOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def StridedSliceOptionsStart(builder): builder.StartObject(5)
+def StridedSliceOptionsStart(builder):
+    builder.StartObject(5)
+
 def Start(builder):
-    return StridedSliceOptionsStart(builder)
-def StridedSliceOptionsAddBeginMask(builder, beginMask): builder.PrependInt32Slot(0, beginMask, 0)
+    StridedSliceOptionsStart(builder)
+
+def StridedSliceOptionsAddBeginMask(builder, beginMask):
+    builder.PrependInt32Slot(0, beginMask, 0)
+
 def AddBeginMask(builder, beginMask):
-    return StridedSliceOptionsAddBeginMask(builder, beginMask)
-def StridedSliceOptionsAddEndMask(builder, endMask): builder.PrependInt32Slot(1, endMask, 0)
+    StridedSliceOptionsAddBeginMask(builder, beginMask)
+
+def StridedSliceOptionsAddEndMask(builder, endMask):
+    builder.PrependInt32Slot(1, endMask, 0)
+
 def AddEndMask(builder, endMask):
-    return StridedSliceOptionsAddEndMask(builder, endMask)
-def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask): builder.PrependInt32Slot(2, ellipsisMask, 0)
+    StridedSliceOptionsAddEndMask(builder, endMask)
+
+def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask):
+    builder.PrependInt32Slot(2, ellipsisMask, 0)
+
 def AddEllipsisMask(builder, ellipsisMask):
-    return StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)
-def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask): builder.PrependInt32Slot(3, newAxisMask, 0)
+    StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)
+
+def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask):
+    builder.PrependInt32Slot(3, newAxisMask, 0)
+
 def AddNewAxisMask(builder, newAxisMask):
-    return StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)
-def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask): builder.PrependInt32Slot(4, shrinkAxisMask, 0)
+    StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)
+
+def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask):
+    builder.PrependInt32Slot(4, shrinkAxisMask, 0)
+
 def AddShrinkAxisMask(builder, shrinkAxisMask):
-    return StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)
-def StridedSliceOptionsEnd(builder): return builder.EndObject()
+    StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)
+
+def StridedSliceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return StridedSliceOptionsEnd(builder)</code></pre>
 </details>
@@ -131,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBeginMask(builder, beginMask):
-    return StridedSliceOptionsAddBeginMask(builder, beginMask)</code></pre>
+    StridedSliceOptionsAddBeginMask(builder, beginMask)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.AddEllipsisMask"><code class="name flex">
@@ -144,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddEllipsisMask(builder, ellipsisMask):
-    return StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)</code></pre>
+    StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.AddEndMask"><code class="name flex">
@@ -157,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddEndMask(builder, endMask):
-    return StridedSliceOptionsAddEndMask(builder, endMask)</code></pre>
+    StridedSliceOptionsAddEndMask(builder, endMask)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.AddNewAxisMask"><code class="name flex">
@@ -170,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNewAxisMask(builder, newAxisMask):
-    return StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)</code></pre>
+    StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.AddShrinkAxisMask"><code class="name flex">
@@ -183,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddShrinkAxisMask(builder, shrinkAxisMask):
-    return StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)</code></pre>
+    StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.End"><code class="name flex">
@@ -209,7 +229,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return StridedSliceOptionsStart(builder)</code></pre>
+    StridedSliceOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsAddBeginMask"><code class="name flex">
@@ -221,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsAddBeginMask(builder, beginMask): builder.PrependInt32Slot(0, beginMask, 0)</code></pre>
+<pre><code class="python">def StridedSliceOptionsAddBeginMask(builder, beginMask):
+    builder.PrependInt32Slot(0, beginMask, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsAddEllipsisMask"><code class="name flex">
@@ -233,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask): builder.PrependInt32Slot(2, ellipsisMask, 0)</code></pre>
+<pre><code class="python">def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask):
+    builder.PrependInt32Slot(2, ellipsisMask, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsAddEndMask"><code class="name flex">
@@ -245,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsAddEndMask(builder, endMask): builder.PrependInt32Slot(1, endMask, 0)</code></pre>
+<pre><code class="python">def StridedSliceOptionsAddEndMask(builder, endMask):
+    builder.PrependInt32Slot(1, endMask, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsAddNewAxisMask"><code class="name flex">
@@ -257,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask): builder.PrependInt32Slot(3, newAxisMask, 0)</code></pre>
+<pre><code class="python">def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask):
+    builder.PrependInt32Slot(3, newAxisMask, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsAddShrinkAxisMask"><code class="name flex">
@@ -269,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask): builder.PrependInt32Slot(4, shrinkAxisMask, 0)</code></pre>
+<pre><code class="python">def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask):
+    builder.PrependInt32Slot(4, shrinkAxisMask, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsEnd"><code class="name flex">
@@ -281,7 +306,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def StridedSliceOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.StridedSliceOptions.StridedSliceOptionsStart"><code class="name flex">
@@ -293,7 +319,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StridedSliceOptionsStart(builder): builder.StartObject(5)</code></pre>
+<pre><code class="python">def StridedSliceOptionsStart(builder):
+    builder.StartObject(5)</code></pre>
 </details>
 </dd>
 </dl>

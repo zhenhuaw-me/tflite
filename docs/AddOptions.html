@@ -70,16 +70,27 @@ class AddOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return True
 
-def AddOptionsStart(builder): builder.StartObject(2)
+def AddOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return AddOptionsStart(builder)
-def AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    AddOptionsStart(builder)
+
+def AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def AddOptionsAddPotScaleInt16(builder, potScaleInt16): builder.PrependBoolSlot(1, potScaleInt16, 1)
+    AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def AddOptionsAddPotScaleInt16(builder, potScaleInt16):
+    builder.PrependBoolSlot(1, potScaleInt16, 1)
+
 def AddPotScaleInt16(builder, potScaleInt16):
-    return AddOptionsAddPotScaleInt16(builder, potScaleInt16)
-def AddOptionsEnd(builder): return builder.EndObject()
+    AddOptionsAddPotScaleInt16(builder, potScaleInt16)
+
+def AddOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AddOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddOptions.AddOptionsAddFusedActivationFunction"><code class="name flex">
@@ -113,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddOptions.AddOptionsAddPotScaleInt16"><code class="name flex">
@@ -125,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AddOptionsAddPotScaleInt16(builder, potScaleInt16): builder.PrependBoolSlot(1, potScaleInt16, 1)</code></pre>
+<pre><code class="python">def AddOptionsAddPotScaleInt16(builder, potScaleInt16):
+    builder.PrependBoolSlot(1, potScaleInt16, 1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddOptions.AddOptionsEnd"><code class="name flex">
@@ -137,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AddOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def AddOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddOptions.AddOptionsStart"><code class="name flex">
@@ -149,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AddOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def AddOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddOptions.AddPotScaleInt16"><code class="name flex">
@@ -162,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddPotScaleInt16(builder, potScaleInt16):
-    return AddOptionsAddPotScaleInt16(builder, potScaleInt16)</code></pre>
+    AddOptionsAddPotScaleInt16(builder, potScaleInt16)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AddOptions.End"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return AddOptionsStart(builder)</code></pre>
+    AddOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

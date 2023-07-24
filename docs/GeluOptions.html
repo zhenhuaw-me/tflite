@@ -63,13 +63,21 @@ class GeluOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def GeluOptionsStart(builder): builder.StartObject(1)
+def GeluOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return GeluOptionsStart(builder)
-def GeluOptionsAddApproximate(builder, approximate): builder.PrependBoolSlot(0, approximate, 0)
+    GeluOptionsStart(builder)
+
+def GeluOptionsAddApproximate(builder, approximate):
+    builder.PrependBoolSlot(0, approximate, 0)
+
 def AddApproximate(builder, approximate):
-    return GeluOptionsAddApproximate(builder, approximate)
-def GeluOptionsEnd(builder): return builder.EndObject()
+    GeluOptionsAddApproximate(builder, approximate)
+
+def GeluOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GeluOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddApproximate(builder, approximate):
-    return GeluOptionsAddApproximate(builder, approximate)</code></pre>
+    GeluOptionsAddApproximate(builder, approximate)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GeluOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GeluOptionsAddApproximate(builder, approximate): builder.PrependBoolSlot(0, approximate, 0)</code></pre>
+<pre><code class="python">def GeluOptionsAddApproximate(builder, approximate):
+    builder.PrependBoolSlot(0, approximate, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GeluOptions.GeluOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GeluOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def GeluOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.GeluOptions.GeluOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def GeluOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def GeluOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.GeluOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return GeluOptionsStart(builder)</code></pre>
+    GeluOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

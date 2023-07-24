@@ -70,16 +70,27 @@ class IfOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def IfOptionsStart(builder): builder.StartObject(2)
+def IfOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return IfOptionsStart(builder)
-def IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex): builder.PrependInt32Slot(0, thenSubgraphIndex, 0)
+    IfOptionsStart(builder)
+
+def IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex):
+    builder.PrependInt32Slot(0, thenSubgraphIndex, 0)
+
 def AddThenSubgraphIndex(builder, thenSubgraphIndex):
-    return IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex)
-def IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex): builder.PrependInt32Slot(1, elseSubgraphIndex, 0)
+    IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex)
+
+def IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex):
+    builder.PrependInt32Slot(1, elseSubgraphIndex, 0)
+
 def AddElseSubgraphIndex(builder, elseSubgraphIndex):
-    return IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex)
-def IfOptionsEnd(builder): return builder.EndObject()
+    IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex)
+
+def IfOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return IfOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddElseSubgraphIndex(builder, elseSubgraphIndex):
-    return IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex)</code></pre>
+    IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.IfOptions.AddThenSubgraphIndex"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddThenSubgraphIndex(builder, thenSubgraphIndex):
-    return IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex)</code></pre>
+    IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.IfOptions.End"><code class="name flex">
@@ -139,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex): builder.PrependInt32Slot(1, elseSubgraphIndex, 0)</code></pre>
+<pre><code class="python">def IfOptionsAddElseSubgraphIndex(builder, elseSubgraphIndex):
+    builder.PrependInt32Slot(1, elseSubgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.IfOptions.IfOptionsAddThenSubgraphIndex"><code class="name flex">
@@ -151,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex): builder.PrependInt32Slot(0, thenSubgraphIndex, 0)</code></pre>
+<pre><code class="python">def IfOptionsAddThenSubgraphIndex(builder, thenSubgraphIndex):
+    builder.PrependInt32Slot(0, thenSubgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.IfOptions.IfOptionsEnd"><code class="name flex">
@@ -163,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def IfOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def IfOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.IfOptions.IfOptionsStart"><code class="name flex">
@@ -175,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def IfOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def IfOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.IfOptions.Start"><code class="name flex">
@@ -188,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return IfOptionsStart(builder)</code></pre>
+    IfOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

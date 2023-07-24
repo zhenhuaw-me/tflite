@@ -63,13 +63,21 @@ class SoftmaxOptions(object):
             return self._tab.Get(flatbuffers.number_types.Float32Flags, o + self._tab.Pos)
         return 0.0
 
-def SoftmaxOptionsStart(builder): builder.StartObject(1)
+def SoftmaxOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SoftmaxOptionsStart(builder)
-def SoftmaxOptionsAddBeta(builder, beta): builder.PrependFloat32Slot(0, beta, 0.0)
+    SoftmaxOptionsStart(builder)
+
+def SoftmaxOptionsAddBeta(builder, beta):
+    builder.PrependFloat32Slot(0, beta, 0.0)
+
 def AddBeta(builder, beta):
-    return SoftmaxOptionsAddBeta(builder, beta)
-def SoftmaxOptionsEnd(builder): return builder.EndObject()
+    SoftmaxOptionsAddBeta(builder, beta)
+
+def SoftmaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SoftmaxOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBeta(builder, beta):
-    return SoftmaxOptionsAddBeta(builder, beta)</code></pre>
+    SoftmaxOptionsAddBeta(builder, beta)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SoftmaxOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SoftmaxOptionsAddBeta(builder, beta): builder.PrependFloat32Slot(0, beta, 0.0)</code></pre>
+<pre><code class="python">def SoftmaxOptionsAddBeta(builder, beta):
+    builder.PrependFloat32Slot(0, beta, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SoftmaxOptions.SoftmaxOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SoftmaxOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SoftmaxOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SoftmaxOptions.SoftmaxOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SoftmaxOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def SoftmaxOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SoftmaxOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SoftmaxOptionsStart(builder)</code></pre>
+    SoftmaxOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

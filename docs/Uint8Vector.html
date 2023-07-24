@@ -83,16 +83,27 @@ class Uint8Vector(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def Uint8VectorStart(builder): builder.StartObject(1)
+def Uint8VectorStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return Uint8VectorStart(builder)
-def Uint8VectorAddValues(builder, values): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+    Uint8VectorStart(builder)
+
+def Uint8VectorAddValues(builder, values):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+
 def AddValues(builder, values):
-    return Uint8VectorAddValues(builder, values)
-def Uint8VectorStartValuesVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartValuesVector(builder, numElems):
+    Uint8VectorAddValues(builder, values)
+
+def Uint8VectorStartValuesVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartValuesVector(builder, numElems: int) -&gt; int:
     return Uint8VectorStartValuesVector(builder, numElems)
-def Uint8VectorEnd(builder): return builder.EndObject()
+
+def Uint8VectorEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Uint8VectorEnd(builder)</code></pre>
 </details>
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddValues(builder, values):
-    return Uint8VectorAddValues(builder, values)</code></pre>
+    Uint8VectorAddValues(builder, values)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Uint8Vector.End"><code class="name flex">
@@ -140,11 +151,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return Uint8VectorStart(builder)</code></pre>
+    Uint8VectorStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Uint8Vector.StartValuesVector"><code class="name flex">
-<span>def <span class="ident">StartValuesVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartValuesVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -152,7 +163,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartValuesVector(builder, numElems):
+<pre><code class="python">def StartValuesVector(builder, numElems: int) -&gt; int:
     return Uint8VectorStartValuesVector(builder, numElems)</code></pre>
 </details>
 </dd>
@@ -165,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Uint8VectorAddValues(builder, values): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)</code></pre>
+<pre><code class="python">def Uint8VectorAddValues(builder, values):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Uint8Vector.Uint8VectorEnd"><code class="name flex">
@@ -177,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Uint8VectorEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def Uint8VectorEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.Uint8Vector.Uint8VectorStart"><code class="name flex">
@@ -189,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Uint8VectorStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def Uint8VectorStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.Uint8Vector.Uint8VectorStartValuesVector"><code class="name flex">
@@ -201,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def Uint8VectorStartValuesVector(builder, numElems): return builder.StartVector(1, numElems, 1)</code></pre>
+<pre><code class="python">def Uint8VectorStartValuesVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
 </details>
 </dd>
 </dl>

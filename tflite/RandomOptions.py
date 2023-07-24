@@ -42,15 +42,26 @@ class RandomOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
         return 0
 
-def RandomOptionsStart(builder): builder.StartObject(2)
+def RandomOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return RandomOptionsStart(builder)
-def RandomOptionsAddSeed(builder, seed): builder.PrependInt64Slot(0, seed, 0)
+    RandomOptionsStart(builder)
+
+def RandomOptionsAddSeed(builder, seed):
+    builder.PrependInt64Slot(0, seed, 0)
+
 def AddSeed(builder, seed):
-    return RandomOptionsAddSeed(builder, seed)
-def RandomOptionsAddSeed2(builder, seed2): builder.PrependInt64Slot(1, seed2, 0)
+    RandomOptionsAddSeed(builder, seed)
+
+def RandomOptionsAddSeed2(builder, seed2):
+    builder.PrependInt64Slot(1, seed2, 0)
+
 def AddSeed2(builder, seed2):
-    return RandomOptionsAddSeed2(builder, seed2)
-def RandomOptionsEnd(builder): return builder.EndObject()
+    RandomOptionsAddSeed2(builder, seed2)
+
+def RandomOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return RandomOptionsEnd(builder)

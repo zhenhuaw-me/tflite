@@ -28,9 +28,14 @@ class FloorModOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def FloorModOptionsStart(builder): builder.StartObject(0)
+def FloorModOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return FloorModOptionsStart(builder)
-def FloorModOptionsEnd(builder): return builder.EndObject()
+    FloorModOptionsStart(builder)
+
+def FloorModOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return FloorModOptionsEnd(builder)

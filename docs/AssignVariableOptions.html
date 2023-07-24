@@ -56,10 +56,15 @@ class AssignVariableOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def AssignVariableOptionsStart(builder): builder.StartObject(0)
+def AssignVariableOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return AssignVariableOptionsStart(builder)
-def AssignVariableOptionsEnd(builder): return builder.EndObject()
+    AssignVariableOptionsStart(builder)
+
+def AssignVariableOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AssignVariableOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AssignVariableOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def AssignVariableOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.AssignVariableOptions.AssignVariableOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def AssignVariableOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def AssignVariableOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.AssignVariableOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return AssignVariableOptionsStart(builder)</code></pre>
+    AssignVariableOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

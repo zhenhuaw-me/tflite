@@ -56,10 +56,15 @@ class RangeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def RangeOptionsStart(builder): builder.StartObject(0)
+def RangeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return RangeOptionsStart(builder)
-def RangeOptionsEnd(builder): return builder.EndObject()
+    RangeOptionsStart(builder)
+
+def RangeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return RangeOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def RangeOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def RangeOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.RangeOptions.RangeOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def RangeOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def RangeOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.RangeOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return RangeOptionsStart(builder)</code></pre>
+    RangeOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

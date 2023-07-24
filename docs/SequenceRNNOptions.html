@@ -77,19 +77,33 @@ class SequenceRNNOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SequenceRNNOptionsStart(builder): builder.StartObject(3)
+def SequenceRNNOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return SequenceRNNOptionsStart(builder)
-def SequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)
+    SequenceRNNOptionsStart(builder)
+
+def SequenceRNNOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(0, timeMajor, 0)
+
 def AddTimeMajor(builder, timeMajor):
-    return SequenceRNNOptionsAddTimeMajor(builder, timeMajor)
-def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+    SequenceRNNOptionsAddTimeMajor(builder, timeMajor)
+
+def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+    SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def SequenceRNNOptionsEnd(builder): return builder.EndObject()
+    SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def SequenceRNNOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SequenceRNNOptionsEnd(builder)</code></pre>
 </details>
@@ -111,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.AddFusedActivationFunction"><code class="name flex">
@@ -124,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.AddTimeMajor"><code class="name flex">
@@ -137,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTimeMajor(builder, timeMajor):
-    return SequenceRNNOptionsAddTimeMajor(builder, timeMajor)</code></pre>
+    SequenceRNNOptionsAddTimeMajor(builder, timeMajor)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.End"><code class="name flex">
@@ -162,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def SequenceRNNOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.SequenceRNNOptionsAddFusedActivationFunction"><code class="name flex">
@@ -174,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def SequenceRNNOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(1, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.SequenceRNNOptionsAddTimeMajor"><code class="name flex">
@@ -186,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SequenceRNNOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(0, timeMajor, 0)</code></pre>
+<pre><code class="python">def SequenceRNNOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(0, timeMajor, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.SequenceRNNOptionsEnd"><code class="name flex">
@@ -198,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SequenceRNNOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SequenceRNNOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.SequenceRNNOptionsStart"><code class="name flex">
@@ -210,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SequenceRNNOptionsStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def SequenceRNNOptionsStart(builder):
+    builder.StartObject(3)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SequenceRNNOptions.Start"><code class="name flex">
@@ -223,7 +242,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SequenceRNNOptionsStart(builder)</code></pre>
+    SequenceRNNOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

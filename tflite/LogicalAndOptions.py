@@ -28,9 +28,14 @@ class LogicalAndOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LogicalAndOptionsStart(builder): builder.StartObject(0)
+def LogicalAndOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LogicalAndOptionsStart(builder)
-def LogicalAndOptionsEnd(builder): return builder.EndObject()
+    LogicalAndOptionsStart(builder)
+
+def LogicalAndOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LogicalAndOptionsEnd(builder)

@@ -120,28 +120,51 @@ class SignatureDef(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def SignatureDefStart(builder): builder.StartObject(5)
+def SignatureDefStart(builder):
+    builder.StartObject(5)
+
 def Start(builder):
-    return SignatureDefStart(builder)
-def SignatureDefAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+    SignatureDefStart(builder)
+
+def SignatureDefAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+
 def AddInputs(builder, inputs):
-    return SignatureDefAddInputs(builder, inputs)
-def SignatureDefStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartInputsVector(builder, numElems):
+    SignatureDefAddInputs(builder, inputs)
+
+def SignatureDefStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartInputsVector(builder, numElems: int) -&gt; int:
     return SignatureDefStartInputsVector(builder, numElems)
-def SignatureDefAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
+def SignatureDefAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
 def AddOutputs(builder, outputs):
-    return SignatureDefAddOutputs(builder, outputs)
-def SignatureDefStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartOutputsVector(builder, numElems):
+    SignatureDefAddOutputs(builder, outputs)
+
+def SignatureDefStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartOutputsVector(builder, numElems: int) -&gt; int:
     return SignatureDefStartOutputsVector(builder, numElems)
-def SignatureDefAddSignatureKey(builder, signatureKey): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)
+
+def SignatureDefAddSignatureKey(builder, signatureKey):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)
+
 def AddSignatureKey(builder, signatureKey):
-    return SignatureDefAddSignatureKey(builder, signatureKey)
-def SignatureDefAddSubgraphIndex(builder, subgraphIndex): builder.PrependUint32Slot(4, subgraphIndex, 0)
+    SignatureDefAddSignatureKey(builder, signatureKey)
+
+def SignatureDefAddSubgraphIndex(builder, subgraphIndex):
+    builder.PrependUint32Slot(4, subgraphIndex, 0)
+
 def AddSubgraphIndex(builder, subgraphIndex):
-    return SignatureDefAddSubgraphIndex(builder, subgraphIndex)
-def SignatureDefEnd(builder): return builder.EndObject()
+    SignatureDefAddSubgraphIndex(builder, subgraphIndex)
+
+def SignatureDefEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SignatureDefEnd(builder)</code></pre>
 </details>
@@ -163,7 +186,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddInputs(builder, inputs):
-    return SignatureDefAddInputs(builder, inputs)</code></pre>
+    SignatureDefAddInputs(builder, inputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.AddOutputs"><code class="name flex">
@@ -176,7 +199,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOutputs(builder, outputs):
-    return SignatureDefAddOutputs(builder, outputs)</code></pre>
+    SignatureDefAddOutputs(builder, outputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.AddSignatureKey"><code class="name flex">
@@ -189,7 +212,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSignatureKey(builder, signatureKey):
-    return SignatureDefAddSignatureKey(builder, signatureKey)</code></pre>
+    SignatureDefAddSignatureKey(builder, signatureKey)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.AddSubgraphIndex"><code class="name flex">
@@ -202,7 +225,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSubgraphIndex(builder, subgraphIndex):
-    return SignatureDefAddSubgraphIndex(builder, subgraphIndex)</code></pre>
+    SignatureDefAddSubgraphIndex(builder, subgraphIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.End"><code class="name flex">
@@ -227,7 +250,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)</code></pre>
+<pre><code class="python">def SignatureDefAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefAddOutputs"><code class="name flex">
@@ -239,7 +263,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)</code></pre>
+<pre><code class="python">def SignatureDefAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefAddSignatureKey"><code class="name flex">
@@ -251,7 +276,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefAddSignatureKey(builder, signatureKey): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)</code></pre>
+<pre><code class="python">def SignatureDefAddSignatureKey(builder, signatureKey):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefAddSubgraphIndex"><code class="name flex">
@@ -263,7 +289,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefAddSubgraphIndex(builder, subgraphIndex): builder.PrependUint32Slot(4, subgraphIndex, 0)</code></pre>
+<pre><code class="python">def SignatureDefAddSubgraphIndex(builder, subgraphIndex):
+    builder.PrependUint32Slot(4, subgraphIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefEnd"><code class="name flex">
@@ -275,7 +302,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def SignatureDefEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefStart"><code class="name flex">
@@ -287,7 +315,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefStart(builder): builder.StartObject(5)</code></pre>
+<pre><code class="python">def SignatureDefStart(builder):
+    builder.StartObject(5)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefStartInputsVector"><code class="name flex">
@@ -299,7 +328,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def SignatureDefStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.SignatureDefStartOutputsVector"><code class="name flex">
@@ -311,7 +341,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def SignatureDefStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def SignatureDefStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.Start"><code class="name flex">
@@ -324,11 +355,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return SignatureDefStart(builder)</code></pre>
+    SignatureDefStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.StartInputsVector"><code class="name flex">
-<span>def <span class="ident">StartInputsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartInputsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -336,12 +367,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartInputsVector(builder, numElems):
+<pre><code class="python">def StartInputsVector(builder, numElems: int) -&gt; int:
     return SignatureDefStartInputsVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.SignatureDef.StartOutputsVector"><code class="name flex">
-<span>def <span class="ident">StartOutputsVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartOutputsVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -349,7 +380,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartOutputsVector(builder, numElems):
+<pre><code class="python">def StartOutputsVector(builder, numElems: int) -&gt; int:
     return SignatureDefStartOutputsVector(builder, numElems)</code></pre>
 </details>
 </dd>

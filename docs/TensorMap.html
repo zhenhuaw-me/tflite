@@ -70,16 +70,27 @@ class TensorMap(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def TensorMapStart(builder): builder.StartObject(2)
+def TensorMapStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return TensorMapStart(builder)
-def TensorMapAddName(builder, name): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+    TensorMapStart(builder)
+
+def TensorMapAddName(builder, name):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+
 def AddName(builder, name):
-    return TensorMapAddName(builder, name)
-def TensorMapAddTensorIndex(builder, tensorIndex): builder.PrependUint32Slot(1, tensorIndex, 0)
+    TensorMapAddName(builder, name)
+
+def TensorMapAddTensorIndex(builder, tensorIndex):
+    builder.PrependUint32Slot(1, tensorIndex, 0)
+
 def AddTensorIndex(builder, tensorIndex):
-    return TensorMapAddTensorIndex(builder, tensorIndex)
-def TensorMapEnd(builder): return builder.EndObject()
+    TensorMapAddTensorIndex(builder, tensorIndex)
+
+def TensorMapEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TensorMapEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddName(builder, name):
-    return TensorMapAddName(builder, name)</code></pre>
+    TensorMapAddName(builder, name)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TensorMap.AddTensorIndex"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddTensorIndex(builder, tensorIndex):
-    return TensorMapAddTensorIndex(builder, tensorIndex)</code></pre>
+    TensorMapAddTensorIndex(builder, tensorIndex)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TensorMap.End"><code class="name flex">
@@ -140,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return TensorMapStart(builder)</code></pre>
+    TensorMapStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TensorMap.TensorMapAddName"><code class="name flex">
@@ -152,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TensorMapAddName(builder, name): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)</code></pre>
+<pre><code class="python">def TensorMapAddName(builder, name):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TensorMap.TensorMapAddTensorIndex"><code class="name flex">
@@ -164,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TensorMapAddTensorIndex(builder, tensorIndex): builder.PrependUint32Slot(1, tensorIndex, 0)</code></pre>
+<pre><code class="python">def TensorMapAddTensorIndex(builder, tensorIndex):
+    builder.PrependUint32Slot(1, tensorIndex, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.TensorMap.TensorMapEnd"><code class="name flex">
@@ -176,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TensorMapEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def TensorMapEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.TensorMap.TensorMapStart"><code class="name flex">
@@ -188,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def TensorMapStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def TensorMapStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 </dl>

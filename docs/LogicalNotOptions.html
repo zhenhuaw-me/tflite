@@ -56,10 +56,15 @@ class LogicalNotOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LogicalNotOptionsStart(builder): builder.StartObject(0)
+def LogicalNotOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LogicalNotOptionsStart(builder)
-def LogicalNotOptionsEnd(builder): return builder.EndObject()
+    LogicalNotOptionsStart(builder)
+
+def LogicalNotOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LogicalNotOptionsEnd(builder)</code></pre>
 </details>
@@ -93,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LogicalNotOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def LogicalNotOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.LogicalNotOptions.LogicalNotOptionsStart"><code class="name flex">
@@ -105,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LogicalNotOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def LogicalNotOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LogicalNotOptions.Start"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return LogicalNotOptionsStart(builder)</code></pre>
+    LogicalNotOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

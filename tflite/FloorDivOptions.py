@@ -28,9 +28,14 @@ class FloorDivOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def FloorDivOptionsStart(builder): builder.StartObject(0)
+def FloorDivOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return FloorDivOptionsStart(builder)
-def FloorDivOptionsEnd(builder): return builder.EndObject()
+    FloorDivOptionsStart(builder)
+
+def FloorDivOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return FloorDivOptionsEnd(builder)

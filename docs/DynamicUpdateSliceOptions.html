@@ -56,10 +56,15 @@ class DynamicUpdateSliceOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def DynamicUpdateSliceOptionsStart(builder): builder.StartObject(0)
+def DynamicUpdateSliceOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return DynamicUpdateSliceOptionsStart(builder)
-def DynamicUpdateSliceOptionsEnd(builder): return builder.EndObject()
+    DynamicUpdateSliceOptionsStart(builder)
+
+def DynamicUpdateSliceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DynamicUpdateSliceOptionsEnd(builder)</code></pre>
 </details>
@@ -80,7 +85,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DynamicUpdateSliceOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def DynamicUpdateSliceOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.DynamicUpdateSliceOptions.DynamicUpdateSliceOptionsStart"><code class="name flex">
@@ -92,7 +98,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DynamicUpdateSliceOptionsStart(builder): builder.StartObject(0)</code></pre>
+<pre><code class="python">def DynamicUpdateSliceOptionsStart(builder):
+    builder.StartObject(0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DynamicUpdateSliceOptions.End"><code class="name flex">
@@ -118,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return DynamicUpdateSliceOptionsStart(builder)</code></pre>
+    DynamicUpdateSliceOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

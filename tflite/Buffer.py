@@ -55,15 +55,26 @@ class Buffer(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def BufferStart(builder): builder.StartObject(1)
+def BufferStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return BufferStart(builder)
-def BufferAddData(builder, data): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(data), 0)
+    BufferStart(builder)
+
+def BufferAddData(builder, data):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(data), 0)
+
 def AddData(builder, data):
-    return BufferAddData(builder, data)
-def BufferStartDataVector(builder, numElems): return builder.StartVector(1, numElems, 1)
-def StartDataVector(builder, numElems):
+    BufferAddData(builder, data)
+
+def BufferStartDataVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
+def StartDataVector(builder, numElems: int) -> int:
     return BufferStartDataVector(builder, numElems)
-def BufferEnd(builder): return builder.EndObject()
+
+def BufferEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BufferEnd(builder)

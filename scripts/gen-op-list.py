@@ -2,6 +2,7 @@
 
 import os
 import git
+import argparse
 
 def genOpcode2Name(file_path):
     with open(file_path, 'r') as f:
@@ -27,6 +28,10 @@ def commitChange(repo_dir, the_file):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='gen_op_list')
+    parser.add_argument('--no-commit', action='store_true', required=False)
+    args, unknown = parser.parse_known_args()
+
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     src_fpath = os.path.join(root_dir, 'tflite', 'BuiltinOperator.py')
     dict_str = genOpcode2Name(src_fpath)
@@ -45,7 +50,34 @@ def main():
         for line in new_lines:
             f.write(line)
 
-    commitChange(root_dir, dest_fpath)
+    # also patch tflite/OperatorCode.py to incorporate https://github.com/zhenhuaw-me/tflite/commit/b686bf97510b55e809a2d41318d4d40ea65a1852
+    op_code_fpath = os.path.join(root_dir, 'tflite', 'OperatorCode.py')
+    op_code_file = ''
+    with open(op_code_fpath, 'r') as f:
+        op_code_lines = f.read().split('\n')
+        start_builtin_code = op_code_lines.index('    def BuiltinCode(self):')
+        end_builtin_code = op_code_lines.index('def OperatorCodeStart(builder):') - 1
+
+        new_op_code_lines = op_code_lines[0:start_builtin_code]
+        new_op_code_lines = new_op_code_lines + [
+            """    def BuiltinCode(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            o = self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+
+        from tflite.BuiltinOperator import BuiltinOperator
+        if o < BuiltinOperator.PLACEHOLDER_FOR_GREATER_OP_CODES:
+            return self.DeprecatedBuiltinCode()
+        else:
+            return o"""
+        ]
+        new_op_code_lines = new_op_code_lines + op_code_lines[end_builtin_code:]
+        op_code_file = '\n'.join(new_op_code_lines)
+    with open(op_code_fpath, 'w') as f:
+        f.write(op_code_file)
+
+    if not args.no_commit:
+        commitChange(root_dir, dest_fpath)
 
     print("All done!")
 

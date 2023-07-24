@@ -70,16 +70,27 @@ class VarHandleOptions(object):
             return self._tab.String(o + self._tab.Pos)
         return None
 
-def VarHandleOptionsStart(builder): builder.StartObject(2)
+def VarHandleOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return VarHandleOptionsStart(builder)
-def VarHandleOptionsAddContainer(builder, container): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(container), 0)
+    VarHandleOptionsStart(builder)
+
+def VarHandleOptionsAddContainer(builder, container):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(container), 0)
+
 def AddContainer(builder, container):
-    return VarHandleOptionsAddContainer(builder, container)
-def VarHandleOptionsAddSharedName(builder, sharedName): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(sharedName), 0)
+    VarHandleOptionsAddContainer(builder, container)
+
+def VarHandleOptionsAddSharedName(builder, sharedName):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(sharedName), 0)
+
 def AddSharedName(builder, sharedName):
-    return VarHandleOptionsAddSharedName(builder, sharedName)
-def VarHandleOptionsEnd(builder): return builder.EndObject()
+    VarHandleOptionsAddSharedName(builder, sharedName)
+
+def VarHandleOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return VarHandleOptionsEnd(builder)</code></pre>
 </details>
@@ -101,7 +112,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddContainer(builder, container):
-    return VarHandleOptionsAddContainer(builder, container)</code></pre>
+    VarHandleOptionsAddContainer(builder, container)</code></pre>
 </details>
 </dd>
 <dt id="tflite.VarHandleOptions.AddSharedName"><code class="name flex">
@@ -114,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddSharedName(builder, sharedName):
-    return VarHandleOptionsAddSharedName(builder, sharedName)</code></pre>
+    VarHandleOptionsAddSharedName(builder, sharedName)</code></pre>
 </details>
 </dd>
 <dt id="tflite.VarHandleOptions.End"><code class="name flex">
@@ -140,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return VarHandleOptionsStart(builder)</code></pre>
+    VarHandleOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.VarHandleOptions.VarHandleOptionsAddContainer"><code class="name flex">
@@ -152,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def VarHandleOptionsAddContainer(builder, container): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(container), 0)</code></pre>
+<pre><code class="python">def VarHandleOptionsAddContainer(builder, container):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(container), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.VarHandleOptions.VarHandleOptionsAddSharedName"><code class="name flex">
@@ -164,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def VarHandleOptionsAddSharedName(builder, sharedName): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(sharedName), 0)</code></pre>
+<pre><code class="python">def VarHandleOptionsAddSharedName(builder, sharedName):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(sharedName), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.VarHandleOptions.VarHandleOptionsEnd"><code class="name flex">
@@ -176,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def VarHandleOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def VarHandleOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.VarHandleOptions.VarHandleOptionsStart"><code class="name flex">
@@ -188,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def VarHandleOptionsStart(builder): builder.StartObject(2)</code></pre>
+<pre><code class="python">def VarHandleOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
 </details>
 </dd>
 </dl>

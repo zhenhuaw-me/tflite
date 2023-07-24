@@ -28,9 +28,14 @@ class DequantizeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def DequantizeOptionsStart(builder): builder.StartObject(0)
+def DequantizeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return DequantizeOptionsStart(builder)
-def DequantizeOptionsEnd(builder): return builder.EndObject()
+    DequantizeOptionsStart(builder)
+
+def DequantizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DequantizeOptionsEnd(builder)

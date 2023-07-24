@@ -63,13 +63,21 @@ class UniqueOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 2
 
-def UniqueOptionsStart(builder): builder.StartObject(1)
+def UniqueOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return UniqueOptionsStart(builder)
-def UniqueOptionsAddIdxOutType(builder, idxOutType): builder.PrependInt8Slot(0, idxOutType, 2)
+    UniqueOptionsStart(builder)
+
+def UniqueOptionsAddIdxOutType(builder, idxOutType):
+    builder.PrependInt8Slot(0, idxOutType, 2)
+
 def AddIdxOutType(builder, idxOutType):
-    return UniqueOptionsAddIdxOutType(builder, idxOutType)
-def UniqueOptionsEnd(builder): return builder.EndObject()
+    UniqueOptionsAddIdxOutType(builder, idxOutType)
+
+def UniqueOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UniqueOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddIdxOutType(builder, idxOutType):
-    return UniqueOptionsAddIdxOutType(builder, idxOutType)</code></pre>
+    UniqueOptionsAddIdxOutType(builder, idxOutType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UniqueOptions.End"><code class="name flex">
@@ -117,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return UniqueOptionsStart(builder)</code></pre>
+    UniqueOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UniqueOptions.UniqueOptionsAddIdxOutType"><code class="name flex">
@@ -129,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UniqueOptionsAddIdxOutType(builder, idxOutType): builder.PrependInt8Slot(0, idxOutType, 2)</code></pre>
+<pre><code class="python">def UniqueOptionsAddIdxOutType(builder, idxOutType):
+    builder.PrependInt8Slot(0, idxOutType, 2)</code></pre>
 </details>
 </dd>
 <dt id="tflite.UniqueOptions.UniqueOptionsEnd"><code class="name flex">
@@ -141,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UniqueOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def UniqueOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.UniqueOptions.UniqueOptionsStart"><code class="name flex">
@@ -153,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def UniqueOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def UniqueOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 </dl>

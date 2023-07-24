@@ -63,13 +63,21 @@ class ShapeOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def ShapeOptionsStart(builder): builder.StartObject(1)
+def ShapeOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return ShapeOptionsStart(builder)
-def ShapeOptionsAddOutType(builder, outType): builder.PrependInt8Slot(0, outType, 0)
+    ShapeOptionsStart(builder)
+
+def ShapeOptionsAddOutType(builder, outType):
+    builder.PrependInt8Slot(0, outType, 0)
+
 def AddOutType(builder, outType):
-    return ShapeOptionsAddOutType(builder, outType)
-def ShapeOptionsEnd(builder): return builder.EndObject()
+    ShapeOptionsAddOutType(builder, outType)
+
+def ShapeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ShapeOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddOutType(builder, outType):
-    return ShapeOptionsAddOutType(builder, outType)</code></pre>
+    ShapeOptionsAddOutType(builder, outType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ShapeOptions.End"><code class="name flex">
@@ -116,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ShapeOptionsAddOutType(builder, outType): builder.PrependInt8Slot(0, outType, 0)</code></pre>
+<pre><code class="python">def ShapeOptionsAddOutType(builder, outType):
+    builder.PrependInt8Slot(0, outType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ShapeOptions.ShapeOptionsEnd"><code class="name flex">
@@ -128,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ShapeOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ShapeOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ShapeOptions.ShapeOptionsStart"><code class="name flex">
@@ -140,7 +150,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ShapeOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def ShapeOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ShapeOptions.Start"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ShapeOptionsStart(builder)</code></pre>
+    ShapeOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

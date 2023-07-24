@@ -63,13 +63,21 @@ class DivOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def DivOptionsStart(builder): builder.StartObject(1)
+def DivOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return DivOptionsStart(builder)
-def DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    DivOptionsStart(builder)
+
+def DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def DivOptionsEnd(builder): return builder.EndObject()
+    DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def DivOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DivOptionsEnd(builder)</code></pre>
 </details>
@@ -91,7 +99,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
+    DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DivOptions.DivOptionsAddFusedActivationFunction"><code class="name flex">
@@ -103,7 +111,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
+<pre><code class="python">def DivOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DivOptions.DivOptionsEnd"><code class="name flex">
@@ -115,7 +124,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DivOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def DivOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.DivOptions.DivOptionsStart"><code class="name flex">
@@ -127,7 +137,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def DivOptionsStart(builder): builder.StartObject(1)</code></pre>
+<pre><code class="python">def DivOptionsStart(builder):
+    builder.StartObject(1)</code></pre>
 </details>
 </dd>
 <dt id="tflite.DivOptions.End"><code class="name flex">
@@ -153,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return DivOptionsStart(builder)</code></pre>
+    DivOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

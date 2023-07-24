@@ -188,43 +188,81 @@ class QuantizationParameters(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def QuantizationParametersStart(builder): builder.StartObject(7)
+def QuantizationParametersStart(builder):
+    builder.StartObject(7)
+
 def Start(builder):
-    return QuantizationParametersStart(builder)
-def QuantizationParametersAddMin(builder, min): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(min), 0)
+    QuantizationParametersStart(builder)
+
+def QuantizationParametersAddMin(builder, min):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(min), 0)
+
 def AddMin(builder, min):
-    return QuantizationParametersAddMin(builder, min)
-def QuantizationParametersStartMinVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartMinVector(builder, numElems):
+    QuantizationParametersAddMin(builder, min)
+
+def QuantizationParametersStartMinVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartMinVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartMinVector(builder, numElems)
-def QuantizationParametersAddMax(builder, max): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(max), 0)
+
+def QuantizationParametersAddMax(builder, max):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(max), 0)
+
 def AddMax(builder, max):
-    return QuantizationParametersAddMax(builder, max)
-def QuantizationParametersStartMaxVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartMaxVector(builder, numElems):
+    QuantizationParametersAddMax(builder, max)
+
+def QuantizationParametersStartMaxVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartMaxVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartMaxVector(builder, numElems)
-def QuantizationParametersAddScale(builder, scale): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(scale), 0)
+
+def QuantizationParametersAddScale(builder, scale):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(scale), 0)
+
 def AddScale(builder, scale):
-    return QuantizationParametersAddScale(builder, scale)
-def QuantizationParametersStartScaleVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartScaleVector(builder, numElems):
+    QuantizationParametersAddScale(builder, scale)
+
+def QuantizationParametersStartScaleVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartScaleVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartScaleVector(builder, numElems)
-def QuantizationParametersAddZeroPoint(builder, zeroPoint): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(zeroPoint), 0)
+
+def QuantizationParametersAddZeroPoint(builder, zeroPoint):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(zeroPoint), 0)
+
 def AddZeroPoint(builder, zeroPoint):
-    return QuantizationParametersAddZeroPoint(builder, zeroPoint)
-def QuantizationParametersStartZeroPointVector(builder, numElems): return builder.StartVector(8, numElems, 8)
-def StartZeroPointVector(builder, numElems):
+    QuantizationParametersAddZeroPoint(builder, zeroPoint)
+
+def QuantizationParametersStartZeroPointVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)
+
+def StartZeroPointVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartZeroPointVector(builder, numElems)
-def QuantizationParametersAddDetailsType(builder, detailsType): builder.PrependUint8Slot(4, detailsType, 0)
+
+def QuantizationParametersAddDetailsType(builder, detailsType):
+    builder.PrependUint8Slot(4, detailsType, 0)
+
 def AddDetailsType(builder, detailsType):
-    return QuantizationParametersAddDetailsType(builder, detailsType)
-def QuantizationParametersAddDetails(builder, details): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(details), 0)
+    QuantizationParametersAddDetailsType(builder, detailsType)
+
+def QuantizationParametersAddDetails(builder, details):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(details), 0)
+
 def AddDetails(builder, details):
-    return QuantizationParametersAddDetails(builder, details)
-def QuantizationParametersAddQuantizedDimension(builder, quantizedDimension): builder.PrependInt32Slot(6, quantizedDimension, 0)
+    QuantizationParametersAddDetails(builder, details)
+
+def QuantizationParametersAddQuantizedDimension(builder, quantizedDimension):
+    builder.PrependInt32Slot(6, quantizedDimension, 0)
+
 def AddQuantizedDimension(builder, quantizedDimension):
-    return QuantizationParametersAddQuantizedDimension(builder, quantizedDimension)
-def QuantizationParametersEnd(builder): return builder.EndObject()
+    QuantizationParametersAddQuantizedDimension(builder, quantizedDimension)
+
+def QuantizationParametersEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return QuantizationParametersEnd(builder)</code></pre>
 </details>
@@ -246,7 +284,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDetails(builder, details):
-    return QuantizationParametersAddDetails(builder, details)</code></pre>
+    QuantizationParametersAddDetails(builder, details)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.AddDetailsType"><code class="name flex">
@@ -259,7 +297,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddDetailsType(builder, detailsType):
-    return QuantizationParametersAddDetailsType(builder, detailsType)</code></pre>
+    QuantizationParametersAddDetailsType(builder, detailsType)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.AddMax"><code class="name flex">
@@ -272,7 +310,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMax(builder, max):
-    return QuantizationParametersAddMax(builder, max)</code></pre>
+    QuantizationParametersAddMax(builder, max)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.AddMin"><code class="name flex">
@@ -285,7 +323,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddMin(builder, min):
-    return QuantizationParametersAddMin(builder, min)</code></pre>
+    QuantizationParametersAddMin(builder, min)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.AddQuantizedDimension"><code class="name flex">
@@ -298,7 +336,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddQuantizedDimension(builder, quantizedDimension):
-    return QuantizationParametersAddQuantizedDimension(builder, quantizedDimension)</code></pre>
+    QuantizationParametersAddQuantizedDimension(builder, quantizedDimension)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.AddScale"><code class="name flex">
@@ -311,7 +349,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddScale(builder, scale):
-    return QuantizationParametersAddScale(builder, scale)</code></pre>
+    QuantizationParametersAddScale(builder, scale)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.AddZeroPoint"><code class="name flex">
@@ -324,7 +362,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddZeroPoint(builder, zeroPoint):
-    return QuantizationParametersAddZeroPoint(builder, zeroPoint)</code></pre>
+    QuantizationParametersAddZeroPoint(builder, zeroPoint)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.End"><code class="name flex">
@@ -349,7 +387,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddDetails(builder, details): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(details), 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddDetails(builder, details):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(details), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersAddDetailsType"><code class="name flex">
@@ -361,7 +400,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddDetailsType(builder, detailsType): builder.PrependUint8Slot(4, detailsType, 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddDetailsType(builder, detailsType):
+    builder.PrependUint8Slot(4, detailsType, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersAddMax"><code class="name flex">
@@ -373,7 +413,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddMax(builder, max): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(max), 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddMax(builder, max):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(max), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersAddMin"><code class="name flex">
@@ -385,7 +426,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddMin(builder, min): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(min), 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddMin(builder, min):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(min), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersAddQuantizedDimension"><code class="name flex">
@@ -397,7 +439,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddQuantizedDimension(builder, quantizedDimension): builder.PrependInt32Slot(6, quantizedDimension, 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddQuantizedDimension(builder, quantizedDimension):
+    builder.PrependInt32Slot(6, quantizedDimension, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersAddScale"><code class="name flex">
@@ -409,7 +452,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddScale(builder, scale): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(scale), 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddScale(builder, scale):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(scale), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersAddZeroPoint"><code class="name flex">
@@ -421,7 +465,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersAddZeroPoint(builder, zeroPoint): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(zeroPoint), 0)</code></pre>
+<pre><code class="python">def QuantizationParametersAddZeroPoint(builder, zeroPoint):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(zeroPoint), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersEnd"><code class="name flex">
@@ -433,7 +478,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def QuantizationParametersEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersStart"><code class="name flex">
@@ -445,7 +491,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersStart(builder): builder.StartObject(7)</code></pre>
+<pre><code class="python">def QuantizationParametersStart(builder):
+    builder.StartObject(7)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersStartMaxVector"><code class="name flex">
@@ -457,7 +504,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersStartMaxVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def QuantizationParametersStartMaxVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersStartMinVector"><code class="name flex">
@@ -469,7 +517,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersStartMinVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def QuantizationParametersStartMinVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersStartScaleVector"><code class="name flex">
@@ -481,7 +530,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersStartScaleVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def QuantizationParametersStartScaleVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.QuantizationParametersStartZeroPointVector"><code class="name flex">
@@ -493,7 +543,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def QuantizationParametersStartZeroPointVector(builder, numElems): return builder.StartVector(8, numElems, 8)</code></pre>
+<pre><code class="python">def QuantizationParametersStartZeroPointVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.Start"><code class="name flex">
@@ -506,11 +557,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return QuantizationParametersStart(builder)</code></pre>
+    QuantizationParametersStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.StartMaxVector"><code class="name flex">
-<span>def <span class="ident">StartMaxVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartMaxVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -518,12 +569,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartMaxVector(builder, numElems):
+<pre><code class="python">def StartMaxVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartMaxVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.StartMinVector"><code class="name flex">
-<span>def <span class="ident">StartMinVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartMinVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -531,12 +582,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartMinVector(builder, numElems):
+<pre><code class="python">def StartMinVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartMinVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.StartScaleVector"><code class="name flex">
-<span>def <span class="ident">StartScaleVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartScaleVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -544,12 +595,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartScaleVector(builder, numElems):
+<pre><code class="python">def StartScaleVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartScaleVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.QuantizationParameters.StartZeroPointVector"><code class="name flex">
-<span>def <span class="ident">StartZeroPointVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartZeroPointVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -557,7 +608,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartZeroPointVector(builder, numElems):
+<pre><code class="python">def StartZeroPointVector(builder, numElems: int) -&gt; int:
     return QuantizationParametersStartZeroPointVector(builder, numElems)</code></pre>
 </details>
 </dd>

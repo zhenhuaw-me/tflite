@@ -160,42 +160,80 @@ class QuantizationParameters(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def QuantizationParametersStart(builder): builder.StartObject(7)
+def QuantizationParametersStart(builder):
+    builder.StartObject(7)
+
 def Start(builder):
-    return QuantizationParametersStart(builder)
-def QuantizationParametersAddMin(builder, min): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(min), 0)
+    QuantizationParametersStart(builder)
+
+def QuantizationParametersAddMin(builder, min):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(min), 0)
+
 def AddMin(builder, min):
-    return QuantizationParametersAddMin(builder, min)
-def QuantizationParametersStartMinVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartMinVector(builder, numElems):
+    QuantizationParametersAddMin(builder, min)
+
+def QuantizationParametersStartMinVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartMinVector(builder, numElems: int) -> int:
     return QuantizationParametersStartMinVector(builder, numElems)
-def QuantizationParametersAddMax(builder, max): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(max), 0)
+
+def QuantizationParametersAddMax(builder, max):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(max), 0)
+
 def AddMax(builder, max):
-    return QuantizationParametersAddMax(builder, max)
-def QuantizationParametersStartMaxVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartMaxVector(builder, numElems):
+    QuantizationParametersAddMax(builder, max)
+
+def QuantizationParametersStartMaxVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartMaxVector(builder, numElems: int) -> int:
     return QuantizationParametersStartMaxVector(builder, numElems)
-def QuantizationParametersAddScale(builder, scale): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(scale), 0)
+
+def QuantizationParametersAddScale(builder, scale):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(scale), 0)
+
 def AddScale(builder, scale):
-    return QuantizationParametersAddScale(builder, scale)
-def QuantizationParametersStartScaleVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartScaleVector(builder, numElems):
+    QuantizationParametersAddScale(builder, scale)
+
+def QuantizationParametersStartScaleVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartScaleVector(builder, numElems: int) -> int:
     return QuantizationParametersStartScaleVector(builder, numElems)
-def QuantizationParametersAddZeroPoint(builder, zeroPoint): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(zeroPoint), 0)
+
+def QuantizationParametersAddZeroPoint(builder, zeroPoint):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(zeroPoint), 0)
+
 def AddZeroPoint(builder, zeroPoint):
-    return QuantizationParametersAddZeroPoint(builder, zeroPoint)
-def QuantizationParametersStartZeroPointVector(builder, numElems): return builder.StartVector(8, numElems, 8)
-def StartZeroPointVector(builder, numElems):
+    QuantizationParametersAddZeroPoint(builder, zeroPoint)
+
+def QuantizationParametersStartZeroPointVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)
+
+def StartZeroPointVector(builder, numElems: int) -> int:
     return QuantizationParametersStartZeroPointVector(builder, numElems)
-def QuantizationParametersAddDetailsType(builder, detailsType): builder.PrependUint8Slot(4, detailsType, 0)
+
+def QuantizationParametersAddDetailsType(builder, detailsType):
+    builder.PrependUint8Slot(4, detailsType, 0)
+
 def AddDetailsType(builder, detailsType):
-    return QuantizationParametersAddDetailsType(builder, detailsType)
-def QuantizationParametersAddDetails(builder, details): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(details), 0)
+    QuantizationParametersAddDetailsType(builder, detailsType)
+
+def QuantizationParametersAddDetails(builder, details):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(details), 0)
+
 def AddDetails(builder, details):
-    return QuantizationParametersAddDetails(builder, details)
-def QuantizationParametersAddQuantizedDimension(builder, quantizedDimension): builder.PrependInt32Slot(6, quantizedDimension, 0)
+    QuantizationParametersAddDetails(builder, details)
+
+def QuantizationParametersAddQuantizedDimension(builder, quantizedDimension):
+    builder.PrependInt32Slot(6, quantizedDimension, 0)
+
 def AddQuantizedDimension(builder, quantizedDimension):
-    return QuantizationParametersAddQuantizedDimension(builder, quantizedDimension)
-def QuantizationParametersEnd(builder): return builder.EndObject()
+    QuantizationParametersAddQuantizedDimension(builder, quantizedDimension)
+
+def QuantizationParametersEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return QuantizationParametersEnd(builder)

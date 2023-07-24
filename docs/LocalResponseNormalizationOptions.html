@@ -84,22 +84,39 @@ class LocalResponseNormalizationOptions(object):
             return self._tab.Get(flatbuffers.number_types.Float32Flags, o + self._tab.Pos)
         return 0.0
 
-def LocalResponseNormalizationOptionsStart(builder): builder.StartObject(4)
+def LocalResponseNormalizationOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return LocalResponseNormalizationOptionsStart(builder)
-def LocalResponseNormalizationOptionsAddRadius(builder, radius): builder.PrependInt32Slot(0, radius, 0)
+    LocalResponseNormalizationOptionsStart(builder)
+
+def LocalResponseNormalizationOptionsAddRadius(builder, radius):
+    builder.PrependInt32Slot(0, radius, 0)
+
 def AddRadius(builder, radius):
-    return LocalResponseNormalizationOptionsAddRadius(builder, radius)
-def LocalResponseNormalizationOptionsAddBias(builder, bias): builder.PrependFloat32Slot(1, bias, 0.0)
+    LocalResponseNormalizationOptionsAddRadius(builder, radius)
+
+def LocalResponseNormalizationOptionsAddBias(builder, bias):
+    builder.PrependFloat32Slot(1, bias, 0.0)
+
 def AddBias(builder, bias):
-    return LocalResponseNormalizationOptionsAddBias(builder, bias)
-def LocalResponseNormalizationOptionsAddAlpha(builder, alpha): builder.PrependFloat32Slot(2, alpha, 0.0)
+    LocalResponseNormalizationOptionsAddBias(builder, bias)
+
+def LocalResponseNormalizationOptionsAddAlpha(builder, alpha):
+    builder.PrependFloat32Slot(2, alpha, 0.0)
+
 def AddAlpha(builder, alpha):
-    return LocalResponseNormalizationOptionsAddAlpha(builder, alpha)
-def LocalResponseNormalizationOptionsAddBeta(builder, beta): builder.PrependFloat32Slot(3, beta, 0.0)
+    LocalResponseNormalizationOptionsAddAlpha(builder, alpha)
+
+def LocalResponseNormalizationOptionsAddBeta(builder, beta):
+    builder.PrependFloat32Slot(3, beta, 0.0)
+
 def AddBeta(builder, beta):
-    return LocalResponseNormalizationOptionsAddBeta(builder, beta)
-def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()
+    LocalResponseNormalizationOptionsAddBeta(builder, beta)
+
+def LocalResponseNormalizationOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LocalResponseNormalizationOptionsEnd(builder)</code></pre>
 </details>
@@ -121,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAlpha(builder, alpha):
-    return LocalResponseNormalizationOptionsAddAlpha(builder, alpha)</code></pre>
+    LocalResponseNormalizationOptionsAddAlpha(builder, alpha)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.AddBeta"><code class="name flex">
@@ -134,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBeta(builder, beta):
-    return LocalResponseNormalizationOptionsAddBeta(builder, beta)</code></pre>
+    LocalResponseNormalizationOptionsAddBeta(builder, beta)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.AddBias"><code class="name flex">
@@ -147,7 +164,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddBias(builder, bias):
-    return LocalResponseNormalizationOptionsAddBias(builder, bias)</code></pre>
+    LocalResponseNormalizationOptionsAddBias(builder, bias)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.AddRadius"><code class="name flex">
@@ -160,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddRadius(builder, radius):
-    return LocalResponseNormalizationOptionsAddRadius(builder, radius)</code></pre>
+    LocalResponseNormalizationOptionsAddRadius(builder, radius)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.End"><code class="name flex">
@@ -185,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LocalResponseNormalizationOptionsAddAlpha(builder, alpha): builder.PrependFloat32Slot(2, alpha, 0.0)</code></pre>
+<pre><code class="python">def LocalResponseNormalizationOptionsAddAlpha(builder, alpha):
+    builder.PrependFloat32Slot(2, alpha, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddBeta"><code class="name flex">
@@ -197,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LocalResponseNormalizationOptionsAddBeta(builder, beta): builder.PrependFloat32Slot(3, beta, 0.0)</code></pre>
+<pre><code class="python">def LocalResponseNormalizationOptionsAddBeta(builder, beta):
+    builder.PrependFloat32Slot(3, beta, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddBias"><code class="name flex">
@@ -209,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LocalResponseNormalizationOptionsAddBias(builder, bias): builder.PrependFloat32Slot(1, bias, 0.0)</code></pre>
+<pre><code class="python">def LocalResponseNormalizationOptionsAddBias(builder, bias):
+    builder.PrependFloat32Slot(1, bias, 0.0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsAddRadius"><code class="name flex">
@@ -221,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LocalResponseNormalizationOptionsAddRadius(builder, radius): builder.PrependInt32Slot(0, radius, 0)</code></pre>
+<pre><code class="python">def LocalResponseNormalizationOptionsAddRadius(builder, radius):
+    builder.PrependInt32Slot(0, radius, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsEnd"><code class="name flex">
@@ -233,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LocalResponseNormalizationOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def LocalResponseNormalizationOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.LocalResponseNormalizationOptionsStart"><code class="name flex">
@@ -245,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def LocalResponseNormalizationOptionsStart(builder): builder.StartObject(4)</code></pre>
+<pre><code class="python">def LocalResponseNormalizationOptionsStart(builder):
+    builder.StartObject(4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.LocalResponseNormalizationOptions.Start"><code class="name flex">
@@ -258,7 +281,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return LocalResponseNormalizationOptionsStart(builder)</code></pre>
+    LocalResponseNormalizationOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

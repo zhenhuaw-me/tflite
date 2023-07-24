@@ -77,19 +77,33 @@ class BatchMatMulOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def BatchMatMulOptionsStart(builder): builder.StartObject(3)
+def BatchMatMulOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return BatchMatMulOptionsStart(builder)
-def BatchMatMulOptionsAddAdjX(builder, adjX): builder.PrependBoolSlot(0, adjX, 0)
+    BatchMatMulOptionsStart(builder)
+
+def BatchMatMulOptionsAddAdjX(builder, adjX):
+    builder.PrependBoolSlot(0, adjX, 0)
+
 def AddAdjX(builder, adjX):
-    return BatchMatMulOptionsAddAdjX(builder, adjX)
-def BatchMatMulOptionsAddAdjY(builder, adjY): builder.PrependBoolSlot(1, adjY, 0)
+    BatchMatMulOptionsAddAdjX(builder, adjX)
+
+def BatchMatMulOptionsAddAdjY(builder, adjY):
+    builder.PrependBoolSlot(1, adjY, 0)
+
 def AddAdjY(builder, adjY):
-    return BatchMatMulOptionsAddAdjY(builder, adjY)
-def BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+    BatchMatMulOptionsAddAdjY(builder, adjY)
+
+def BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def BatchMatMulOptionsEnd(builder): return builder.EndObject()
+    BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def BatchMatMulOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BatchMatMulOptionsEnd(builder)</code></pre>
 </details>
@@ -111,7 +125,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAdjX(builder, adjX):
-    return BatchMatMulOptionsAddAdjX(builder, adjX)</code></pre>
+    BatchMatMulOptionsAddAdjX(builder, adjX)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.AddAdjY"><code class="name flex">
@@ -124,7 +138,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAdjY(builder, adjY):
-    return BatchMatMulOptionsAddAdjY(builder, adjY)</code></pre>
+    BatchMatMulOptionsAddAdjY(builder, adjY)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.AddAsymmetricQuantizeInputs"><code class="name flex">
@@ -137,7 +151,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
+    BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.BatchMatMulOptionsAddAdjX"><code class="name flex">
@@ -149,7 +163,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchMatMulOptionsAddAdjX(builder, adjX): builder.PrependBoolSlot(0, adjX, 0)</code></pre>
+<pre><code class="python">def BatchMatMulOptionsAddAdjX(builder, adjX):
+    builder.PrependBoolSlot(0, adjX, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.BatchMatMulOptionsAddAdjY"><code class="name flex">
@@ -161,7 +176,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchMatMulOptionsAddAdjY(builder, adjY): builder.PrependBoolSlot(1, adjY, 0)</code></pre>
+<pre><code class="python">def BatchMatMulOptionsAddAdjY(builder, adjY):
+    builder.PrependBoolSlot(1, adjY, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.BatchMatMulOptionsAddAsymmetricQuantizeInputs"><code class="name flex">
@@ -173,7 +189,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)</code></pre>
+<pre><code class="python">def BatchMatMulOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.BatchMatMulOptionsEnd"><code class="name flex">
@@ -185,7 +202,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchMatMulOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def BatchMatMulOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.BatchMatMulOptionsStart"><code class="name flex">
@@ -197,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def BatchMatMulOptionsStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def BatchMatMulOptionsStart(builder):
+    builder.StartObject(3)</code></pre>
 </details>
 </dd>
 <dt id="tflite.BatchMatMulOptions.End"><code class="name flex">
@@ -223,7 +242,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return BatchMatMulOptionsStart(builder)</code></pre>
+    BatchMatMulOptionsStart(builder)</code></pre>
 </details>
 </dd>
 </dl>

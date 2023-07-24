@@ -117,25 +117,45 @@ class ConcatEmbeddingsOptions(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         return o == 0
 
-def ConcatEmbeddingsOptionsStart(builder): builder.StartObject(3)
+def ConcatEmbeddingsOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return ConcatEmbeddingsOptionsStart(builder)
-def ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels): builder.PrependInt32Slot(0, numChannels, 0)
+    ConcatEmbeddingsOptionsStart(builder)
+
+def ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels):
+    builder.PrependInt32Slot(0, numChannels, 0)
+
 def AddNumChannels(builder, numChannels):
-    return ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels)
-def ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(numColumnsPerChannel), 0)
+    ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels)
+
+def ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(numColumnsPerChannel), 0)
+
 def AddNumColumnsPerChannel(builder, numColumnsPerChannel):
-    return ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel)
-def ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartNumColumnsPerChannelVector(builder, numElems):
+    ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel)
+
+def ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartNumColumnsPerChannelVector(builder, numElems: int) -&gt; int:
     return ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector(builder, numElems)
-def ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(embeddingDimPerChannel), 0)
+
+def ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(embeddingDimPerChannel), 0)
+
 def AddEmbeddingDimPerChannel(builder, embeddingDimPerChannel):
-    return ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel)
-def ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def StartEmbeddingDimPerChannelVector(builder, numElems):
+    ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel)
+
+def ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartEmbeddingDimPerChannelVector(builder, numElems: int) -&gt; int:
     return ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector(builder, numElems)
-def ConcatEmbeddingsOptionsEnd(builder): return builder.EndObject()
+
+def ConcatEmbeddingsOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ConcatEmbeddingsOptionsEnd(builder)</code></pre>
 </details>
@@ -157,7 +177,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddEmbeddingDimPerChannel(builder, embeddingDimPerChannel):
-    return ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel)</code></pre>
+    ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.AddNumChannels"><code class="name flex">
@@ -170,7 +190,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNumChannels(builder, numChannels):
-    return ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels)</code></pre>
+    ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.AddNumColumnsPerChannel"><code class="name flex">
@@ -183,7 +203,7 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def AddNumColumnsPerChannel(builder, numColumnsPerChannel):
-    return ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel)</code></pre>
+    ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel"><code class="name flex">
@@ -195,7 +215,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(embeddingDimPerChannel), 0)</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsAddEmbeddingDimPerChannel(builder, embeddingDimPerChannel):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(embeddingDimPerChannel), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsAddNumChannels"><code class="name flex">
@@ -207,7 +228,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels): builder.PrependInt32Slot(0, numChannels, 0)</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsAddNumChannels(builder, numChannels):
+    builder.PrependInt32Slot(0, numChannels, 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsAddNumColumnsPerChannel"><code class="name flex">
@@ -219,7 +241,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(numColumnsPerChannel), 0)</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsAddNumColumnsPerChannel(builder, numColumnsPerChannel):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(numColumnsPerChannel), 0)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsEnd"><code class="name flex">
@@ -231,7 +254,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsEnd(builder): return builder.EndObject()</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsStart"><code class="name flex">
@@ -243,7 +267,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsStart(builder): builder.StartObject(3)</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsStart(builder):
+    builder.StartObject(3)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector"><code class="name flex">
@@ -255,7 +280,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector"><code class="name flex">
@@ -267,7 +293,8 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector(builder, numElems): return builder.StartVector(4, numElems, 4)</code></pre>
+<pre><code class="python">def ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.End"><code class="name flex">
@@ -293,11 +320,11 @@ def End(builder):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Start(builder):
-    return ConcatEmbeddingsOptionsStart(builder)</code></pre>
+    ConcatEmbeddingsOptionsStart(builder)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.StartEmbeddingDimPerChannelVector"><code class="name flex">
-<span>def <span class="ident">StartEmbeddingDimPerChannelVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartEmbeddingDimPerChannelVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -305,12 +332,12 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartEmbeddingDimPerChannelVector(builder, numElems):
+<pre><code class="python">def StartEmbeddingDimPerChannelVector(builder, numElems: int) -&gt; int:
     return ConcatEmbeddingsOptionsStartEmbeddingDimPerChannelVector(builder, numElems)</code></pre>
 </details>
 </dd>
 <dt id="tflite.ConcatEmbeddingsOptions.StartNumColumnsPerChannelVector"><code class="name flex">
-<span>def <span class="ident">StartNumColumnsPerChannelVector</span></span>(<span>builder, numElems)</span>
+<span>def <span class="ident">StartNumColumnsPerChannelVector</span></span>(<span>builder, numElems: int) ‑> int</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -318,7 +345,7 @@ def End(builder):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def StartNumColumnsPerChannelVector(builder, numElems):
+<pre><code class="python">def StartNumColumnsPerChannelVector(builder, numElems: int) -&gt; int:
     return ConcatEmbeddingsOptionsStartNumColumnsPerChannelVector(builder, numElems)</code></pre>
 </details>
 </dd>

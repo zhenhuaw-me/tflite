@@ -1,6 +1,6 @@
 # import classes and functions of submodules
 
-__version__ = '2.10.0'
+__version__ = '2.13.0'
 
 
 
@@ -17,6 +17,8 @@ from tflite.BatchMatMulOptions import *
 from tflite.BatchToSpaceNDOptions import *
 from tflite.BidirectionalSequenceLSTMOptions import *
 from tflite.BidirectionalSequenceRNNOptions import *
+from tflite.BitcastOptions import *
+from tflite.BitwiseXorOptions import *
 from tflite.BroadcastToOptions import *
 from tflite.BucketizeOptions import *
 from tflite.Buffer import *
@@ -113,6 +115,7 @@ from tflite.ResizeNearestNeighborOptions import *
 from tflite.ReverseSequenceOptions import *
 from tflite.ReverseV2Options import *
 from tflite.Rfft2dOptions import *
+from tflite.RightShiftOptions import *
 from tflite.SVDFOptions import *
 from tflite.ScatterNdOptions import *
 from tflite.SegmentSumOptions import *
@@ -120,6 +123,7 @@ from tflite.SelectOptions import *
 from tflite.SelectV2Options import *
 from tflite.SequenceRNNOptions import *
 from tflite.ShapeOptions import *
+from tflite.SignOptions import *
 from tflite.SignatureDef import *
 from tflite.SkipGramOptions import *
 from tflite.SliceOptions import *
@@ -150,9 +154,11 @@ from tflite.UnidirectionalSequenceLSTMOptions import *
 from tflite.UniqueOptions import *
 from tflite.UnpackOptions import *
 from tflite.UnsortedSegmentMaxOptions import *
+from tflite.UnsortedSegmentMinOptions import *
 from tflite.UnsortedSegmentProdOptions import *
 from tflite.UnsortedSegmentSumOptions import *
 from tflite.VarHandleOptions import *
+from tflite.VariantSubType import *
 from tflite.WhereOptions import *
 from tflite.WhileOptions import *
 from tflite.ZerosLikeOptions import *

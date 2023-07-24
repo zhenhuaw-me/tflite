@@ -42,15 +42,26 @@ class ResizeBilinearOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def ResizeBilinearOptionsStart(builder): builder.StartObject(4)
+def ResizeBilinearOptionsStart(builder):
+    builder.StartObject(4)
+
 def Start(builder):
-    return ResizeBilinearOptionsStart(builder)
-def ResizeBilinearOptionsAddAlignCorners(builder, alignCorners): builder.PrependBoolSlot(2, alignCorners, 0)
+    ResizeBilinearOptionsStart(builder)
+
+def ResizeBilinearOptionsAddAlignCorners(builder, alignCorners):
+    builder.PrependBoolSlot(2, alignCorners, 0)
+
 def AddAlignCorners(builder, alignCorners):
-    return ResizeBilinearOptionsAddAlignCorners(builder, alignCorners)
-def ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters): builder.PrependBoolSlot(3, halfPixelCenters, 0)
+    ResizeBilinearOptionsAddAlignCorners(builder, alignCorners)
+
+def ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters):
+    builder.PrependBoolSlot(3, halfPixelCenters, 0)
+
 def AddHalfPixelCenters(builder, halfPixelCenters):
-    return ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters)
-def ResizeBilinearOptionsEnd(builder): return builder.EndObject()
+    ResizeBilinearOptionsAddHalfPixelCenters(builder, halfPixelCenters)
+
+def ResizeBilinearOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ResizeBilinearOptionsEnd(builder)
