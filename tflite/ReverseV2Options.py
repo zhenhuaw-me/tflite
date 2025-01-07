@@ -28,9 +28,14 @@ class ReverseV2Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ReverseV2OptionsStart(builder): builder.StartObject(0)
+def ReverseV2OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ReverseV2OptionsStart(builder)
-def ReverseV2OptionsEnd(builder): return builder.EndObject()
+    ReverseV2OptionsStart(builder)
+
+def ReverseV2OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ReverseV2OptionsEnd(builder)

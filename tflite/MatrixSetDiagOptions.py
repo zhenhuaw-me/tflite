@@ -28,9 +28,14 @@ class MatrixSetDiagOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def MatrixSetDiagOptionsStart(builder): builder.StartObject(0)
+def MatrixSetDiagOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return MatrixSetDiagOptionsStart(builder)
-def MatrixSetDiagOptionsEnd(builder): return builder.EndObject()
+    MatrixSetDiagOptionsStart(builder)
+
+def MatrixSetDiagOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MatrixSetDiagOptionsEnd(builder)

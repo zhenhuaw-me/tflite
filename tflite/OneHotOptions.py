@@ -35,12 +35,20 @@ class OneHotOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def OneHotOptionsStart(builder): builder.StartObject(1)
+def OneHotOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return OneHotOptionsStart(builder)
-def OneHotOptionsAddAxis(builder, axis): builder.PrependInt32Slot(0, axis, 0)
+    OneHotOptionsStart(builder)
+
+def OneHotOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(0, axis, 0)
+
 def AddAxis(builder, axis):
-    return OneHotOptionsAddAxis(builder, axis)
-def OneHotOptionsEnd(builder): return builder.EndObject()
+    OneHotOptionsAddAxis(builder, axis)
+
+def OneHotOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return OneHotOptionsEnd(builder)

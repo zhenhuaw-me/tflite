@@ -42,15 +42,26 @@ class GatherOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def GatherOptionsStart(builder): builder.StartObject(2)
+def GatherOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return GatherOptionsStart(builder)
-def GatherOptionsAddAxis(builder, axis): builder.PrependInt32Slot(0, axis, 0)
+    GatherOptionsStart(builder)
+
+def GatherOptionsAddAxis(builder, axis):
+    builder.PrependInt32Slot(0, axis, 0)
+
 def AddAxis(builder, axis):
-    return GatherOptionsAddAxis(builder, axis)
-def GatherOptionsAddBatchDims(builder, batchDims): builder.PrependInt32Slot(1, batchDims, 0)
+    GatherOptionsAddAxis(builder, axis)
+
+def GatherOptionsAddBatchDims(builder, batchDims):
+    builder.PrependInt32Slot(1, batchDims, 0)
+
 def AddBatchDims(builder, batchDims):
-    return GatherOptionsAddBatchDims(builder, batchDims)
-def GatherOptionsEnd(builder): return builder.EndObject()
+    GatherOptionsAddBatchDims(builder, batchDims)
+
+def GatherOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GatherOptionsEnd(builder)

@@ -70,27 +70,50 @@ class BidirectionalSequenceLSTMOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def BidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(6)
+def BidirectionalSequenceLSTMOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return BidirectionalSequenceLSTMOptionsStart(builder)
-def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    BidirectionalSequenceLSTMOptionsStart(builder)
+
+def BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+    BidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)
+
 def AddCellClip(builder, cellClip):
-    return BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
-def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+    BidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
+
+def BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)
+
 def AddProjClip(builder, projClip):
-    return BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
-def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs): builder.PrependBoolSlot(3, mergeOutputs, 0)
+    BidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
+
+def BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs):
+    builder.PrependBoolSlot(3, mergeOutputs, 0)
+
 def AddMergeOutputs(builder, mergeOutputs):
-    return BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)
-def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(4, timeMajor, 1)
+    BidirectionalSequenceLSTMOptionsAddMergeOutputs(builder, mergeOutputs)
+
+def BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(4, timeMajor, 1)
+
 def AddTimeMajor(builder, timeMajor):
-    return BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
-def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)
+    BidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
+
+def BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(5, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def BidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()
+    BidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def BidirectionalSequenceLSTMOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BidirectionalSequenceLSTMOptionsEnd(builder)

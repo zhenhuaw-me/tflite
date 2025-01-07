@@ -35,12 +35,20 @@ class SparseToDenseOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SparseToDenseOptionsStart(builder): builder.StartObject(1)
+def SparseToDenseOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SparseToDenseOptionsStart(builder)
-def SparseToDenseOptionsAddValidateIndices(builder, validateIndices): builder.PrependBoolSlot(0, validateIndices, 0)
+    SparseToDenseOptionsStart(builder)
+
+def SparseToDenseOptionsAddValidateIndices(builder, validateIndices):
+    builder.PrependBoolSlot(0, validateIndices, 0)
+
 def AddValidateIndices(builder, validateIndices):
-    return SparseToDenseOptionsAddValidateIndices(builder, validateIndices)
-def SparseToDenseOptionsEnd(builder): return builder.EndObject()
+    SparseToDenseOptionsAddValidateIndices(builder, validateIndices)
+
+def SparseToDenseOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SparseToDenseOptionsEnd(builder)

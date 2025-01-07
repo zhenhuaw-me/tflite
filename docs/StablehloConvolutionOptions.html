@@ -1,0 +1,1980 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>tflite.StablehloConvolutionOptions API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.StablehloConvolutionOptions</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.StablehloConvolutionOptions.AddBatchGroupCount"><code class="name flex">
+<span>def <span class="ident">AddBatchGroupCount</span></span>(<span>builder, batchGroupCount)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBatchGroupCount(builder, batchGroupCount):
+    StablehloConvolutionOptionsAddBatchGroupCount(builder, batchGroupCount)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddFeatureGroupCount"><code class="name flex">
+<span>def <span class="ident">AddFeatureGroupCount</span></span>(<span>builder, featureGroupCount)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddFeatureGroupCount(builder, featureGroupCount):
+    StablehloConvolutionOptionsAddFeatureGroupCount(builder, featureGroupCount)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddInputBatchDimension"><code class="name flex">
+<span>def <span class="ident">AddInputBatchDimension</span></span>(<span>builder, inputBatchDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddInputBatchDimension(builder, inputBatchDimension):
+    StablehloConvolutionOptionsAddInputBatchDimension(builder, inputBatchDimension)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddInputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">AddInputFeatureDimension</span></span>(<span>builder, inputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddInputFeatureDimension(builder, inputFeatureDimension):
+    StablehloConvolutionOptionsAddInputFeatureDimension(builder, inputFeatureDimension)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddInputSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">AddInputSpatialDimensions</span></span>(<span>builder, inputSpatialDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddInputSpatialDimensions(builder, inputSpatialDimensions):
+    StablehloConvolutionOptionsAddInputSpatialDimensions(builder, inputSpatialDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddKernelInputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">AddKernelInputFeatureDimension</span></span>(<span>builder, kernelInputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddKernelInputFeatureDimension(builder, kernelInputFeatureDimension):
+    StablehloConvolutionOptionsAddKernelInputFeatureDimension(builder, kernelInputFeatureDimension)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddKernelOutputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">AddKernelOutputFeatureDimension</span></span>(<span>builder, kernelOutputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddKernelOutputFeatureDimension(builder, kernelOutputFeatureDimension):
+    StablehloConvolutionOptionsAddKernelOutputFeatureDimension(builder, kernelOutputFeatureDimension)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddKernelSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">AddKernelSpatialDimensions</span></span>(<span>builder, kernelSpatialDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddKernelSpatialDimensions(builder, kernelSpatialDimensions):
+    StablehloConvolutionOptionsAddKernelSpatialDimensions(builder, kernelSpatialDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddLhsDilation"><code class="name flex">
+<span>def <span class="ident">AddLhsDilation</span></span>(<span>builder, lhsDilation)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddLhsDilation(builder, lhsDilation):
+    StablehloConvolutionOptionsAddLhsDilation(builder, lhsDilation)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddOutputBatchDimension"><code class="name flex">
+<span>def <span class="ident">AddOutputBatchDimension</span></span>(<span>builder, outputBatchDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOutputBatchDimension(builder, outputBatchDimension):
+    StablehloConvolutionOptionsAddOutputBatchDimension(builder, outputBatchDimension)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddOutputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">AddOutputFeatureDimension</span></span>(<span>builder, outputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOutputFeatureDimension(builder, outputFeatureDimension):
+    StablehloConvolutionOptionsAddOutputFeatureDimension(builder, outputFeatureDimension)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddOutputSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">AddOutputSpatialDimensions</span></span>(<span>builder, outputSpatialDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddOutputSpatialDimensions(builder, outputSpatialDimensions):
+    StablehloConvolutionOptionsAddOutputSpatialDimensions(builder, outputSpatialDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddPadding"><code class="name flex">
+<span>def <span class="ident">AddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPadding(builder, padding):
+    StablehloConvolutionOptionsAddPadding(builder, padding)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddPrecisionConfig"><code class="name flex">
+<span>def <span class="ident">AddPrecisionConfig</span></span>(<span>builder, precisionConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPrecisionConfig(builder, precisionConfig):
+    StablehloConvolutionOptionsAddPrecisionConfig(builder, precisionConfig)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddRhsDilation"><code class="name flex">
+<span>def <span class="ident">AddRhsDilation</span></span>(<span>builder, rhsDilation)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddRhsDilation(builder, rhsDilation):
+    StablehloConvolutionOptionsAddRhsDilation(builder, rhsDilation)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddWindowReversal"><code class="name flex">
+<span>def <span class="ident">AddWindowReversal</span></span>(<span>builder, windowReversal)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddWindowReversal(builder, windowReversal):
+    StablehloConvolutionOptionsAddWindowReversal(builder, windowReversal)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.AddWindowStrides"><code class="name flex">
+<span>def <span class="ident">AddWindowStrides</span></span>(<span>builder, windowStrides)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddWindowStrides(builder, windowStrides):
+    StablehloConvolutionOptionsAddWindowStrides(builder, windowStrides)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StablehloConvolutionOptionsEnd(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddBatchGroupCount"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddBatchGroupCount</span></span>(<span>builder, batchGroupCount)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddBatchGroupCount(builder, batchGroupCount):
+    builder.PrependInt64Slot(15, batchGroupCount, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddFeatureGroupCount"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddFeatureGroupCount</span></span>(<span>builder, featureGroupCount)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddFeatureGroupCount(builder, featureGroupCount):
+    builder.PrependInt64Slot(14, featureGroupCount, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputBatchDimension"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddInputBatchDimension</span></span>(<span>builder, inputBatchDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddInputBatchDimension(builder, inputBatchDimension):
+    builder.PrependInt64Slot(5, inputBatchDimension, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddInputFeatureDimension</span></span>(<span>builder, inputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddInputFeatureDimension(builder, inputFeatureDimension):
+    builder.PrependInt64Slot(6, inputFeatureDimension, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddInputSpatialDimensions</span></span>(<span>builder, inputSpatialDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddInputSpatialDimensions(builder, inputSpatialDimensions):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(inputSpatialDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelInputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddKernelInputFeatureDimension</span></span>(<span>builder, kernelInputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddKernelInputFeatureDimension(builder, kernelInputFeatureDimension):
+    builder.PrependInt64Slot(8, kernelInputFeatureDimension, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelOutputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddKernelOutputFeatureDimension</span></span>(<span>builder, kernelOutputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddKernelOutputFeatureDimension(builder, kernelOutputFeatureDimension):
+    builder.PrependInt64Slot(9, kernelOutputFeatureDimension, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddKernelSpatialDimensions</span></span>(<span>builder, kernelSpatialDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddKernelSpatialDimensions(builder, kernelSpatialDimensions):
+    builder.PrependUOffsetTRelativeSlot(10, flatbuffers.number_types.UOffsetTFlags.py_type(kernelSpatialDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddLhsDilation"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddLhsDilation</span></span>(<span>builder, lhsDilation)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddLhsDilation(builder, lhsDilation):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(lhsDilation), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputBatchDimension"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddOutputBatchDimension</span></span>(<span>builder, outputBatchDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddOutputBatchDimension(builder, outputBatchDimension):
+    builder.PrependInt64Slot(11, outputBatchDimension, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddOutputFeatureDimension</span></span>(<span>builder, outputFeatureDimension)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddOutputFeatureDimension(builder, outputFeatureDimension):
+    builder.PrependInt64Slot(12, outputFeatureDimension, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddOutputSpatialDimensions</span></span>(<span>builder, outputSpatialDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddOutputSpatialDimensions(builder, outputSpatialDimensions):
+    builder.PrependUOffsetTRelativeSlot(13, flatbuffers.number_types.UOffsetTFlags.py_type(outputSpatialDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddPadding"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddPadding(builder, padding):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(padding), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddPrecisionConfig"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddPrecisionConfig</span></span>(<span>builder, precisionConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddPrecisionConfig(builder, precisionConfig):
+    builder.PrependUOffsetTRelativeSlot(16, flatbuffers.number_types.UOffsetTFlags.py_type(precisionConfig), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddRhsDilation"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddRhsDilation</span></span>(<span>builder, rhsDilation)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddRhsDilation(builder, rhsDilation):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(rhsDilation), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddWindowReversal"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddWindowReversal</span></span>(<span>builder, windowReversal)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddWindowReversal(builder, windowReversal):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(windowReversal), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddWindowStrides"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsAddWindowStrides</span></span>(<span>builder, windowStrides)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsAddWindowStrides(builder, windowStrides):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(windowStrides), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsEnd"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStart"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStart(builder):
+    builder.StartObject(17)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartInputSpatialDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartInputSpatialDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartInputSpatialDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartKernelSpatialDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartKernelSpatialDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartKernelSpatialDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartLhsDilationVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartLhsDilationVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartLhsDilationVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartOutputSpatialDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartOutputSpatialDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartOutputSpatialDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartPaddingVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartPaddingVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartPaddingVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartPrecisionConfigVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartPrecisionConfigVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartPrecisionConfigVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartRhsDilationVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartRhsDilationVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartRhsDilationVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartWindowReversalVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartWindowReversalVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartWindowReversalVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartWindowStridesVector"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsStartWindowStridesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloConvolutionOptionsStartWindowStridesVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    StablehloConvolutionOptionsStart(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartInputSpatialDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartInputSpatialDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartInputSpatialDimensionsVector(builder, numElems):
+    return StablehloConvolutionOptionsStartInputSpatialDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartKernelSpatialDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartKernelSpatialDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartKernelSpatialDimensionsVector(builder, numElems):
+    return StablehloConvolutionOptionsStartKernelSpatialDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartLhsDilationVector"><code class="name flex">
+<span>def <span class="ident">StartLhsDilationVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartLhsDilationVector(builder, numElems):
+    return StablehloConvolutionOptionsStartLhsDilationVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartOutputSpatialDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartOutputSpatialDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartOutputSpatialDimensionsVector(builder, numElems):
+    return StablehloConvolutionOptionsStartOutputSpatialDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartPaddingVector"><code class="name flex">
+<span>def <span class="ident">StartPaddingVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartPaddingVector(builder, numElems):
+    return StablehloConvolutionOptionsStartPaddingVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartPrecisionConfigVector"><code class="name flex">
+<span>def <span class="ident">StartPrecisionConfigVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartPrecisionConfigVector(builder, numElems):
+    return StablehloConvolutionOptionsStartPrecisionConfigVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartRhsDilationVector"><code class="name flex">
+<span>def <span class="ident">StartRhsDilationVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartRhsDilationVector(builder, numElems):
+    return StablehloConvolutionOptionsStartRhsDilationVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartWindowReversalVector"><code class="name flex">
+<span>def <span class="ident">StartWindowReversalVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartWindowReversalVector(builder, numElems):
+    return StablehloConvolutionOptionsStartWindowReversalVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StartWindowStridesVector"><code class="name flex">
+<span>def <span class="ident">StartWindowStridesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartWindowStridesVector(builder, numElems):
+    return StablehloConvolutionOptionsStartWindowStridesVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions"><code class="flex name class">
+<span>class <span class="ident">StablehloConvolutionOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StablehloConvolutionOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = StablehloConvolutionOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsStablehloConvolutionOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StablehloConvolutionOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # StablehloConvolutionOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # StablehloConvolutionOptions
+    def WindowStrides(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def WindowStridesAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def WindowStridesLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def WindowStridesIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def Padding(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def PaddingAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def PaddingLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def PaddingIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def LhsDilation(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def LhsDilationAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def LhsDilationLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def LhsDilationIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def RhsDilation(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def RhsDilationAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def RhsDilationLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def RhsDilationIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def WindowReversal(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.BoolFlags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 1))
+        return 0
+
+    # StablehloConvolutionOptions
+    def WindowReversalAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.BoolFlags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def WindowReversalLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def WindowReversalIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def InputBatchDimension(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def InputFeatureDimension(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def InputSpatialDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def InputSpatialDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def InputSpatialDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def InputSpatialDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def KernelInputFeatureDimension(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def KernelOutputFeatureDimension(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(22))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def KernelSpatialDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def KernelSpatialDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def KernelSpatialDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def KernelSpatialDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def OutputBatchDimension(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(26))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def OutputFeatureDimension(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(28))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def OutputSpatialDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloConvolutionOptions
+    def OutputSpatialDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def OutputSpatialDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def OutputSpatialDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+        return o == 0
+
+    # StablehloConvolutionOptions
+    def FeatureGroupCount(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(32))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def BatchGroupCount(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(34))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloConvolutionOptions
+    def PrecisionConfig(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Uint32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+        return 0
+
+    # StablehloConvolutionOptions
+    def PrecisionConfigAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint32Flags, o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def PrecisionConfigLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloConvolutionOptions
+    def PrecisionConfigIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+        return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.GetRootAsStablehloConvolutionOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStablehloConvolutionOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.StablehloConvolutionOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StablehloConvolutionOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.BatchGroupCount"><code class="name flex">
+<span>def <span class="ident">BatchGroupCount</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BatchGroupCount(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(34))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.FeatureGroupCount"><code class="name flex">
+<span>def <span class="ident">FeatureGroupCount</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def FeatureGroupCount(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(32))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputBatchDimension"><code class="name flex">
+<span>def <span class="ident">InputBatchDimension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputBatchDimension(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">InputFeatureDimension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputFeatureDimension(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">InputSpatialDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputSpatialDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">InputSpatialDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputSpatialDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">InputSpatialDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputSpatialDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsLength"><code class="name flex">
+<span>def <span class="ident">InputSpatialDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InputSpatialDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(18))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelInputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">KernelInputFeatureDimension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KernelInputFeatureDimension(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(20))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelOutputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">KernelOutputFeatureDimension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KernelOutputFeatureDimension(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(22))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">KernelSpatialDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KernelSpatialDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">KernelSpatialDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KernelSpatialDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">KernelSpatialDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KernelSpatialDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsLength"><code class="name flex">
+<span>def <span class="ident">KernelSpatialDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def KernelSpatialDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(24))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilation"><code class="name flex">
+<span>def <span class="ident">LhsDilation</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsDilation(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationAsNumpy"><code class="name flex">
+<span>def <span class="ident">LhsDilationAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsDilationAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationIsNone"><code class="name flex">
+<span>def <span class="ident">LhsDilationIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsDilationIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationLength"><code class="name flex">
+<span>def <span class="ident">LhsDilationLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsDilationLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputBatchDimension"><code class="name flex">
+<span>def <span class="ident">OutputBatchDimension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputBatchDimension(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(26))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputFeatureDimension"><code class="name flex">
+<span>def <span class="ident">OutputFeatureDimension</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputFeatureDimension(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(28))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensions"><code class="name flex">
+<span>def <span class="ident">OutputSpatialDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputSpatialDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">OutputSpatialDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputSpatialDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">OutputSpatialDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputSpatialDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsLength"><code class="name flex">
+<span>def <span class="ident">OutputSpatialDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def OutputSpatialDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(30))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.Padding"><code class="name flex">
+<span>def <span class="ident">Padding</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Padding(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingAsNumpy"><code class="name flex">
+<span>def <span class="ident">PaddingAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PaddingAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingIsNone"><code class="name flex">
+<span>def <span class="ident">PaddingIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PaddingIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingLength"><code class="name flex">
+<span>def <span class="ident">PaddingLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PaddingLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfig"><code class="name flex">
+<span>def <span class="ident">PrecisionConfig</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfig(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Uint32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigAsNumpy"><code class="name flex">
+<span>def <span class="ident">PrecisionConfigAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfigAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint32Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigIsNone"><code class="name flex">
+<span>def <span class="ident">PrecisionConfigIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfigIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigLength"><code class="name flex">
+<span>def <span class="ident">PrecisionConfigLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfigLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(36))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilation"><code class="name flex">
+<span>def <span class="ident">RhsDilation</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsDilation(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationAsNumpy"><code class="name flex">
+<span>def <span class="ident">RhsDilationAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsDilationAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationIsNone"><code class="name flex">
+<span>def <span class="ident">RhsDilationIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsDilationIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationLength"><code class="name flex">
+<span>def <span class="ident">RhsDilationLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsDilationLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversal"><code class="name flex">
+<span>def <span class="ident">WindowReversal</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowReversal(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.BoolFlags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 1))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalAsNumpy"><code class="name flex">
+<span>def <span class="ident">WindowReversalAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowReversalAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.BoolFlags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalIsNone"><code class="name flex">
+<span>def <span class="ident">WindowReversalIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowReversalIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalLength"><code class="name flex">
+<span>def <span class="ident">WindowReversalLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowReversalLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStrides"><code class="name flex">
+<span>def <span class="ident">WindowStrides</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStrides(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesAsNumpy"><code class="name flex">
+<span>def <span class="ident">WindowStridesAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStridesAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesIsNone"><code class="name flex">
+<span>def <span class="ident">WindowStridesIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStridesIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesLength"><code class="name flex">
+<span>def <span class="ident">WindowStridesLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStridesLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.StablehloConvolutionOptions.AddBatchGroupCount" href="#tflite.StablehloConvolutionOptions.AddBatchGroupCount">AddBatchGroupCount</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddFeatureGroupCount" href="#tflite.StablehloConvolutionOptions.AddFeatureGroupCount">AddFeatureGroupCount</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddInputBatchDimension" href="#tflite.StablehloConvolutionOptions.AddInputBatchDimension">AddInputBatchDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddInputFeatureDimension" href="#tflite.StablehloConvolutionOptions.AddInputFeatureDimension">AddInputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddInputSpatialDimensions" href="#tflite.StablehloConvolutionOptions.AddInputSpatialDimensions">AddInputSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddKernelInputFeatureDimension" href="#tflite.StablehloConvolutionOptions.AddKernelInputFeatureDimension">AddKernelInputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddKernelOutputFeatureDimension" href="#tflite.StablehloConvolutionOptions.AddKernelOutputFeatureDimension">AddKernelOutputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddKernelSpatialDimensions" href="#tflite.StablehloConvolutionOptions.AddKernelSpatialDimensions">AddKernelSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddLhsDilation" href="#tflite.StablehloConvolutionOptions.AddLhsDilation">AddLhsDilation</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddOutputBatchDimension" href="#tflite.StablehloConvolutionOptions.AddOutputBatchDimension">AddOutputBatchDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddOutputFeatureDimension" href="#tflite.StablehloConvolutionOptions.AddOutputFeatureDimension">AddOutputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddOutputSpatialDimensions" href="#tflite.StablehloConvolutionOptions.AddOutputSpatialDimensions">AddOutputSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddPadding" href="#tflite.StablehloConvolutionOptions.AddPadding">AddPadding</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddPrecisionConfig" href="#tflite.StablehloConvolutionOptions.AddPrecisionConfig">AddPrecisionConfig</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddRhsDilation" href="#tflite.StablehloConvolutionOptions.AddRhsDilation">AddRhsDilation</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddWindowReversal" href="#tflite.StablehloConvolutionOptions.AddWindowReversal">AddWindowReversal</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.AddWindowStrides" href="#tflite.StablehloConvolutionOptions.AddWindowStrides">AddWindowStrides</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.End" href="#tflite.StablehloConvolutionOptions.End">End</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddBatchGroupCount" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddBatchGroupCount">StablehloConvolutionOptionsAddBatchGroupCount</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddFeatureGroupCount" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddFeatureGroupCount">StablehloConvolutionOptionsAddFeatureGroupCount</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputBatchDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputBatchDimension">StablehloConvolutionOptionsAddInputBatchDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputFeatureDimension">StablehloConvolutionOptionsAddInputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputSpatialDimensions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddInputSpatialDimensions">StablehloConvolutionOptionsAddInputSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelInputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelInputFeatureDimension">StablehloConvolutionOptionsAddKernelInputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelOutputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelOutputFeatureDimension">StablehloConvolutionOptionsAddKernelOutputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelSpatialDimensions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddKernelSpatialDimensions">StablehloConvolutionOptionsAddKernelSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddLhsDilation" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddLhsDilation">StablehloConvolutionOptionsAddLhsDilation</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputBatchDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputBatchDimension">StablehloConvolutionOptionsAddOutputBatchDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputFeatureDimension">StablehloConvolutionOptionsAddOutputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputSpatialDimensions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddOutputSpatialDimensions">StablehloConvolutionOptionsAddOutputSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddPadding" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddPadding">StablehloConvolutionOptionsAddPadding</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddPrecisionConfig" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddPrecisionConfig">StablehloConvolutionOptionsAddPrecisionConfig</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddRhsDilation" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddRhsDilation">StablehloConvolutionOptionsAddRhsDilation</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddWindowReversal" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddWindowReversal">StablehloConvolutionOptionsAddWindowReversal</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddWindowStrides" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsAddWindowStrides">StablehloConvolutionOptionsAddWindowStrides</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsEnd" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsEnd">StablehloConvolutionOptionsEnd</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStart" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStart">StablehloConvolutionOptionsStart</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartInputSpatialDimensionsVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartInputSpatialDimensionsVector">StablehloConvolutionOptionsStartInputSpatialDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartKernelSpatialDimensionsVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartKernelSpatialDimensionsVector">StablehloConvolutionOptionsStartKernelSpatialDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartLhsDilationVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartLhsDilationVector">StablehloConvolutionOptionsStartLhsDilationVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartOutputSpatialDimensionsVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartOutputSpatialDimensionsVector">StablehloConvolutionOptionsStartOutputSpatialDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartPaddingVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartPaddingVector">StablehloConvolutionOptionsStartPaddingVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartPrecisionConfigVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartPrecisionConfigVector">StablehloConvolutionOptionsStartPrecisionConfigVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartRhsDilationVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartRhsDilationVector">StablehloConvolutionOptionsStartRhsDilationVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartWindowReversalVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartWindowReversalVector">StablehloConvolutionOptionsStartWindowReversalVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartWindowStridesVector" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptionsStartWindowStridesVector">StablehloConvolutionOptionsStartWindowStridesVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.Start" href="#tflite.StablehloConvolutionOptions.Start">Start</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartInputSpatialDimensionsVector" href="#tflite.StablehloConvolutionOptions.StartInputSpatialDimensionsVector">StartInputSpatialDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartKernelSpatialDimensionsVector" href="#tflite.StablehloConvolutionOptions.StartKernelSpatialDimensionsVector">StartKernelSpatialDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartLhsDilationVector" href="#tflite.StablehloConvolutionOptions.StartLhsDilationVector">StartLhsDilationVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartOutputSpatialDimensionsVector" href="#tflite.StablehloConvolutionOptions.StartOutputSpatialDimensionsVector">StartOutputSpatialDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartPaddingVector" href="#tflite.StablehloConvolutionOptions.StartPaddingVector">StartPaddingVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartPrecisionConfigVector" href="#tflite.StablehloConvolutionOptions.StartPrecisionConfigVector">StartPrecisionConfigVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartRhsDilationVector" href="#tflite.StablehloConvolutionOptions.StartRhsDilationVector">StartRhsDilationVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartWindowReversalVector" href="#tflite.StablehloConvolutionOptions.StartWindowReversalVector">StartWindowReversalVector</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StartWindowStridesVector" href="#tflite.StablehloConvolutionOptions.StartWindowStridesVector">StartWindowStridesVector</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions">StablehloConvolutionOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.BatchGroupCount" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.BatchGroupCount">BatchGroupCount</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.FeatureGroupCount" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.FeatureGroupCount">FeatureGroupCount</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.GetRootAs" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.GetRootAsStablehloConvolutionOptions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.GetRootAsStablehloConvolutionOptions">GetRootAsStablehloConvolutionOptions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.Init" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputBatchDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputBatchDimension">InputBatchDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputFeatureDimension">InputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensions">InputSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsAsNumpy">InputSpatialDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsIsNone">InputSpatialDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.InputSpatialDimensionsLength">InputSpatialDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelInputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelInputFeatureDimension">KernelInputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelOutputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelOutputFeatureDimension">KernelOutputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensions">KernelSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsAsNumpy">KernelSpatialDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsIsNone">KernelSpatialDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.KernelSpatialDimensionsLength">KernelSpatialDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilation" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilation">LhsDilation</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationAsNumpy">LhsDilationAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationIsNone">LhsDilationIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.LhsDilationLength">LhsDilationLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputBatchDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputBatchDimension">OutputBatchDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputFeatureDimension" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputFeatureDimension">OutputFeatureDimension</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensions" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensions">OutputSpatialDimensions</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsAsNumpy">OutputSpatialDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsIsNone">OutputSpatialDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.OutputSpatialDimensionsLength">OutputSpatialDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.Padding" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.Padding">Padding</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingAsNumpy">PaddingAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingIsNone">PaddingIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PaddingLength">PaddingLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfig" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfig">PrecisionConfig</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigAsNumpy">PrecisionConfigAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigIsNone">PrecisionConfigIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.PrecisionConfigLength">PrecisionConfigLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilation" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilation">RhsDilation</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationAsNumpy">RhsDilationAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationIsNone">RhsDilationIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.RhsDilationLength">RhsDilationLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.StablehloConvolutionOptionsBufferHasIdentifier" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.StablehloConvolutionOptionsBufferHasIdentifier">StablehloConvolutionOptionsBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversal" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversal">WindowReversal</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalAsNumpy">WindowReversalAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalIsNone">WindowReversalIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowReversalLength">WindowReversalLength</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStrides" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStrides">WindowStrides</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesAsNumpy" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesAsNumpy">WindowStridesAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesIsNone" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesIsNone">WindowStridesIsNone</a></code></li>
+<li><code><a title="tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesLength" href="#tflite.StablehloConvolutionOptions.StablehloConvolutionOptions.WindowStridesLength">WindowStridesLength</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

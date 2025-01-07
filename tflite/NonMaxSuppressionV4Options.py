@@ -28,9 +28,14 @@ class NonMaxSuppressionV4Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def NonMaxSuppressionV4OptionsStart(builder): builder.StartObject(0)
+def NonMaxSuppressionV4OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return NonMaxSuppressionV4OptionsStart(builder)
-def NonMaxSuppressionV4OptionsEnd(builder): return builder.EndObject()
+    NonMaxSuppressionV4OptionsStart(builder)
+
+def NonMaxSuppressionV4OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return NonMaxSuppressionV4OptionsEnd(builder)

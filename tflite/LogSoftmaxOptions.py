@@ -28,9 +28,14 @@ class LogSoftmaxOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LogSoftmaxOptionsStart(builder): builder.StartObject(0)
+def LogSoftmaxOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LogSoftmaxOptionsStart(builder)
-def LogSoftmaxOptionsEnd(builder): return builder.EndObject()
+    LogSoftmaxOptionsStart(builder)
+
+def LogSoftmaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LogSoftmaxOptionsEnd(builder)

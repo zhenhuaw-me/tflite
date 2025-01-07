@@ -55,15 +55,26 @@ class CustomQuantization(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def CustomQuantizationStart(builder): builder.StartObject(1)
+def CustomQuantizationStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return CustomQuantizationStart(builder)
-def CustomQuantizationAddCustom(builder, custom): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)
+    CustomQuantizationStart(builder)
+
+def CustomQuantizationAddCustom(builder, custom):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(custom), 0)
+
 def AddCustom(builder, custom):
-    return CustomQuantizationAddCustom(builder, custom)
-def CustomQuantizationStartCustomVector(builder, numElems): return builder.StartVector(1, numElems, 1)
+    CustomQuantizationAddCustom(builder, custom)
+
+def CustomQuantizationStartCustomVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)
+
 def StartCustomVector(builder, numElems):
     return CustomQuantizationStartCustomVector(builder, numElems)
-def CustomQuantizationEnd(builder): return builder.EndObject()
+
+def CustomQuantizationEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CustomQuantizationEnd(builder)

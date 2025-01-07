@@ -21,8 +21,8 @@ schema_path="${root_dir}/3rdparty/schema.fbs"
 output_path="${root_dir}"
 
 # download schema.fbs
-repo_tree='https://raw.githubusercontent.com/tensorflow/tensorflow'
-file_path='tensorflow/lite/schema/schema.fbs'
+repo_tree='https://raw.githubusercontent.com/tensorflow/tensorflow/refs/tags'
+file_path='tensorflow/compiler/mlir/lite/schema/schema.fbs'
 url="${repo_tree}/${version}/${file_path}"
 echo "Now, downloading from ${url}"
 curl ${url} -o "${schema_path}"

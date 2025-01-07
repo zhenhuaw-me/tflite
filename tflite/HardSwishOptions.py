@@ -28,9 +28,14 @@ class HardSwishOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HardSwishOptionsStart(builder): builder.StartObject(0)
+def HardSwishOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HardSwishOptionsStart(builder)
-def HardSwishOptionsEnd(builder): return builder.EndObject()
+    HardSwishOptionsStart(builder)
+
+def HardSwishOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HardSwishOptionsEnd(builder)

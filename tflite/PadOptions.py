@@ -28,9 +28,14 @@ class PadOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def PadOptionsStart(builder): builder.StartObject(0)
+def PadOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return PadOptionsStart(builder)
-def PadOptionsEnd(builder): return builder.EndObject()
+    PadOptionsStart(builder)
+
+def PadOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return PadOptionsEnd(builder)

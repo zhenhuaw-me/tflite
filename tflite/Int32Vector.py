@@ -55,15 +55,26 @@ class Int32Vector(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def Int32VectorStart(builder): builder.StartObject(1)
+def Int32VectorStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return Int32VectorStart(builder)
-def Int32VectorAddValues(builder, values): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+    Int32VectorStart(builder)
+
+def Int32VectorAddValues(builder, values):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+
 def AddValues(builder, values):
-    return Int32VectorAddValues(builder, values)
-def Int32VectorStartValuesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    Int32VectorAddValues(builder, values)
+
+def Int32VectorStartValuesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartValuesVector(builder, numElems):
     return Int32VectorStartValuesVector(builder, numElems)
-def Int32VectorEnd(builder): return builder.EndObject()
+
+def Int32VectorEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Int32VectorEnd(builder)

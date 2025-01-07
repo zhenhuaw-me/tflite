@@ -70,27 +70,63 @@ class Conv2DOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 1
 
-def Conv2DOptionsStart(builder): builder.StartObject(6)
+    # Conv2DOptions
+    def QuantizedBiasType(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
+        return 0
+
+def Conv2DOptionsStart(builder):
+    builder.StartObject(7)
+
 def Start(builder):
-    return Conv2DOptionsStart(builder)
-def Conv2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    Conv2DOptionsStart(builder)
+
+def Conv2DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return Conv2DOptionsAddPadding(builder, padding)
-def Conv2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+    Conv2DOptionsAddPadding(builder, padding)
+
+def Conv2DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return Conv2DOptionsAddStrideW(builder, strideW)
-def Conv2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
+    Conv2DOptionsAddStrideW(builder, strideW)
+
+def Conv2DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return Conv2DOptionsAddStrideH(builder, strideH)
-def Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(3, fusedActivationFunction, 0)
+    Conv2DOptionsAddStrideH(builder, strideH)
+
+def Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(3, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def Conv2DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(4, dilationWFactor, 1)
+    Conv2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def Conv2DOptionsAddDilationWFactor(builder, dilationWFactor):
+    builder.PrependInt32Slot(4, dilationWFactor, 1)
+
 def AddDilationWFactor(builder, dilationWFactor):
-    return Conv2DOptionsAddDilationWFactor(builder, dilationWFactor)
-def Conv2DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(5, dilationHFactor, 1)
+    Conv2DOptionsAddDilationWFactor(builder, dilationWFactor)
+
+def Conv2DOptionsAddDilationHFactor(builder, dilationHFactor):
+    builder.PrependInt32Slot(5, dilationHFactor, 1)
+
 def AddDilationHFactor(builder, dilationHFactor):
-    return Conv2DOptionsAddDilationHFactor(builder, dilationHFactor)
-def Conv2DOptionsEnd(builder): return builder.EndObject()
+    Conv2DOptionsAddDilationHFactor(builder, dilationHFactor)
+
+def Conv2DOptionsAddQuantizedBiasType(builder, quantizedBiasType):
+    builder.PrependInt8Slot(6, quantizedBiasType, 0)
+
+def AddQuantizedBiasType(builder, quantizedBiasType):
+    Conv2DOptionsAddQuantizedBiasType(builder, quantizedBiasType)
+
+def Conv2DOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Conv2DOptionsEnd(builder)

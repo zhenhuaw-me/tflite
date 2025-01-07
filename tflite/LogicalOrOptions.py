@@ -28,9 +28,14 @@ class LogicalOrOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LogicalOrOptionsStart(builder): builder.StartObject(0)
+def LogicalOrOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LogicalOrOptionsStart(builder)
-def LogicalOrOptionsEnd(builder): return builder.EndObject()
+    LogicalOrOptionsStart(builder)
+
+def LogicalOrOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LogicalOrOptionsEnd(builder)

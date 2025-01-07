@@ -55,15 +55,26 @@ class BucketizeOptions(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def BucketizeOptionsStart(builder): builder.StartObject(1)
+def BucketizeOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return BucketizeOptionsStart(builder)
-def BucketizeOptionsAddBoundaries(builder, boundaries): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(boundaries), 0)
+    BucketizeOptionsStart(builder)
+
+def BucketizeOptionsAddBoundaries(builder, boundaries):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(boundaries), 0)
+
 def AddBoundaries(builder, boundaries):
-    return BucketizeOptionsAddBoundaries(builder, boundaries)
-def BucketizeOptionsStartBoundariesVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    BucketizeOptionsAddBoundaries(builder, boundaries)
+
+def BucketizeOptionsStartBoundariesVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartBoundariesVector(builder, numElems):
     return BucketizeOptionsStartBoundariesVector(builder, numElems)
-def BucketizeOptionsEnd(builder): return builder.EndObject()
+
+def BucketizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BucketizeOptionsEnd(builder)

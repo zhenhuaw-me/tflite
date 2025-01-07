@@ -49,18 +49,32 @@ class SVDFOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def SVDFOptionsStart(builder): builder.StartObject(3)
+def SVDFOptionsStart(builder):
+    builder.StartObject(3)
+
 def Start(builder):
-    return SVDFOptionsStart(builder)
-def SVDFOptionsAddRank(builder, rank): builder.PrependInt32Slot(0, rank, 0)
+    SVDFOptionsStart(builder)
+
+def SVDFOptionsAddRank(builder, rank):
+    builder.PrependInt32Slot(0, rank, 0)
+
 def AddRank(builder, rank):
-    return SVDFOptionsAddRank(builder, rank)
-def SVDFOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+    SVDFOptionsAddRank(builder, rank)
+
+def SVDFOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(1, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SVDFOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def SVDFOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+    SVDFOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def SVDFOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(2, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return SVDFOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def SVDFOptionsEnd(builder): return builder.EndObject()
+    SVDFOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def SVDFOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SVDFOptionsEnd(builder)

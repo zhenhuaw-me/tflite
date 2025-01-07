@@ -139,42 +139,117 @@ class Tensor(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def TensorStart(builder): builder.StartObject(9)
+    # Tensor
+    def VariantTensors(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(22))
+        if o != 0:
+            x = self._tab.Vector(o)
+            x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
+            x = self._tab.Indirect(x)
+            from tflite.VariantSubType import VariantSubType
+            obj = VariantSubType()
+            obj.Init(self._tab.Bytes, x)
+            return obj
+        return None
+
+    # Tensor
+    def VariantTensorsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(22))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # Tensor
+    def VariantTensorsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(22))
+        return o == 0
+
+def TensorStart(builder):
+    builder.StartObject(10)
+
 def Start(builder):
-    return TensorStart(builder)
-def TensorAddShape(builder, shape): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(shape), 0)
+    TensorStart(builder)
+
+def TensorAddShape(builder, shape):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(shape), 0)
+
 def AddShape(builder, shape):
-    return TensorAddShape(builder, shape)
-def TensorStartShapeVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    TensorAddShape(builder, shape)
+
+def TensorStartShapeVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartShapeVector(builder, numElems):
     return TensorStartShapeVector(builder, numElems)
-def TensorAddType(builder, type): builder.PrependInt8Slot(1, type, 0)
+
+def TensorAddType(builder, type):
+    builder.PrependInt8Slot(1, type, 0)
+
 def AddType(builder, type):
-    return TensorAddType(builder, type)
-def TensorAddBuffer(builder, buffer): builder.PrependUint32Slot(2, buffer, 0)
+    TensorAddType(builder, type)
+
+def TensorAddBuffer(builder, buffer):
+    builder.PrependUint32Slot(2, buffer, 0)
+
 def AddBuffer(builder, buffer):
-    return TensorAddBuffer(builder, buffer)
-def TensorAddName(builder, name): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+    TensorAddBuffer(builder, buffer)
+
+def TensorAddName(builder, name):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+
 def AddName(builder, name):
-    return TensorAddName(builder, name)
-def TensorAddQuantization(builder, quantization): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(quantization), 0)
+    TensorAddName(builder, name)
+
+def TensorAddQuantization(builder, quantization):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(quantization), 0)
+
 def AddQuantization(builder, quantization):
-    return TensorAddQuantization(builder, quantization)
-def TensorAddIsVariable(builder, isVariable): builder.PrependBoolSlot(5, isVariable, 0)
+    TensorAddQuantization(builder, quantization)
+
+def TensorAddIsVariable(builder, isVariable):
+    builder.PrependBoolSlot(5, isVariable, 0)
+
 def AddIsVariable(builder, isVariable):
-    return TensorAddIsVariable(builder, isVariable)
-def TensorAddSparsity(builder, sparsity): builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(sparsity), 0)
+    TensorAddIsVariable(builder, isVariable)
+
+def TensorAddSparsity(builder, sparsity):
+    builder.PrependUOffsetTRelativeSlot(6, flatbuffers.number_types.UOffsetTFlags.py_type(sparsity), 0)
+
 def AddSparsity(builder, sparsity):
-    return TensorAddSparsity(builder, sparsity)
-def TensorAddShapeSignature(builder, shapeSignature): builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(shapeSignature), 0)
+    TensorAddSparsity(builder, sparsity)
+
+def TensorAddShapeSignature(builder, shapeSignature):
+    builder.PrependUOffsetTRelativeSlot(7, flatbuffers.number_types.UOffsetTFlags.py_type(shapeSignature), 0)
+
 def AddShapeSignature(builder, shapeSignature):
-    return TensorAddShapeSignature(builder, shapeSignature)
-def TensorStartShapeSignatureVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    TensorAddShapeSignature(builder, shapeSignature)
+
+def TensorStartShapeSignatureVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartShapeSignatureVector(builder, numElems):
     return TensorStartShapeSignatureVector(builder, numElems)
-def TensorAddHasRank(builder, hasRank): builder.PrependBoolSlot(8, hasRank, 0)
+
+def TensorAddHasRank(builder, hasRank):
+    builder.PrependBoolSlot(8, hasRank, 0)
+
 def AddHasRank(builder, hasRank):
-    return TensorAddHasRank(builder, hasRank)
-def TensorEnd(builder): return builder.EndObject()
+    TensorAddHasRank(builder, hasRank)
+
+def TensorAddVariantTensors(builder, variantTensors):
+    builder.PrependUOffsetTRelativeSlot(9, flatbuffers.number_types.UOffsetTFlags.py_type(variantTensors), 0)
+
+def AddVariantTensors(builder, variantTensors):
+    TensorAddVariantTensors(builder, variantTensors)
+
+def TensorStartVariantTensorsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
+def StartVariantTensorsVector(builder, numElems):
+    return TensorStartVariantTensorsVector(builder, numElems)
+
+def TensorEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TensorEnd(builder)

@@ -28,9 +28,14 @@ class UnsortedSegmentSumOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def UnsortedSegmentSumOptionsStart(builder): builder.StartObject(0)
+def UnsortedSegmentSumOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return UnsortedSegmentSumOptionsStart(builder)
-def UnsortedSegmentSumOptionsEnd(builder): return builder.EndObject()
+    UnsortedSegmentSumOptionsStart(builder)
+
+def UnsortedSegmentSumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnsortedSegmentSumOptionsEnd(builder)

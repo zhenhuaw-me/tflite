@@ -28,9 +28,14 @@ class HashtableSizeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HashtableSizeOptionsStart(builder): builder.StartObject(0)
+def HashtableSizeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HashtableSizeOptionsStart(builder)
-def HashtableSizeOptionsEnd(builder): return builder.EndObject()
+    HashtableSizeOptionsStart(builder)
+
+def HashtableSizeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableSizeOptionsEnd(builder)

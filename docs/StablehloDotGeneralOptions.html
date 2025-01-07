@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>tflite.StablehloDotGeneralOptions API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.StablehloDotGeneralOptions</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.StablehloDotGeneralOptions.AddLhsBatchingDimensions"><code class="name flex">
+<span>def <span class="ident">AddLhsBatchingDimensions</span></span>(<span>builder, lhsBatchingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddLhsBatchingDimensions(builder, lhsBatchingDimensions):
+    StablehloDotGeneralOptionsAddLhsBatchingDimensions(builder, lhsBatchingDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.AddLhsContractingDimensions"><code class="name flex">
+<span>def <span class="ident">AddLhsContractingDimensions</span></span>(<span>builder, lhsContractingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddLhsContractingDimensions(builder, lhsContractingDimensions):
+    StablehloDotGeneralOptionsAddLhsContractingDimensions(builder, lhsContractingDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.AddPrecisionConfig"><code class="name flex">
+<span>def <span class="ident">AddPrecisionConfig</span></span>(<span>builder, precisionConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPrecisionConfig(builder, precisionConfig):
+    StablehloDotGeneralOptionsAddPrecisionConfig(builder, precisionConfig)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.AddRhsBatchingDimensions"><code class="name flex">
+<span>def <span class="ident">AddRhsBatchingDimensions</span></span>(<span>builder, rhsBatchingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddRhsBatchingDimensions(builder, rhsBatchingDimensions):
+    StablehloDotGeneralOptionsAddRhsBatchingDimensions(builder, rhsBatchingDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.AddRhsContractingDimensions"><code class="name flex">
+<span>def <span class="ident">AddRhsContractingDimensions</span></span>(<span>builder, rhsContractingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddRhsContractingDimensions(builder, rhsContractingDimensions):
+    StablehloDotGeneralOptionsAddRhsContractingDimensions(builder, rhsContractingDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StablehloDotGeneralOptionsEnd(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddLhsBatchingDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsAddLhsBatchingDimensions</span></span>(<span>builder, lhsBatchingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsAddLhsBatchingDimensions(builder, lhsBatchingDimensions):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(lhsBatchingDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddLhsContractingDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsAddLhsContractingDimensions</span></span>(<span>builder, lhsContractingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsAddLhsContractingDimensions(builder, lhsContractingDimensions):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(lhsContractingDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddPrecisionConfig"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsAddPrecisionConfig</span></span>(<span>builder, precisionConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsAddPrecisionConfig(builder, precisionConfig):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(precisionConfig), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddRhsBatchingDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsAddRhsBatchingDimensions</span></span>(<span>builder, rhsBatchingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsAddRhsBatchingDimensions(builder, rhsBatchingDimensions):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(rhsBatchingDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddRhsContractingDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsAddRhsContractingDimensions</span></span>(<span>builder, rhsContractingDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsAddRhsContractingDimensions(builder, rhsContractingDimensions):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(rhsContractingDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsEnd"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStart"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsStart(builder):
+    builder.StartObject(5)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartLhsContractingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsStartLhsContractingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsStartLhsContractingDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartPrecisionConfigVector"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsStartPrecisionConfigVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsStartPrecisionConfigVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartRhsContractingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsStartRhsContractingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloDotGeneralOptionsStartRhsContractingDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    StablehloDotGeneralOptionsStart(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StartLhsBatchingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartLhsBatchingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartLhsBatchingDimensionsVector(builder, numElems):
+    return StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StartLhsContractingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartLhsContractingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartLhsContractingDimensionsVector(builder, numElems):
+    return StablehloDotGeneralOptionsStartLhsContractingDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StartPrecisionConfigVector"><code class="name flex">
+<span>def <span class="ident">StartPrecisionConfigVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartPrecisionConfigVector(builder, numElems):
+    return StablehloDotGeneralOptionsStartPrecisionConfigVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StartRhsBatchingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartRhsBatchingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartRhsBatchingDimensionsVector(builder, numElems):
+    return StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StartRhsContractingDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartRhsContractingDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartRhsContractingDimensionsVector(builder, numElems):
+    return StablehloDotGeneralOptionsStartRhsContractingDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions"><code class="flex name class">
+<span>class <span class="ident">StablehloDotGeneralOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StablehloDotGeneralOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = StablehloDotGeneralOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsStablehloDotGeneralOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StablehloDotGeneralOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # StablehloDotGeneralOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # StablehloDotGeneralOptions
+    def LhsBatchingDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloDotGeneralOptions
+    def LhsBatchingDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def LhsBatchingDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def LhsBatchingDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # StablehloDotGeneralOptions
+    def RhsBatchingDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloDotGeneralOptions
+    def RhsBatchingDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def RhsBatchingDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def RhsBatchingDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # StablehloDotGeneralOptions
+    def LhsContractingDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloDotGeneralOptions
+    def LhsContractingDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def LhsContractingDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def LhsContractingDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
+    # StablehloDotGeneralOptions
+    def RhsContractingDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloDotGeneralOptions
+    def RhsContractingDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def RhsContractingDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def RhsContractingDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        return o == 0
+
+    # StablehloDotGeneralOptions
+    def PrecisionConfig(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Uint32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+        return 0
+
+    # StablehloDotGeneralOptions
+    def PrecisionConfigAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint32Flags, o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def PrecisionConfigLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloDotGeneralOptions
+    def PrecisionConfigIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.GetRootAsStablehloDotGeneralOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStablehloDotGeneralOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.StablehloDotGeneralOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StablehloDotGeneralOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensions"><code class="name flex">
+<span>def <span class="ident">LhsBatchingDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsBatchingDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">LhsBatchingDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsBatchingDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">LhsBatchingDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsBatchingDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsLength"><code class="name flex">
+<span>def <span class="ident">LhsBatchingDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsBatchingDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensions"><code class="name flex">
+<span>def <span class="ident">LhsContractingDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsContractingDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">LhsContractingDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsContractingDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">LhsContractingDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsContractingDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsLength"><code class="name flex">
+<span>def <span class="ident">LhsContractingDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def LhsContractingDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfig"><code class="name flex">
+<span>def <span class="ident">PrecisionConfig</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfig(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Uint32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigAsNumpy"><code class="name flex">
+<span>def <span class="ident">PrecisionConfigAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfigAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint32Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigIsNone"><code class="name flex">
+<span>def <span class="ident">PrecisionConfigIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfigIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigLength"><code class="name flex">
+<span>def <span class="ident">PrecisionConfigLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PrecisionConfigLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensions"><code class="name flex">
+<span>def <span class="ident">RhsBatchingDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsBatchingDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">RhsBatchingDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsBatchingDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">RhsBatchingDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsBatchingDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsLength"><code class="name flex">
+<span>def <span class="ident">RhsBatchingDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsBatchingDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensions"><code class="name flex">
+<span>def <span class="ident">RhsContractingDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsContractingDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">RhsContractingDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsContractingDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">RhsContractingDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsContractingDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsLength"><code class="name flex">
+<span>def <span class="ident">RhsContractingDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def RhsContractingDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.StablehloDotGeneralOptions.AddLhsBatchingDimensions" href="#tflite.StablehloDotGeneralOptions.AddLhsBatchingDimensions">AddLhsBatchingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.AddLhsContractingDimensions" href="#tflite.StablehloDotGeneralOptions.AddLhsContractingDimensions">AddLhsContractingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.AddPrecisionConfig" href="#tflite.StablehloDotGeneralOptions.AddPrecisionConfig">AddPrecisionConfig</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.AddRhsBatchingDimensions" href="#tflite.StablehloDotGeneralOptions.AddRhsBatchingDimensions">AddRhsBatchingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.AddRhsContractingDimensions" href="#tflite.StablehloDotGeneralOptions.AddRhsContractingDimensions">AddRhsContractingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.End" href="#tflite.StablehloDotGeneralOptions.End">End</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddLhsBatchingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddLhsBatchingDimensions">StablehloDotGeneralOptionsAddLhsBatchingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddLhsContractingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddLhsContractingDimensions">StablehloDotGeneralOptionsAddLhsContractingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddPrecisionConfig" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddPrecisionConfig">StablehloDotGeneralOptionsAddPrecisionConfig</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddRhsBatchingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddRhsBatchingDimensions">StablehloDotGeneralOptionsAddRhsBatchingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddRhsContractingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsAddRhsContractingDimensions">StablehloDotGeneralOptionsAddRhsContractingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsEnd" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsEnd">StablehloDotGeneralOptionsEnd</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStart" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStart">StablehloDotGeneralOptionsStart</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector">StablehloDotGeneralOptionsStartLhsBatchingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartLhsContractingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartLhsContractingDimensionsVector">StablehloDotGeneralOptionsStartLhsContractingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartPrecisionConfigVector" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartPrecisionConfigVector">StablehloDotGeneralOptionsStartPrecisionConfigVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector">StablehloDotGeneralOptionsStartRhsBatchingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartRhsContractingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptionsStartRhsContractingDimensionsVector">StablehloDotGeneralOptionsStartRhsContractingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.Start" href="#tflite.StablehloDotGeneralOptions.Start">Start</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StartLhsBatchingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StartLhsBatchingDimensionsVector">StartLhsBatchingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StartLhsContractingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StartLhsContractingDimensionsVector">StartLhsContractingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StartPrecisionConfigVector" href="#tflite.StablehloDotGeneralOptions.StartPrecisionConfigVector">StartPrecisionConfigVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StartRhsBatchingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StartRhsBatchingDimensionsVector">StartRhsBatchingDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StartRhsContractingDimensionsVector" href="#tflite.StablehloDotGeneralOptions.StartRhsContractingDimensionsVector">StartRhsContractingDimensionsVector</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions">StablehloDotGeneralOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.GetRootAs" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.GetRootAsStablehloDotGeneralOptions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.GetRootAsStablehloDotGeneralOptions">GetRootAsStablehloDotGeneralOptions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.Init" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensions">LhsBatchingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsAsNumpy" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsAsNumpy">LhsBatchingDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsIsNone" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsIsNone">LhsBatchingDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsLength" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsBatchingDimensionsLength">LhsBatchingDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensions">LhsContractingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsAsNumpy" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsAsNumpy">LhsContractingDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsIsNone" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsIsNone">LhsContractingDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsLength" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.LhsContractingDimensionsLength">LhsContractingDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfig" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfig">PrecisionConfig</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigAsNumpy" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigAsNumpy">PrecisionConfigAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigIsNone" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigIsNone">PrecisionConfigIsNone</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigLength" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.PrecisionConfigLength">PrecisionConfigLength</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensions">RhsBatchingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsAsNumpy" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsAsNumpy">RhsBatchingDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsIsNone" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsIsNone">RhsBatchingDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsLength" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsBatchingDimensionsLength">RhsBatchingDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensions" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensions">RhsContractingDimensions</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsAsNumpy" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsAsNumpy">RhsContractingDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsIsNone" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsIsNone">RhsContractingDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsLength" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.RhsContractingDimensionsLength">RhsContractingDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.StablehloDotGeneralOptionsBufferHasIdentifier" href="#tflite.StablehloDotGeneralOptions.StablehloDotGeneralOptions.StablehloDotGeneralOptionsBufferHasIdentifier">StablehloDotGeneralOptionsBufferHasIdentifier</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

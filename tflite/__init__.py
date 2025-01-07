@@ -1,6 +1,6 @@
 # import classes and functions of submodules
 
-__version__ = '2.10.0'
+__version__ = '2.18.0'
 
 
 
@@ -17,11 +17,14 @@ from tflite.BatchMatMulOptions import *
 from tflite.BatchToSpaceNDOptions import *
 from tflite.BidirectionalSequenceLSTMOptions import *
 from tflite.BidirectionalSequenceRNNOptions import *
+from tflite.BitcastOptions import *
+from tflite.BitwiseXorOptions import *
 from tflite.BroadcastToOptions import *
 from tflite.BucketizeOptions import *
 from tflite.Buffer import *
 from tflite.BuiltinOperator import *
 from tflite.BuiltinOptions import *
+from tflite.BuiltinOptions2 import *
 from tflite.CallOnceOptions import *
 from tflite.CallOptions import *
 from tflite.CastOptions import *
@@ -38,6 +41,7 @@ from tflite.DensifyOptions import *
 from tflite.DepthToSpaceOptions import *
 from tflite.DepthwiseConv2DOptions import *
 from tflite.DequantizeOptions import *
+from tflite.DilateOptions import *
 from tflite.DimensionMetadata import *
 from tflite.DimensionType import *
 from tflite.DivOptions import *
@@ -106,6 +110,8 @@ from tflite.RandomOptions import *
 from tflite.RangeOptions import *
 from tflite.RankOptions import *
 from tflite.ReadVariableOptions import *
+from tflite.ReduceWindowFunction import *
+from tflite.ReduceWindowOptions import *
 from tflite.ReducerOptions import *
 from tflite.ReshapeOptions import *
 from tflite.ResizeBilinearOptions import *
@@ -113,6 +119,8 @@ from tflite.ResizeNearestNeighborOptions import *
 from tflite.ReverseSequenceOptions import *
 from tflite.ReverseV2Options import *
 from tflite.Rfft2dOptions import *
+from tflite.RightShiftOptions import *
+from tflite.RngAlgorithm import *
 from tflite.SVDFOptions import *
 from tflite.ScatterNdOptions import *
 from tflite.SegmentSumOptions import *
@@ -120,6 +128,7 @@ from tflite.SelectOptions import *
 from tflite.SelectV2Options import *
 from tflite.SequenceRNNOptions import *
 from tflite.ShapeOptions import *
+from tflite.SignOptions import *
 from tflite.SignatureDef import *
 from tflite.SkipGramOptions import *
 from tflite.SliceOptions import *
@@ -134,6 +143,29 @@ from tflite.SplitVOptions import *
 from tflite.SquareOptions import *
 from tflite.SquaredDifferenceOptions import *
 from tflite.SqueezeOptions import *
+from tflite.StableHLOCompositeOptions import *
+from tflite.StablehloBroadcastInDimOptions import *
+from tflite.StablehloCompareOptions import *
+from tflite.StablehloComparisonDirection import *
+from tflite.StablehloComparisonType import *
+from tflite.StablehloConcatenateOptions import *
+from tflite.StablehloConvolutionOptions import *
+from tflite.StablehloCustomCallOptions import *
+from tflite.StablehloDotGeneralOptions import *
+from tflite.StablehloDynamicSliceOptions import *
+from tflite.StablehloGatherOptions import *
+from tflite.StablehloIotaOptions import *
+from tflite.StablehloPadOptions import *
+from tflite.StablehloPrecisionConfig import *
+from tflite.StablehloReduceOptions import *
+from tflite.StablehloReduceWindowOptions import *
+from tflite.StablehloRngBitGeneratorOptions import *
+from tflite.StablehloScatterOptions import *
+from tflite.StablehloShiftLeftOptions import *
+from tflite.StablehloSliceOptions import *
+from tflite.StablehloSortOptions import *
+from tflite.StablehloTransposeOptions import *
+from tflite.StablehloWhileOptions import *
 from tflite.StridedSliceOptions import *
 from tflite.SubGraph import *
 from tflite.SubOptions import *
@@ -150,9 +182,11 @@ from tflite.UnidirectionalSequenceLSTMOptions import *
 from tflite.UniqueOptions import *
 from tflite.UnpackOptions import *
 from tflite.UnsortedSegmentMaxOptions import *
+from tflite.UnsortedSegmentMinOptions import *
 from tflite.UnsortedSegmentProdOptions import *
 from tflite.UnsortedSegmentSumOptions import *
 from tflite.VarHandleOptions import *
+from tflite.VariantSubType import *
 from tflite.WhereOptions import *
 from tflite.WhileOptions import *
 from tflite.ZerosLikeOptions import *

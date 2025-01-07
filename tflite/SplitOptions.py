@@ -35,12 +35,20 @@ class SplitOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def SplitOptionsStart(builder): builder.StartObject(1)
+def SplitOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SplitOptionsStart(builder)
-def SplitOptionsAddNumSplits(builder, numSplits): builder.PrependInt32Slot(0, numSplits, 0)
+    SplitOptionsStart(builder)
+
+def SplitOptionsAddNumSplits(builder, numSplits):
+    builder.PrependInt32Slot(0, numSplits, 0)
+
 def AddNumSplits(builder, numSplits):
-    return SplitOptionsAddNumSplits(builder, numSplits)
-def SplitOptionsEnd(builder): return builder.EndObject()
+    SplitOptionsAddNumSplits(builder, numSplits)
+
+def SplitOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SplitOptionsEnd(builder)

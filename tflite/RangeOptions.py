@@ -28,9 +28,14 @@ class RangeOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def RangeOptionsStart(builder): builder.StartObject(0)
+def RangeOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return RangeOptionsStart(builder)
-def RangeOptionsEnd(builder): return builder.EndObject()
+    RangeOptionsStart(builder)
+
+def RangeOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return RangeOptionsEnd(builder)

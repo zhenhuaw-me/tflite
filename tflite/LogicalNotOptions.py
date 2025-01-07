@@ -28,9 +28,14 @@ class LogicalNotOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LogicalNotOptionsStart(builder): builder.StartObject(0)
+def LogicalNotOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LogicalNotOptionsStart(builder)
-def LogicalNotOptionsEnd(builder): return builder.EndObject()
+    LogicalNotOptionsStart(builder)
+
+def LogicalNotOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LogicalNotOptionsEnd(builder)

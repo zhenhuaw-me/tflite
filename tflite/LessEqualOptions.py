@@ -28,9 +28,14 @@ class LessEqualOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def LessEqualOptionsStart(builder): builder.StartObject(0)
+def LessEqualOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return LessEqualOptionsStart(builder)
-def LessEqualOptionsEnd(builder): return builder.EndObject()
+    LessEqualOptionsStart(builder)
+
+def LessEqualOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LessEqualOptionsEnd(builder)

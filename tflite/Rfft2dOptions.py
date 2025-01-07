@@ -28,9 +28,14 @@ class Rfft2dOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def Rfft2dOptionsStart(builder): builder.StartObject(0)
+def Rfft2dOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return Rfft2dOptionsStart(builder)
-def Rfft2dOptionsEnd(builder): return builder.EndObject()
+    Rfft2dOptionsStart(builder)
+
+def Rfft2dOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Rfft2dOptionsEnd(builder)

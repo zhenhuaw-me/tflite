@@ -28,9 +28,14 @@ class SpaceToBatchNDOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SpaceToBatchNDOptionsStart(builder): builder.StartObject(0)
+def SpaceToBatchNDOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SpaceToBatchNDOptionsStart(builder)
-def SpaceToBatchNDOptionsEnd(builder): return builder.EndObject()
+    SpaceToBatchNDOptionsStart(builder)
+
+def SpaceToBatchNDOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SpaceToBatchNDOptionsEnd(builder)

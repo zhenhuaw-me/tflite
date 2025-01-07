@@ -76,27 +76,50 @@ class DimensionMetadata(object):
             return obj
         return None
 
-def DimensionMetadataStart(builder): builder.StartObject(6)
+def DimensionMetadataStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return DimensionMetadataStart(builder)
-def DimensionMetadataAddFormat(builder, format): builder.PrependInt8Slot(0, format, 0)
+    DimensionMetadataStart(builder)
+
+def DimensionMetadataAddFormat(builder, format):
+    builder.PrependInt8Slot(0, format, 0)
+
 def AddFormat(builder, format):
-    return DimensionMetadataAddFormat(builder, format)
-def DimensionMetadataAddDenseSize(builder, denseSize): builder.PrependInt32Slot(1, denseSize, 0)
+    DimensionMetadataAddFormat(builder, format)
+
+def DimensionMetadataAddDenseSize(builder, denseSize):
+    builder.PrependInt32Slot(1, denseSize, 0)
+
 def AddDenseSize(builder, denseSize):
-    return DimensionMetadataAddDenseSize(builder, denseSize)
-def DimensionMetadataAddArraySegmentsType(builder, arraySegmentsType): builder.PrependUint8Slot(2, arraySegmentsType, 0)
+    DimensionMetadataAddDenseSize(builder, denseSize)
+
+def DimensionMetadataAddArraySegmentsType(builder, arraySegmentsType):
+    builder.PrependUint8Slot(2, arraySegmentsType, 0)
+
 def AddArraySegmentsType(builder, arraySegmentsType):
-    return DimensionMetadataAddArraySegmentsType(builder, arraySegmentsType)
-def DimensionMetadataAddArraySegments(builder, arraySegments): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(arraySegments), 0)
+    DimensionMetadataAddArraySegmentsType(builder, arraySegmentsType)
+
+def DimensionMetadataAddArraySegments(builder, arraySegments):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(arraySegments), 0)
+
 def AddArraySegments(builder, arraySegments):
-    return DimensionMetadataAddArraySegments(builder, arraySegments)
-def DimensionMetadataAddArrayIndicesType(builder, arrayIndicesType): builder.PrependUint8Slot(4, arrayIndicesType, 0)
+    DimensionMetadataAddArraySegments(builder, arraySegments)
+
+def DimensionMetadataAddArrayIndicesType(builder, arrayIndicesType):
+    builder.PrependUint8Slot(4, arrayIndicesType, 0)
+
 def AddArrayIndicesType(builder, arrayIndicesType):
-    return DimensionMetadataAddArrayIndicesType(builder, arrayIndicesType)
-def DimensionMetadataAddArrayIndices(builder, arrayIndices): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(arrayIndices), 0)
+    DimensionMetadataAddArrayIndicesType(builder, arrayIndicesType)
+
+def DimensionMetadataAddArrayIndices(builder, arrayIndices):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(arrayIndices), 0)
+
 def AddArrayIndices(builder, arrayIndices):
-    return DimensionMetadataAddArrayIndices(builder, arrayIndices)
-def DimensionMetadataEnd(builder): return builder.EndObject()
+    DimensionMetadataAddArrayIndices(builder, arrayIndices)
+
+def DimensionMetadataEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DimensionMetadataEnd(builder)

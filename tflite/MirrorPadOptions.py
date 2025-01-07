@@ -35,12 +35,20 @@ class MirrorPadOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def MirrorPadOptionsStart(builder): builder.StartObject(1)
+def MirrorPadOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return MirrorPadOptionsStart(builder)
-def MirrorPadOptionsAddMode(builder, mode): builder.PrependInt8Slot(0, mode, 0)
+    MirrorPadOptionsStart(builder)
+
+def MirrorPadOptionsAddMode(builder, mode):
+    builder.PrependInt8Slot(0, mode, 0)
+
 def AddMode(builder, mode):
-    return MirrorPadOptionsAddMode(builder, mode)
-def MirrorPadOptionsEnd(builder): return builder.EndObject()
+    MirrorPadOptionsAddMode(builder, mode)
+
+def MirrorPadOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MirrorPadOptionsEnd(builder)

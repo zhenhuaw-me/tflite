@@ -28,9 +28,14 @@ class GreaterEqualOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def GreaterEqualOptionsStart(builder): builder.StartObject(0)
+def GreaterEqualOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return GreaterEqualOptionsStart(builder)
-def GreaterEqualOptionsEnd(builder): return builder.EndObject()
+    GreaterEqualOptionsStart(builder)
+
+def GreaterEqualOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GreaterEqualOptionsEnd(builder)

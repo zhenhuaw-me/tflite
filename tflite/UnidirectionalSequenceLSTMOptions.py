@@ -63,24 +63,57 @@ class UnidirectionalSequenceLSTMOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def UnidirectionalSequenceLSTMOptionsStart(builder): builder.StartObject(5)
+    # UnidirectionalSequenceLSTMOptions
+    def DiagonalRecurrentTensors(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+def UnidirectionalSequenceLSTMOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return UnidirectionalSequenceLSTMOptionsStart(builder)
-def UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    UnidirectionalSequenceLSTMOptionsStart(builder)
+
+def UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+    UnidirectionalSequenceLSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)
+
 def AddCellClip(builder, cellClip):
-    return UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
-def UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+    UnidirectionalSequenceLSTMOptionsAddCellClip(builder, cellClip)
+
+def UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)
+
 def AddProjClip(builder, projClip):
-    return UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
-def UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor): builder.PrependBoolSlot(3, timeMajor, 0)
+    UnidirectionalSequenceLSTMOptionsAddProjClip(builder, projClip)
+
+def UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor):
+    builder.PrependBoolSlot(3, timeMajor, 0)
+
 def AddTimeMajor(builder, timeMajor):
-    return UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
-def UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+    UnidirectionalSequenceLSTMOptionsAddTimeMajor(builder, timeMajor)
+
+def UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def UnidirectionalSequenceLSTMOptionsEnd(builder): return builder.EndObject()
+    UnidirectionalSequenceLSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors):
+    builder.PrependBoolSlot(5, diagonalRecurrentTensors, 0)
+
+def AddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors):
+    UnidirectionalSequenceLSTMOptionsAddDiagonalRecurrentTensors(builder, diagonalRecurrentTensors)
+
+def UnidirectionalSequenceLSTMOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UnidirectionalSequenceLSTMOptionsEnd(builder)

@@ -28,9 +28,14 @@ class TileOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def TileOptionsStart(builder): builder.StartObject(0)
+def TileOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return TileOptionsStart(builder)
-def TileOptionsEnd(builder): return builder.EndObject()
+    TileOptionsStart(builder)
+
+def TileOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TileOptionsEnd(builder)

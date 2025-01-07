@@ -42,15 +42,26 @@ class SubOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return True
 
-def SubOptionsStart(builder): builder.StartObject(2)
+def SubOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return SubOptionsStart(builder)
-def SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    SubOptionsStart(builder)
+
+def SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def SubOptionsAddPotScaleInt16(builder, potScaleInt16): builder.PrependBoolSlot(1, potScaleInt16, 1)
+    SubOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def SubOptionsAddPotScaleInt16(builder, potScaleInt16):
+    builder.PrependBoolSlot(1, potScaleInt16, 1)
+
 def AddPotScaleInt16(builder, potScaleInt16):
-    return SubOptionsAddPotScaleInt16(builder, potScaleInt16)
-def SubOptionsEnd(builder): return builder.EndObject()
+    SubOptionsAddPotScaleInt16(builder, potScaleInt16)
+
+def SubOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SubOptionsEnd(builder)
