@@ -28,9 +28,14 @@ class HashtableFindOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HashtableFindOptionsStart(builder): builder.StartObject(0)
+def HashtableFindOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HashtableFindOptionsStart(builder)
-def HashtableFindOptionsEnd(builder): return builder.EndObject()
+    HashtableFindOptionsStart(builder)
+
+def HashtableFindOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableFindOptionsEnd(builder)

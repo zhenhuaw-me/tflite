@@ -35,12 +35,20 @@ class SoftmaxOptions(object):
             return self._tab.Get(flatbuffers.number_types.Float32Flags, o + self._tab.Pos)
         return 0.0
 
-def SoftmaxOptionsStart(builder): builder.StartObject(1)
+def SoftmaxOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SoftmaxOptionsStart(builder)
-def SoftmaxOptionsAddBeta(builder, beta): builder.PrependFloat32Slot(0, beta, 0.0)
+    SoftmaxOptionsStart(builder)
+
+def SoftmaxOptionsAddBeta(builder, beta):
+    builder.PrependFloat32Slot(0, beta, 0.0)
+
 def AddBeta(builder, beta):
-    return SoftmaxOptionsAddBeta(builder, beta)
-def SoftmaxOptionsEnd(builder): return builder.EndObject()
+    SoftmaxOptionsAddBeta(builder, beta)
+
+def SoftmaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SoftmaxOptionsEnd(builder)

@@ -35,12 +35,20 @@ class ArgMinOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def ArgMinOptionsStart(builder): builder.StartObject(1)
+def ArgMinOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return ArgMinOptionsStart(builder)
-def ArgMinOptionsAddOutputType(builder, outputType): builder.PrependInt8Slot(0, outputType, 0)
+    ArgMinOptionsStart(builder)
+
+def ArgMinOptionsAddOutputType(builder, outputType):
+    builder.PrependInt8Slot(0, outputType, 0)
+
 def AddOutputType(builder, outputType):
-    return ArgMinOptionsAddOutputType(builder, outputType)
-def ArgMinOptionsEnd(builder): return builder.EndObject()
+    ArgMinOptionsAddOutputType(builder, outputType)
+
+def ArgMinOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ArgMinOptionsEnd(builder)

@@ -28,9 +28,14 @@ class ReadVariableOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ReadVariableOptionsStart(builder): builder.StartObject(0)
+def ReadVariableOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ReadVariableOptionsStart(builder)
-def ReadVariableOptionsEnd(builder): return builder.EndObject()
+    ReadVariableOptionsStart(builder)
+
+def ReadVariableOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ReadVariableOptionsEnd(builder)

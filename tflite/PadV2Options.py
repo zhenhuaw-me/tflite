@@ -28,9 +28,14 @@ class PadV2Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def PadV2OptionsStart(builder): builder.StartObject(0)
+def PadV2OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return PadV2OptionsStart(builder)
-def PadV2OptionsEnd(builder): return builder.EndObject()
+    PadV2OptionsStart(builder)
+
+def PadV2OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return PadV2OptionsEnd(builder)

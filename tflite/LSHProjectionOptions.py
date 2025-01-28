@@ -35,12 +35,20 @@ class LSHProjectionOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def LSHProjectionOptionsStart(builder): builder.StartObject(1)
+def LSHProjectionOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return LSHProjectionOptionsStart(builder)
-def LSHProjectionOptionsAddType(builder, type): builder.PrependInt8Slot(0, type, 0)
+    LSHProjectionOptionsStart(builder)
+
+def LSHProjectionOptionsAddType(builder, type):
+    builder.PrependInt8Slot(0, type, 0)
+
 def AddType(builder, type):
-    return LSHProjectionOptionsAddType(builder, type)
-def LSHProjectionOptionsEnd(builder): return builder.EndObject()
+    LSHProjectionOptionsAddType(builder, type)
+
+def LSHProjectionOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LSHProjectionOptionsEnd(builder)

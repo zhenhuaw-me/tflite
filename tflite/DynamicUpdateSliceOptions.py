@@ -28,9 +28,14 @@ class DynamicUpdateSliceOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def DynamicUpdateSliceOptionsStart(builder): builder.StartObject(0)
+def DynamicUpdateSliceOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return DynamicUpdateSliceOptionsStart(builder)
-def DynamicUpdateSliceOptionsEnd(builder): return builder.EndObject()
+    DynamicUpdateSliceOptionsStart(builder)
+
+def DynamicUpdateSliceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DynamicUpdateSliceOptionsEnd(builder)

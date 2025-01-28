@@ -42,15 +42,26 @@ class CumsumOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def CumsumOptionsStart(builder): builder.StartObject(2)
+def CumsumOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return CumsumOptionsStart(builder)
-def CumsumOptionsAddExclusive(builder, exclusive): builder.PrependBoolSlot(0, exclusive, 0)
+    CumsumOptionsStart(builder)
+
+def CumsumOptionsAddExclusive(builder, exclusive):
+    builder.PrependBoolSlot(0, exclusive, 0)
+
 def AddExclusive(builder, exclusive):
-    return CumsumOptionsAddExclusive(builder, exclusive)
-def CumsumOptionsAddReverse(builder, reverse): builder.PrependBoolSlot(1, reverse, 0)
+    CumsumOptionsAddExclusive(builder, exclusive)
+
+def CumsumOptionsAddReverse(builder, reverse):
+    builder.PrependBoolSlot(1, reverse, 0)
+
 def AddReverse(builder, reverse):
-    return CumsumOptionsAddReverse(builder, reverse)
-def CumsumOptionsEnd(builder): return builder.EndObject()
+    CumsumOptionsAddReverse(builder, reverse)
+
+def CumsumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CumsumOptionsEnd(builder)

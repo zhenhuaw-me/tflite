@@ -42,15 +42,26 @@ class VarHandleOptions(object):
             return self._tab.String(o + self._tab.Pos)
         return None
 
-def VarHandleOptionsStart(builder): builder.StartObject(2)
+def VarHandleOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return VarHandleOptionsStart(builder)
-def VarHandleOptionsAddContainer(builder, container): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(container), 0)
+    VarHandleOptionsStart(builder)
+
+def VarHandleOptionsAddContainer(builder, container):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(container), 0)
+
 def AddContainer(builder, container):
-    return VarHandleOptionsAddContainer(builder, container)
-def VarHandleOptionsAddSharedName(builder, sharedName): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(sharedName), 0)
+    VarHandleOptionsAddContainer(builder, container)
+
+def VarHandleOptionsAddSharedName(builder, sharedName):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(sharedName), 0)
+
 def AddSharedName(builder, sharedName):
-    return VarHandleOptionsAddSharedName(builder, sharedName)
-def VarHandleOptionsEnd(builder): return builder.EndObject()
+    VarHandleOptionsAddSharedName(builder, sharedName)
+
+def VarHandleOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return VarHandleOptionsEnd(builder)

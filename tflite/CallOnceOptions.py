@@ -35,12 +35,20 @@ class CallOnceOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def CallOnceOptionsStart(builder): builder.StartObject(1)
+def CallOnceOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return CallOnceOptionsStart(builder)
-def CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex): builder.PrependInt32Slot(0, initSubgraphIndex, 0)
+    CallOnceOptionsStart(builder)
+
+def CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex):
+    builder.PrependInt32Slot(0, initSubgraphIndex, 0)
+
 def AddInitSubgraphIndex(builder, initSubgraphIndex):
-    return CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex)
-def CallOnceOptionsEnd(builder): return builder.EndObject()
+    CallOnceOptionsAddInitSubgraphIndex(builder, initSubgraphIndex)
+
+def CallOnceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CallOnceOptionsEnd(builder)

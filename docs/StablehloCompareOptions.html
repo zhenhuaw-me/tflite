@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>tflite.StablehloCompareOptions API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.StablehloCompareOptions</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.StablehloCompareOptions.AddCompareType"><code class="name flex">
+<span>def <span class="ident">AddCompareType</span></span>(<span>builder, compareType)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCompareType(builder, compareType):
+    StablehloCompareOptionsAddCompareType(builder, compareType)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.AddComparisonDirection"><code class="name flex">
+<span>def <span class="ident">AddComparisonDirection</span></span>(<span>builder, comparisonDirection)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddComparisonDirection(builder, comparisonDirection):
+    StablehloCompareOptionsAddComparisonDirection(builder, comparisonDirection)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StablehloCompareOptionsEnd(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptionsAddCompareType"><code class="name flex">
+<span>def <span class="ident">StablehloCompareOptionsAddCompareType</span></span>(<span>builder, compareType)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCompareOptionsAddCompareType(builder, compareType):
+    builder.PrependUint32Slot(1, compareType, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptionsAddComparisonDirection"><code class="name flex">
+<span>def <span class="ident">StablehloCompareOptionsAddComparisonDirection</span></span>(<span>builder, comparisonDirection)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCompareOptionsAddComparisonDirection(builder, comparisonDirection):
+    builder.PrependUint32Slot(0, comparisonDirection, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptionsEnd"><code class="name flex">
+<span>def <span class="ident">StablehloCompareOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCompareOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptionsStart"><code class="name flex">
+<span>def <span class="ident">StablehloCompareOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCompareOptionsStart(builder):
+    builder.StartObject(2)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    StablehloCompareOptionsStart(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions"><code class="flex name class">
+<span>class <span class="ident">StablehloCompareOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StablehloCompareOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = StablehloCompareOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsStablehloCompareOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StablehloCompareOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # StablehloCompareOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # StablehloCompareOptions
+    def ComparisonDirection(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloCompareOptions
+    def CompareType(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
+        return 0</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions.GetRootAsStablehloCompareOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStablehloCompareOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions.StablehloCompareOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StablehloCompareOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions.CompareType"><code class="name flex">
+<span>def <span class="ident">CompareType</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CompareType(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions.ComparisonDirection"><code class="name flex">
+<span>def <span class="ident">ComparisonDirection</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ComparisonDirection(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCompareOptions.StablehloCompareOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.StablehloCompareOptions.AddCompareType" href="#tflite.StablehloCompareOptions.AddCompareType">AddCompareType</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.AddComparisonDirection" href="#tflite.StablehloCompareOptions.AddComparisonDirection">AddComparisonDirection</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.End" href="#tflite.StablehloCompareOptions.End">End</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptionsAddCompareType" href="#tflite.StablehloCompareOptions.StablehloCompareOptionsAddCompareType">StablehloCompareOptionsAddCompareType</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptionsAddComparisonDirection" href="#tflite.StablehloCompareOptions.StablehloCompareOptionsAddComparisonDirection">StablehloCompareOptionsAddComparisonDirection</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptionsEnd" href="#tflite.StablehloCompareOptions.StablehloCompareOptionsEnd">StablehloCompareOptionsEnd</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptionsStart" href="#tflite.StablehloCompareOptions.StablehloCompareOptionsStart">StablehloCompareOptionsStart</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.Start" href="#tflite.StablehloCompareOptions.Start">Start</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions" href="#tflite.StablehloCompareOptions.StablehloCompareOptions">StablehloCompareOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions.CompareType" href="#tflite.StablehloCompareOptions.StablehloCompareOptions.CompareType">CompareType</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions.ComparisonDirection" href="#tflite.StablehloCompareOptions.StablehloCompareOptions.ComparisonDirection">ComparisonDirection</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions.GetRootAs" href="#tflite.StablehloCompareOptions.StablehloCompareOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions.GetRootAsStablehloCompareOptions" href="#tflite.StablehloCompareOptions.StablehloCompareOptions.GetRootAsStablehloCompareOptions">GetRootAsStablehloCompareOptions</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions.Init" href="#tflite.StablehloCompareOptions.StablehloCompareOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.StablehloCompareOptions.StablehloCompareOptions.StablehloCompareOptionsBufferHasIdentifier" href="#tflite.StablehloCompareOptions.StablehloCompareOptions.StablehloCompareOptionsBufferHasIdentifier">StablehloCompareOptionsBufferHasIdentifier</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

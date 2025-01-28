@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>tflite.StablehloCustomCallOptions API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.StablehloCustomCallOptions</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.StablehloCustomCallOptions.AddApiVersion"><code class="name flex">
+<span>def <span class="ident">AddApiVersion</span></span>(<span>builder, apiVersion)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddApiVersion(builder, apiVersion):
+    StablehloCustomCallOptionsAddApiVersion(builder, apiVersion)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.AddBackendConfig"><code class="name flex">
+<span>def <span class="ident">AddBackendConfig</span></span>(<span>builder, backendConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBackendConfig(builder, backendConfig):
+    StablehloCustomCallOptionsAddBackendConfig(builder, backendConfig)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.AddCallTargetName"><code class="name flex">
+<span>def <span class="ident">AddCallTargetName</span></span>(<span>builder, callTargetName)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCallTargetName(builder, callTargetName):
+    StablehloCustomCallOptionsAddCallTargetName(builder, callTargetName)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.AddCalledComputations"><code class="name flex">
+<span>def <span class="ident">AddCalledComputations</span></span>(<span>builder, calledComputations)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCalledComputations(builder, calledComputations):
+    StablehloCustomCallOptionsAddCalledComputations(builder, calledComputations)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.AddCustomAttributes"><code class="name flex">
+<span>def <span class="ident">AddCustomAttributes</span></span>(<span>builder, customAttributes)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddCustomAttributes(builder, customAttributes):
+    StablehloCustomCallOptionsAddCustomAttributes(builder, customAttributes)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.AddHasSideEffect"><code class="name flex">
+<span>def <span class="ident">AddHasSideEffect</span></span>(<span>builder, hasSideEffect)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddHasSideEffect(builder, hasSideEffect):
+    StablehloCustomCallOptionsAddHasSideEffect(builder, hasSideEffect)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StablehloCustomCallOptionsEnd(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddApiVersion"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsAddApiVersion</span></span>(<span>builder, apiVersion)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsAddApiVersion(builder, apiVersion):
+    builder.PrependInt32Slot(3, apiVersion, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddBackendConfig"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsAddBackendConfig</span></span>(<span>builder, backendConfig)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsAddBackendConfig(builder, backendConfig):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(backendConfig), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCallTargetName"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsAddCallTargetName</span></span>(<span>builder, callTargetName)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsAddCallTargetName(builder, callTargetName):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(callTargetName), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCalledComputations"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsAddCalledComputations</span></span>(<span>builder, calledComputations)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsAddCalledComputations(builder, calledComputations):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(calledComputations), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCustomAttributes"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsAddCustomAttributes</span></span>(<span>builder, customAttributes)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsAddCustomAttributes(builder, customAttributes):
+    builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(customAttributes), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddHasSideEffect"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsAddHasSideEffect</span></span>(<span>builder, hasSideEffect)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsAddHasSideEffect(builder, hasSideEffect):
+    builder.PrependBoolSlot(1, hasSideEffect, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsEnd"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStart"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsStart(builder):
+    builder.StartObject(6)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStartCalledComputationsVector"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsStartCalledComputationsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsStartCalledComputationsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStartCustomAttributesVector"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsStartCustomAttributesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloCustomCallOptionsStartCustomAttributesVector(builder, numElems):
+    return builder.StartVector(1, numElems, 1)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    StablehloCustomCallOptionsStart(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StartCalledComputationsVector"><code class="name flex">
+<span>def <span class="ident">StartCalledComputationsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartCalledComputationsVector(builder, numElems):
+    return StablehloCustomCallOptionsStartCalledComputationsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StartCustomAttributesVector"><code class="name flex">
+<span>def <span class="ident">StartCustomAttributesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartCustomAttributesVector(builder, numElems):
+    return StablehloCustomCallOptionsStartCustomAttributesVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions"><code class="flex name class">
+<span>class <span class="ident">StablehloCustomCallOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StablehloCustomCallOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = StablehloCustomCallOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsStablehloCustomCallOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StablehloCustomCallOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # StablehloCustomCallOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # StablehloCustomCallOptions
+    def CallTargetName(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.String(o + self._tab.Pos)
+        return None
+
+    # StablehloCustomCallOptions
+    def HasSideEffect(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+    # StablehloCustomCallOptions
+    def BackendConfig(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.String(o + self._tab.Pos)
+        return None
+
+    # StablehloCustomCallOptions
+    def ApiVersion(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloCustomCallOptions
+    def CalledComputations(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+        return 0
+
+    # StablehloCustomCallOptions
+    def CalledComputationsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int32Flags, o)
+        return 0
+
+    # StablehloCustomCallOptions
+    def CalledComputationsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloCustomCallOptions
+    def CalledComputationsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        return o == 0
+
+    # StablehloCustomCallOptions
+    def CustomAttributes(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Uint8Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 1))
+        return 0
+
+    # StablehloCustomCallOptions
+    def CustomAttributesAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint8Flags, o)
+        return 0
+
+    # StablehloCustomCallOptions
+    def CustomAttributesLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloCustomCallOptions
+    def CustomAttributesIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.GetRootAsStablehloCustomCallOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStablehloCustomCallOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.StablehloCustomCallOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StablehloCustomCallOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.ApiVersion"><code class="name flex">
+<span>def <span class="ident">ApiVersion</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ApiVersion(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.BackendConfig"><code class="name flex">
+<span>def <span class="ident">BackendConfig</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BackendConfig(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.String(o + self._tab.Pos)
+    return None</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CallTargetName"><code class="name flex">
+<span>def <span class="ident">CallTargetName</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CallTargetName(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.String(o + self._tab.Pos)
+    return None</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputations"><code class="name flex">
+<span>def <span class="ident">CalledComputations</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CalledComputations(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 4))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsAsNumpy"><code class="name flex">
+<span>def <span class="ident">CalledComputationsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CalledComputationsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int32Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsIsNone"><code class="name flex">
+<span>def <span class="ident">CalledComputationsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CalledComputationsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsLength"><code class="name flex">
+<span>def <span class="ident">CalledComputationsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CalledComputationsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributes"><code class="name flex">
+<span>def <span class="ident">CustomAttributes</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CustomAttributes(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Uint8Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 1))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesAsNumpy"><code class="name flex">
+<span>def <span class="ident">CustomAttributesAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CustomAttributesAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Uint8Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesIsNone"><code class="name flex">
+<span>def <span class="ident">CustomAttributesIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CustomAttributesIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesLength"><code class="name flex">
+<span>def <span class="ident">CustomAttributesLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def CustomAttributesLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.HasSideEffect"><code class="name flex">
+<span>def <span class="ident">HasSideEffect</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def HasSideEffect(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+    return False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.StablehloCustomCallOptions.AddApiVersion" href="#tflite.StablehloCustomCallOptions.AddApiVersion">AddApiVersion</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.AddBackendConfig" href="#tflite.StablehloCustomCallOptions.AddBackendConfig">AddBackendConfig</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.AddCallTargetName" href="#tflite.StablehloCustomCallOptions.AddCallTargetName">AddCallTargetName</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.AddCalledComputations" href="#tflite.StablehloCustomCallOptions.AddCalledComputations">AddCalledComputations</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.AddCustomAttributes" href="#tflite.StablehloCustomCallOptions.AddCustomAttributes">AddCustomAttributes</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.AddHasSideEffect" href="#tflite.StablehloCustomCallOptions.AddHasSideEffect">AddHasSideEffect</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.End" href="#tflite.StablehloCustomCallOptions.End">End</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddApiVersion" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddApiVersion">StablehloCustomCallOptionsAddApiVersion</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddBackendConfig" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddBackendConfig">StablehloCustomCallOptionsAddBackendConfig</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCallTargetName" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCallTargetName">StablehloCustomCallOptionsAddCallTargetName</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCalledComputations" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCalledComputations">StablehloCustomCallOptionsAddCalledComputations</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCustomAttributes" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddCustomAttributes">StablehloCustomCallOptionsAddCustomAttributes</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddHasSideEffect" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsAddHasSideEffect">StablehloCustomCallOptionsAddHasSideEffect</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsEnd" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsEnd">StablehloCustomCallOptionsEnd</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStart" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStart">StablehloCustomCallOptionsStart</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStartCalledComputationsVector" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStartCalledComputationsVector">StablehloCustomCallOptionsStartCalledComputationsVector</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStartCustomAttributesVector" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptionsStartCustomAttributesVector">StablehloCustomCallOptionsStartCustomAttributesVector</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.Start" href="#tflite.StablehloCustomCallOptions.Start">Start</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StartCalledComputationsVector" href="#tflite.StablehloCustomCallOptions.StartCalledComputationsVector">StartCalledComputationsVector</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StartCustomAttributesVector" href="#tflite.StablehloCustomCallOptions.StartCustomAttributesVector">StartCustomAttributesVector</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions">StablehloCustomCallOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.ApiVersion" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.ApiVersion">ApiVersion</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.BackendConfig" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.BackendConfig">BackendConfig</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CallTargetName" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CallTargetName">CallTargetName</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputations" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputations">CalledComputations</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsAsNumpy" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsAsNumpy">CalledComputationsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsIsNone" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsIsNone">CalledComputationsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsLength" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CalledComputationsLength">CalledComputationsLength</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributes" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributes">CustomAttributes</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesAsNumpy" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesAsNumpy">CustomAttributesAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesIsNone" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesIsNone">CustomAttributesIsNone</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesLength" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.CustomAttributesLength">CustomAttributesLength</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.GetRootAs" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.GetRootAsStablehloCustomCallOptions" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.GetRootAsStablehloCustomCallOptions">GetRootAsStablehloCustomCallOptions</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.HasSideEffect" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.HasSideEffect">HasSideEffect</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.Init" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.StablehloCustomCallOptionsBufferHasIdentifier" href="#tflite.StablehloCustomCallOptions.StablehloCustomCallOptions.StablehloCustomCallOptionsBufferHasIdentifier">StablehloCustomCallOptionsBufferHasIdentifier</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

@@ -28,9 +28,14 @@ class SquaredDifferenceOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SquaredDifferenceOptionsStart(builder): builder.StartObject(0)
+def SquaredDifferenceOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SquaredDifferenceOptionsStart(builder)
-def SquaredDifferenceOptionsEnd(builder): return builder.EndObject()
+    SquaredDifferenceOptionsStart(builder)
+
+def SquaredDifferenceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SquaredDifferenceOptionsEnd(builder)

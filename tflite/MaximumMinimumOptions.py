@@ -28,9 +28,14 @@ class MaximumMinimumOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def MaximumMinimumOptionsStart(builder): builder.StartObject(0)
+def MaximumMinimumOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return MaximumMinimumOptionsStart(builder)
-def MaximumMinimumOptionsEnd(builder): return builder.EndObject()
+    MaximumMinimumOptionsStart(builder)
+
+def MaximumMinimumOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MaximumMinimumOptionsEnd(builder)

@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>tflite.StablehloScatterOptions API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.StablehloScatterOptions</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.StablehloScatterOptions.AddIndexVectorDim"><code class="name flex">
+<span>def <span class="ident">AddIndexVectorDim</span></span>(<span>builder, indexVectorDim)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddIndexVectorDim(builder, indexVectorDim):
+    StablehloScatterOptionsAddIndexVectorDim(builder, indexVectorDim)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.AddIndicesAreSorted"><code class="name flex">
+<span>def <span class="ident">AddIndicesAreSorted</span></span>(<span>builder, indicesAreSorted)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddIndicesAreSorted(builder, indicesAreSorted):
+    StablehloScatterOptionsAddIndicesAreSorted(builder, indicesAreSorted)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.AddInsertedWindowDims"><code class="name flex">
+<span>def <span class="ident">AddInsertedWindowDims</span></span>(<span>builder, insertedWindowDims)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddInsertedWindowDims(builder, insertedWindowDims):
+    StablehloScatterOptionsAddInsertedWindowDims(builder, insertedWindowDims)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.AddScatterDimsToOperandDims"><code class="name flex">
+<span>def <span class="ident">AddScatterDimsToOperandDims</span></span>(<span>builder, scatterDimsToOperandDims)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddScatterDimsToOperandDims(builder, scatterDimsToOperandDims):
+    StablehloScatterOptionsAddScatterDimsToOperandDims(builder, scatterDimsToOperandDims)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.AddUniqueIndices"><code class="name flex">
+<span>def <span class="ident">AddUniqueIndices</span></span>(<span>builder, uniqueIndices)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddUniqueIndices(builder, uniqueIndices):
+    StablehloScatterOptionsAddUniqueIndices(builder, uniqueIndices)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.AddUpdateComputationSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">AddUpdateComputationSubgraphIndex</span></span>(<span>builder, updateComputationSubgraphIndex)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddUpdateComputationSubgraphIndex(builder, updateComputationSubgraphIndex):
+    StablehloScatterOptionsAddUpdateComputationSubgraphIndex(builder, updateComputationSubgraphIndex)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.AddUpdateWindowDims"><code class="name flex">
+<span>def <span class="ident">AddUpdateWindowDims</span></span>(<span>builder, updateWindowDims)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddUpdateWindowDims(builder, updateWindowDims):
+    StablehloScatterOptionsAddUpdateWindowDims(builder, updateWindowDims)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StablehloScatterOptionsEnd(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddIndexVectorDim"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddIndexVectorDim</span></span>(<span>builder, indexVectorDim)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddIndexVectorDim(builder, indexVectorDim):
+    builder.PrependInt64Slot(4, indexVectorDim, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddIndicesAreSorted"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddIndicesAreSorted</span></span>(<span>builder, indicesAreSorted)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddIndicesAreSorted(builder, indicesAreSorted):
+    builder.PrependBoolSlot(0, indicesAreSorted, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddInsertedWindowDims"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddInsertedWindowDims</span></span>(<span>builder, insertedWindowDims)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddInsertedWindowDims(builder, insertedWindowDims):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(insertedWindowDims), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddScatterDimsToOperandDims"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddScatterDimsToOperandDims</span></span>(<span>builder, scatterDimsToOperandDims)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddScatterDimsToOperandDims(builder, scatterDimsToOperandDims):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(scatterDimsToOperandDims), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddUniqueIndices"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddUniqueIndices</span></span>(<span>builder, uniqueIndices)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddUniqueIndices(builder, uniqueIndices):
+    builder.PrependBoolSlot(5, uniqueIndices, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddUpdateComputationSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddUpdateComputationSubgraphIndex</span></span>(<span>builder, updateComputationSubgraphIndex)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddUpdateComputationSubgraphIndex(builder, updateComputationSubgraphIndex):
+    builder.PrependInt32Slot(6, updateComputationSubgraphIndex, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsAddUpdateWindowDims"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsAddUpdateWindowDims</span></span>(<span>builder, updateWindowDims)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsAddUpdateWindowDims(builder, updateWindowDims):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(updateWindowDims), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsEnd"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsStart"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsStart(builder):
+    builder.StartObject(7)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsStartInsertedWindowDimsVector"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsStartInsertedWindowDimsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsStartInsertedWindowDimsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsStartScatterDimsToOperandDimsVector"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsStartScatterDimsToOperandDimsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsStartScatterDimsToOperandDimsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptionsStartUpdateWindowDimsVector"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsStartUpdateWindowDimsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloScatterOptionsStartUpdateWindowDimsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    StablehloScatterOptionsStart(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StartInsertedWindowDimsVector"><code class="name flex">
+<span>def <span class="ident">StartInsertedWindowDimsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartInsertedWindowDimsVector(builder, numElems):
+    return StablehloScatterOptionsStartInsertedWindowDimsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StartScatterDimsToOperandDimsVector"><code class="name flex">
+<span>def <span class="ident">StartScatterDimsToOperandDimsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartScatterDimsToOperandDimsVector(builder, numElems):
+    return StablehloScatterOptionsStartScatterDimsToOperandDimsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StartUpdateWindowDimsVector"><code class="name flex">
+<span>def <span class="ident">StartUpdateWindowDimsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartUpdateWindowDimsVector(builder, numElems):
+    return StablehloScatterOptionsStartUpdateWindowDimsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions"><code class="flex name class">
+<span>class <span class="ident">StablehloScatterOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StablehloScatterOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = StablehloScatterOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsStablehloScatterOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StablehloScatterOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # StablehloScatterOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # StablehloScatterOptions
+    def IndicesAreSorted(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+    # StablehloScatterOptions
+    def UpdateWindowDims(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloScatterOptions
+    def UpdateWindowDimsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloScatterOptions
+    def UpdateWindowDimsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloScatterOptions
+    def UpdateWindowDimsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # StablehloScatterOptions
+    def InsertedWindowDims(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloScatterOptions
+    def InsertedWindowDimsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloScatterOptions
+    def InsertedWindowDimsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloScatterOptions
+    def InsertedWindowDimsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
+    # StablehloScatterOptions
+    def ScatterDimsToOperandDims(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloScatterOptions
+    def ScatterDimsToOperandDimsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloScatterOptions
+    def ScatterDimsToOperandDimsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloScatterOptions
+    def ScatterDimsToOperandDimsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        return o == 0
+
+    # StablehloScatterOptions
+    def IndexVectorDim(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+        return 0
+
+    # StablehloScatterOptions
+    def UniqueIndices(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+    # StablehloScatterOptions
+    def UpdateComputationSubgraphIndex(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.GetRootAsStablehloScatterOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStablehloScatterOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.StablehloScatterOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StablehloScatterOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.IndexVectorDim"><code class="name flex">
+<span>def <span class="ident">IndexVectorDim</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def IndexVectorDim(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.IndicesAreSorted"><code class="name flex">
+<span>def <span class="ident">IndicesAreSorted</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def IndicesAreSorted(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+    return False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDims"><code class="name flex">
+<span>def <span class="ident">InsertedWindowDims</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InsertedWindowDims(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsAsNumpy"><code class="name flex">
+<span>def <span class="ident">InsertedWindowDimsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InsertedWindowDimsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsIsNone"><code class="name flex">
+<span>def <span class="ident">InsertedWindowDimsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InsertedWindowDimsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsLength"><code class="name flex">
+<span>def <span class="ident">InsertedWindowDimsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def InsertedWindowDimsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDims"><code class="name flex">
+<span>def <span class="ident">ScatterDimsToOperandDims</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ScatterDimsToOperandDims(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsAsNumpy"><code class="name flex">
+<span>def <span class="ident">ScatterDimsToOperandDimsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ScatterDimsToOperandDimsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsIsNone"><code class="name flex">
+<span>def <span class="ident">ScatterDimsToOperandDimsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ScatterDimsToOperandDimsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsLength"><code class="name flex">
+<span>def <span class="ident">ScatterDimsToOperandDimsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ScatterDimsToOperandDimsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.UniqueIndices"><code class="name flex">
+<span>def <span class="ident">UniqueIndices</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UniqueIndices(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+    return False</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateComputationSubgraphIndex"><code class="name flex">
+<span>def <span class="ident">UpdateComputationSubgraphIndex</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UpdateComputationSubgraphIndex(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(16))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDims"><code class="name flex">
+<span>def <span class="ident">UpdateWindowDims</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UpdateWindowDims(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsAsNumpy"><code class="name flex">
+<span>def <span class="ident">UpdateWindowDimsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UpdateWindowDimsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsIsNone"><code class="name flex">
+<span>def <span class="ident">UpdateWindowDimsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UpdateWindowDimsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsLength"><code class="name flex">
+<span>def <span class="ident">UpdateWindowDimsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def UpdateWindowDimsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.StablehloScatterOptions.AddIndexVectorDim" href="#tflite.StablehloScatterOptions.AddIndexVectorDim">AddIndexVectorDim</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.AddIndicesAreSorted" href="#tflite.StablehloScatterOptions.AddIndicesAreSorted">AddIndicesAreSorted</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.AddInsertedWindowDims" href="#tflite.StablehloScatterOptions.AddInsertedWindowDims">AddInsertedWindowDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.AddScatterDimsToOperandDims" href="#tflite.StablehloScatterOptions.AddScatterDimsToOperandDims">AddScatterDimsToOperandDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.AddUniqueIndices" href="#tflite.StablehloScatterOptions.AddUniqueIndices">AddUniqueIndices</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.AddUpdateComputationSubgraphIndex" href="#tflite.StablehloScatterOptions.AddUpdateComputationSubgraphIndex">AddUpdateComputationSubgraphIndex</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.AddUpdateWindowDims" href="#tflite.StablehloScatterOptions.AddUpdateWindowDims">AddUpdateWindowDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.End" href="#tflite.StablehloScatterOptions.End">End</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddIndexVectorDim" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddIndexVectorDim">StablehloScatterOptionsAddIndexVectorDim</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddIndicesAreSorted" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddIndicesAreSorted">StablehloScatterOptionsAddIndicesAreSorted</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddInsertedWindowDims" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddInsertedWindowDims">StablehloScatterOptionsAddInsertedWindowDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddScatterDimsToOperandDims" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddScatterDimsToOperandDims">StablehloScatterOptionsAddScatterDimsToOperandDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddUniqueIndices" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddUniqueIndices">StablehloScatterOptionsAddUniqueIndices</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddUpdateComputationSubgraphIndex" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddUpdateComputationSubgraphIndex">StablehloScatterOptionsAddUpdateComputationSubgraphIndex</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsAddUpdateWindowDims" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsAddUpdateWindowDims">StablehloScatterOptionsAddUpdateWindowDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsEnd" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsEnd">StablehloScatterOptionsEnd</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsStart" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsStart">StablehloScatterOptionsStart</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsStartInsertedWindowDimsVector" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsStartInsertedWindowDimsVector">StablehloScatterOptionsStartInsertedWindowDimsVector</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsStartScatterDimsToOperandDimsVector" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsStartScatterDimsToOperandDimsVector">StablehloScatterOptionsStartScatterDimsToOperandDimsVector</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptionsStartUpdateWindowDimsVector" href="#tflite.StablehloScatterOptions.StablehloScatterOptionsStartUpdateWindowDimsVector">StablehloScatterOptionsStartUpdateWindowDimsVector</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.Start" href="#tflite.StablehloScatterOptions.Start">Start</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StartInsertedWindowDimsVector" href="#tflite.StablehloScatterOptions.StartInsertedWindowDimsVector">StartInsertedWindowDimsVector</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StartScatterDimsToOperandDimsVector" href="#tflite.StablehloScatterOptions.StartScatterDimsToOperandDimsVector">StartScatterDimsToOperandDimsVector</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StartUpdateWindowDimsVector" href="#tflite.StablehloScatterOptions.StartUpdateWindowDimsVector">StartUpdateWindowDimsVector</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions" href="#tflite.StablehloScatterOptions.StablehloScatterOptions">StablehloScatterOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.GetRootAs" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.GetRootAsStablehloScatterOptions" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.GetRootAsStablehloScatterOptions">GetRootAsStablehloScatterOptions</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.IndexVectorDim" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.IndexVectorDim">IndexVectorDim</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.IndicesAreSorted" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.IndicesAreSorted">IndicesAreSorted</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.Init" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDims" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDims">InsertedWindowDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsAsNumpy" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsAsNumpy">InsertedWindowDimsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsIsNone" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsIsNone">InsertedWindowDimsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsLength" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.InsertedWindowDimsLength">InsertedWindowDimsLength</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDims" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDims">ScatterDimsToOperandDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsAsNumpy" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsAsNumpy">ScatterDimsToOperandDimsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsIsNone" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsIsNone">ScatterDimsToOperandDimsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsLength" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.ScatterDimsToOperandDimsLength">ScatterDimsToOperandDimsLength</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.StablehloScatterOptionsBufferHasIdentifier" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.StablehloScatterOptionsBufferHasIdentifier">StablehloScatterOptionsBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.UniqueIndices" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.UniqueIndices">UniqueIndices</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateComputationSubgraphIndex" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateComputationSubgraphIndex">UpdateComputationSubgraphIndex</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDims" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDims">UpdateWindowDims</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsAsNumpy" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsAsNumpy">UpdateWindowDimsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsIsNone" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsIsNone">UpdateWindowDimsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsLength" href="#tflite.StablehloScatterOptions.StablehloScatterOptions.UpdateWindowDimsLength">UpdateWindowDimsLength</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

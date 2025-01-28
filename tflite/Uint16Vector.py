@@ -55,15 +55,26 @@ class Uint16Vector(object):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         return o == 0
 
-def Uint16VectorStart(builder): builder.StartObject(1)
+def Uint16VectorStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return Uint16VectorStart(builder)
-def Uint16VectorAddValues(builder, values): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+    Uint16VectorStart(builder)
+
+def Uint16VectorAddValues(builder, values):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(values), 0)
+
 def AddValues(builder, values):
-    return Uint16VectorAddValues(builder, values)
-def Uint16VectorStartValuesVector(builder, numElems): return builder.StartVector(2, numElems, 2)
+    Uint16VectorAddValues(builder, values)
+
+def Uint16VectorStartValuesVector(builder, numElems):
+    return builder.StartVector(2, numElems, 2)
+
 def StartValuesVector(builder, numElems):
     return Uint16VectorStartValuesVector(builder, numElems)
-def Uint16VectorEnd(builder): return builder.EndObject()
+
+def Uint16VectorEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Uint16VectorEnd(builder)

@@ -35,12 +35,20 @@ class CallOptions(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def CallOptionsStart(builder): builder.StartObject(1)
+def CallOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return CallOptionsStart(builder)
-def CallOptionsAddSubgraph(builder, subgraph): builder.PrependUint32Slot(0, subgraph, 0)
+    CallOptionsStart(builder)
+
+def CallOptionsAddSubgraph(builder, subgraph):
+    builder.PrependUint32Slot(0, subgraph, 0)
+
 def AddSubgraph(builder, subgraph):
-    return CallOptionsAddSubgraph(builder, subgraph)
-def CallOptionsEnd(builder): return builder.EndObject()
+    CallOptionsAddSubgraph(builder, subgraph)
+
+def CallOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return CallOptionsEnd(builder)

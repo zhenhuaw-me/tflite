@@ -63,24 +63,57 @@ class StridedSliceOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def StridedSliceOptionsStart(builder): builder.StartObject(5)
+    # StridedSliceOptions
+    def Offset(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
+        return False
+
+def StridedSliceOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return StridedSliceOptionsStart(builder)
-def StridedSliceOptionsAddBeginMask(builder, beginMask): builder.PrependInt32Slot(0, beginMask, 0)
+    StridedSliceOptionsStart(builder)
+
+def StridedSliceOptionsAddBeginMask(builder, beginMask):
+    builder.PrependInt32Slot(0, beginMask, 0)
+
 def AddBeginMask(builder, beginMask):
-    return StridedSliceOptionsAddBeginMask(builder, beginMask)
-def StridedSliceOptionsAddEndMask(builder, endMask): builder.PrependInt32Slot(1, endMask, 0)
+    StridedSliceOptionsAddBeginMask(builder, beginMask)
+
+def StridedSliceOptionsAddEndMask(builder, endMask):
+    builder.PrependInt32Slot(1, endMask, 0)
+
 def AddEndMask(builder, endMask):
-    return StridedSliceOptionsAddEndMask(builder, endMask)
-def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask): builder.PrependInt32Slot(2, ellipsisMask, 0)
+    StridedSliceOptionsAddEndMask(builder, endMask)
+
+def StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask):
+    builder.PrependInt32Slot(2, ellipsisMask, 0)
+
 def AddEllipsisMask(builder, ellipsisMask):
-    return StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)
-def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask): builder.PrependInt32Slot(3, newAxisMask, 0)
+    StridedSliceOptionsAddEllipsisMask(builder, ellipsisMask)
+
+def StridedSliceOptionsAddNewAxisMask(builder, newAxisMask):
+    builder.PrependInt32Slot(3, newAxisMask, 0)
+
 def AddNewAxisMask(builder, newAxisMask):
-    return StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)
-def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask): builder.PrependInt32Slot(4, shrinkAxisMask, 0)
+    StridedSliceOptionsAddNewAxisMask(builder, newAxisMask)
+
+def StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask):
+    builder.PrependInt32Slot(4, shrinkAxisMask, 0)
+
 def AddShrinkAxisMask(builder, shrinkAxisMask):
-    return StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)
-def StridedSliceOptionsEnd(builder): return builder.EndObject()
+    StridedSliceOptionsAddShrinkAxisMask(builder, shrinkAxisMask)
+
+def StridedSliceOptionsAddOffset(builder, offset):
+    builder.PrependBoolSlot(5, offset, 0)
+
+def AddOffset(builder, offset):
+    StridedSliceOptionsAddOffset(builder, offset)
+
+def StridedSliceOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return StridedSliceOptionsEnd(builder)

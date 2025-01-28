@@ -28,9 +28,14 @@ class BroadcastToOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def BroadcastToOptionsStart(builder): builder.StartObject(0)
+def BroadcastToOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return BroadcastToOptionsStart(builder)
-def BroadcastToOptionsEnd(builder): return builder.EndObject()
+    BroadcastToOptionsStart(builder)
+
+def BroadcastToOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return BroadcastToOptionsEnd(builder)

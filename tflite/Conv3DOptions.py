@@ -84,33 +84,62 @@ class Conv3DOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 1
 
-def Conv3DOptionsStart(builder): builder.StartObject(8)
+def Conv3DOptionsStart(builder):
+    builder.StartObject(8)
+
 def Start(builder):
-    return Conv3DOptionsStart(builder)
-def Conv3DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    Conv3DOptionsStart(builder)
+
+def Conv3DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return Conv3DOptionsAddPadding(builder, padding)
-def Conv3DOptionsAddStrideD(builder, strideD): builder.PrependInt32Slot(1, strideD, 0)
+    Conv3DOptionsAddPadding(builder, padding)
+
+def Conv3DOptionsAddStrideD(builder, strideD):
+    builder.PrependInt32Slot(1, strideD, 0)
+
 def AddStrideD(builder, strideD):
-    return Conv3DOptionsAddStrideD(builder, strideD)
-def Conv3DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(2, strideW, 0)
+    Conv3DOptionsAddStrideD(builder, strideD)
+
+def Conv3DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(2, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return Conv3DOptionsAddStrideW(builder, strideW)
-def Conv3DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(3, strideH, 0)
+    Conv3DOptionsAddStrideW(builder, strideW)
+
+def Conv3DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(3, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return Conv3DOptionsAddStrideH(builder, strideH)
-def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+    Conv3DOptionsAddStrideH(builder, strideH)
+
+def Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(4, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor): builder.PrependInt32Slot(5, dilationDFactor, 1)
+    Conv3DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def Conv3DOptionsAddDilationDFactor(builder, dilationDFactor):
+    builder.PrependInt32Slot(5, dilationDFactor, 1)
+
 def AddDilationDFactor(builder, dilationDFactor):
-    return Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)
-def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor): builder.PrependInt32Slot(6, dilationWFactor, 1)
+    Conv3DOptionsAddDilationDFactor(builder, dilationDFactor)
+
+def Conv3DOptionsAddDilationWFactor(builder, dilationWFactor):
+    builder.PrependInt32Slot(6, dilationWFactor, 1)
+
 def AddDilationWFactor(builder, dilationWFactor):
-    return Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)
-def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor): builder.PrependInt32Slot(7, dilationHFactor, 1)
+    Conv3DOptionsAddDilationWFactor(builder, dilationWFactor)
+
+def Conv3DOptionsAddDilationHFactor(builder, dilationHFactor):
+    builder.PrependInt32Slot(7, dilationHFactor, 1)
+
 def AddDilationHFactor(builder, dilationHFactor):
-    return Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)
-def Conv3DOptionsEnd(builder): return builder.EndObject()
+    Conv3DOptionsAddDilationHFactor(builder, dilationHFactor)
+
+def Conv3DOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Conv3DOptionsEnd(builder)

@@ -63,24 +63,44 @@ class LSTMOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return False
 
-def LSTMOptionsStart(builder): builder.StartObject(5)
+def LSTMOptionsStart(builder):
+    builder.StartObject(5)
+
 def Start(builder):
-    return LSTMOptionsStart(builder)
-def LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    LSTMOptionsStart(builder)
+
+def LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def LSTMOptionsAddCellClip(builder, cellClip): builder.PrependFloat32Slot(1, cellClip, 0.0)
+    LSTMOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def LSTMOptionsAddCellClip(builder, cellClip):
+    builder.PrependFloat32Slot(1, cellClip, 0.0)
+
 def AddCellClip(builder, cellClip):
-    return LSTMOptionsAddCellClip(builder, cellClip)
-def LSTMOptionsAddProjClip(builder, projClip): builder.PrependFloat32Slot(2, projClip, 0.0)
+    LSTMOptionsAddCellClip(builder, cellClip)
+
+def LSTMOptionsAddProjClip(builder, projClip):
+    builder.PrependFloat32Slot(2, projClip, 0.0)
+
 def AddProjClip(builder, projClip):
-    return LSTMOptionsAddProjClip(builder, projClip)
-def LSTMOptionsAddKernelType(builder, kernelType): builder.PrependInt8Slot(3, kernelType, 0)
+    LSTMOptionsAddProjClip(builder, projClip)
+
+def LSTMOptionsAddKernelType(builder, kernelType):
+    builder.PrependInt8Slot(3, kernelType, 0)
+
 def AddKernelType(builder, kernelType):
-    return LSTMOptionsAddKernelType(builder, kernelType)
-def LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs): builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+    LSTMOptionsAddKernelType(builder, kernelType)
+
+def LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
+    builder.PrependBoolSlot(4, asymmetricQuantizeInputs, 0)
+
 def AddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs):
-    return LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
-def LSTMOptionsEnd(builder): return builder.EndObject()
+    LSTMOptionsAddAsymmetricQuantizeInputs(builder, asymmetricQuantizeInputs)
+
+def LSTMOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return LSTMOptionsEnd(builder)

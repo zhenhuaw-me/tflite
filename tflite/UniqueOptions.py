@@ -35,12 +35,20 @@ class UniqueOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 2
 
-def UniqueOptionsStart(builder): builder.StartObject(1)
+def UniqueOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return UniqueOptionsStart(builder)
-def UniqueOptionsAddIdxOutType(builder, idxOutType): builder.PrependInt8Slot(0, idxOutType, 2)
+    UniqueOptionsStart(builder)
+
+def UniqueOptionsAddIdxOutType(builder, idxOutType):
+    builder.PrependInt8Slot(0, idxOutType, 2)
+
 def AddIdxOutType(builder, idxOutType):
-    return UniqueOptionsAddIdxOutType(builder, idxOutType)
-def UniqueOptionsEnd(builder): return builder.EndObject()
+    UniqueOptionsAddIdxOutType(builder, idxOutType)
+
+def UniqueOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return UniqueOptionsEnd(builder)

@@ -28,9 +28,14 @@ class HashtableImportOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def HashtableImportOptionsStart(builder): builder.StartObject(0)
+def HashtableImportOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return HashtableImportOptionsStart(builder)
-def HashtableImportOptionsEnd(builder): return builder.EndObject()
+    HashtableImportOptionsStart(builder)
+
+def HashtableImportOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return HashtableImportOptionsEnd(builder)

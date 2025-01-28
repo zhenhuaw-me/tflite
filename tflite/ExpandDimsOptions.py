@@ -28,9 +28,14 @@ class ExpandDimsOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ExpandDimsOptionsStart(builder): builder.StartObject(0)
+def ExpandDimsOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ExpandDimsOptionsStart(builder)
-def ExpandDimsOptionsEnd(builder): return builder.EndObject()
+    ExpandDimsOptionsStart(builder)
+
+def ExpandDimsOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ExpandDimsOptionsEnd(builder)

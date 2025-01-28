@@ -28,9 +28,14 @@ class GreaterOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def GreaterOptionsStart(builder): builder.StartObject(0)
+def GreaterOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return GreaterOptionsStart(builder)
-def GreaterOptionsEnd(builder): return builder.EndObject()
+    GreaterOptionsStart(builder)
+
+def GreaterOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GreaterOptionsEnd(builder)

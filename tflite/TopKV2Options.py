@@ -28,9 +28,14 @@ class TopKV2Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def TopKV2OptionsStart(builder): builder.StartObject(0)
+def TopKV2OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return TopKV2OptionsStart(builder)
-def TopKV2OptionsEnd(builder): return builder.EndObject()
+    TopKV2OptionsStart(builder)
+
+def TopKV2OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return TopKV2OptionsEnd(builder)

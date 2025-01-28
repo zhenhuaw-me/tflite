@@ -2,18 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.10.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
 <title>tflite.BuiltinOperator API documentation</title>
-<meta name="description" content="" />
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
-<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
-<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
-<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
 </head>
 <body>
 <main>
@@ -22,173 +36,6 @@
 <h1 class="title">Module <code>tflite.BuiltinOperator</code></h1>
 </header>
 <section id="section-intro">
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python"># automatically generated by the FlatBuffers compiler, do not modify
-
-# namespace: tflite
-
-class BuiltinOperator(object):
-    ADD = 0
-    AVERAGE_POOL_2D = 1
-    CONCATENATION = 2
-    CONV_2D = 3
-    DEPTHWISE_CONV_2D = 4
-    DEPTH_TO_SPACE = 5
-    DEQUANTIZE = 6
-    EMBEDDING_LOOKUP = 7
-    FLOOR = 8
-    FULLY_CONNECTED = 9
-    HASHTABLE_LOOKUP = 10
-    L2_NORMALIZATION = 11
-    L2_POOL_2D = 12
-    LOCAL_RESPONSE_NORMALIZATION = 13
-    LOGISTIC = 14
-    LSH_PROJECTION = 15
-    LSTM = 16
-    MAX_POOL_2D = 17
-    MUL = 18
-    RELU = 19
-    RELU_N1_TO_1 = 20
-    RELU6 = 21
-    RESHAPE = 22
-    RESIZE_BILINEAR = 23
-    RNN = 24
-    SOFTMAX = 25
-    SPACE_TO_DEPTH = 26
-    SVDF = 27
-    TANH = 28
-    CONCAT_EMBEDDINGS = 29
-    SKIP_GRAM = 30
-    CALL = 31
-    CUSTOM = 32
-    EMBEDDING_LOOKUP_SPARSE = 33
-    PAD = 34
-    UNIDIRECTIONAL_SEQUENCE_RNN = 35
-    GATHER = 36
-    BATCH_TO_SPACE_ND = 37
-    SPACE_TO_BATCH_ND = 38
-    TRANSPOSE = 39
-    MEAN = 40
-    SUB = 41
-    DIV = 42
-    SQUEEZE = 43
-    UNIDIRECTIONAL_SEQUENCE_LSTM = 44
-    STRIDED_SLICE = 45
-    BIDIRECTIONAL_SEQUENCE_RNN = 46
-    EXP = 47
-    TOPK_V2 = 48
-    SPLIT = 49
-    LOG_SOFTMAX = 50
-    DELEGATE = 51
-    BIDIRECTIONAL_SEQUENCE_LSTM = 52
-    CAST = 53
-    PRELU = 54
-    MAXIMUM = 55
-    ARG_MAX = 56
-    MINIMUM = 57
-    LESS = 58
-    NEG = 59
-    PADV2 = 60
-    GREATER = 61
-    GREATER_EQUAL = 62
-    LESS_EQUAL = 63
-    SELECT = 64
-    SLICE = 65
-    SIN = 66
-    TRANSPOSE_CONV = 67
-    SPARSE_TO_DENSE = 68
-    TILE = 69
-    EXPAND_DIMS = 70
-    EQUAL = 71
-    NOT_EQUAL = 72
-    LOG = 73
-    SUM = 74
-    SQRT = 75
-    RSQRT = 76
-    SHAPE = 77
-    POW = 78
-    ARG_MIN = 79
-    FAKE_QUANT = 80
-    REDUCE_PROD = 81
-    REDUCE_MAX = 82
-    PACK = 83
-    LOGICAL_OR = 84
-    ONE_HOT = 85
-    LOGICAL_AND = 86
-    LOGICAL_NOT = 87
-    UNPACK = 88
-    REDUCE_MIN = 89
-    FLOOR_DIV = 90
-    REDUCE_ANY = 91
-    SQUARE = 92
-    ZEROS_LIKE = 93
-    FILL = 94
-    FLOOR_MOD = 95
-    RANGE = 96
-    RESIZE_NEAREST_NEIGHBOR = 97
-    LEAKY_RELU = 98
-    SQUARED_DIFFERENCE = 99
-    MIRROR_PAD = 100
-    ABS = 101
-    SPLIT_V = 102
-    UNIQUE = 103
-    CEIL = 104
-    REVERSE_V2 = 105
-    ADD_N = 106
-    GATHER_ND = 107
-    COS = 108
-    WHERE = 109
-    RANK = 110
-    ELU = 111
-    REVERSE_SEQUENCE = 112
-    MATRIX_DIAG = 113
-    QUANTIZE = 114
-    MATRIX_SET_DIAG = 115
-    ROUND = 116
-    HARD_SWISH = 117
-    IF = 118
-    WHILE = 119
-    NON_MAX_SUPPRESSION_V4 = 120
-    NON_MAX_SUPPRESSION_V5 = 121
-    SCATTER_ND = 122
-    SELECT_V2 = 123
-    DENSIFY = 124
-    SEGMENT_SUM = 125
-    BATCH_MATMUL = 126
-    PLACEHOLDER_FOR_GREATER_OP_CODES = 127
-    CUMSUM = 128
-    CALL_ONCE = 129
-    BROADCAST_TO = 130
-    RFFT2D = 131
-    CONV_3D = 132
-    IMAG = 133
-    REAL = 134
-    COMPLEX_ABS = 135
-    HASHTABLE = 136
-    HASHTABLE_FIND = 137
-    HASHTABLE_IMPORT = 138
-    HASHTABLE_SIZE = 139
-    REDUCE_ALL = 140
-    CONV_3D_TRANSPOSE = 141
-    VAR_HANDLE = 142
-    READ_VARIABLE = 143
-    ASSIGN_VARIABLE = 144
-    BROADCAST_ARGS = 145
-    RANDOM_STANDARD_NORMAL = 146
-    BUCKETIZE = 147
-    RANDOM_UNIFORM = 148
-    MULTINOMIAL = 149
-    GELU = 150
-    DYNAMIC_UPDATE_SLICE = 151
-    RELU_0_TO_1 = 152
-    UNSORTED_SEGMENT_PROD = 153
-    UNSORTED_SEGMENT_MAX = 154
-    UNSORTED_SEGMENT_SUM = 155
-    ATAN2 = 156</code></pre>
-</details>
 </section>
 <section>
 </section>
@@ -203,7 +50,6 @@ class BuiltinOperator(object):
 <span>class <span class="ident">BuiltinOperator</span></span>
 </code></dt>
 <dd>
-<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -365,8 +211,61 @@ class BuiltinOperator(object):
     UNSORTED_SEGMENT_PROD = 153
     UNSORTED_SEGMENT_MAX = 154
     UNSORTED_SEGMENT_SUM = 155
-    ATAN2 = 156</code></pre>
+    ATAN2 = 156
+    UNSORTED_SEGMENT_MIN = 157
+    SIGN = 158
+    BITCAST = 159
+    BITWISE_XOR = 160
+    RIGHT_SHIFT = 161
+    STABLEHLO_LOGISTIC = 162
+    STABLEHLO_ADD = 163
+    STABLEHLO_DIVIDE = 164
+    STABLEHLO_MULTIPLY = 165
+    STABLEHLO_MAXIMUM = 166
+    STABLEHLO_RESHAPE = 167
+    STABLEHLO_CLAMP = 168
+    STABLEHLO_CONCATENATE = 169
+    STABLEHLO_BROADCAST_IN_DIM = 170
+    STABLEHLO_CONVOLUTION = 171
+    STABLEHLO_SLICE = 172
+    STABLEHLO_CUSTOM_CALL = 173
+    STABLEHLO_REDUCE = 174
+    STABLEHLO_ABS = 175
+    STABLEHLO_AND = 176
+    STABLEHLO_COSINE = 177
+    STABLEHLO_EXPONENTIAL = 178
+    STABLEHLO_FLOOR = 179
+    STABLEHLO_LOG = 180
+    STABLEHLO_MINIMUM = 181
+    STABLEHLO_NEGATE = 182
+    STABLEHLO_OR = 183
+    STABLEHLO_POWER = 184
+    STABLEHLO_REMAINDER = 185
+    STABLEHLO_RSQRT = 186
+    STABLEHLO_SELECT = 187
+    STABLEHLO_SUBTRACT = 188
+    STABLEHLO_TANH = 189
+    STABLEHLO_SCATTER = 190
+    STABLEHLO_COMPARE = 191
+    STABLEHLO_CONVERT = 192
+    STABLEHLO_DYNAMIC_SLICE = 193
+    STABLEHLO_DYNAMIC_UPDATE_SLICE = 194
+    STABLEHLO_PAD = 195
+    STABLEHLO_IOTA = 196
+    STABLEHLO_DOT_GENERAL = 197
+    STABLEHLO_REDUCE_WINDOW = 198
+    STABLEHLO_SORT = 199
+    STABLEHLO_WHILE = 200
+    STABLEHLO_GATHER = 201
+    STABLEHLO_TRANSPOSE = 202
+    DILATE = 203
+    STABLEHLO_RNG_BIT_GENERATOR = 204
+    REDUCE_WINDOW = 205
+    STABLEHLO_COMPOSITE = 206
+    STABLEHLO_SHIFT_LEFT = 207
+    STABLEHLO_CBRT = 208</code></pre>
 </details>
+<div class="desc"></div>
 <h3>Class variables</h3>
 <dl>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.ABS"><code class="name">var <span class="ident">ABS</span></code></dt>
@@ -414,6 +313,14 @@ class BuiltinOperator(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN"><code class="name">var <span class="ident">BIDIRECTIONAL_SEQUENCE_RNN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BITCAST"><code class="name">var <span class="ident">BITCAST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.BITWISE_XOR"><code class="name">var <span class="ident">BITWISE_XOR</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -498,6 +405,10 @@ class BuiltinOperator(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.DEQUANTIZE"><code class="name">var <span class="ident">DEQUANTIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.DILATE"><code class="name">var <span class="ident">DILATE</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -793,6 +704,10 @@ class BuiltinOperator(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.REDUCE_WINDOW"><code class="name">var <span class="ident">REDUCE_WINDOW</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.RELU"><code class="name">var <span class="ident">RELU</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -833,6 +748,10 @@ class BuiltinOperator(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.RIGHT_SHIFT"><code class="name">var <span class="ident">RIGHT_SHIFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.RNN"><code class="name">var <span class="ident">RNN</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -862,6 +781,10 @@ class BuiltinOperator(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.SHAPE"><code class="name">var <span class="ident">SHAPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.SIGN"><code class="name">var <span class="ident">SIGN</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -914,6 +837,186 @@ class BuiltinOperator(object):
 <div class="desc"></div>
 </dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.SQUEEZE"><code class="name">var <span class="ident">SQUEEZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_ABS"><code class="name">var <span class="ident">STABLEHLO_ABS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_ADD"><code class="name">var <span class="ident">STABLEHLO_ADD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_AND"><code class="name">var <span class="ident">STABLEHLO_AND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_BROADCAST_IN_DIM"><code class="name">var <span class="ident">STABLEHLO_BROADCAST_IN_DIM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CBRT"><code class="name">var <span class="ident">STABLEHLO_CBRT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CLAMP"><code class="name">var <span class="ident">STABLEHLO_CLAMP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COMPARE"><code class="name">var <span class="ident">STABLEHLO_COMPARE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COMPOSITE"><code class="name">var <span class="ident">STABLEHLO_COMPOSITE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONCATENATE"><code class="name">var <span class="ident">STABLEHLO_CONCATENATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONVERT"><code class="name">var <span class="ident">STABLEHLO_CONVERT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONVOLUTION"><code class="name">var <span class="ident">STABLEHLO_CONVOLUTION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COSINE"><code class="name">var <span class="ident">STABLEHLO_COSINE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CUSTOM_CALL"><code class="name">var <span class="ident">STABLEHLO_CUSTOM_CALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DIVIDE"><code class="name">var <span class="ident">STABLEHLO_DIVIDE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DOT_GENERAL"><code class="name">var <span class="ident">STABLEHLO_DOT_GENERAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DYNAMIC_SLICE"><code class="name">var <span class="ident">STABLEHLO_DYNAMIC_SLICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DYNAMIC_UPDATE_SLICE"><code class="name">var <span class="ident">STABLEHLO_DYNAMIC_UPDATE_SLICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_EXPONENTIAL"><code class="name">var <span class="ident">STABLEHLO_EXPONENTIAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_FLOOR"><code class="name">var <span class="ident">STABLEHLO_FLOOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_GATHER"><code class="name">var <span class="ident">STABLEHLO_GATHER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_IOTA"><code class="name">var <span class="ident">STABLEHLO_IOTA</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_LOG"><code class="name">var <span class="ident">STABLEHLO_LOG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_LOGISTIC"><code class="name">var <span class="ident">STABLEHLO_LOGISTIC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MAXIMUM"><code class="name">var <span class="ident">STABLEHLO_MAXIMUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MINIMUM"><code class="name">var <span class="ident">STABLEHLO_MINIMUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MULTIPLY"><code class="name">var <span class="ident">STABLEHLO_MULTIPLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_NEGATE"><code class="name">var <span class="ident">STABLEHLO_NEGATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_OR"><code class="name">var <span class="ident">STABLEHLO_OR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_PAD"><code class="name">var <span class="ident">STABLEHLO_PAD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_POWER"><code class="name">var <span class="ident">STABLEHLO_POWER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REDUCE"><code class="name">var <span class="ident">STABLEHLO_REDUCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REDUCE_WINDOW"><code class="name">var <span class="ident">STABLEHLO_REDUCE_WINDOW</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REMAINDER"><code class="name">var <span class="ident">STABLEHLO_REMAINDER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RESHAPE"><code class="name">var <span class="ident">STABLEHLO_RESHAPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RNG_BIT_GENERATOR"><code class="name">var <span class="ident">STABLEHLO_RNG_BIT_GENERATOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RSQRT"><code class="name">var <span class="ident">STABLEHLO_RSQRT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SCATTER"><code class="name">var <span class="ident">STABLEHLO_SCATTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SELECT"><code class="name">var <span class="ident">STABLEHLO_SELECT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SHIFT_LEFT"><code class="name">var <span class="ident">STABLEHLO_SHIFT_LEFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SLICE"><code class="name">var <span class="ident">STABLEHLO_SLICE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SORT"><code class="name">var <span class="ident">STABLEHLO_SORT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SUBTRACT"><code class="name">var <span class="ident">STABLEHLO_SUBTRACT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_TANH"><code class="name">var <span class="ident">STABLEHLO_TANH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_TRANSPOSE"><code class="name">var <span class="ident">STABLEHLO_TRANSPOSE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_WHILE"><code class="name">var <span class="ident">STABLEHLO_WHILE</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -973,6 +1076,10 @@ class BuiltinOperator(object):
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MIN"><code class="name">var <span class="ident">UNSORTED_SEGMENT_MIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_PROD"><code class="name">var <span class="ident">UNSORTED_SEGMENT_PROD</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -1003,7 +1110,6 @@ class BuiltinOperator(object):
 </section>
 </article>
 <nav id="sidebar">
-<h1>Index</h1>
 <div class="toc">
 <ul></ul>
 </div>
@@ -1030,6 +1136,8 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND" href="#tflite.BuiltinOperator.BuiltinOperator.BATCH_TO_SPACE_ND">BATCH_TO_SPACE_ND</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM" href="#tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_LSTM">BIDIRECTIONAL_SEQUENCE_LSTM</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN" href="#tflite.BuiltinOperator.BuiltinOperator.BIDIRECTIONAL_SEQUENCE_RNN">BIDIRECTIONAL_SEQUENCE_RNN</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BITCAST" href="#tflite.BuiltinOperator.BuiltinOperator.BITCAST">BITCAST</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BITWISE_XOR" href="#tflite.BuiltinOperator.BuiltinOperator.BITWISE_XOR">BITWISE_XOR</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BROADCAST_ARGS" href="#tflite.BuiltinOperator.BuiltinOperator.BROADCAST_ARGS">BROADCAST_ARGS</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BROADCAST_TO" href="#tflite.BuiltinOperator.BuiltinOperator.BROADCAST_TO">BROADCAST_TO</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.BUCKETIZE" href="#tflite.BuiltinOperator.BuiltinOperator.BUCKETIZE">BUCKETIZE</a></code></li>
@@ -1051,6 +1159,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DEPTHWISE_CONV_2D" href="#tflite.BuiltinOperator.BuiltinOperator.DEPTHWISE_CONV_2D">DEPTHWISE_CONV_2D</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DEPTH_TO_SPACE" href="#tflite.BuiltinOperator.BuiltinOperator.DEPTH_TO_SPACE">DEPTH_TO_SPACE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DEQUANTIZE" href="#tflite.BuiltinOperator.BuiltinOperator.DEQUANTIZE">DEQUANTIZE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DILATE" href="#tflite.BuiltinOperator.BuiltinOperator.DILATE">DILATE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DIV" href="#tflite.BuiltinOperator.BuiltinOperator.DIV">DIV</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.DYNAMIC_UPDATE_SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.DYNAMIC_UPDATE_SLICE">DYNAMIC_UPDATE_SLICE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ELU" href="#tflite.BuiltinOperator.BuiltinOperator.ELU">ELU</a></code></li>
@@ -1124,6 +1233,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_MAX" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_MAX">REDUCE_MAX</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_MIN" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_MIN">REDUCE_MIN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_PROD" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_PROD">REDUCE_PROD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REDUCE_WINDOW" href="#tflite.BuiltinOperator.BuiltinOperator.REDUCE_WINDOW">REDUCE_WINDOW</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RELU" href="#tflite.BuiltinOperator.BuiltinOperator.RELU">RELU</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RELU6" href="#tflite.BuiltinOperator.BuiltinOperator.RELU6">RELU6</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RELU_0_TO_1" href="#tflite.BuiltinOperator.BuiltinOperator.RELU_0_TO_1">RELU_0_TO_1</a></code></li>
@@ -1134,6 +1244,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE" href="#tflite.BuiltinOperator.BuiltinOperator.REVERSE_SEQUENCE">REVERSE_SEQUENCE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2" href="#tflite.BuiltinOperator.BuiltinOperator.REVERSE_V2">REVERSE_V2</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RFFT2D" href="#tflite.BuiltinOperator.BuiltinOperator.RFFT2D">RFFT2D</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RIGHT_SHIFT" href="#tflite.BuiltinOperator.BuiltinOperator.RIGHT_SHIFT">RIGHT_SHIFT</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RNN" href="#tflite.BuiltinOperator.BuiltinOperator.RNN">RNN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.ROUND" href="#tflite.BuiltinOperator.BuiltinOperator.ROUND">ROUND</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.RSQRT" href="#tflite.BuiltinOperator.BuiltinOperator.RSQRT">RSQRT</a></code></li>
@@ -1142,6 +1253,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SELECT" href="#tflite.BuiltinOperator.BuiltinOperator.SELECT">SELECT</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SELECT_V2" href="#tflite.BuiltinOperator.BuiltinOperator.SELECT_V2">SELECT_V2</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SHAPE" href="#tflite.BuiltinOperator.BuiltinOperator.SHAPE">SHAPE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SIGN" href="#tflite.BuiltinOperator.BuiltinOperator.SIGN">SIGN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SIN" href="#tflite.BuiltinOperator.BuiltinOperator.SIN">SIN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM" href="#tflite.BuiltinOperator.BuiltinOperator.SKIP_GRAM">SKIP_GRAM</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.SLICE">SLICE</a></code></li>
@@ -1155,6 +1267,51 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQUARE" href="#tflite.BuiltinOperator.BuiltinOperator.SQUARE">SQUARE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQUARED_DIFFERENCE" href="#tflite.BuiltinOperator.BuiltinOperator.SQUARED_DIFFERENCE">SQUARED_DIFFERENCE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SQUEEZE" href="#tflite.BuiltinOperator.BuiltinOperator.SQUEEZE">SQUEEZE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_ABS" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_ABS">STABLEHLO_ABS</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_ADD" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_ADD">STABLEHLO_ADD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_AND" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_AND">STABLEHLO_AND</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_BROADCAST_IN_DIM" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_BROADCAST_IN_DIM">STABLEHLO_BROADCAST_IN_DIM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CBRT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CBRT">STABLEHLO_CBRT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CLAMP" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CLAMP">STABLEHLO_CLAMP</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COMPARE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COMPARE">STABLEHLO_COMPARE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COMPOSITE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COMPOSITE">STABLEHLO_COMPOSITE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONCATENATE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONCATENATE">STABLEHLO_CONCATENATE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONVERT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONVERT">STABLEHLO_CONVERT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONVOLUTION" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CONVOLUTION">STABLEHLO_CONVOLUTION</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COSINE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_COSINE">STABLEHLO_COSINE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CUSTOM_CALL" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_CUSTOM_CALL">STABLEHLO_CUSTOM_CALL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DIVIDE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DIVIDE">STABLEHLO_DIVIDE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DOT_GENERAL" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DOT_GENERAL">STABLEHLO_DOT_GENERAL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DYNAMIC_SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DYNAMIC_SLICE">STABLEHLO_DYNAMIC_SLICE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DYNAMIC_UPDATE_SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_DYNAMIC_UPDATE_SLICE">STABLEHLO_DYNAMIC_UPDATE_SLICE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_EXPONENTIAL" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_EXPONENTIAL">STABLEHLO_EXPONENTIAL</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_FLOOR" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_FLOOR">STABLEHLO_FLOOR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_GATHER" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_GATHER">STABLEHLO_GATHER</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_IOTA" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_IOTA">STABLEHLO_IOTA</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_LOG" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_LOG">STABLEHLO_LOG</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_LOGISTIC" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_LOGISTIC">STABLEHLO_LOGISTIC</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MAXIMUM" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MAXIMUM">STABLEHLO_MAXIMUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MINIMUM" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MINIMUM">STABLEHLO_MINIMUM</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MULTIPLY" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_MULTIPLY">STABLEHLO_MULTIPLY</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_NEGATE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_NEGATE">STABLEHLO_NEGATE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_OR" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_OR">STABLEHLO_OR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_PAD" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_PAD">STABLEHLO_PAD</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_POWER" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_POWER">STABLEHLO_POWER</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REDUCE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REDUCE">STABLEHLO_REDUCE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REDUCE_WINDOW" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REDUCE_WINDOW">STABLEHLO_REDUCE_WINDOW</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REMAINDER" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_REMAINDER">STABLEHLO_REMAINDER</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RESHAPE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RESHAPE">STABLEHLO_RESHAPE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RNG_BIT_GENERATOR" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RNG_BIT_GENERATOR">STABLEHLO_RNG_BIT_GENERATOR</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RSQRT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_RSQRT">STABLEHLO_RSQRT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SCATTER" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SCATTER">STABLEHLO_SCATTER</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SELECT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SELECT">STABLEHLO_SELECT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SHIFT_LEFT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SHIFT_LEFT">STABLEHLO_SHIFT_LEFT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SLICE">STABLEHLO_SLICE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SORT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SORT">STABLEHLO_SORT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SUBTRACT" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_SUBTRACT">STABLEHLO_SUBTRACT</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_TANH" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_TANH">STABLEHLO_TANH</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_TRANSPOSE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_TRANSPOSE">STABLEHLO_TRANSPOSE</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_WHILE" href="#tflite.BuiltinOperator.BuiltinOperator.STABLEHLO_WHILE">STABLEHLO_WHILE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.STRIDED_SLICE" href="#tflite.BuiltinOperator.BuiltinOperator.STRIDED_SLICE">STRIDED_SLICE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SUB" href="#tflite.BuiltinOperator.BuiltinOperator.SUB">SUB</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.SUM" href="#tflite.BuiltinOperator.BuiltinOperator.SUM">SUM</a></code></li>
@@ -1169,6 +1326,7 @@ class BuiltinOperator(object):
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNIQUE" href="#tflite.BuiltinOperator.BuiltinOperator.UNIQUE">UNIQUE</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNPACK" href="#tflite.BuiltinOperator.BuiltinOperator.UNPACK">UNPACK</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MAX" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MAX">UNSORTED_SEGMENT_MAX</a></code></li>
+<li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MIN" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_MIN">UNSORTED_SEGMENT_MIN</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_PROD" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_PROD">UNSORTED_SEGMENT_PROD</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_SUM" href="#tflite.BuiltinOperator.BuiltinOperator.UNSORTED_SEGMENT_SUM">UNSORTED_SEGMENT_SUM</a></code></li>
 <li><code><a title="tflite.BuiltinOperator.BuiltinOperator.VAR_HANDLE" href="#tflite.BuiltinOperator.BuiltinOperator.VAR_HANDLE">VAR_HANDLE</a></code></li>
@@ -1183,7 +1341,7 @@ class BuiltinOperator(object):
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
 </footer>
 </body>
 </html>

@@ -28,9 +28,14 @@ class RankOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def RankOptionsStart(builder): builder.StartObject(0)
+def RankOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return RankOptionsStart(builder)
-def RankOptionsEnd(builder): return builder.EndObject()
+    RankOptionsStart(builder)
+
+def RankOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return RankOptionsEnd(builder)

@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>tflite.StablehloReduceWindowOptions API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>tflite.StablehloReduceWindowOptions</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="tflite.StablehloReduceWindowOptions.AddBaseDilations"><code class="name flex">
+<span>def <span class="ident">AddBaseDilations</span></span>(<span>builder, baseDilations)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBaseDilations(builder, baseDilations):
+    StablehloReduceWindowOptionsAddBaseDilations(builder, baseDilations)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.AddBodySubgraphIndex"><code class="name flex">
+<span>def <span class="ident">AddBodySubgraphIndex</span></span>(<span>builder, bodySubgraphIndex)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddBodySubgraphIndex(builder, bodySubgraphIndex):
+    StablehloReduceWindowOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.AddPadding"><code class="name flex">
+<span>def <span class="ident">AddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddPadding(builder, padding):
+    StablehloReduceWindowOptionsAddPadding(builder, padding)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.AddWindowDilations"><code class="name flex">
+<span>def <span class="ident">AddWindowDilations</span></span>(<span>builder, windowDilations)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddWindowDilations(builder, windowDilations):
+    StablehloReduceWindowOptionsAddWindowDilations(builder, windowDilations)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.AddWindowDimensions"><code class="name flex">
+<span>def <span class="ident">AddWindowDimensions</span></span>(<span>builder, windowDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddWindowDimensions(builder, windowDimensions):
+    StablehloReduceWindowOptionsAddWindowDimensions(builder, windowDimensions)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.AddWindowStrides"><code class="name flex">
+<span>def <span class="ident">AddWindowStrides</span></span>(<span>builder, windowStrides)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def AddWindowStrides(builder, windowStrides):
+    StablehloReduceWindowOptionsAddWindowStrides(builder, windowStrides)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.End"><code class="name flex">
+<span>def <span class="ident">End</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def End(builder):
+    return StablehloReduceWindowOptionsEnd(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddBaseDilations"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsAddBaseDilations</span></span>(<span>builder, baseDilations)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsAddBaseDilations(builder, baseDilations):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(baseDilations), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddBodySubgraphIndex"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsAddBodySubgraphIndex</span></span>(<span>builder, bodySubgraphIndex)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsAddBodySubgraphIndex(builder, bodySubgraphIndex):
+    builder.PrependInt32Slot(5, bodySubgraphIndex, 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddPadding"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsAddPadding</span></span>(<span>builder, padding)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsAddPadding(builder, padding):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(padding), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowDilations"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsAddWindowDilations</span></span>(<span>builder, windowDilations)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsAddWindowDilations(builder, windowDilations):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(windowDilations), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowDimensions"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsAddWindowDimensions</span></span>(<span>builder, windowDimensions)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsAddWindowDimensions(builder, windowDimensions):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(windowDimensions), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowStrides"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsAddWindowStrides</span></span>(<span>builder, windowStrides)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsAddWindowStrides(builder, windowStrides):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(windowStrides), 0)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsEnd"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsEnd</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsEnd(builder):
+    return builder.EndObject()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStart"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsStart</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsStart(builder):
+    builder.StartObject(6)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartBaseDilationsVector"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsStartBaseDilationsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsStartBaseDilationsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartPaddingVector"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsStartPaddingVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsStartPaddingVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowDilationsVector"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsStartWindowDilationsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsStartWindowDilationsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsStartWindowDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsStartWindowDimensionsVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowStridesVector"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsStartWindowStridesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StablehloReduceWindowOptionsStartWindowStridesVector(builder, numElems):
+    return builder.StartVector(8, numElems, 8)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.Start"><code class="name flex">
+<span>def <span class="ident">Start</span></span>(<span>builder)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Start(builder):
+    StablehloReduceWindowOptionsStart(builder)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StartBaseDilationsVector"><code class="name flex">
+<span>def <span class="ident">StartBaseDilationsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartBaseDilationsVector(builder, numElems):
+    return StablehloReduceWindowOptionsStartBaseDilationsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StartPaddingVector"><code class="name flex">
+<span>def <span class="ident">StartPaddingVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartPaddingVector(builder, numElems):
+    return StablehloReduceWindowOptionsStartPaddingVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StartWindowDilationsVector"><code class="name flex">
+<span>def <span class="ident">StartWindowDilationsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartWindowDilationsVector(builder, numElems):
+    return StablehloReduceWindowOptionsStartWindowDilationsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StartWindowDimensionsVector"><code class="name flex">
+<span>def <span class="ident">StartWindowDimensionsVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartWindowDimensionsVector(builder, numElems):
+    return StablehloReduceWindowOptionsStartWindowDimensionsVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StartWindowStridesVector"><code class="name flex">
+<span>def <span class="ident">StartWindowStridesVector</span></span>(<span>builder, numElems)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartWindowStridesVector(builder, numElems):
+    return StablehloReduceWindowOptionsStartWindowStridesVector(builder, numElems)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions"><code class="flex name class">
+<span>class <span class="ident">StablehloReduceWindowOptions</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StablehloReduceWindowOptions(object):
+    __slots__ = [&#39;_tab&#39;]
+
+    @classmethod
+    def GetRootAs(cls, buf, offset=0):
+        n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
+        x = StablehloReduceWindowOptions()
+        x.Init(buf, n + offset)
+        return x
+
+    @classmethod
+    def GetRootAsStablehloReduceWindowOptions(cls, buf, offset=0):
+        &#34;&#34;&#34;This method is deprecated. Please switch to GetRootAs.&#34;&#34;&#34;
+        return cls.GetRootAs(buf, offset)
+    @classmethod
+    def StablehloReduceWindowOptionsBufferHasIdentifier(cls, buf, offset, size_prefixed=False):
+        return flatbuffers.util.BufferHasIdentifier(buf, offset, b&#34;\x54\x46\x4C\x33&#34;, size_prefixed=size_prefixed)
+
+    # StablehloReduceWindowOptions
+    def Init(self, buf, pos):
+        self._tab = flatbuffers.table.Table(buf, pos)
+
+    # StablehloReduceWindowOptions
+    def WindowDimensions(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowDimensionsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowDimensionsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowDimensionsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+        return o == 0
+
+    # StablehloReduceWindowOptions
+    def WindowStrides(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowStridesAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowStridesLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowStridesIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+        return o == 0
+
+    # StablehloReduceWindowOptions
+    def BaseDilations(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloReduceWindowOptions
+    def BaseDilationsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def BaseDilationsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def BaseDilationsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+        return o == 0
+
+    # StablehloReduceWindowOptions
+    def WindowDilations(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowDilationsAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowDilationsLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def WindowDilationsIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+        return o == 0
+
+    # StablehloReduceWindowOptions
+    def Padding(self, j):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            a = self._tab.Vector(o)
+            return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+        return 0
+
+    # StablehloReduceWindowOptions
+    def PaddingAsNumpy(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def PaddingLength(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.VectorLen(o)
+        return 0
+
+    # StablehloReduceWindowOptions
+    def PaddingIsNone(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        return o == 0
+
+    # StablehloReduceWindowOptions
+    def BodySubgraphIndex(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return 0</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.GetRootAs"><code class="name flex">
+<span>def <span class="ident">GetRootAs</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.GetRootAsStablehloReduceWindowOptions"><code class="name flex">
+<span>def <span class="ident">GetRootAsStablehloReduceWindowOptions</span></span>(<span>buf, offset=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is deprecated. Please switch to GetRootAs.</p></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.StablehloReduceWindowOptionsBufferHasIdentifier"><code class="name flex">
+<span>def <span class="ident">StablehloReduceWindowOptionsBufferHasIdentifier</span></span>(<span>buf, offset, size_prefixed=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilations"><code class="name flex">
+<span>def <span class="ident">BaseDilations</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BaseDilations(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsAsNumpy"><code class="name flex">
+<span>def <span class="ident">BaseDilationsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BaseDilationsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsIsNone"><code class="name flex">
+<span>def <span class="ident">BaseDilationsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BaseDilationsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsLength"><code class="name flex">
+<span>def <span class="ident">BaseDilationsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BaseDilationsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BodySubgraphIndex"><code class="name flex">
+<span>def <span class="ident">BodySubgraphIndex</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BodySubgraphIndex(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+    if o != 0:
+        return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.Init"><code class="name flex">
+<span>def <span class="ident">Init</span></span>(<span>self, buf, pos)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Init(self, buf, pos):
+    self._tab = flatbuffers.table.Table(buf, pos)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.Padding"><code class="name flex">
+<span>def <span class="ident">Padding</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Padding(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingAsNumpy"><code class="name flex">
+<span>def <span class="ident">PaddingAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PaddingAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingIsNone"><code class="name flex">
+<span>def <span class="ident">PaddingIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PaddingIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingLength"><code class="name flex">
+<span>def <span class="ident">PaddingLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def PaddingLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilations"><code class="name flex">
+<span>def <span class="ident">WindowDilations</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDilations(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsAsNumpy"><code class="name flex">
+<span>def <span class="ident">WindowDilationsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDilationsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsIsNone"><code class="name flex">
+<span>def <span class="ident">WindowDilationsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDilationsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsLength"><code class="name flex">
+<span>def <span class="ident">WindowDilationsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDilationsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensions"><code class="name flex">
+<span>def <span class="ident">WindowDimensions</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDimensions(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsAsNumpy"><code class="name flex">
+<span>def <span class="ident">WindowDimensionsAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDimensionsAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsIsNone"><code class="name flex">
+<span>def <span class="ident">WindowDimensionsIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDimensionsIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsLength"><code class="name flex">
+<span>def <span class="ident">WindowDimensionsLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowDimensionsLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStrides"><code class="name flex">
+<span>def <span class="ident">WindowStrides</span></span>(<span>self, j)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStrides(self, j):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        a = self._tab.Vector(o)
+        return self._tab.Get(flatbuffers.number_types.Int64Flags, a + flatbuffers.number_types.UOffsetTFlags.py_type(j * 8))
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesAsNumpy"><code class="name flex">
+<span>def <span class="ident">WindowStridesAsNumpy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStridesAsNumpy(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.GetVectorAsNumpy(flatbuffers.number_types.Int64Flags, o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesIsNone"><code class="name flex">
+<span>def <span class="ident">WindowStridesIsNone</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStridesIsNone(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    return o == 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesLength"><code class="name flex">
+<span>def <span class="ident">WindowStridesLength</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WindowStridesLength(self):
+    o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
+    if o != 0:
+        return self._tab.VectorLen(o)
+    return 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="tflite" href="index.html">tflite</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="tflite.StablehloReduceWindowOptions.AddBaseDilations" href="#tflite.StablehloReduceWindowOptions.AddBaseDilations">AddBaseDilations</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.AddBodySubgraphIndex" href="#tflite.StablehloReduceWindowOptions.AddBodySubgraphIndex">AddBodySubgraphIndex</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.AddPadding" href="#tflite.StablehloReduceWindowOptions.AddPadding">AddPadding</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.AddWindowDilations" href="#tflite.StablehloReduceWindowOptions.AddWindowDilations">AddWindowDilations</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.AddWindowDimensions" href="#tflite.StablehloReduceWindowOptions.AddWindowDimensions">AddWindowDimensions</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.AddWindowStrides" href="#tflite.StablehloReduceWindowOptions.AddWindowStrides">AddWindowStrides</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.End" href="#tflite.StablehloReduceWindowOptions.End">End</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddBaseDilations" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddBaseDilations">StablehloReduceWindowOptionsAddBaseDilations</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddBodySubgraphIndex" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddBodySubgraphIndex">StablehloReduceWindowOptionsAddBodySubgraphIndex</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddPadding" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddPadding">StablehloReduceWindowOptionsAddPadding</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowDilations" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowDilations">StablehloReduceWindowOptionsAddWindowDilations</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowDimensions" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowDimensions">StablehloReduceWindowOptionsAddWindowDimensions</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowStrides" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsAddWindowStrides">StablehloReduceWindowOptionsAddWindowStrides</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsEnd" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsEnd">StablehloReduceWindowOptionsEnd</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStart" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStart">StablehloReduceWindowOptionsStart</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartBaseDilationsVector" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartBaseDilationsVector">StablehloReduceWindowOptionsStartBaseDilationsVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartPaddingVector" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartPaddingVector">StablehloReduceWindowOptionsStartPaddingVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowDilationsVector" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowDilationsVector">StablehloReduceWindowOptionsStartWindowDilationsVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowDimensionsVector" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowDimensionsVector">StablehloReduceWindowOptionsStartWindowDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowStridesVector" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptionsStartWindowStridesVector">StablehloReduceWindowOptionsStartWindowStridesVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.Start" href="#tflite.StablehloReduceWindowOptions.Start">Start</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StartBaseDilationsVector" href="#tflite.StablehloReduceWindowOptions.StartBaseDilationsVector">StartBaseDilationsVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StartPaddingVector" href="#tflite.StablehloReduceWindowOptions.StartPaddingVector">StartPaddingVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StartWindowDilationsVector" href="#tflite.StablehloReduceWindowOptions.StartWindowDilationsVector">StartWindowDilationsVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StartWindowDimensionsVector" href="#tflite.StablehloReduceWindowOptions.StartWindowDimensionsVector">StartWindowDimensionsVector</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StartWindowStridesVector" href="#tflite.StablehloReduceWindowOptions.StartWindowStridesVector">StartWindowStridesVector</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions">StablehloReduceWindowOptions</a></code></h4>
+<ul class="">
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilations" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilations">BaseDilations</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsAsNumpy" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsAsNumpy">BaseDilationsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsIsNone" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsIsNone">BaseDilationsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsLength" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BaseDilationsLength">BaseDilationsLength</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BodySubgraphIndex" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.BodySubgraphIndex">BodySubgraphIndex</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.GetRootAs" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.GetRootAs">GetRootAs</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.GetRootAsStablehloReduceWindowOptions" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.GetRootAsStablehloReduceWindowOptions">GetRootAsStablehloReduceWindowOptions</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.Init" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.Init">Init</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.Padding" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.Padding">Padding</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingAsNumpy" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingAsNumpy">PaddingAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingIsNone" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingIsNone">PaddingIsNone</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingLength" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.PaddingLength">PaddingLength</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.StablehloReduceWindowOptionsBufferHasIdentifier" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.StablehloReduceWindowOptionsBufferHasIdentifier">StablehloReduceWindowOptionsBufferHasIdentifier</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilations" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilations">WindowDilations</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsAsNumpy" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsAsNumpy">WindowDilationsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsIsNone" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsIsNone">WindowDilationsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsLength" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDilationsLength">WindowDilationsLength</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensions" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensions">WindowDimensions</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsAsNumpy" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsAsNumpy">WindowDimensionsAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsIsNone" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsIsNone">WindowDimensionsIsNone</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsLength" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowDimensionsLength">WindowDimensionsLength</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStrides" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStrides">WindowStrides</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesAsNumpy" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesAsNumpy">WindowStridesAsNumpy</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesIsNone" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesIsNone">WindowStridesIsNone</a></code></li>
+<li><code><a title="tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesLength" href="#tflite.StablehloReduceWindowOptions.StablehloReduceWindowOptions.WindowStridesLength">WindowStridesLength</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

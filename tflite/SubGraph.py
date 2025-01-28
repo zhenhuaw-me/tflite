@@ -139,36 +139,81 @@ class SubGraph(object):
             return self._tab.String(o + self._tab.Pos)
         return None
 
-def SubGraphStart(builder): builder.StartObject(5)
+    # SubGraph
+    def DebugMetadataIndex(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
+        return -1
+
+def SubGraphStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return SubGraphStart(builder)
-def SubGraphAddTensors(builder, tensors): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(tensors), 0)
+    SubGraphStart(builder)
+
+def SubGraphAddTensors(builder, tensors):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(tensors), 0)
+
 def AddTensors(builder, tensors):
-    return SubGraphAddTensors(builder, tensors)
-def SubGraphStartTensorsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    SubGraphAddTensors(builder, tensors)
+
+def SubGraphStartTensorsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartTensorsVector(builder, numElems):
     return SubGraphStartTensorsVector(builder, numElems)
-def SubGraphAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+
+def SubGraphAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+
 def AddInputs(builder, inputs):
-    return SubGraphAddInputs(builder, inputs)
-def SubGraphStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    SubGraphAddInputs(builder, inputs)
+
+def SubGraphStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartInputsVector(builder, numElems):
     return SubGraphStartInputsVector(builder, numElems)
-def SubGraphAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
+def SubGraphAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
 def AddOutputs(builder, outputs):
-    return SubGraphAddOutputs(builder, outputs)
-def SubGraphStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    SubGraphAddOutputs(builder, outputs)
+
+def SubGraphStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartOutputsVector(builder, numElems):
     return SubGraphStartOutputsVector(builder, numElems)
-def SubGraphAddOperators(builder, operators): builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(operators), 0)
+
+def SubGraphAddOperators(builder, operators):
+    builder.PrependUOffsetTRelativeSlot(3, flatbuffers.number_types.UOffsetTFlags.py_type(operators), 0)
+
 def AddOperators(builder, operators):
-    return SubGraphAddOperators(builder, operators)
-def SubGraphStartOperatorsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    SubGraphAddOperators(builder, operators)
+
+def SubGraphStartOperatorsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartOperatorsVector(builder, numElems):
     return SubGraphStartOperatorsVector(builder, numElems)
-def SubGraphAddName(builder, name): builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+
+def SubGraphAddName(builder, name):
+    builder.PrependUOffsetTRelativeSlot(4, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+
 def AddName(builder, name):
-    return SubGraphAddName(builder, name)
-def SubGraphEnd(builder): return builder.EndObject()
+    SubGraphAddName(builder, name)
+
+def SubGraphAddDebugMetadataIndex(builder, debugMetadataIndex):
+    builder.PrependInt32Slot(5, debugMetadataIndex, -1)
+
+def AddDebugMetadataIndex(builder, debugMetadataIndex):
+    SubGraphAddDebugMetadataIndex(builder, debugMetadataIndex)
+
+def SubGraphEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SubGraphEnd(builder)

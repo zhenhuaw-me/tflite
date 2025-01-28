@@ -42,15 +42,26 @@ class Metadata(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def MetadataStart(builder): builder.StartObject(2)
+def MetadataStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return MetadataStart(builder)
-def MetadataAddName(builder, name): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+    MetadataStart(builder)
+
+def MetadataAddName(builder, name):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(name), 0)
+
 def AddName(builder, name):
-    return MetadataAddName(builder, name)
-def MetadataAddBuffer(builder, buffer): builder.PrependUint32Slot(1, buffer, 0)
+    MetadataAddName(builder, name)
+
+def MetadataAddBuffer(builder, buffer):
+    builder.PrependUint32Slot(1, buffer, 0)
+
 def AddBuffer(builder, buffer):
-    return MetadataAddBuffer(builder, buffer)
-def MetadataEnd(builder): return builder.EndObject()
+    MetadataAddBuffer(builder, buffer)
+
+def MetadataEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return MetadataEnd(builder)

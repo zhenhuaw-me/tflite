@@ -28,9 +28,14 @@ class EqualOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def EqualOptionsStart(builder): builder.StartObject(0)
+def EqualOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return EqualOptionsStart(builder)
-def EqualOptionsEnd(builder): return builder.EndObject()
+    EqualOptionsStart(builder)
+
+def EqualOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return EqualOptionsEnd(builder)

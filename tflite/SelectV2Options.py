@@ -28,9 +28,14 @@ class SelectV2Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def SelectV2OptionsStart(builder): builder.StartObject(0)
+def SelectV2OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return SelectV2OptionsStart(builder)
-def SelectV2OptionsEnd(builder): return builder.EndObject()
+    SelectV2OptionsStart(builder)
+
+def SelectV2OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SelectV2OptionsEnd(builder)

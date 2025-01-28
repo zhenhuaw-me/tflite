@@ -28,9 +28,14 @@ class FillOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def FillOptionsStart(builder): builder.StartObject(0)
+def FillOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return FillOptionsStart(builder)
-def FillOptionsEnd(builder): return builder.EndObject()
+    FillOptionsStart(builder)
+
+def FillOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return FillOptionsEnd(builder)

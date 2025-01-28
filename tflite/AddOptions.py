@@ -42,15 +42,26 @@ class AddOptions(object):
             return bool(self._tab.Get(flatbuffers.number_types.BoolFlags, o + self._tab.Pos))
         return True
 
-def AddOptionsStart(builder): builder.StartObject(2)
+def AddOptionsStart(builder):
+    builder.StartObject(2)
+
 def Start(builder):
-    return AddOptionsStart(builder)
-def AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+    AddOptionsStart(builder)
+
+def AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(0, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def AddOptionsAddPotScaleInt16(builder, potScaleInt16): builder.PrependBoolSlot(1, potScaleInt16, 1)
+    AddOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def AddOptionsAddPotScaleInt16(builder, potScaleInt16):
+    builder.PrependBoolSlot(1, potScaleInt16, 1)
+
 def AddPotScaleInt16(builder, potScaleInt16):
-    return AddOptionsAddPotScaleInt16(builder, potScaleInt16)
-def AddOptionsEnd(builder): return builder.EndObject()
+    AddOptionsAddPotScaleInt16(builder, potScaleInt16)
+
+def AddOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return AddOptionsEnd(builder)

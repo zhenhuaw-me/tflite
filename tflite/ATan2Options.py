@@ -28,9 +28,14 @@ class ATan2Options(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ATan2OptionsStart(builder): builder.StartObject(0)
+def ATan2OptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ATan2OptionsStart(builder)
-def ATan2OptionsEnd(builder): return builder.EndObject()
+    ATan2OptionsStart(builder)
+
+def ATan2OptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ATan2OptionsEnd(builder)

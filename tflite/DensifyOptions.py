@@ -28,9 +28,14 @@ class DensifyOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def DensifyOptionsStart(builder): builder.StartObject(0)
+def DensifyOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return DensifyOptionsStart(builder)
-def DensifyOptionsEnd(builder): return builder.EndObject()
+    DensifyOptionsStart(builder)
+
+def DensifyOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return DensifyOptionsEnd(builder)

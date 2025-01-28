@@ -28,9 +28,14 @@ class GatherNdOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def GatherNdOptionsStart(builder): builder.StartObject(0)
+def GatherNdOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return GatherNdOptionsStart(builder)
-def GatherNdOptionsEnd(builder): return builder.EndObject()
+    GatherNdOptionsStart(builder)
+
+def GatherNdOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return GatherNdOptionsEnd(builder)

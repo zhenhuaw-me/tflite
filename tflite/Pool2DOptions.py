@@ -70,27 +70,50 @@ class Pool2DOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def Pool2DOptionsStart(builder): builder.StartObject(6)
+def Pool2DOptionsStart(builder):
+    builder.StartObject(6)
+
 def Start(builder):
-    return Pool2DOptionsStart(builder)
-def Pool2DOptionsAddPadding(builder, padding): builder.PrependInt8Slot(0, padding, 0)
+    Pool2DOptionsStart(builder)
+
+def Pool2DOptionsAddPadding(builder, padding):
+    builder.PrependInt8Slot(0, padding, 0)
+
 def AddPadding(builder, padding):
-    return Pool2DOptionsAddPadding(builder, padding)
-def Pool2DOptionsAddStrideW(builder, strideW): builder.PrependInt32Slot(1, strideW, 0)
+    Pool2DOptionsAddPadding(builder, padding)
+
+def Pool2DOptionsAddStrideW(builder, strideW):
+    builder.PrependInt32Slot(1, strideW, 0)
+
 def AddStrideW(builder, strideW):
-    return Pool2DOptionsAddStrideW(builder, strideW)
-def Pool2DOptionsAddStrideH(builder, strideH): builder.PrependInt32Slot(2, strideH, 0)
+    Pool2DOptionsAddStrideW(builder, strideW)
+
+def Pool2DOptionsAddStrideH(builder, strideH):
+    builder.PrependInt32Slot(2, strideH, 0)
+
 def AddStrideH(builder, strideH):
-    return Pool2DOptionsAddStrideH(builder, strideH)
-def Pool2DOptionsAddFilterWidth(builder, filterWidth): builder.PrependInt32Slot(3, filterWidth, 0)
+    Pool2DOptionsAddStrideH(builder, strideH)
+
+def Pool2DOptionsAddFilterWidth(builder, filterWidth):
+    builder.PrependInt32Slot(3, filterWidth, 0)
+
 def AddFilterWidth(builder, filterWidth):
-    return Pool2DOptionsAddFilterWidth(builder, filterWidth)
-def Pool2DOptionsAddFilterHeight(builder, filterHeight): builder.PrependInt32Slot(4, filterHeight, 0)
+    Pool2DOptionsAddFilterWidth(builder, filterWidth)
+
+def Pool2DOptionsAddFilterHeight(builder, filterHeight):
+    builder.PrependInt32Slot(4, filterHeight, 0)
+
 def AddFilterHeight(builder, filterHeight):
-    return Pool2DOptionsAddFilterHeight(builder, filterHeight)
-def Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction): builder.PrependInt8Slot(5, fusedActivationFunction, 0)
+    Pool2DOptionsAddFilterHeight(builder, filterHeight)
+
+def Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction):
+    builder.PrependInt8Slot(5, fusedActivationFunction, 0)
+
 def AddFusedActivationFunction(builder, fusedActivationFunction):
-    return Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
-def Pool2DOptionsEnd(builder): return builder.EndObject()
+    Pool2DOptionsAddFusedActivationFunction(builder, fusedActivationFunction)
+
+def Pool2DOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return Pool2DOptionsEnd(builder)

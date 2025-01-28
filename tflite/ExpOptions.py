@@ -28,9 +28,14 @@ class ExpOptions(object):
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-def ExpOptionsStart(builder): builder.StartObject(0)
+def ExpOptionsStart(builder):
+    builder.StartObject(0)
+
 def Start(builder):
-    return ExpOptionsStart(builder)
-def ExpOptionsEnd(builder): return builder.EndObject()
+    ExpOptionsStart(builder)
+
+def ExpOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ExpOptionsEnd(builder)

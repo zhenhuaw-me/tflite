@@ -35,12 +35,20 @@ class ArgMaxOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int8Flags, o + self._tab.Pos)
         return 0
 
-def ArgMaxOptionsStart(builder): builder.StartObject(1)
+def ArgMaxOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return ArgMaxOptionsStart(builder)
-def ArgMaxOptionsAddOutputType(builder, outputType): builder.PrependInt8Slot(0, outputType, 0)
+    ArgMaxOptionsStart(builder)
+
+def ArgMaxOptionsAddOutputType(builder, outputType):
+    builder.PrependInt8Slot(0, outputType, 0)
+
 def AddOutputType(builder, outputType):
-    return ArgMaxOptionsAddOutputType(builder, outputType)
-def ArgMaxOptionsEnd(builder): return builder.EndObject()
+    ArgMaxOptionsAddOutputType(builder, outputType)
+
+def ArgMaxOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return ArgMaxOptionsEnd(builder)

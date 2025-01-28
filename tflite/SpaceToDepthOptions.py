@@ -35,12 +35,20 @@ class SpaceToDepthOptions(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def SpaceToDepthOptionsStart(builder): builder.StartObject(1)
+def SpaceToDepthOptionsStart(builder):
+    builder.StartObject(1)
+
 def Start(builder):
-    return SpaceToDepthOptionsStart(builder)
-def SpaceToDepthOptionsAddBlockSize(builder, blockSize): builder.PrependInt32Slot(0, blockSize, 0)
+    SpaceToDepthOptionsStart(builder)
+
+def SpaceToDepthOptionsAddBlockSize(builder, blockSize):
+    builder.PrependInt32Slot(0, blockSize, 0)
+
 def AddBlockSize(builder, blockSize):
-    return SpaceToDepthOptionsAddBlockSize(builder, blockSize)
-def SpaceToDepthOptionsEnd(builder): return builder.EndObject()
+    SpaceToDepthOptionsAddBlockSize(builder, blockSize)
+
+def SpaceToDepthOptionsEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SpaceToDepthOptionsEnd(builder)

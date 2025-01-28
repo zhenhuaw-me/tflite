@@ -92,27 +92,50 @@ class SignatureDef(object):
             return self._tab.Get(flatbuffers.number_types.Uint32Flags, o + self._tab.Pos)
         return 0
 
-def SignatureDefStart(builder): builder.StartObject(5)
+def SignatureDefStart(builder):
+    builder.StartObject(5)
+
 def Start(builder):
-    return SignatureDefStart(builder)
-def SignatureDefAddInputs(builder, inputs): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+    SignatureDefStart(builder)
+
+def SignatureDefAddInputs(builder, inputs):
+    builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(inputs), 0)
+
 def AddInputs(builder, inputs):
-    return SignatureDefAddInputs(builder, inputs)
-def SignatureDefStartInputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    SignatureDefAddInputs(builder, inputs)
+
+def SignatureDefStartInputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartInputsVector(builder, numElems):
     return SignatureDefStartInputsVector(builder, numElems)
-def SignatureDefAddOutputs(builder, outputs): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
+def SignatureDefAddOutputs(builder, outputs):
+    builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(outputs), 0)
+
 def AddOutputs(builder, outputs):
-    return SignatureDefAddOutputs(builder, outputs)
-def SignatureDefStartOutputsVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+    SignatureDefAddOutputs(builder, outputs)
+
+def SignatureDefStartOutputsVector(builder, numElems):
+    return builder.StartVector(4, numElems, 4)
+
 def StartOutputsVector(builder, numElems):
     return SignatureDefStartOutputsVector(builder, numElems)
-def SignatureDefAddSignatureKey(builder, signatureKey): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)
+
+def SignatureDefAddSignatureKey(builder, signatureKey):
+    builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(signatureKey), 0)
+
 def AddSignatureKey(builder, signatureKey):
-    return SignatureDefAddSignatureKey(builder, signatureKey)
-def SignatureDefAddSubgraphIndex(builder, subgraphIndex): builder.PrependUint32Slot(4, subgraphIndex, 0)
+    SignatureDefAddSignatureKey(builder, signatureKey)
+
+def SignatureDefAddSubgraphIndex(builder, subgraphIndex):
+    builder.PrependUint32Slot(4, subgraphIndex, 0)
+
 def AddSubgraphIndex(builder, subgraphIndex):
-    return SignatureDefAddSubgraphIndex(builder, subgraphIndex)
-def SignatureDefEnd(builder): return builder.EndObject()
+    SignatureDefAddSubgraphIndex(builder, subgraphIndex)
+
+def SignatureDefEnd(builder):
+    return builder.EndObject()
+
 def End(builder):
     return SignatureDefEnd(builder)
